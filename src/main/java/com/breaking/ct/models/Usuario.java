@@ -1,5 +1,7 @@
 package com.breaking.ct.models;
 
+import java.util.Optional;
+
 public abstract class Usuario {
 	
 	// ATRIBUTOS
@@ -12,10 +14,15 @@ public abstract class Usuario {
 	private String uf;
 	private String whatsapp;
 	private String email;
+	@SuppressWarnings("unused")
+	private String senha;
 	
 	// CONTRUCTORES
+	public Usuario() {
+		
+	}
 	public Usuario(String cep, String logradouro, String numero, String complemento,
-			String bairro, String cidade, String uf, String whatsapp, String email) {
+			String bairro, String cidade, String uf, String whatsapp, String email, String senha) {
 		super();
 		this.cep = cep;
 		this.logradouro = logradouro;
@@ -26,6 +33,7 @@ public abstract class Usuario {
 		this.uf = uf;
 		this.whatsapp = whatsapp;
 		this.email = email;
+		this.senha = senha;
 	}
 	
 	// GETTERS E SETTERS
@@ -83,5 +91,16 @@ public abstract class Usuario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	public void setComplemento(Optional<String> complemento2) {
+		if(complemento2.isEmpty())
+			this.complemento = null;
+		else
+			this.complemento = complemento2.get();
+	}
 }

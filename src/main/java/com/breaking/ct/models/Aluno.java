@@ -1,5 +1,7 @@
 package com.breaking.ct.models;
 
+import java.util.Optional;
+
 public class Aluno extends Usuario{
 
 	private String nome;
@@ -10,10 +12,13 @@ public class Aluno extends Usuario{
 	private String habilidades;
 	
 	// CONSTRUCTOR
+	public Aluno() {
+		super();
+	}
 	public Aluno(String cep, String logradouro, String numero, String complemento, String bairro,
-			String cidade, String UF, String whatsapp, String email, String nome, String ra, String cpf,
+			String cidade, String UF, String whatsapp, String email, String senha, String nome, String ra, String cpf,
 			String dataNasc, String curso, String habilidades) {
-		super(cep, logradouro, numero, complemento, bairro, cidade, UF, whatsapp, email);
+		super(cep, logradouro, numero, complemento, bairro, cidade, UF, whatsapp, email, senha);
 		this.nome = nome;
 		this.ra = ra;
 		this.cpf = cpf;
@@ -58,6 +63,12 @@ public class Aluno extends Usuario{
 	}
 	public void setHabilidades(String habilidades) {
 		this.habilidades = habilidades;
+	}
+	public void setRa(Optional<String> ra2) {
+		if(ra2.isEmpty())
+			this.ra = null;
+		else
+			this.ra = ra2.get();
 	}
 
 }

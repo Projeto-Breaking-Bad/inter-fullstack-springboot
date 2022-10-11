@@ -14,11 +14,11 @@ public class AlunoService {
 	private List<Aluno> alunos = new ArrayList<>(Arrays.asList(
 			new Aluno("40028-922", "Rua imaginária", "123", "", "Jardim das flores",
 					"Itaquaquecetuba", "SP", "(11)94002-8922", "usadordesitesestranhos@hotmail.com",
-					"Fulano da Silva", "000123345", "12312312312",
+					"senha", "Fulano da Silva", "000123345", "12312312312",
 					"01/01/1900", "DSM", "Sei Python, Javascript apenas"),
 			new Aluno("89224-002", "Rua 2 imaginária", "321", "Sala 103", "Beco das rosa",
 					"Paraná", "PR", "(21)94002-8922", "criadordesitesestranhos@gmail.com",
-					"Ciclano Santos", "000123346", "23423423423",
+					"senha", "Ciclano Santos", "000123346", "23423423423",
 					"31/12/1999", "Comex", "Sei espanhos, português apenas")
 			));
 	
