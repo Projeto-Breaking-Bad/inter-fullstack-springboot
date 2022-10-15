@@ -18,6 +18,123 @@ overflow-x: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* The actual timeline (the vertical ruler) */
+.main-timeline {
+  position: relative;
+}
+
+/* The actual timeline (the vertical ruler) */
+.main-timeline::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  background-color: #939597;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+/* Container around content */
+.timeline {
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+
+/* The circles on the timeline */
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -13px;
+  background-color: #939597;
+  border: 5px solid #f5df4d;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Place the container to the left */
+.left {
+  padding: 0px 40px 20px 0px;
+  left: 0;
+}
+
+/* Place the container to the right */
+.right {
+  padding: 0px 0px 20px 40px;
+  left: 50%;
+}
+
+/* Add arrows to the left container (pointing right) */
+.left::before {
+  content: " ";
+  position: absolute;
+  top: 18px;
+  z-index: 1;
+  right: 30px;
+  border: medium solid white;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
+}
+
+/* Add arrows to the right container (pointing left) */
+.right::before {
+  content: " ";
+  position: absolute;
+  top: 18px;
+  z-index: 1;
+  left: 30px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+/* Fix the circle for containers on the right side */
+.right::after {
+  left: -12px;
+}
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 600px) {
+  /* Place the timelime to the left */
+  .main-timeline::after {
+    left: 31px;
+  }
+
+  /* Full-width containers */
+  .timeline {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+
+  /* Make sure that all arrows are pointing leftwards */
+  .timeline::before {
+    left: 60px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+  }
+
+  /* Make sure all circles are at the same spot */
+  .left::after,
+  .right::after {
+    left: 18px;
+  }
+
+  .left::before {
+    right: auto;
+  }
+
+  /* Make all right containers behave like the left ones */
+  .right {
+    left: 0%;
+  }
+}
 </style>
     <body style="background-image: url(../static/images/card-6.svg);
      background-repeat: no-repeat;
@@ -26,9 +143,7 @@ overflow-x: auto;
 
     <div class="container">
         <div class="container-fluid">
-            <h1 class="mt-5">Bootstrap 4 Horizontal Scrolling</h1>
             <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
-                    
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
                       <div class="card h-100">
@@ -222,7 +337,100 @@ overflow-x: auto;
                   </div>
             </div>
         </div>
-      </div>
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>First slide label</h5>
+                  <p>Some representative placeholder content for the first slide.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://mdbcdn.b-cdn.net/img/new/slides/051.webp" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Second slide label</h5>
+                  <p>Some representative placeholder content for the second slide.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://mdbcdn.b-cdn.net/img/new/slides/031.webp" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Third slide label</h5>
+                  <p>Some representative placeholder content for the third slide.</p>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </div>
+
+    <section>
+        <div class="container py-5">
+          <div class="main-timeline">
+            <div class="timeline left">
+              <div class="card">
+                <div class="card-body p-4">
+                  <h3>Triagem de currículos</h3>
+                  <p class="mb-0">Antes de falarmos sobre os estágios do processo seletivo, destacamos que é fundamental planejar algumas etapas do recrutamento, principalmente a descrição da vaga e a escolha dos canais de divulgação.</p>
+                </div>
+              </div>
+            </div>
+            <div class="timeline right">
+              <div class="card">
+                <div class="card-body p-4">
+                  <h3>Contato com o candidato</h3>
+                  <p class="mb-0">A próxima etapa do processo seletivo é o contato com os candidatos que tiveram o currículo pré-aprovado. Dois pontos são muito importantes nessa etapa. O primeiro é o nível de aceitação da vaga.</p>
+                </div>
+              </div>
+            </div>
+            <div class="timeline left">
+              <div class="card">
+                <div class="card-body p-4">
+                  <h3>Teste de conhecimentos</h3>
+                  <p class="mb-0">Os testes de conhecimento são necessários para conhecer os candidatos mais a fundo e garantir que eles tenham as competências e habilidades necessárias para o cumprimento das metas e objetivos da companhia.</p>
+                </div>
+              </div>
+            </div>
+            <div class="timeline right">
+              <div class="card">
+                <div class="card-body p-4">
+                  <h3>Dinâmica de grupo</h3>
+                  <p class="mb-0">Reza a cartilha das consultorias de RH que os candidatos que simulam uma determinada personalidade não costumam ir muito longe. As dinâmicas de grupo são excelentes formas de encurtar esse caminho.</p>
+                </div>
+              </div>
+            </div>
+            <div class="timeline left">
+              <div class="card">
+                <div class="card-body p-4">
+                  <h3>Entrevista</h3>
+                  <p class="mb-0">A lista das principais etapas do processo seletivo se encerra na entrevista, ponto no qual o contato com o candidato é mais estreito. O sucesso dessa fase também depende 
+                    de planejamento — principalmente do roteiro. Prepare as perguntas certas e desenvolva uma abordagem que será utilizada com todos os candidatos. Guie-se pela descrição criada para a vaga e inclua 
+                    perguntas abertas, fechadas, factuais e questões comportamentais. Seja flexível, mas mantenha-se organizado e aplique critérios para identificar pontos positivos e negativos. Contudo, não se precipite e nem 
+                    faça julgamentos, pois sua atitude pode se transformar em preconceito. As entrevistas, inclusive, podem ser feitas por vídeo. Na atualidade, softwares de people analytics conseguem analisar o vídeo e elaborar 
+                    relatórios com os principais termos utilizados e outros pontos identificados.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>
     </html>
 </body>
