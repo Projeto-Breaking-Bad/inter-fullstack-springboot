@@ -1,6 +1,6 @@
-body {
+.body-content {
     margin: 4em 0;
-  }
+}
   .scrolling-wrapper{
   overflow-x: auto;
   }
@@ -138,6 +138,5 @@ body {
   }
 
   .carousel-inner {
-    height: 650px;
-    
+    height: 630px;
   }
