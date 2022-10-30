@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Cadastro de Aluno</title>
+    <title>Atualizar Cadastro</title>
 </head>
 
 <body style="background-image: url(/images/card-6.svg);
@@ -26,68 +26,52 @@
             <div class="card py-5 px-md-5" style="border-radius: 0.75rem; margin-top: -100px;">
                 <div class="row d-flex justify-content-center">
                     <div class="col-10">
-                        <div class="text-center">
-                            <h3>Criar uma conta</h3>
-                            <p class="text-muted">Já tem uma conta? <a class="text-decoration-none" href="#">Entre aqui</a></p>
-                        </div>
-
-                        <div class="mb-4 text-center">
-                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                <input type="radio" class="btn-check" name="pagAluno" id="pagAluno" autocomplete="off" checked>
-                                <label class="btn btn-outline-primary" for="pagAluno">Aluno</label>
-
-                                <input type="radio" class="btn-check" name="pagEmpresa" id="pagEmpresa" autocomplete="off">
-                                <label class="btn btn-outline-primary" for="pagEmpresa">Empresa</label>
-                            </div>
-                        </div>
-
-                        <form class="row g-3" method="POST" action="#" th:action="@{/alunos/cadastrar}" th:object="${aluno}">
+                        <h2 class="fw-bold mb-5">Atualização Perfil</h2>
+                        <form class="row g-3" method="POST" action="#" th:action="@{/alunos/atualizar}" th:object="${aluno}">
                             <div class="col-12">
                                 <label for="nome" class="form-label">Nome de usuário</label>
-                                <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do usuário" required>
+                                <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do usuário" required th:value="${aluno.nome}">
                             </div>
                             <div class="col-md-4">
                                 <label for="RA" class="form-label">RA</label>
-                                <input type="text" class="form-control" id="ra" name="ra" placeholder="Apenas números">
+                                <input type="text" class="form-control" id="ra" name="ra" placeholder="Apenas números" th:value="${aluno.ra}">
                             </div>
                             <div class="col-md-4">
                                 <label for="cpf" class="form-label">CPF</label>
-                                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+                                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="000.000.000-00" required h:value="${aluno.cpf}">
                             </div>
                             <div class="col-md-4">
                                 <label for="dataNasc" class="form-label">Data de Nascimento</label>
-                                <input type="date" class="form-control" id="dataNasc" name="dataNasc" required>
+                                <input type="date" class="form-control" id="dataNasc" name="dataNasc" required th:value="${aluno.dataNasc}">
                             </div>
                             <div class="col-md-4">
                                 <label for="inputZip" class="form-label">Cep</label>
-                                <input type="text" class="form-control" id="cep" name="cep" placeholder="00000-000"
-                                    required>
+                                <input type="text" class="form-control" id="cep" name="cep" placeholder="00000-000" required th:value="${aluno.cep}">
                             </div>
                             <div class="col-md-4">
                                 <label for="bairro" class="form-label">Bairro</label>
-                                <input type="text" class="form-control" id="bairro" name="bairro" required>
+                                <input type="text" class="form-control" id="bairro" name="bairro" required th:value="${aluno.bairro}">
                             </div>
                             <div class="col-md-4">
                                 <label for="cidade" class="form-label">Cidade</label>
-                                <input type="text" class="form-control" id="cidade" name="cidade" required>
+                                <input type="text" class="form-control" id="cidade" name="cidade" required th:value="${aluno.cidade}">
                             </div>
                             <div class="col-12">
                                 <label for="logradouro" class="form-label">Logradouro</label>
-                                <input type="text" class="form-control" id="logradouro" name="logradouro"
-                                    placeholder="Rua 1234" required>
+                                <input type="text" class="form-control" id="logradouro" name="logradouro" placeholder="Rua 1234" required th:value="${aluno.logradouro}">
                             </div>
                             <div class="col-md-4">
                                 <label for="numero" class="form-label">Número</label>
-                                <input type="text" class="form-control" id="numero" name="numero" required>
+                                <input type="text" class="form-control" id="numero" name="numero" required th:value="${aluno.numero}">
                             </div>
                             <div class="col-md-4">
                                 <label for="complemento" class="form-label">Complemento</label>
-                                <input type="text" class="form-control" id="complemento" name="complemento">
+                                <input type="text" class="form-control" id="complemento" name="complemento" th:value="${aluno.complemento}">
                             </div>
                             <div class="col-md-4">
                                 <label for="UF" class="form-label">UF</label>
-                                <select id="uf" name="uf" class="form-select" required>
-                                    <option selected disabled>Escolha...</option>
+                                <select id="uf" name="uf" class="form-select" required >
+                                    <option selected th:value="${aluno.uf}" th:text="${aluno.uf}"></option>
                                     <option value="AC">AC</option>
                                     <option value="AL">AL</option>
                                     <option value="AP">AP</option>
@@ -119,15 +103,15 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="telefone" class="form-label">Telefone</label>
-                                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(xx) xxxxx-xxxx">
+                                <input type="number" class="form-control" id="telefone" name="telefone" placeholder="(xx) xxxx-xxxx" th:value="${aluno.telefone}">
                             </div>
                             <div class="col-md-6">
                                 <label for="celular" class="form-label">Celular</label>
-                                <input type="text" class="form-control" id="whatsapp" name="whatsapp" placeholder="(xx) xxxxx-xxxx" required>
+                                <input type="number" class="form-control" id="whatsapp" name="whatsapp" placeholder="(xx) xxxxx-xxxx" required th:value="${aluno.whatsapp}">
                             </div>
                             <div class="col-md-7">
                                 <label for="email" class="form-label">Email de usuário</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="email@email.com" required>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="email@email.com" required th:value="${aluno.email}">
                             </div>
                             <div class="col-md-5">
                                 <label for="senha" class="form-label">Senha</label>
@@ -135,17 +119,17 @@
                             </div>
                             <div class="col-12">
                                 <label for="curso" class="form-label">Curso</label>
-                                <input type="text" class="form-control" id="curso" name="curso" placeholder="Curso do curso sendo cursado" required>
+                                <input type="text" class="form-control" id="curso" name="curso" placeholder="Curso do curso sendo cursado" required th:value="${aluno.curso}">
                             </div>
                             <div class="col-md-12">
                                 <label for="habilidade">Habilidade</label>
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Habilidades" id="habilidades" name="habilidades" style="height: 100px"></textarea>
+                                    <textarea class="form-control" placeholder="Habilidade" id="habilidades" name="habilidades" style="height: 100px" th:text="${aluno.habilidades}"></textarea>
                                 </div>
                             </div>
 
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                                <button type="submit" class="btn btn-primary">Atualizar</button>
                             </div>
                         </form>
                     </div>

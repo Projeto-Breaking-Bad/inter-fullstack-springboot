@@ -19,6 +19,7 @@ public class Aluno {
 	private String bairro;
 	private String cidade;
 	private String uf;
+	private String telefone;
 	private String whatsapp;
 	private String email;
 	private String senha;
@@ -30,7 +31,7 @@ public class Aluno {
 		
 	}
 	public Aluno(String nome, String ra, String cpf, String dataNasc, String cep, String logradouro, String numero,
-			String complemento, String bairro, String cidade, String uf, String whatsapp, String email, String senha,
+			String complemento, String bairro, String cidade, String uf, String telefone,String whatsapp, String email, String senha,
 			String curso, String habilidades) {
 		super();
 		this.nome = nome;
@@ -44,6 +45,7 @@ public class Aluno {
 		this.bairro = bairro;
 		this.cidade = cidade;
 		this.uf = uf;
+		this.telefone = telefone;
 		this.whatsapp = whatsapp;
 		this.email = email;
 		this.senha = senha;
@@ -117,6 +119,12 @@ public class Aluno {
 	}
 	public void setUf(String uf) {
 		this.uf = uf;
+	}
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 	public String getWhatsapp() {
 		return whatsapp;

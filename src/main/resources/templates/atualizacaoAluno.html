@@ -10,7 +10,15 @@
   <title>Atualizar Cadastro</title>
 </head>
 
-<body style="background-color: #eee;">
+<body style="background-image: url(/images/card-6.svg);
+     background-repeat: no-repeat;
+     background-position: center;
+     background-size: cover;">
+    <div class="p-5 bg-image">
+        <a class="d-flex justify-content-center mb-5" href="#">
+            <img class="zi-2" th:src="@{/images/logo.png}" alt="Image Description" style="width: 14rem;">
+        </a>
+    </div>
   <!-- Background image -->
   <div class="p-5 bg-image" style="
     background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg'); height: 300px;"></div>
@@ -92,7 +100,16 @@
                   <label for="senha" class="form-label">Senha</label>
                   <input type="text" class="form-control" id="senha" name="senha" required th:value="${aluno.senha}">
                 </div>
-
+                <div class="col-12">
+                  <label for="curso" class="form-label">Curso</label>
+                  <input type="text" class="form-control" id="curso" name="curso" required th:value="${aluno.curso}">
+                </div>
+                <div class="col-md-12">
+                  <label for="habilidade">Habilidade</label>
+                  <div class="form-floating">
+                      <textarea class="form-control" placeholder="Habilidade" id="habilidades" name="habilidades" style="height: 100px" required th:text="${aluno.habilidades}"></textarea>
+                  </div>
+                </div>
                 <div class="col-12">
                   <button type="submit" class="btn btn-primary">Atualizar</button>
                 </div>
