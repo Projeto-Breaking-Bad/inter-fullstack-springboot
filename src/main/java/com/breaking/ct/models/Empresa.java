@@ -23,7 +23,6 @@ public class Empresa {
 	private String whatsapp;
 	private String email;
 	private String senha;
-	private String curso;
 	private String descricao;
 	
 	// CONSTRUCTORES
@@ -31,8 +30,7 @@ public class Empresa {
 		
 	}
 	public Empresa(String nome, String cnpj, String areaNegocio, String dataCriacao, String cep, String logradouro, String numero,
-			String complemento, String bairro, String cidade, String uf, String telefone,String whatsapp, String email, String senha,
-			String curso, String descricao) {
+			String complemento, String bairro, String cidade, String uf, String telefone,String whatsapp, String email, String senha, String descricao) {
 		super();
 		this.nome = nome;
 		this.cnpj = cnpj;
@@ -48,7 +46,6 @@ public class Empresa {
 		this.whatsapp = whatsapp;
 		this.email = email;
 		this.senha = senha;
-		this.curso = curso;
 		this.descricao = descricao;
 	}
 	
@@ -142,12 +139,6 @@ public class Empresa {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-	public String getCurso() {
-		return curso;
-	}
-	public void setCurso(String curso) {
-		this.curso = curso;
 	}
     public String getDescricao() {
         return descricao;

@@ -12,9 +12,9 @@ public class HomeController {
 		return new ModelAndView("home");
 	}
 
-	@GetMapping("/login")
-	public ModelAndView login() {
-		return new ModelAndView("login");
-	}
+	// @GetMapping("/login")
+	// public ModelAndView login() {
+	// 	return new ModelAndView("login");
+	// }
 	
 }

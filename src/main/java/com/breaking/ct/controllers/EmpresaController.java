@@ -42,7 +42,7 @@ public class EmpresaController {
 	
 	@GetMapping("/cadastrar")
 	public ModelAndView formularioCadastroEmpresa() {
-		ModelAndView mv = new ModelAndView("cadastroEmpresaNovo");
+		ModelAndView mv = new ModelAndView("cadastroEmpresa");
 		return mv;
 	}
 	
@@ -58,14 +58,14 @@ public class EmpresaController {
 		Optional<Empresa> empresa = empresaService.getEmpresaByCnpj(cnpj);
 		if(empresa.isEmpty())
 			return new ModelAndView("empresaNaoEncontrado");
-		ModelAndView mv = new ModelAndView("atualizacaoEmpresaNovo");
+		ModelAndView mv = new ModelAndView("atualizacaoEmpresa");
 		mv.addObject("empresa", empresa.get());
 		return mv;
 	}
 	
 	@PostMapping("/atualizar")
 	public ModelAndView atualizaEmpresa(Empresa empresa) {
-		empresa.setCnpj(empresa.getCnpj().replace(".", "").replace("-", "").replace("/","").trim());
+		empresa.setCnpj(empresa.getCnpj().replace(".", "").replace("-", "").trim());
 		empresaService.updateEmpresa(empresa);
 		return new ModelAndView("redirect:/empresas/" + empresa.getCnpj());
 	}
