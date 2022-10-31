@@ -20,12 +20,18 @@
             <div class="card-body text-center">
               <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                 class="rounded-circle img-fluid" style="width: 150px;">
-              <h5 class="my-3">Alek Cuin</h5>
+              <h5 class="my-3" th:text="${aluno.nome}"></h5>
               <p class="text-muted mb-1">Full Stack Developer</p>
               <p class="text-muted mb-4">Alek Cuin, Coreia do Sul, AT</p>
               <div class="d-flex justify-content-center mb-2">
-                <button type="button" class="btn btn-primary">Seguir</button>
-                <button type="button" class="btn btn-outline-primary ms-1">mensagem</button>
+                <!-- <button type="button" class="btn btn-primary">Seguir</button>
+                <button type="button" class="btn btn-outline-primary ms-1">mensagem</button> -->
+
+                <a th:href="@{/alunos/atualizar/{cpf}(cpf=${aluno.cpf})}"><button type="button" class="btn btn-primary">Editar</button></a>
+                <form method="POST" action="#" th:action="@{/alunos/deletar/{cpf}(cpf=${aluno.cpf})}">
+                <button type="submit" class="btn btn-outline-primary ms-1">Excluir</button>
+                </form>
+
               </div>
             </div>
           </div>
@@ -33,7 +39,7 @@
             <div class="card-body">
                 <h5 class="card-title">Habilidade</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Habilidades e conhecimentos do Aluno</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text" th:text="${aluno.habilidades}"></p>
             </div>
           </div>
             <div class="card mb-4 mb-md-0">
@@ -76,7 +82,7 @@
                   <p class="mb-0">Nome de usuário</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Alek Cuin</p>
+                  <p class="text-muted mb-0" th:text="${aluno.nome}"></p>
                 </div>
               </div>
               <hr>
@@ -85,7 +91,7 @@
                   <p class="mb-0">RA</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Info-ADD</p>
+                  <p class="text-muted mb-0" th:text="${aluno.ra}"></p>
                 </div>
               </div>
               <hr>
@@ -94,7 +100,7 @@
                   <p class="mb-0">CPF</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Info-ADD</p>
+                  <p class="text-muted mb-0" th:text="${aluno.cpf}"></p>
                 </div>
               </div>
               <hr>
@@ -103,7 +109,7 @@
                   <p class="mb-0">Data de Nascimento</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Info-ADD</p>
+                  <p class="text-muted mb-0" th:text="${aluno.dataNasc}"></p>
                 </div>
               </div>
               <hr>
@@ -112,7 +118,7 @@
                   <p class="mb-0">Cep</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Info-ADD</p>
+                  <p class="text-muted mb-0" th:text="${aluno.cep}"></p>
                 </div>
               </div>
               <hr>
@@ -121,7 +127,7 @@
                   <p class="mb-0">Bairro</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Info-ADD</p>
+                  <p class="text-muted mb-0" th:text="${aluno.bairro}"></p>
                 </div>
               </div>
               <hr>
@@ -130,7 +136,7 @@
                   <p class="mb-0">Cidade</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Info-ADD</p>
+                  <p class="text-muted mb-0" th:text="${aluno.cidade}"></p>
                 </div>
               </div>
               <hr>
@@ -139,7 +145,7 @@
                   <p class="mb-0">Logradouro</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Info-ADD</p>
+                  <p class="text-muted mb-0" th:text="${aluno.logradouro}"></p>
                 </div>
               </div>
               <hr>
@@ -148,7 +154,7 @@
                   <p class="mb-0">Número</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Info-ADD</p>
+                  <p class="text-muted mb-0" th:text="${aluno.numero}"></p>
                 </div>
               </div>
               <hr>
@@ -157,7 +163,7 @@
                   <p class="mb-0">Complemento</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Info-ADD</p>
+                  <p class="text-muted mb-0" th:text="${aluno.complemento}"></p>
                 </div>
               </div>
               <hr>
@@ -166,7 +172,7 @@
                   <p class="mb-0">UF</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Info-ADD</p>
+                  <p class="text-muted mb-0" th:text="${aluno.uf}"></p>
                 </div>
               </div>
               <hr>
@@ -175,25 +181,25 @@
                   <p class="mb-0">Email de usuário</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Info-ADD</p>
+                  <p class="text-muted mb-0" th:text="${aluno.email}"></p>
                 </div>
               </div>
               <hr>
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-sm-3">
                   <p class="mb-0">Senha</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Info-ADD</p>
+                  <p class="text-muted mb-0" th:text="${aluno.senha}"></p>
                 </div>
               </div>
-              <hr>
+              <hr> -->
               <div class="row">
                 <div class="col-sm-3">
                   <p class="mb-0">Telefone</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Info-ADD</p>
+                  <p class="text-muted mb-0" th:text="${aluno.telefone}"></p>
                 </div>
               </div>
               <hr>
@@ -202,7 +208,7 @@
                   <p class="mb-0">Celular</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">Info-ADD</p>
+                  <p class="text-muted mb-0" th:text="${aluno.whatsapp}"></p>
                 </div>
               </div>
             </div>
