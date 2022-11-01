@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -28,16 +28,17 @@
                     <div class="col-10">
                         <div class="text-center">
                             <h3>Criar uma conta</h3>
-                            <p class="text-muted">Já tem uma conta? <a class="text-decoration-none" href="#">Entre aqui</a></p>
+                            <p class="text-muted">Já tem uma conta? <a class="text-decoration-none" th:href="@{/login}">Entre aqui</a></p>
                         </div>
 
                         <div class="mb-4 text-center">
                             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                                 <input type="radio" class="btn-check" name="pagAluno" id="pagAluno" autocomplete="off" checked>
                                 <label class="btn btn-outline-primary" for="pagAluno">Aluno</label>
-
+                                <a class="text-decoration-none" th:href="@{/cadastroEmpresa}">
                                 <input type="radio" class="btn-check" name="pagEmpresa" id="pagEmpresa" autocomplete="off">
                                 <label class="btn btn-outline-primary" for="pagEmpresa">Empresa</label>
+                                </a>
                             </div>
                         </div>
 

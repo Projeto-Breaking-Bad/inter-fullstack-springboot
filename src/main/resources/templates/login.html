@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,7 +31,10 @@ border-bottom-right-radius: .3rem;
 }
 }
 </style>
-<body style="background-color: #eee;">
+<body style="background-image: url(/images/card-6.svg);
+     background-repeat: no-repeat;
+     background-position: center;
+     background-size: cover;">
     <section>
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
@@ -42,11 +45,11 @@ border-bottom-right-radius: .3rem;
                     <div class="card-body p-md-5 mx-md-4">
       
                       <div class="text-center">
-                        <img src="../static/images/logo.png" width="190" height="90" alt="logo">
+                        <img th:src="@{/images/logo.png} style="width: 14rem; alt="logo">
                         <h4 class="mt-1 mb-5 pb-1">Caça Talentos</h4>
                       </div>
       
-                      <form>
+                      <form th:action="@{/login}" method="post">
                         <p>Por favor, faça login na sua conta</p>
       
                         <div class="form-outline mb-4">
