@@ -12,6 +12,7 @@
     <title>Dashboard</title>
 
     <!-- Custom fonts for this template-->
+    <link rel="shortcut icon" th:href="@{images/frame.ico}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link rel="stylesheet" type="text/css" th:href="@{css/all.min.css}">
     <link rel="stylesheet" type="text/css" th:href="@{css/fontaawesome.min.css}">
@@ -63,14 +64,14 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-user"></i>
                     <span>Usuário</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
+                        <a class="collapse-item" href="#">Perfil</a>
+                        <a class="collapse-item" href="#">Currículo</a>
+                        <a class="collapse-item" href="#">Currículo</a>
                     </div>
                 </div>
             </li>
@@ -79,17 +80,14 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-fw fa-building"></i>
                     <span>Vagas</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <!-- <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a> -->
+                        <a class="collapse-item" href="#">Vagas</a>
+                        <a class="collapse-item" href="#">Área de Trabalho</a>
                     </div>
                 </div>
             </li>
@@ -97,17 +95,15 @@
             <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                   aria-expanded="true" aria-controls="collapseUtilities">
-                  <i class="fas fa-fw fa-wrench"></i>
+                  <i class="fas fa-fw fa-newspaper"></i>
                   <span>Ver Notícias</span>
               </a>
               <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                   data-parent="#accordionSidebar">
                   <div class="bg-white py-2 collapse-inner rounded">
-                      <!-- <h6 class="collapse-header">Custom Utilities:</h6>
-                      <a class="collapse-item" href="utilities-color.html">Colors</a>
-                      <a class="collapse-item" href="utilities-border.html">Borders</a>
-                      <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                      <a class="collapse-item" href="utilities-other.html">Other</a> -->
+                      <a class="collapse-item" href="#">Notícias</a>
+                      <a class="collapse-item" href="#">Empresas</a>
+                      <a class="collapse-item" href="#">Curso</a>
                   </div>
               </div>
           </li>
@@ -115,17 +111,13 @@
           <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                 aria-expanded="true" aria-controls="collapseUtilities">
-                <i class="fas fa-fw fa-wrench"></i>
+                <i class="fas fa-fw fa-table"></i>
                 <span>Acessibilidade</span>
             </a>
             <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                 data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <!-- <h6 class="collapse-header">Custom Utilities:</h6>
                     <a class="collapse-item" href="utilities-color.html">Colors</a>
-                    <a class="collapse-item" href="utilities-border.html">Borders</a>
-                    <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                    <a class="collapse-item" href="utilities-other.html">Other</a> -->
                 </div>
             </div>
         </li>
@@ -217,7 +209,7 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" th:href="@{/login?logout}" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -241,7 +233,7 @@
 
                   <a th:href="@{/alunos}"><button>Ver lista de alunos</button></a>
                   <a th:href="@{/empresas}"><button>Ver lista de empresas</button></a>
-
+                  <li><a th:href="@{/login?logout}">Logout</a></li>
                     <!-- Content Row -->
                     <div class="row">
 
@@ -300,6 +292,8 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
+    <script th:src="@{js/jquery.min.js}"></script>
+    <script th:src="@{js/jquery.easing.min.js}"></script>
     <script th:src="@{js/sb-admin-2.js}"></script>
     <script th:src="@{js/sb-admin-2.min.js}"></script>
     <script th:src="@{js/bootstrap.bundle.min.js}"></script>
