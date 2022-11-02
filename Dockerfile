@@ -1,4 +1,4 @@
-FROM maven:3.6.3-jdk-8 as BUILD
+FROM arm64v8/maven:3.8-amazoncorretto-8 as BUILD
 
 COPY pom.xml /build/
 COPY src /build/src/
