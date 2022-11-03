@@ -33,7 +33,7 @@ public class AlunoController {
 	@GetMapping("/{cpf}")
 	public ModelAndView getAlunoEspecifico(@PathVariable("cpf") String cpf) {
 		Optional<Aluno> aluno = alunoService.getAlunoByCpf(cpf);
-		ModelAndView mv = new ModelAndView("perfilAluno");
+		ModelAndView mv = new ModelAndView("home");
 		if(aluno.isEmpty()) 
 			return new ModelAndView("alunoNaoEncontrado");
 		mv.addObject("aluno", aluno.get());
