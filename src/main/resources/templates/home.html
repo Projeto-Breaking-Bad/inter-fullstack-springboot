@@ -198,8 +198,10 @@
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                 </div>
-                  <a th:href="@{/alunos}"><button>Ver lista de alunos</button></a>
-                  <a th:href="@{/empresas}"><button>Ver lista de empresas</button></a>
+                <div class="d-grid gap-2 d-md-block">
+                    <a th:href="@{/alunos}"><button class="btn btn-primary" type="button">Ver lista de alunos</button></a>
+                    <a th:href="@{/empresas}"><button class="btn btn-primary" type="button">Ver lista de empresas</button></a>
+                  </div>
                 </div>
             </div>
             <footer class="sticky-footer bg-white">
