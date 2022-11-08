@@ -196,28 +196,28 @@
                 </nav>
                 <div class="container-fluid">
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Lista de Empresas</h1>
-						<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" th:href="@{/empresas/cadastrar}"><button class="btn btn-primary btn-sm" type="button">Cadastrar Empresa</button></a>
+                    <h1 class="h3 mb-0 text-gray-800">Lista de Vagas</h1>
+						<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" th:href="@{/vagas/cadastrar}"><button class="btn btn-primary btn-sm" type="button">Cadastrar Vaga</button></a>
                 </div>
 
-				<div class="panel-body" th:switch="${empresas}">
-					<h5 th:case="null">Não existem empresas cadastrados!</h5>
+				<div class="panel-body" th:switch="${vagas}">
+					<h5 th:case="null">Não existem vagas cadastrados!</h5>
 					<div th:case="*">
 						<table class="table table-hover">
 							<thead>
 							  <tr>
-								<th scope="col">Nome</th>
-								<th scope="col">CNPJ</th>
-								<th scope="col">Área de Negócio</th>
+								<th scope="col">Área de Atuação</th>
+								<th scope="col">Horas</th>
+								<th scope="col">Salário</th>
 								<th scope="col">Ações</th>
 							  </tr>
 							</thead>
 							<tbody>
-							  <tr th:each="empresa: ${empresas}">
-								<td><span th:text="${empresa.nome}"></span></td>
-								<td><span th:text="${empresa.cnpj}"></span></td>
-								<td><span th:text="${empresa.areaNegocio}"></td>
-								<td><a th:href="@{/empresas/{cnpj}(cnpj=${empresa.cnpj})}"><button class="btn btn-primary" type="button">Detalhes</button></a></td>
+							  <tr th:each="vaga: ${vagas}">
+								<td><span th:text="${vaga.areaAtuacao}"></span></td>
+								<td><span th:text="${vaga.horas}"></span></td>
+								<td><span th:text="${vaga.salario}"></td>
+								<td><a th:href="@{/vagas/{areaAtuacao}(areaAtuacao=${vaga.areaAtuacao})}"><button class="btn btn-primary" type="button">Detalhes</button></a></td>
 							  </tr>
 							</tbody>
 						  </table>
