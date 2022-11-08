@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,6 +51,7 @@ public class AlunoController {
 	@PostMapping("/cadastrar")
 	public ModelAndView novoAluno(Aluno aluno) {
 		aluno.setCpf(aluno.getCpf().replace(".", "").replace("-", "").trim());
+		aluno.setSenha(pc().encode(aluno.getSenha()));
 		alunoService.addAluno(aluno);
 		return new ModelAndView("redirect:/alunos/" + aluno.getCpf());
 	}
@@ -73,7 +76,11 @@ public class AlunoController {
 	@PostMapping("/deletar/{cpf}")
 	public ModelAndView deletarAluno(@PathVariable("cpf") String cpf) {
 		alunoService.deleteAluno(cpf);
-		return new ModelAndView("redirect:/alunos");
+		return new ModelAndView("redirect:/logout");
+	}
+	
+	public PasswordEncoder pc() {
+		return new BCryptPasswordEncoder();
 	}
 	
 }

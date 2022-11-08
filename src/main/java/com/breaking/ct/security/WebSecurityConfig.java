@@ -15,8 +15,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-	// @Autowired
-	// UserDetailsServiceImpl userDetailsService;
+	 @Autowired
+	 UserDetailsServiceImpl userDetailsService;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -24,7 +24,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/images/**").permitAll()
 			.antMatchers("/css/**").permitAll()
 			.antMatchers("/js/**").permitAll()
-			.anyRequest().authenticated()
+			.antMatchers("/alunos/cadastrar").permitAll()
+			.antMatchers("/alunos/**").authenticated()
+			.anyRequest().permitAll()
 			.and().formLogin().loginPage("/login").permitAll()
 			.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout").permitAll()
 			.and().csrf().disable();
@@ -39,13 +41,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth
-			.inMemoryAuthentication()
-			.withUser("teste")
-			.password(pc().encode("senha"))
-			.roles("ADMIN");
 
-			// auth.userDetailsService(userDetailsService).passwordEncoder(pc());
+		auth.userDetailsService(userDetailsService)
+			.passwordEncoder(pc());
 	}
 	
 	@Bean
