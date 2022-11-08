@@ -25,37 +25,37 @@
                 <div class="row d-flex justify-content-center">
                 <div class="col-10">
 
-                    <form class="row g-3" method="POST" action="#" th:action="@{/vagas/atualizar}" th:object="${vaga}">
+                    <form class="row g-3" method="POST" action="#" th:action="@{/vagas/cadastrar}" th:object="${vaga}">
                         <div class="col-12">
                             <label for="areaAtuacao" class="form-label">Área de Atuação</label>
-                            <input type="text" class="form-control" id="areaAtuacao" name="areaAtuacao" placeholder="Área de Atuação" required th:value="${vaga.areaAtuacao}">
+                            <input type="text" class="form-control" id="areaAtuacao" name="areaAtuacao" placeholder="Área de Atuação" required>
                         </div>
                         <div class="col-md-6">
                             <label for="horas" class="form-label">Horas</label>
-                            <input type="text" class="form-control" id="horas" name="horas" placeholder="Horas" th:value="${vaga.horas}">
+                            <input type="text" class="form-control" id="horas" name="horas" placeholder="Horas">
                         </div>
                         <div class="col-md-6">
                             <label for="salario" class="form-label">Salário</label>
-                            <input type="text" class="form-control" id="salario" name="salario" placeholder="Salário" required th:value="${vaga.salario}">
+                            <input type="text" class="form-control" id="salario" name="salario" placeholder="Salário" required>
                         </div>
                         <div class="col-md-6">
                             <label for="requisitos" class="form-label">Requisitos</label>
-                            <input type="text" class="form-control" id="requisitos" name="requisitos" placeholder="Requisitos" required th:value="${vaga.requisitos}">
+                            <input type="text" class="form-control" id="requisitos" name="requisitos" placeholder="Requisitos" required>
                         </div>
                         <div class="col-md-6">
                             <label for="quantVagas" class="form-label">Quantidade de Vagas</label>
-                            <input type="text" class="form-control" id="quantVagas" name="quantVagas" placeholder="Quantidade de Vagas" required th:value="${vaga.quantVagas}">
+                            <input type="text" class="form-control" id="quantVagas" name="quantVagas" placeholder="Quantidade de Vagas"
+                                required>
                         </div>
                         <div class="col-md-12">
                             <label for="habilidade">Descrição</label>
                             <div class="form-floating">
-                                <textarea class="form-control" placeholder="Descrição" id="descrição" name="descricao" style="height: 100px" th:text="${vaga.descricao}"></textarea>
+                                <textarea class="form-control" placeholder="Descrição" id="descricao" name="descricao" style="height: 100px"></textarea>
                             </div>
                         </div>
-
                         <div class="col-12">
-                          <button type="submit" class="btn btn-primary">Atualizar</button>
-                        </div>
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                          </div>
                       </form>
                 </div>
                 </div>

@@ -42,7 +42,7 @@ public class VagaController {
 	
 	@GetMapping("/cadastrar")
 	public ModelAndView formularioCadastroVaga() {
-		ModelAndView mv = new ModelAndView("home");
+		ModelAndView mv = new ModelAndView("cadastroVaga");
 		return mv;
 	}
 	
