@@ -151,6 +151,36 @@
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 
+    <script>
+        $(document).ready(function(){
+        $("input[name=cep]").blur(function(){
+            var cep = $(this).val().replace(/[^0-9]/, '');
+            if(cep){
+                var url = 'https://viacep.com.br/ws/'+cep+'/json/';
+                $.ajax({
+                        url: url,
+                        dataType: 'jsonp',
+                        crossDomain: true,
+                        contentType: "application/json",
+                        success : function(json){
+                            if(json.logradouro){
+                                $("input[name=logradouro]").val(json.logradouro);
+                                $("input[name=bairro]").val(json.bairro);
+                                $("input[name=cidade]").val(json.localidade);
+                                // $("input[name=uf]").val(json.estado);
+                            }
+                        }
+                });
+            }                   
+        }); 
+    });
+        </script>
+        <script type="text/javascript">
+            $("#cpf").mask("000.000.000-00");
+            $("#cep").mask("00000-000");
+            $("#telefone").mask("(00) 0000-0000");
+            $("#whatsapp").mask("(00) 00000-0000");
+         </script>
 </body>
 
 </html>
