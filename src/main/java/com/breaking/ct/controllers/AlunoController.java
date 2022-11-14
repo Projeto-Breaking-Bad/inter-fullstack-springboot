@@ -44,7 +44,7 @@ public class AlunoController {
 	
 	@GetMapping("/cadastrar")
 	public ModelAndView formularioCadastroAluno() {
-		ModelAndView mv = new ModelAndView("cadastroAlunoNovo");
+		ModelAndView mv = new ModelAndView("cadastroAluno");
 		return mv;
 	}
 	
@@ -61,7 +61,7 @@ public class AlunoController {
 		Optional<Aluno> aluno = alunoService.getAlunoByCpf(cpf);
 		if(aluno.isEmpty())
 			return new ModelAndView("alunoNaoEncontrado");
-		ModelAndView mv = new ModelAndView("atualizacaoAlunoNovo");
+		ModelAndView mv = new ModelAndView("atualizacaoAluno");
 		mv.addObject("aluno", aluno.get());
 		return mv;
 	}
