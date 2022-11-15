@@ -60,49 +60,22 @@
                 Pages
             </div>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
-                    aria-expanded="true" aria-controls="collapseThree">
+                <a class="nav-link" th:href="@{/alunos}">
                     <i class="fas fa-fw fa-user"></i>
-                    <span>Usuário</span>
+                    <span>Ver lista de alunos</span>
                 </a>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" th:href="@{/perfilAluno}">Perfil</a>
-                        <a class="collapse-item" href="#">Currículo</a>
-                        <a class="collapse-item" href="#">Currículo</a>
-                    </div>
-                </div>
             </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
-                    aria-expanded="true" aria-controls="collapseFour">
-                    <i class="fas fa-fw fa-building"></i>
-                    <span>Vagas</span>
-                </a>
-                <div id="collapseFour" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Vagas</a>
-                        <a class="collapse-item" href="#">Área de Trabalho</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive"
-                    aria-expanded="true" aria-controls="collapseFive">
+                <a class="nav-link" th:href="@{/empresas}">
                     <i class="fas fa-fw fa-file"></i>
-                    <span>Ver Notícias</span>
+                    <span>Ver lista de empresas</span>
                 </a>
-                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Notícias</a>
-                        <a class="collapse-item" href="#">Empresas</a>
-                        <a class="collapse-item" href="#">Curso</a>
-                    </div>
-                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/vagas}">
+                    <i class="fas fa-fw fa-building"></i>
+                    <span>Ver lista de Vaga</span>
+                </a>
             </li>
 
             <li class="nav-item">
@@ -188,7 +161,11 @@
                         <h1 class="h3 mb-0 text-gray-800">Cadastro de Vagas</h1>
                     </div>
                     <form class="row g-3" method="POST" action="#" th:action="@{/vagas/cadastrar}" th:object="${vaga}">
-                        <div class="col-12">
+                        <div class="col-4">
+                            <label for="cnpj" class="form-label">CNPJ</label>
+                            <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="xx.xxx.xxx/xxxx-xx" required>
+                        </div>
+                        <div class="col-8">
                             <label for="areaAtuacao" class="form-label">Área de Atuação</label>
                             <input type="text" class="form-control" id="areaAtuacao" name="areaAtuacao" placeholder="Área de Atuação" required>
                         </div>
@@ -234,6 +211,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
     <script type="text/javascript">
+        $("#cnpj").mask("00.000.0000000-00");
         $("#horas").mask("00:00");
         $('#salario').mask('#.##0,00', {reverse: true});
      </script>

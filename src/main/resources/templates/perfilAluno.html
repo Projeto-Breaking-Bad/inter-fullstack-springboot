@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Perfil Aluno</title>
-  <link rel="shortcut icon" th:href="@{images/frame.ico}" type="image/x-icon">
+  <link rel="shortcut icon" th:href="@{/images/frame.ico}" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   <link rel="stylesheet" type="text/css" th:href="@{css/all.min.css}">
@@ -57,48 +57,22 @@
         Pages
       </div>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true"
-          aria-controls="collapseThree">
+        <a class="nav-link" th:href="@{/alunos}">
           <i class="fas fa-fw fa-user"></i>
-          <span>Usuário</span>
+          <span>Ver lista de alunos</span>
         </a>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" th:href="@{/perfilAluno}">Perfil</a>
-            <a class="collapse-item" href="#">Currículo</a>
-            <a class="collapse-item" href="#">Currículo</a>
-          </div>
-        </div>
       </li>
-
-      <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true"
-          aria-controls="collapseFour">
-          <i class="fas fa-fw fa-building"></i>
-          <span>Vagas</span>
-        </a>
-        <div id="collapseFour" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">Vagas</a>
-            <a class="collapse-item" href="#">Área de Trabalho</a>
-          </div>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true"
-          aria-controls="collapseFive">
+        <a class="nav-link" th:href="@{/empresas}">
           <i class="fas fa-fw fa-file"></i>
-          <span>Ver Notícias</span>
+          <span>Ver lista de empresas</span>
         </a>
-        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">Notícias</a>
-            <a class="collapse-item" href="#">Empresas</a>
-            <a class="collapse-item" href="#">Curso</a>
-          </div>
-        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/vagas}">
+          <i class="fas fa-fw fa-building"></i>
+          <span>Ver lista de Vaga</span>
+        </a>
       </li>
 
       <li class="nav-item">
@@ -164,7 +138,7 @@
                 aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Equipe de
                   Desenvolvimento</span>
-                <img class="img-profile rounded-circle" th:src="@{images/undraw_profile.svg}">
+                <img class="img-profile rounded-circle" th:src="@{/images/undraw_profile.svg}">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -207,10 +181,8 @@
                   <div class="d-flex justify-content-center mb-2">
                     <a th:href="@{/alunos/atualizar/{cpf}(cpf=${aluno.cpf})}"><button type="button"
                         class="btn btn-primary">Editar</button></a>
-                    <form method="POST" action="#" th:action="@{/alunos/deletar/{cpf}(cpf=${aluno.cpf})}">
-                      <button type="submit" class="btn btn-outline-primary ms-1">Excluir</button>
-                    </form>
-
+                        <a data-toggle="modal" data-target="#logoutModal"><button
+                          type="button" class="btn btn-outline-danger ms-1">Excluir</button></a>
                   </div>
                 </div>
               </div>
@@ -365,15 +337,6 @@
                     </div>
                   </div>
                   <hr>
-                  <!-- <div class="row">
-                              <div class="col-sm-3">
-                                <p class="mb-0">Senha</p>
-                              </div>
-                              <div class="col-sm-9">
-                                <p class="text-muted mb-0" th:text="${aluno.senha}"></p>
-                              </div>
-                            </div>
-                            <hr> -->
                   <div class="row">
                     <div class="col-sm-3">
                       <p class="mb-0">Telefone</p>
@@ -434,6 +397,30 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tem certeza de que deseja apagar esse item selecionado</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Esse item será apagado imediatamente. Voçê não poderá desfazer essa ação.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <form method="POST" action="#"
+                    th:action="@{/alunos/deletar/{cpf}(cpf=${aluno.cpf})}">
+                    <button type="submit" class="btn btn-outline-danger ms-1">Excluir</button>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
   <script th:src="@{/js/jquery.min.js}"></script>
   <script th:src="@{/js/jquery.easing.min.js}"></script>
   <!-- <script th:src="@{js/sb-admin-2.js}"></script> -->

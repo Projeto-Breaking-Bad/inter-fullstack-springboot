@@ -57,50 +57,22 @@
                 Pages
             </div>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
-                    aria-expanded="true" aria-controls="collapseThree">
+                <a class="nav-link" th:href="@{/alunos}">
                     <i class="fas fa-fw fa-user"></i>
-                    <span>Usuário</span>
+                    <span>Ver lista de alunos</span>
                 </a>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" th:href="@{/perfilAluno}">Perfil</a>
-                        <a class="collapse-item" href="#">Currículo</a>
-                        <a class="collapse-item" href="#">Currículo</a>
-                    </div>
-                </div>
             </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
-                    aria-expanded="true" aria-controls="collapseFour">
+                <a class="nav-link" th:href="@{/empresas}">
+                    <i class="fas fa-fw fa-file"></i>
+                    <span>Ver lista de empresas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/vagas}">
                     <i class="fas fa-fw fa-building"></i>
-                    <span>Vagas</span>
+                    <span>Ver lista de Vaga</span>
                 </a>
-                <div id="collapseFour" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Vagas</a>
-                        <a class="collapse-item" href="#">Área de Trabalho</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive"
-                  aria-expanded="true" aria-controls="collapseFive">
-                  <i class="fas fa-fw fa-file"></i>
-                  <span>Ver Notícias</span>
-              </a>
-              <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
-                  data-parent="#accordionSidebar">
-                  <div class="bg-white py-2 collapse-inner rounded">
-                      <a class="collapse-item" href="#">Notícias</a>
-                      <a class="collapse-item" href="#">Empresas</a>
-                      <a class="collapse-item" href="#">Curso</a>
-                  </div>
-              </div>
             </li>
 
             <li class="nav-item">
@@ -217,7 +189,7 @@
 								<td><span th:text="${vaga.areaAtuacao}"></span></td>
 								<td><span th:text="${vaga.horas}"></span></td>
 								<td><span th:text="${vaga.salario}"></td>
-								<td><a th:href="@{/vagas/{areaAtuacao}(areaAtuacao=${vaga.areaAtuacao})}"><button class="btn btn-primary" type="button">Detalhes</button></a></td>
+								<td><a th:href="@{/vagas/{cnpj}(cnpj=${vaga.cnpj})}"><button class="btn btn-primary" type="button">Detalhes</button></a></td>
 							  </tr>
 							</tbody>
 						  </table>

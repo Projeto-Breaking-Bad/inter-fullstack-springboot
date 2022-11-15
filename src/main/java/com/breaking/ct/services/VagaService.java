@@ -20,8 +20,8 @@ public class VagaService {
 		return vagas;
 	}
 
-	public Optional<Vaga> getVagaByAreaAtuacao(String areaAtuacao){
-		return vagaRepository.findById(areaAtuacao);
+	public Optional<Vaga> getVagaByCnpj(String cnpj){
+		return vagaRepository.findById(cnpj);
 	}
 
 	public void addVaga(Vaga vaga) {
@@ -32,8 +32,8 @@ public class VagaService {
 		vagaRepository.save(vaga);
 	}
 
-	public void deleteVaga(String areaAtuacao) {
-		vagaRepository.deleteById(areaAtuacao);
+	public void deleteVaga(String cnpj) {
+		vagaRepository.deleteById(cnpj);
 	}
 	
 }

@@ -30,9 +30,9 @@ public class VagaController {
 		return mv;
 	}
 	
-	@GetMapping("/{areaAtuacao}")
-	public ModelAndView getVagaEspecifico(@PathVariable("areaAtuacao") String areaAtuacao) {
-		Optional<Vaga> vaga = vagaService.getVagaByAreaAtuacao(areaAtuacao);
+	@GetMapping("/{cnpj}")
+	public ModelAndView getVagaEspecifico(@PathVariable("cnpj") String cnpj) {
+		Optional<Vaga> vaga = vagaService.getVagaByCnpj(cnpj);
 		ModelAndView mv = new ModelAndView("perfilVaga");
 		if(vaga.isEmpty()) 
 			return new ModelAndView("vagaNaoEncontrado");
@@ -48,14 +48,13 @@ public class VagaController {
 	
 	@PostMapping("/cadastrar")
 	public ModelAndView novoVaga(Vaga vaga) {
-		// vaga.setAreaAtuacao(vaga.getAreaAtuacao().replace(".", "").replace("-", "").trim());
 		vagaService.addVaga(vaga);
-		return new ModelAndView("redirect:/vagas/" + vaga.getAreaAtuacao());
+		return new ModelAndView("redirect:/vagas/" + vaga.getCnpj());
 	}
 	
-	@GetMapping("/atualizar/{areaAtuacao}")
-	public ModelAndView formularioAtualizacaoVaga(@PathVariable("areaAtuacao") String areaAtuacao) {
-		Optional<Vaga> vaga = vagaService.getVagaByAreaAtuacao(areaAtuacao);
+	@GetMapping("/atualizar/{cnpj}")
+	public ModelAndView formularioAtualizacaoVaga(@PathVariable("cnpj") String cnpj) {
+		Optional<Vaga> vaga = vagaService.getVagaByCnpj(cnpj);
 		if(vaga.isEmpty())
 			return new ModelAndView("vagaNaoEncontrado");
 		ModelAndView mv = new ModelAndView("atualizacaoVaga");
@@ -65,14 +64,13 @@ public class VagaController {
 	
 	@PostMapping("/atualizar")
 	public ModelAndView atualizaVaga(Vaga vaga) {
-		// vaga.setAreaAtuacao(vaga.getAreaAtuacao().replace("-", "").trim());
 		vagaService.updateVaga(vaga);
-		return new ModelAndView("redirect:/vagas/" + vaga.getAreaAtuacao());
+		return new ModelAndView("redirect:/vagas/" + vaga.getCnpj());
 	}
 	
-	@PostMapping("/deletar/{areaAtuacao}")
-	public ModelAndView deletarVaga(@PathVariable("areaAtuacao") String areaAtuacao) {
-		vagaService.deleteVaga(areaAtuacao);
+	@PostMapping("/deletar/{cnpj}")
+	public ModelAndView deletarVaga(@PathVariable("cnpj") String cnpj) {
+		vagaService.deleteVaga(cnpj);
 		return new ModelAndView("redirect:/vagas");
 	}
 	

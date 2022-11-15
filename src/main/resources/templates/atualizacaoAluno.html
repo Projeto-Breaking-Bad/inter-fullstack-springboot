@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Atualizar Cadastro do Aluno</title>
-    <link rel="shortcut icon" th:href="@{images/frame.ico}" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{/images/frame.ico}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" th:href="@{css/all.min.css}">
@@ -57,49 +57,22 @@
                 Pages
             </div>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
-                    aria-expanded="true" aria-controls="collapseThree">
+                <a class="nav-link" th:href="@{/alunos}">
                     <i class="fas fa-fw fa-user"></i>
-                    <span>Usuário</span>
+                    <span>Ver lista de alunos</span>
                 </a>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" th:href="@{/perfilAluno}">Perfil</a>
-                        <a class="collapse-item" href="#">Currículo</a>
-                        <a class="collapse-item" href="#">Currículo</a>
-                    </div>
-                </div>
             </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
-                    aria-expanded="true" aria-controls="collapseFour">
-                    <i class="fas fa-fw fa-building"></i>
-                    <span>Vagas</span>
-                </a>
-                <div id="collapseFour" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Vagas</a>
-                        <a class="collapse-item" href="#">Área de Trabalho</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive"
-                    aria-expanded="true" aria-controls="collapseFive">
+                <a class="nav-link" th:href="@{/empresas}">
                     <i class="fas fa-fw fa-file"></i>
-                    <span>Ver Notícias</span>
+                    <span>Ver lista de empresas</span>
                 </a>
-                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Notícias</a>
-                        <a class="collapse-item" href="#">Empresas</a>
-                        <a class="collapse-item" href="#">Curso</a>
-                    </div>
-                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/vagas}">
+                    <i class="fas fa-fw fa-building"></i>
+                    <span>Ver lista de Vaga</span>
+                </a>
             </li>
 
             <li class="nav-item">
@@ -167,7 +140,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Equipe de
                                     Desenvolvimento</span>
-                                <img class="img-profile rounded-circle" th:src="@{images/undraw_profile.svg}">
+                                <img class="img-profile rounded-circle" th:src="@{/images/undraw_profile.svg}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -213,6 +186,7 @@
                             <label for="cpf" class="form-label">CPF</label>
                             <input type="text" class="form-control" id="cpf" name="cpf" placeholder="000.000.000-00"
                                 required th:value="${aluno.cpf}">
+                                <span id="resposta"></span>
                         </div>
                         <div class="col-md-4">
                             <label for="dataNasc" class="form-label">Data de Nascimento</label>
@@ -336,20 +310,47 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Cadastro de Vaga</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <script>
+        function CPF() {
+            "user_strict";
+
+            function r(r) {
+                for (var t = null, n = 0; 9 > n; ++n) t += r.toString().charAt(n) * (10 - n);
+                var i = t % 11;
+                return i = 2 > i ? 0 : 11 - i
+            }
+
+            function t(r) {
+                for (var t = null, n = 0; 10 > n; ++n) t += r.toString().charAt(n) * (11 - n);
+                var i = t % 11;
+                return i = 2 > i ? 0 : 11 - i
+            }
+            var n = "CPF Inválido",
+                i = "CPF Válido";
+            this.gera = function () {
+                for (var n = "", i = 0; 9 > i; ++i) n += Math.floor(9 * Math.random()) + "";
+                var o = r(n),
+                    a = n + "-" + o + t(n + "" + o);
+                return a
+            }, this.valida = function (o) {
+                for (var a = o.replace(/\D/g, ""), u = a.substring(0, 9), f = a.substring(9, 11), v = 0; 10 >
+                    v; v++)
+                    if ("" + u + f == "" + v + v + v + v + v + v + v + v + v + v + v) return n;
+                var c = r(u),
+                    e = t(u + "" + c);
+                return f.toString() === c.toString() + e.toString() ? i : n
+            }
+        }
+
+        var CPF = new CPF();
+        $("#cpf").keypress(function () {
+            $("#resposta").html(CPF.valida($(this).val()));
+        });
+
+        $("#cpf").blur(function () {
+            $("#resposta").html(CPF.valida($(this).val()));
+        });
+    </script>
     <script>
         $(document).ready(function () {
             $("input[name=cep]").blur(function () {

@@ -69,48 +69,22 @@
         Pages
       </div>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true"
-          aria-controls="collapseThree">
+        <a class="nav-link" th:href="@{/alunos}">
           <i class="fas fa-fw fa-user"></i>
-          <span>Usuário</span>
+          <span>Ver lista de alunos</span>
         </a>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" th:href="@{/perfilAluno}">Perfil</a>
-            <a class="collapse-item" href="#">Currículo</a>
-            <a class="collapse-item" href="#">Currículo</a>
-          </div>
-        </div>
       </li>
-
-      <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true"
-          aria-controls="collapseFour">
-          <i class="fas fa-fw fa-building"></i>
-          <span>Vagas</span>
-        </a>
-        <div id="collapseFour" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">Vagas</a>
-            <a class="collapse-item" href="#">Área de Trabalho</a>
-          </div>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true"
-          aria-controls="collapseFive">
+        <a class="nav-link" th:href="@{/empresas}">
           <i class="fas fa-fw fa-file"></i>
-          <span>Ver Notícias</span>
+          <span>Ver lista de empresas</span>
         </a>
-        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">Notícias</a>
-            <a class="collapse-item" href="#">Empresas</a>
-            <a class="collapse-item" href="#">Curso</a>
-          </div>
-        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/vagas}">
+          <i class="fas fa-fw fa-building"></i>
+          <span>Ver lista de Vaga</span>
+        </a>
       </li>
 
       <li class="nav-item">
@@ -219,12 +193,10 @@
                     <p th:text="${vaga.areaAtuacao}"></p>
                     <i class="far fa-edit mb-5"></i>
                     <div class="d-flex justify-content-center mb-2">
-                      <a th:href="@{/vagas/atualizar/{areaAtuacao}(areaAtuacao=${vaga.areaAtuacao})}"><button
+                      <a th:href="@{/vagas/atualizar/{cnpj}(cnpj=${vaga.cnpj})}"><button
                           type="button" class="btn btn-light">Editar</button></a>
-                      <form method="POST" action="#"
-                        th:action="@{/vagas/deletar/{areaAtuacao}(areaAtuacao=${vaga.areaAtuacao})}">
-                        <button type="submit" class="btn btn-outline-light ms-1">Excluir</button>
-                      </form>
+                          <a data-toggle="modal" data-target="#logoutModal"><button
+                            type="button" class="btn btn-outline-light ms-1">Excluir</button></a>
                     </div>
                   </div>
                   <div class="col-md-8">
@@ -284,6 +256,30 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tem certeza de que deseja apagar esse item selecionado</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Esse item será apagado imediatamente. Voçê não poderá desfazer essa ação.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <form method="POST" action="#"
+                    th:action="@{/vagas/deletar/{cnpj}(cnpj=${vaga.cnpj})}">
+                    <button type="submit" class="btn btn-outline-danger ms-1">Excluir</button>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
   <script th:src="@{/js/jquery.min.js}"></script>
   <script th:src="@{/js/jquery.easing.min.js}"></script>
   <!-- <script th:src="@{js/sb-admin-2.js}"></script> -->
