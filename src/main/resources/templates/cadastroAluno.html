@@ -48,7 +48,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" th:href="@{/}">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Home</span></a>
             </li>
@@ -166,6 +166,16 @@
                         </li>
                     </ul>
                 </nav>
+                <div vw class="enabled">
+                    <div vw-access-button class="active"></div>
+                    <div vw-plugin-wrapper>
+                      <div class="vw-plugin-top-wrapper"></div>
+                    </div>
+                  </div>
+                  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+                  <script>
+                    new window.VLibras.Widget('https://vlibras.gov.br/app');
+                  </script>
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Cadastro de Aluno</h1>

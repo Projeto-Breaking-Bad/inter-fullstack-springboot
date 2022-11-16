@@ -60,7 +60,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" th:href="@{/}">
           <i class="fas fa-fw fa-home"></i>
           <span>Home</span></a>
       </li>
@@ -175,6 +175,16 @@
             </li>
           </ul>
         </nav>
+        <div vw class="enabled">
+          <div vw-access-button class="active"></div>
+          <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+          </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+          new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
         <div class="container-fluid">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Perfil de Vaga</h1>
@@ -193,10 +203,10 @@
                     <p th:text="${vaga.areaAtuacao}"></p>
                     <i class="far fa-edit mb-5"></i>
                     <div class="d-flex justify-content-center mb-2">
-                      <a th:href="@{/vagas/atualizar/{cnpj}(cnpj=${vaga.cnpj})}"><button
-                          type="button" class="btn btn-light">Editar</button></a>
-                          <a data-toggle="modal" data-target="#logoutModal"><button
-                            type="button" class="btn btn-outline-light ms-1">Excluir</button></a>
+                      <a th:href="@{/vagas/atualizar/{cnpj}(cnpj=${vaga.cnpj})}"><button type="button"
+                          class="btn btn-light">Editar</button></a>
+                      <a data-toggle="modal" data-target="#logoutModal"><button type="button"
+                          class="btn btn-outline-light ms-1">Excluir</button></a>
                     </div>
                   </div>
                   <div class="col-md-8">
@@ -257,28 +267,27 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tem certeza de que deseja apagar esse item selecionado</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Esse item será apagado imediatamente. Voçê não poderá desfazer essa ação.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <form method="POST" action="#"
-                    th:action="@{/vagas/deletar/{cnpj}(cnpj=${vaga.cnpj})}">
-                    <button type="submit" class="btn btn-outline-danger ms-1">Excluir</button>
-                  </form>
-                </div>
-            </div>
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Tem certeza de que deseja apagar esse item selecionado</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
         </div>
+        <div class="modal-body">Esse item será apagado imediatamente. Voçê não poderá desfazer essa ação.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <form method="POST" action="#" th:action="@{/vagas/deletar/{cnpj}(cnpj=${vaga.cnpj})}">
+            <button type="submit" class="btn btn-outline-danger ms-1">Excluir</button>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
 
   <script th:src="@{/js/jquery.min.js}"></script>
   <script th:src="@{/js/jquery.easing.min.js}"></script>
