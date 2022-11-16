@@ -54,12 +54,24 @@ public class AdminController {
 
     @GetMapping("/atualizar/{login}")
 	public ModelAndView formularioAtualizacaoLogin(@PathVariable("login") String login) {
-		Optional<Login> vaga = vagaService.getVagaByCnpj(login);
-		if(vaga.isEmpty())
-			return new ModelAndView("vagaNaoEncontrado");
-		ModelAndView mv = new ModelAndView("atualizacaoVaga");
-		mv.addObject("vaga", vaga.get());
+		Optional<Admin> admin = adminService.getAdminByLogin(login);
+		if(admin.isEmpty())
+			return new ModelAndView("adminNaoEncontrado");
+		ModelAndView mv = new ModelAndView("atualizacaoAdmin");
+		mv.addObject("vaga", admin.get());
 		return mv;
+	}
+
+	@PostMapping("/atualizar")
+	public ModelAndView atualizaAdmin(Admin admin) {
+		adminService.updateAdmin(admin);
+		return new ModelAndView("redirect:/admins/" + admin.getLogin());
+	}
+	
+	@PostMapping("/deletar/{login}")
+	public ModelAndView deletarVaga(@PathVariable("admin") String admin) {
+		adminService.deleteAdmin(admin);
+		return new ModelAndView("redirect:/admins");
 	}
 
 }
