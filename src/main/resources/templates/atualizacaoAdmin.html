@@ -74,6 +74,12 @@
                     <span>Ver lista de Vaga</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/admins}">
+                  <i class="fas fa-fw fa-screwdriver-wrench"></i>
+                  <span>Ver lista de Admin</span>
+                </a>
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="#">
@@ -181,28 +187,28 @@
                         <h1 class="h3 mb-0 text-gray-800">Atualizar Cadastro do Admin</h1>
                     </div>
                     <form class="row g-3" method="POST" action="#" th:action="@{/admins/atualizar}"
-                        th:object="${aluno}">
+                        th:object="${admin}">
                         <div class="col-12">
                             <label for="nome" class="form-label">Nome de usuário</label>
                             <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do usuário"
                                 required th:value="${admin.nome}">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label for="instituicao" class="form-label">Instituição</label>
                             <input type="text" class="form-control" id="instituicao" name="instituicao" placeholder="Instituição" th:value="${admin.instituicao}">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label for="login" class="form-label">Login</label>
                             <input type="text" class="form-control" id="login" name="login" placeholder="Login"
                                 required th:value="${admin.login}">
                             <span id="resposta"></span>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-6">
                             <label for="email" class="form-label">Email de usuário</label>
                             <input type="email" class="form-control" id="email" name="email"
                                 placeholder="email@email.com" required th:value="${admin.email}">
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <label for="senha" class="form-label">Senha</label>
                             <input type="password" class="form-control" id="senha" name="senha" required>
                         </div>

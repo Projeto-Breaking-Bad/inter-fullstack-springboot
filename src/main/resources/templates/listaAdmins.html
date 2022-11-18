@@ -73,6 +73,12 @@
                     <span>Ver lista de Vaga</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/admins}">
+                  <i class="fas fa-fw fa-screwdriver-wrench"></i>
+                  <span>Ver lista de Admin</span>
+                </a>
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="#">
@@ -189,16 +195,16 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">Nome</th>
-                                        <th scope="col">CPF</th>
-                                        <th scope="col">RA</th>
+                                        <th scope="col">Instituição</th>
+                                        <th scope="col">Login</th>
                                         <th scope="col">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr th:each="admin: ${admins}">
                                         <td><span th:text="${admin.nome}"></span></td>
-                                        <td><span th:text="${admin.cpf}"></span></td>
-                                        <td><span th:text="${admin.ra}"></td>
+                                        <td><span th:text="${admin.instituicao}"></span></td>
+                                        <td><span th:text="${admin.login}"></td>
                                         <td><a th:href="@{/admins/{login}(login=${admin.login})}"><button
                                                     class="btn btn-primary" type="button">Detalhes</button></a></td>
                                     </tr>

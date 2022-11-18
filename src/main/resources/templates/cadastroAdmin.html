@@ -74,6 +74,12 @@
                     <span>Ver lista de Vaga</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/admins}">
+                  <i class="fas fa-fw fa-screwdriver-wrench"></i>
+                  <span>Ver lista de Admin</span>
+                </a>
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="#">
@@ -187,11 +193,11 @@
                             <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do usuário"
                                 required>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label for="instituicao" class="form-label">Instituição</label>
                             <input type="text" class="form-control" id="instituicao" name="instituicao" placeholder="Instituição">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label for="login" class="form-label">Login</label>
                             <input type="text" class="form-control" id="login" name="login" placeholder="Login"
                                 required>

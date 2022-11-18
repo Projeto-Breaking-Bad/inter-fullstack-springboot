@@ -15,7 +15,7 @@ import com.breaking.ct.models.Admin;
 import com.breaking.ct.services.AdminService;
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/admins")
 public class AdminController {
     
     @Autowired
@@ -34,8 +34,8 @@ public class AdminController {
 	public ModelAndView getAdminEspecifico(@PathVariable("login") String login) {
 		Optional<Admin> admin = adminService.getAdminByLogin(login);
 		ModelAndView mv = new ModelAndView("perfilAdmin");
-		if(admin.isEmpty()) 
-			return new ModelAndView("adminNaoEncontrado");
+		if(admin.isEmpty())
+			return new ModelAndView("alunoNaoEncontrado");
 		mv.addObject("admin", admin.get());
 		return mv;
 	}
