@@ -1,6 +1,5 @@
 package com.breaking.ct.models;
 
-import java.io.Serializable;
 import java.util.Collection;
 
 import javax.persistence.Entity;
@@ -10,7 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-public class Aluno implements UserDetails, Serializable {
+public class Aluno implements UserDetails {
 	
 	/**
 	 * 
@@ -170,7 +169,6 @@ public class Aluno implements UserDetails, Serializable {
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override

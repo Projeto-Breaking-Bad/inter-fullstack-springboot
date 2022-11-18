@@ -1,18 +1,25 @@
 package com.breaking.ct.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.UniqueConstraint;
+
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @Entity
-public class Admin{
-    
+@Where(clause = "deleted=false")
+public class Admin {
+	
 	// ATRIBUTOS
 	private String nome;
-	@Id
 	private String instituicao;
+	@Id
     private String login;
 	private String email;
 	private String senha;
+	private boolean deleted = false;
 	
 	// CONSTRUCTORES
 	public Admin() {
@@ -57,5 +64,11 @@ public class Admin{
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public boolean getDeleted() {
+		return deleted;
+	}
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 }

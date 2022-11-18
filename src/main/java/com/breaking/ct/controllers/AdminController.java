@@ -35,7 +35,7 @@ public class AdminController {
 		Optional<Admin> admin = adminService.getAdminByLogin(login);
 		ModelAndView mv = new ModelAndView("perfilAdmin");
 		if(admin.isEmpty())
-			return new ModelAndView("alunoNaoEncontrado");
+			return new ModelAndView("adminNaoEncontrado");
 		mv.addObject("admin", admin.get());
 		return mv;
 	}
@@ -58,7 +58,7 @@ public class AdminController {
 		if(admin.isEmpty())
 			return new ModelAndView("adminNaoEncontrado");
 		ModelAndView mv = new ModelAndView("atualizacaoAdmin");
-		mv.addObject("vaga", admin.get());
+		mv.addObject("admin", admin.get());
 		return mv;
 	}
 
@@ -69,8 +69,8 @@ public class AdminController {
 	}
 	
 	@PostMapping("/deletar/{login}")
-	public ModelAndView deletarVaga(@PathVariable("admin") String admin) {
-		adminService.deleteAdmin(admin);
+	public ModelAndView deletarAdmin(@PathVariable("login") String login) {
+		adminService.deleteAdmin(login);
 		return new ModelAndView("redirect:/admins");
 	}
 

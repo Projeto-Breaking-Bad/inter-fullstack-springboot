@@ -20,7 +20,7 @@ public class AdminService {
 	}
 
 	public Optional<Admin> getAdminByLogin(String login){
-		return adminRepository.findById(login);
+		return adminRepository.findByLogin(login);
 	}
 
 	public void addAdmin(Admin admin) {
@@ -32,6 +32,12 @@ public class AdminService {
 	}
 
 	public void deleteAdmin(String login) {
-		adminRepository.deleteById(login);
+		Optional<Admin> oAdmin = adminRepository.findByLogin(login);
+		if(oAdmin.isEmpty()) {
+			return;
+		}
+		Admin admin = oAdmin.get();
+		admin.setDeleted(true);
+		updateAdmin(admin);
 	}
 }
