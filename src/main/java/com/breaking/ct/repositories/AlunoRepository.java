@@ -10,7 +10,7 @@ import com.breaking.ct.models.Aluno;
 @Repository
 public interface AlunoRepository extends MongoRepository<Aluno, String> {
 	
-    public Optional<Admin> findByCpf(String cpf);
+    public Optional<Aluno> findByCpf(String cpf);
 	Optional<Aluno> findByEmail(String email);
 	
 }
