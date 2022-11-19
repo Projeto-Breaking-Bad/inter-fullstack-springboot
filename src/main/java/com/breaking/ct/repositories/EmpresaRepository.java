@@ -7,4 +7,5 @@ import com.breaking.ct.models.Empresa;
 @Repository
 public interface EmpresaRepository extends MongoRepository<Empresa, String> {
     
+    public Optional<Admin> findByCnpj(String cnpj);
 }
