@@ -22,7 +22,7 @@ public class EmpresaService {
 	}
 
 	public Optional<Empresa> getEmpresaByCnpj(String cnpj){
-		return empresaRepository.findById(cnpj);
+		return empresaRepository.findByCnpj(cnpj);
 	}
 
 	public void addEmpresa(Empresa empresa) {

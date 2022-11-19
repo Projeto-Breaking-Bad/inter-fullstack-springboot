@@ -22,7 +22,7 @@ public class AlunoService {
 	}
 
 	public Optional<Aluno> getAlunoByCpf(String cpf) {
-		return alunoRepository.findById(cpf);
+		return alunoRepository.findByCpf(cpf);
 	}
 
 	public void addAluno(Aluno aluno) {

@@ -21,7 +21,7 @@ public class VagaService {
 	}
 
 	public Optional<Vaga> getVagaByCnpj(String cnpj){
-		return vagaRepository.findById(cnpj);
+		return vagaRepository.findByCnpj(cnpj);
 	}
 
 	public void addVaga(Vaga vaga) {
