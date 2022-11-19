@@ -11,6 +11,11 @@ public class HomeController {
 	public ModelAndView login() {
 		return new ModelAndView("login");
 	}
+
+	@GetMapping("/acessibilidade")
+	public ModelAndView acessibilidade() {
+		return new ModelAndView("acessibilidade");
+	}
 	
 	@GetMapping("/")
 	public ModelAndView home() {
