@@ -80,8 +80,8 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/admins}">
-                  <i class="fas fa-fw fa-screwdriver-wrench"></i>
-                  <span>Ver lista de Admin</span>
+                    <i class="fas fa-fw fa-screwdriver-wrench"></i>
+                    <span>Ver lista de Admin</span>
                 </a>
             </li>
 
@@ -155,7 +155,7 @@
                                     Registro de atividade
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" th:href="@{/logout}">
+                                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal2">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -166,13 +166,13 @@
                 <div vw class="enabled">
                     <div vw-access-button class="active"></div>
                     <div vw-plugin-wrapper>
-                      <div class="vw-plugin-top-wrapper"></div>
+                        <div class="vw-plugin-top-wrapper"></div>
                     </div>
-                  </div>
-                  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-                  <script>
+                </div>
+                <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+                <script>
                     new window.VLibras.Widget('https://vlibras.gov.br/app');
-                  </script>
+                </script>
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Cadastro de Vagas</h1>
@@ -180,11 +180,13 @@
                     <form class="row g-3" method="POST" action="#" th:action="@{/vagas/cadastrar}" th:object="${vaga}">
                         <div class="col-4">
                             <label for="cnpj" class="form-label">CNPJ</label>
-                            <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="xx.xxx.xxx/xxxx-xx" required>
+                            <input type="text" class="form-control" id="cnpj" name="cnpj"
+                                placeholder="xx.xxx.xxx/xxxx-xx" required>
                         </div>
                         <div class="col-8">
                             <label for="areaAtuacao" class="form-label">Área de Atuação</label>
-                            <input type="text" class="form-control" id="areaAtuacao" name="areaAtuacao" placeholder="Área de Atuação" required>
+                            <input type="text" class="form-control" id="areaAtuacao" name="areaAtuacao"
+                                placeholder="Área de Atuação" required>
                         </div>
                         <div class="col-md-6">
                             <label for="horas" class="form-label">Horas</label>
@@ -192,27 +194,30 @@
                         </div>
                         <div class="col-md-6">
                             <label for="salario" class="form-label">Salário</label>
-                            <input type="text" class="form-control" id="salario" name="salario" placeholder="Salário" required>
+                            <input type="text" class="form-control" id="salario" name="salario" placeholder="Salário"
+                                required>
                         </div>
                         <div class="col-md-6">
                             <label for="requisitos" class="form-label">Requisitos</label>
-                            <input type="text" class="form-control" id="requisitos" name="requisitos" placeholder="Requisitos" required>
+                            <input type="text" class="form-control" id="requisitos" name="requisitos"
+                                placeholder="Requisitos" required>
                         </div>
                         <div class="col-md-6">
                             <label for="quantVagas" class="form-label">Quantidade de Vagas</label>
-                            <input type="number" class="form-control" id="quantVagas" name="quantVagas" placeholder="Quantidade de Vagas"
-                                required>
+                            <input type="number" class="form-control" id="quantVagas" name="quantVagas"
+                                placeholder="Quantidade de Vagas" required>
                         </div>
                         <div class="col-md-12">
                             <label for="habilidade">Descrição</label>
                             <div class="form-floating">
-                                <textarea class="form-control" placeholder="Descrição" id="descricao" name="descricao" style="height: 100px"></textarea>
+                                <textarea class="form-control" placeholder="Descrição" id="descricao" name="descricao"
+                                    style="height: 100px"></textarea>
                             </div>
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary">Cadastrar</button>
-                          </div>
-                      </form>
+                        </div>
+                    </form>
                 </div>
             </div>
             <footer class="sticky-footer bg-white">
@@ -227,11 +232,33 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Pronto para partir?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Selecione "Logout" abaixo se estiver pronto para encerrar sua sessão atual.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" th:href="@{/logout}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <script type="text/javascript">
         $("#cnpj").mask("00.000.0000000-00");
         $("#horas").mask("00:00");
-        $('#salario').mask('#.##0,00', {reverse: true});
-     </script>
+        $('#salario').mask('#.##0,00', {
+            reverse: true
+        });
+    </script>
     <script th:src="@{/js/jquery.min.js}"></script>
     <script th:src="@{/js/jquery.easing.min.js}"></script>
     <!-- <script th:src="@{js/sb-admin-2.js}"></script> -->

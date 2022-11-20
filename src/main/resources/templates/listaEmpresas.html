@@ -77,8 +77,8 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/admins}">
-                  <i class="fas fa-fw fa-screwdriver-wrench"></i>
-                  <span>Ver lista de Admin</span>
+                    <i class="fas fa-fw fa-screwdriver-wrench"></i>
+                    <span>Ver lista de Admin</span>
                 </a>
             </li>
 
@@ -145,9 +145,9 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Equipe de Desenvolvimento</span>
-                                <img class="img-profile rounded-circle"
-                                    th:src="@{images/undraw_profile.svg}">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Equipe de
+                                    Desenvolvimento</span>
+                                <img class="img-profile rounded-circle" th:src="@{images/undraw_profile.svg}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -165,7 +165,7 @@
                                     Registro de atividade
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" th:href="@{/logout}">
+                                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal2">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -176,42 +176,45 @@
                 <div vw class="enabled">
                     <div vw-access-button class="active"></div>
                     <div vw-plugin-wrapper>
-                      <div class="vw-plugin-top-wrapper"></div>
+                        <div class="vw-plugin-top-wrapper"></div>
                     </div>
-                  </div>
-                  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-                  <script>
-                    new window.VLibras.Widget('https://vlibras.gov.br/app');
-                  </script>
-                <div class="container-fluid">
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Lista de Empresas</h1>
-						<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" th:href="@{/empresas/cadastrar}"><button class="btn btn-primary btn-sm" type="button">Cadastrar Empresa</button></a>
                 </div>
+                <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+                <script>
+                    new window.VLibras.Widget('https://vlibras.gov.br/app');
+                </script>
+                <div class="container-fluid">
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Lista de Empresas</h1>
+                        <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                            th:href="@{/empresas/cadastrar}"><button class="btn btn-primary btn-sm"
+                                type="button">Cadastrar Empresa</button></a>
+                    </div>
 
-				<div class="panel-body" th:switch="${empresas}">
-					<h5 th:case="null">Não existem empresas cadastrados!</h5>
-					<div th:case="*">
-						<table class="table table-hover">
-							<thead>
-							  <tr>
-								<th scope="col">Nome</th>
-								<th scope="col">CNPJ</th>
-								<th scope="col">Área de Negócio</th>
-								<th scope="col">Ações</th>
-							  </tr>
-							</thead>
-							<tbody>
-							  <tr th:each="empresa: ${empresas}">
-								<td><span th:text="${empresa.nome}"></span></td>
-								<td><span th:text="${empresa.cnpj}"></span></td>
-								<td><span th:text="${empresa.areaNegocio}"></td>
-								<td><a th:href="@{/empresas/{cnpj}(cnpj=${empresa.cnpj})}"><button class="btn btn-primary" type="button">Detalhes</button></a></td>
-							  </tr>
-							</tbody>
-						  </table>
-					</div>
-				</div>
+                    <div class="panel-body" th:switch="${empresas}">
+                        <h5 th:case="null">Não existem empresas cadastrados!</h5>
+                        <div th:case="*">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">CNPJ</th>
+                                        <th scope="col">Área de Negócio</th>
+                                        <th scope="col">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="empresa: ${empresas}">
+                                        <td><span th:text="${empresa.nome}"></span></td>
+                                        <td><span th:text="${empresa.cnpj}"></span></td>
+                                        <td><span th:text="${empresa.areaNegocio}"></td>
+                                        <td><a th:href="@{/empresas/{cnpj}(cnpj=${empresa.cnpj})}"><button
+                                                    class="btn btn-primary" type="button">Detalhes</button></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -229,20 +232,21 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Pronto para partir?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Selecione "Logout" abaixo se estiver pronto para encerrar sua sessão atual.
+                </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/logout">Logout</a>
+                    <a class="btn btn-primary" th:href="@{/logout}">Logout</a>
                 </div>
             </div>
         </div>

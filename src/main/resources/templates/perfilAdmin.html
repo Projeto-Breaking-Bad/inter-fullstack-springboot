@@ -91,7 +91,7 @@
           <i class="fas fa-fw fa-screwdriver-wrench"></i>
           <span>Ver lista de Admin</span>
         </a>
-    </li>
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="#">
@@ -173,7 +173,7 @@
                   Registro de atividade
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" th:href="@{/logout}">
+                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal2">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
@@ -197,40 +197,40 @@
           </div>
         </div>
         <div class="container">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-md-12 col-xl-4">
-          
-                  <div class="card" style="border-radius: 15px;">
-                    <div class="card-body text-center">
-                      <div class="mt-3 mb-4">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                          class="rounded-circle img-fluid" style="width: 100px;" />
-                      </div>
-                      <h4 class="mb-2" th:text="${admin.nome}"></h4>
-                      <p class="text-muted mb-4" th:text="${admin.instituicao}"><span class="mx-2">|</span> <a
-                          href="#!">mdbootstrap.com</a></p>
-                      <div class="mb-4 pb-2">
-                        <button type="button" class="btn btn-outline-primary btn-floating">
-                          <i class="fab fa-facebook-f fa-lg"></i>
-                        </button>
-                        <button type="button" class="btn btn-outline-primary btn-floating">
-                          <i class="fab fa-twitter fa-lg"></i>
-                        </button>
-                        <button type="button" class="btn btn-outline-primary btn-floating">
-                          <i class="fab fa-skype fa-lg"></i>
-                        </button>
-                      </div>
-                      <div class="d-flex justify-content-center mb-2">
-                        <a th:href="@{/admins/atualizar/{login}(login=${admin.login})}"><button type="button"
-                            class="btn btn-primary">Editar</button></a>
-                        <a data-toggle="modal" data-target="#logoutModal"><button type="button"
-                            class="btn btn-outline-danger ms-1">Excluir</button></a>
-                      </div>
-                    </div>
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-12 col-xl-4">
+
+              <div class="card" style="border-radius: 15px;">
+                <div class="card-body text-center">
+                  <div class="mt-3 mb-4">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+                      class="rounded-circle img-fluid" style="width: 100px;" />
                   </div>
-          
+                  <h4 class="mb-2" th:text="${admin.nome}"></h4>
+                  <p class="text-muted mb-4" th:text="${admin.instituicao}"><span class="mx-2">|</span> <a
+                      href="#!">mdbootstrap.com</a></p>
+                  <div class="mb-4 pb-2">
+                    <button type="button" class="btn btn-outline-primary btn-floating">
+                      <i class="fab fa-facebook-f fa-lg"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-primary btn-floating">
+                      <i class="fab fa-twitter fa-lg"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-primary btn-floating">
+                      <i class="fab fa-skype fa-lg"></i>
+                    </button>
+                  </div>
+                  <div class="d-flex justify-content-center mb-2">
+                    <a th:href="@{/admins/atualizar/{login}(login=${admin.login})}"><button type="button"
+                        class="btn btn-primary">Editar</button></a>
+                    <a data-toggle="modal" data-target="#logoutModal"><button type="button"
+                        class="btn btn-outline-danger ms-1">Excluir</button></a>
+                  </div>
                 </div>
               </div>
+
+            </div>
+          </div>
         </div>
       </div>
       <footer class="sticky-footer bg-white">
@@ -245,8 +245,27 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
-
   <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Pronto para partir?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Selecione "Logout" abaixo se estiver pronto para encerrar sua sessão atual.
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" th:href="@{/logout}">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Logout Delete-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">

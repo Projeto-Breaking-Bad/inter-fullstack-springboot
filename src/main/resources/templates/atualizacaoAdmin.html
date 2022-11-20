@@ -77,8 +77,8 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/admins}">
-                  <i class="fas fa-fw fa-screwdriver-wrench"></i>
-                  <span>Ver lista de Admin</span>
+                    <i class="fas fa-fw fa-screwdriver-wrench"></i>
+                    <span>Ver lista de Admin</span>
                 </a>
             </li>
 
@@ -165,7 +165,7 @@
                                     Registro de atividade
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" th:href="@{/logout}">
+                                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal2">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -176,13 +176,13 @@
                 <div vw class="enabled">
                     <div vw-access-button class="active"></div>
                     <div vw-plugin-wrapper>
-                      <div class="vw-plugin-top-wrapper"></div>
+                        <div class="vw-plugin-top-wrapper"></div>
                     </div>
-                  </div>
-                  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-                  <script>
+                </div>
+                <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+                <script>
                     new window.VLibras.Widget('https://vlibras.gov.br/app');
-                  </script>
+                </script>
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Atualizar Cadastro do Admin</h1>
@@ -196,12 +196,13 @@
                         </div>
                         <div class="col-md-6">
                             <label for="instituicao" class="form-label">Instituição</label>
-                            <input type="text" class="form-control" id="instituicao" name="instituicao" placeholder="Instituição" th:value="${admin.instituicao}">
+                            <input type="text" class="form-control" id="instituicao" name="instituicao"
+                                placeholder="Instituição" th:value="${admin.instituicao}">
                         </div>
                         <div class="col-md-6">
                             <label for="login" class="form-label">Login</label>
-                            <input type="text" class="form-control" id="login" name="login" placeholder="Login"
-                                required th:value="${admin.login}">
+                            <input type="text" class="form-control" id="login" name="login" placeholder="Login" required
+                                th:value="${admin.login}">
                             <span id="resposta"></span>
                         </div>
                         <div class="col-md-6">
@@ -232,6 +233,26 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Pronto para partir?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Selecione "Logout" abaixo se estiver pronto para encerrar sua sessão atual.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" th:href="@{/logout}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <script th:src="@{/js/jquery.min.js}"></script>
     <script th:src="@{/js/jquery.easing.min.js}"></script>
     <!-- <script th:src="@{js/sb-admin-2.js}"></script> -->
