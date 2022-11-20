@@ -6,25 +6,25 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.breaking.ct.models.Aluno;
-import com.breaking.ct.repositories.AlunoRepository;
+import com.breaking.ct.models.Admin;
+import com.breaking.ct.repositories.AdminRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 	
 	@Autowired
-	private AlunoRepository alunoRepository;
+	private AdminRepository adminRepository;
 	
-	UserDetailsServiceImpl(AlunoRepository alunoRepository) {
-		this.alunoRepository = alunoRepository;
+	UserDetailsServiceImpl(AdminRepository adminRepository) {
+		this.adminRepository = adminRepository;
 	}
 	
 	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 		// Este metodo eh chamado pelo numero de cpf, ao inves de username
-		Aluno aluno = alunoRepository.findByEmail(email)
-				.orElseThrow(() -> new UsernameNotFoundException("Usuario com email \""+email+"\" nao foi encontrado!"));
-		return aluno;
+		Admin admin = adminRepository.findByLogin(login)
+				.orElseThrow(() -> new UsernameNotFoundException("Usuario com login \""+login+"\" nao foi encontrado!"));
+		return admin;
 	}
 
 }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,6 +50,7 @@ public class AdminController {
 
     @PostMapping("/cadastrar")
 	public ModelAndView novoAdmin(Admin admin) {
+		admin.setSenha(pc().encode(admin.getSenha()));
 		adminService.addAdmin(admin);
 		return new ModelAndView("redirect:/admins/" + admin.getLogin());
 	}
@@ -71,7 +74,10 @@ public class AdminController {
 	@PostMapping("/deletar/{login}")
 	public ModelAndView deletarAdmin(@PathVariable("login") String login) {
 		adminService.deleteAdmin(login);
-		return new ModelAndView("redirect:/admins");
+		return new ModelAndView("redirect:/logout");
+		// return new ModelAndView("redirect:/admins");
 	}
-
+	public PasswordEncoder pc() {
+		return new BCryptPasswordEncoder();
+	}
 }

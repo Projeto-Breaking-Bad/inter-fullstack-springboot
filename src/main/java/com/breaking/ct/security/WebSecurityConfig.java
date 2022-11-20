@@ -26,7 +26,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/js/**").permitAll()
 			// .antMatchers("/alunos/cadastrar").permitAll()
 			// .antMatchers("/alunos/**").authenticated()
-			.anyRequest().permitAll()
+			// .anyRequest().permitAll()
+			.anyRequest().authenticated()
 			.and().formLogin().loginPage("/login").permitAll()
 			.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout").permitAll()
 			.and().csrf().disable();
