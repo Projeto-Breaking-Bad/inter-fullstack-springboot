@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.breaking.ct.models.Aluno;
@@ -29,12 +31,28 @@ public class AlunoService {
 		alunoRepository.save(aluno);
 	}
 
-	public void updateAluno(Aluno aluno) {
-		alunoRepository.save(aluno);
+	public void updateAluno(Aluno novoAluno) {
+		deleteAluno(novoAluno.getCpf());
+		alunoRepository.save(novoAluno);
 	}
 
 	public void deleteAluno(String cpf) {
-		alunoRepository.deleteById(cpf);
+		alunoRepository.deleteByCpf(cpf);
 	}
 	
+	public Aluno getLogged(){
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		String cpf = "";
+		if (principal instanceof UserDetails) {
+			cpf = ((UserDetails)principal).getUsername();
+		} else {
+			cpf = principal.toString();
+		}
+		
+		Optional<Aluno> alunoOp = getAlunoByCpf(cpf);
+		if(alunoOp.isEmpty())
+			return null;
+		return alunoOp.get();
+	}
 }

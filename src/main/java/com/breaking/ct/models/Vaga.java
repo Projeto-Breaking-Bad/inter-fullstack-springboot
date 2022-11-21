@@ -1,14 +1,18 @@
 package com.breaking.ct.models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Vaga {
 	
-    // ATRIBUTOS
-	private String horas;
-	@Id
+	// ATRIBUTOS
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String id;
+    private String horas;
     private String cnpj;
 	private String areaAtuacao;
     private String salario;
@@ -73,5 +77,12 @@ public class Vaga {
     }
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public String getId() {
+        return id;
+    }
+    public void setId(String id) {
+        this.id = id;
     }
 }

@@ -50,7 +50,6 @@ public class AdminController {
 
     @PostMapping("/cadastrar")
 	public ModelAndView novoAdmin(Admin admin) {
-		admin.setSenha(pc().encode(admin.getSenha()));
 		adminService.addAdmin(admin);
 		return new ModelAndView("redirect:/admins/" + admin.getLogin());
 	}
@@ -82,4 +81,5 @@ public class AdminController {
 	public PasswordEncoder pc() {
 		return new BCryptPasswordEncoder();
 	}
+	
 }

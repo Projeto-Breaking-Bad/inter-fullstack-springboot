@@ -14,4 +14,6 @@ public interface EmpresaRepository extends MongoRepository<Empresa, String> {
 	
     public Optional<Empresa> findByCnpj(String cnpj);
     
+    public void deleteByCnpj(String cnpj);
+
 }

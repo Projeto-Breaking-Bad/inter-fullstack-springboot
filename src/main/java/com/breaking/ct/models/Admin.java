@@ -8,15 +8,12 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import org.hibernate.annotations.Where;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
-@Where(clause = "deleted=false")
 public class Admin implements UserDetails {
 
 	/**
@@ -98,8 +95,7 @@ public class Admin implements UserDetails {
 	}
 	@Override
 	public String getUsername() {
-		// Este metodo devolve o dado utilizado para identificacao do usuario, que eh o email
-		return this.email;
+		return this.login;
 	}
 	@Override
 	public boolean isAccountNonExpired() {

@@ -209,7 +209,7 @@
                     <p th:text="${vaga.areaAtuacao}"></p>
                     <i class="far fa-edit mb-5"></i>
                     <div class="d-flex justify-content-center mb-2">
-                      <a th:href="@{/vagas/atualizar/{cnpj}(cnpj=${vaga.cnpj})}"><button type="button"
+                      <a th:href="@{/vagas/atualizar/{id}(id=${vaga.id})}"><button type="button"
                           class="btn btn-light">Editar</button></a>
                       <a data-toggle="modal" data-target="#logoutModal"><button type="button"
                           class="btn btn-outline-light ms-1">Excluir</button></a>
@@ -306,7 +306,7 @@
         <div class="modal-body">Esse item será apagado imediatamente. Voçê não poderá desfazer essa ação.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <form method="POST" action="#" th:action="@{/vagas/deletar/{cnpj}(cnpj=${vaga.cnpj})}">
+          <form method="POST" action="#" th:action="@{/vagas/deletar/{id}(id=${vaga.id})}">
             <button type="submit" class="btn btn-outline-danger ms-1">Excluir</button>
           </form>
         </div>

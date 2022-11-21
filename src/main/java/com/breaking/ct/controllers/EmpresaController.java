@@ -84,5 +84,5 @@ public class EmpresaController {
 	public PasswordEncoder pc() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
 }
