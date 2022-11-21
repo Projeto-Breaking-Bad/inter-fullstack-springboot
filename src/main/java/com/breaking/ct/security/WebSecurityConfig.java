@@ -27,7 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			// .antMatchers("/alunos/cadastrar").permitAll()
 			// .antMatchers("/alunos/**").authenticated()
 			// .anyRequest().permitAll()
-			.anyRequest().authenticated()
+			// .anyRequest().authenticated()
 			.and().formLogin().loginPage("/login").permitAll()
 			.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout").permitAll()
 			.and().csrf().disable();
@@ -47,7 +47,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.passwordEncoder(pc());
 	}
 	
-	@Bean
 	public PasswordEncoder pc() {
 		return new BCryptPasswordEncoder();
 	}

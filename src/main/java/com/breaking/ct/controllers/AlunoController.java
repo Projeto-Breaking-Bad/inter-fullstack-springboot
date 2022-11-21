@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -67,7 +65,6 @@ public class AlunoController {
 	
 	@PostMapping("/atualizar")
 	public ModelAndView atualizaAluno(Aluno aluno) {
-		aluno.setCpf(aluno.getCpf().replace(".", "").replace("-", "").trim());
 		alunoService.updateAluno(aluno);
 		return new ModelAndView("redirect:/alunos/" + aluno.getCpf());
 	}
@@ -75,7 +72,7 @@ public class AlunoController {
 	@PostMapping("/deletar/{cpf}")
 	public ModelAndView deletarAluno(@PathVariable("cpf") String cpf) {
 		alunoService.deleteAluno(cpf);
-		return new ModelAndView("redirect:/alunos");
+		return new ModelAndView("redirect:/logout");
 	}
 	
 }

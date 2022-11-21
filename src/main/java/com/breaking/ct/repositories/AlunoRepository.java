@@ -12,5 +12,5 @@ public interface AlunoRepository extends MongoRepository<Aluno, String> {
 	
     public Optional<Aluno> findByCpf(String cpf);
 	Optional<Aluno> findByEmail(String email);
-	
+    public void deleteByCpf(String cpf);
 }

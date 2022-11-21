@@ -2,19 +2,14 @@ package com.breaking.ct.models;
 
 import java.util.Collection;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.UniqueConstraint;
-
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import com.breaking.ct.security.WebSecurityConfig;
 
 @Entity
-@Where(clause = "deleted=false")
 public class Admin implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
@@ -88,8 +83,7 @@ public class Admin implements UserDetails {
 	}
 	@Override
 	public String getUsername() {
-		// Este metodo devolve o dado utilizado para identificacao do usuario, que eh o email
-		return this.email;
+		return this.login;
 	}
 	@Override
 	public boolean isAccountNonExpired() {
