@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.breaking.ct.models.Vaga;
+import com.breaking.ct.services.EmpresaService;
 import com.breaking.ct.services.VagaService;
 
 @RestController
@@ -20,6 +21,9 @@ public class VagaController {
 
 	@Autowired
 	private VagaService vagaService;
+
+	@Autowired
+	private EmpresaService empresaService;
 	
 	@GetMapping
 	public ModelAndView getVagas() {
@@ -30,9 +34,9 @@ public class VagaController {
 		return mv;
 	}
 	
-	@GetMapping("/{cnpj}")
-	public ModelAndView getVagaEspecifico(@PathVariable("cnpj") String cnpj) {
-		Optional<Vaga> vaga = vagaService.getVagaByCnpj(cnpj);
+	@GetMapping("/{id}")
+	public ModelAndView getVagaEspecifico(@PathVariable("id") String id) {
+		Optional<Vaga> vaga = vagaService.getVagaById(id);
 		ModelAndView mv = new ModelAndView("perfilVaga");
 		if(vaga.isEmpty()) 
 			return new ModelAndView("vagaNaoEncontrado");
@@ -43,18 +47,19 @@ public class VagaController {
 	@GetMapping("/cadastrar")
 	public ModelAndView formularioCadastroVaga() {
 		ModelAndView mv = new ModelAndView("cadastroVaga");
+		mv.addObject("empresa", empresaService.getLogged());
 		return mv;
 	}
 	
 	@PostMapping("/cadastrar")
 	public ModelAndView novoVaga(Vaga vaga) {
 		vagaService.addVaga(vaga);
-		return new ModelAndView("redirect:/vagas/" + vaga.getCnpj());
+		return new ModelAndView("redirect:/vagas/" + vaga.getId());
 	}
 	
-	@GetMapping("/atualizar/{cnpj}")
-	public ModelAndView formularioAtualizacaoVaga(@PathVariable("cnpj") String cnpj) {
-		Optional<Vaga> vaga = vagaService.getVagaByCnpj(cnpj);
+	@GetMapping("/atualizar/{id}")
+	public ModelAndView formularioAtualizacaoVaga(@PathVariable("id") String id) {
+		Optional<Vaga> vaga = vagaService.getVagaById(id);
 		if(vaga.isEmpty())
 			return new ModelAndView("vagaNaoEncontrado");
 		ModelAndView mv = new ModelAndView("atualizacaoVaga");
@@ -65,7 +70,7 @@ public class VagaController {
 	@PostMapping("/atualizar")
 	public ModelAndView atualizaVaga(Vaga vaga) {
 		vagaService.updateVaga(vaga);
-		return new ModelAndView("redirect:/vagas/" + vaga.getCnpj());
+		return new ModelAndView("redirect:/vagas/" + vaga.getId());
 	}
 	
 	@PostMapping("/deletar/{cnpj}")

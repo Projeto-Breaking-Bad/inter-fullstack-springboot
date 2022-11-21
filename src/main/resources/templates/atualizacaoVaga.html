@@ -188,6 +188,7 @@
                         <h1 class="h3 mb-0 text-gray-800">Atualizar Vagas</h1>
                     </div>
                     <form class="row g-3" method="POST" action="#" th:action="@{/vagas/atualizar}" th:object="${vaga}">
+                        <input type="hidden" th:value="${vaga.id}" th:field="*{id}" />
                         <div class="col-4">
                             <label for="cnpj" class="form-label">CNPJ</label>
                             <input type="text" class="form-control" id="cnpj" name="cnpj"
@@ -265,9 +266,8 @@
         </div>
     </div>
     <script type="text/javascript">
-        $("#cnpj").mask("00.000.0000000-00");
-        $("#horas").mask("00:00");
-        $('#salario').mask('#.##0,00', {
+        $("#cnpj").mask("00.000.000/0000-00");
+        $('#salario').mask('#.##0', {
             reverse: true
         });
     </script>

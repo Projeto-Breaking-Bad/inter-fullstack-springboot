@@ -1,6 +1,7 @@
 package com.breaking.ct.services;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,12 @@ public class VagaService {
 		return vagas;
 	}
 
-	public Optional<Vaga> getVagaByCnpj(String cnpj){
+	public List<Vaga> getVagaByCnpj(String cnpj){
 		return vagaRepository.findByCnpj(cnpj);
+	}
+
+	public Optional<Vaga> getVagaById(String id){
+		return vagaRepository.getVagaById(id);
 	}
 
 	public void addVaga(Vaga vaga) {
@@ -32,8 +37,8 @@ public class VagaService {
 		vagaRepository.save(vaga);
 	}
 
-	public void deleteVaga(String cnpj) {
-		vagaRepository.deleteById(cnpj);
+	public void deleteVaga(String id) {
+		vagaRepository.deleteById(id);
 	}
 	
 }

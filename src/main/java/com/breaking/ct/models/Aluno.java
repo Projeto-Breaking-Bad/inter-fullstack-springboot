@@ -75,7 +75,7 @@ public class Aluno {
 		return cpf;
 	}
 	public void setCpf(String cpf) {
-		this.cpf = cpf;
+		this.cpf = cpf.replaceAll("[^0-9]", "");
 	}
 	public String getDataNasc() {
 		return dataNasc;

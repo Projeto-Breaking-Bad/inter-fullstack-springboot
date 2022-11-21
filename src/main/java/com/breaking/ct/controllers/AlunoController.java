@@ -72,7 +72,7 @@ public class AlunoController {
 	@PostMapping("/deletar/{cpf}")
 	public ModelAndView deletarAluno(@PathVariable("cpf") String cpf) {
 		alunoService.deleteAluno(cpf);
-		return new ModelAndView("redirect:/logout");
+		return new ModelAndView("redirect:/alunos");
 	}
 	
 }

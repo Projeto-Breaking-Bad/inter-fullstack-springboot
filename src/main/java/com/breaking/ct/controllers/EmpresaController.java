@@ -65,7 +65,6 @@ public class EmpresaController {
 	
 	@PostMapping("/atualizar")
 	public ModelAndView atualizaEmpresa(Empresa empresa) {
-		empresa.setCnpj(empresa.getCnpj().replace(".", "").replace("-", "").trim());
 		empresaService.updateEmpresa(empresa);
 		return new ModelAndView("redirect:/empresas/" + empresa.getCnpj());
 	}
@@ -75,5 +74,5 @@ public class EmpresaController {
 		empresaService.deleteEmpresa(cnpj);
 		return new ModelAndView("redirect:/empresas");
 	}
-	
+
 }
