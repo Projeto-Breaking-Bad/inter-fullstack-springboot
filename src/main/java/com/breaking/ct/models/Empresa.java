@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 public class Empresa implements UserDetails {
@@ -74,7 +75,7 @@ public class Empresa implements UserDetails {
         return cnpj;
     }
     public void setCnpj(String cnpj) {
-        this.cnpj = cnpj.replaceAll("[^0-9]", "");
+        this.cnpj = cnpj.replace(".", "").replace("-", "").replace("/", "").trim();
     }
     public String getAreaNegocio() {
         return areaNegocio;
@@ -152,7 +153,7 @@ public class Empresa implements UserDetails {
 		return senha;
 	}
 	public void setSenha(String senha) {
-		this.senha = senha;
+		this.senha = new BCryptPasswordEncoder().encode(senha);
 	}
     public String getDescricao() {
         return descricao;

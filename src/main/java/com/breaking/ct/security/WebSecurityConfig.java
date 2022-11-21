@@ -20,32 +20,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		
 		http.authorizeRequests()
 			.antMatchers("/images/**").permitAll()
 			.antMatchers("/css/**").permitAll()
 			.antMatchers("/js/**").permitAll()
-<<<<<<< HEAD
 			.antMatchers("/alunos/cadastrar").permitAll()
-			.antMatchers("/alunos/**").hasAnyAuthority("ALUNO")
+			.antMatchers("/alunos/**").hasAnyAuthority("ALUNO", "ADMIN")
 			.antMatchers("/empresas/cadastrar").permitAll()
-			.antMatchers("/empresas/**").hasAnyAuthority("EMPRESA")
+			.antMatchers("/empresas/**").hasAnyAuthority("EMPRESA", "ADMIN")
+			.antMatchers("/admins/cadastrar").permitAll()
+			.antMatchers("/admins/**").hasAnyAuthority("ADMIN")
 			.anyRequest().permitAll()
-=======
-			// .antMatchers("/alunos/cadastrar").permitAll()
-			// .antMatchers("/alunos/**").authenticated()
-			// .anyRequest().permitAll()
-			.anyRequest().authenticated()
->>>>>>> 9b146a01b73ac94848c2745c36136899ebc072be
 			.and().formLogin().loginPage("/login").permitAll()
-			.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout").permitAll()
+			.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll()
 			.and().csrf().disable();
-
-			// .httpBasic()
-			// .and()
-			// .authorizeHttpRequests()
-			// .anyRequest().authenticated()
-			// .and()
-			// .csrf().disable();
+		
 	}
 	
 	@Override

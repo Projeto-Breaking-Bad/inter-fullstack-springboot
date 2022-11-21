@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 public class Aluno implements UserDetails {
@@ -84,7 +85,7 @@ public class Aluno implements UserDetails {
 		return cpf;
 	}
 	public void setCpf(String cpf) {
-		this.cpf = cpf;
+		this.cpf = cpf.replace(".", "").replace("-", "");
 	}
 	public String getDataNasc() {
 		return dataNasc;
@@ -156,7 +157,7 @@ public class Aluno implements UserDetails {
 		return senha;
 	}
 	public void setSenha(String senha) {
-		this.senha = senha;
+		this.senha = new BCryptPasswordEncoder().encode(senha);
 	}
 	public String getCurso() {
 		return curso;
