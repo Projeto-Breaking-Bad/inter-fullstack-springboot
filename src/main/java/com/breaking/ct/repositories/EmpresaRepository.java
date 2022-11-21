@@ -2,15 +2,16 @@ package com.breaking.ct.repositories;
 
 import java.util.Optional;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import com.breaking.ct.models.Aluno;
 import com.breaking.ct.models.Empresa;
 
 @Repository
-public interface EmpresaRepository extends JpaRepository<Empresa, String> {
+public interface EmpresaRepository extends MongoRepository<Empresa, String> {
     
-	Optional<Aluno> findByEmail(String email);
+	public Optional<Empresa> findByEmail(String email);
 	
+    public Optional<Empresa> findByCnpj(String cnpj);
+    
 }

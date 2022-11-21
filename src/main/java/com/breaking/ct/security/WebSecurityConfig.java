@@ -24,11 +24,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/images/**").permitAll()
 			.antMatchers("/css/**").permitAll()
 			.antMatchers("/js/**").permitAll()
+<<<<<<< HEAD
 			.antMatchers("/alunos/cadastrar").permitAll()
 			.antMatchers("/alunos/**").hasAnyAuthority("ALUNO")
 			.antMatchers("/empresas/cadastrar").permitAll()
 			.antMatchers("/empresas/**").hasAnyAuthority("EMPRESA")
 			.anyRequest().permitAll()
+=======
+			// .antMatchers("/alunos/cadastrar").permitAll()
+			// .antMatchers("/alunos/**").authenticated()
+			// .anyRequest().permitAll()
+			.anyRequest().authenticated()
+>>>>>>> 9b146a01b73ac94848c2745c36136899ebc072be
 			.and().formLogin().loginPage("/login").permitAll()
 			.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout").permitAll()
 			.and().csrf().disable();

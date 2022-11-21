@@ -44,7 +44,7 @@ public class AlunoController {
 	
 	@GetMapping("/cadastrar")
 	public ModelAndView formularioCadastroAluno() {
-		ModelAndView mv = new ModelAndView("cadastroAlunoNovo");
+		ModelAndView mv = new ModelAndView("cadastroAluno");
 		return mv;
 	}
 	
@@ -61,7 +61,7 @@ public class AlunoController {
 		Optional<Aluno> aluno = alunoService.getAlunoByCpf(cpf);
 		if(aluno.isEmpty())
 			return new ModelAndView("alunoNaoEncontrado");
-		ModelAndView mv = new ModelAndView("atualizacaoAlunoNovo");
+		ModelAndView mv = new ModelAndView("atualizacaoAluno");
 		mv.addObject("aluno", aluno.get());
 		return mv;
 	}
@@ -69,6 +69,7 @@ public class AlunoController {
 	@PostMapping("/atualizar")
 	public ModelAndView atualizaAluno(Aluno aluno) {
 		aluno.setCpf(aluno.getCpf().replace(".", "").replace("-", "").trim());
+		aluno.setSenha(pc().encode(aluno.getSenha()));
 		alunoService.updateAluno(aluno);
 		return new ModelAndView("redirect:/alunos/" + aluno.getCpf());
 	}
@@ -77,10 +78,10 @@ public class AlunoController {
 	public ModelAndView deletarAluno(@PathVariable("cpf") String cpf) {
 		alunoService.deleteAluno(cpf);
 		return new ModelAndView("redirect:/logout");
+		//return new ModelAndView("redirect:/alunos");
 	}
 	
 	public PasswordEncoder pc() {
 		return new BCryptPasswordEncoder();
 	}
-	
 }

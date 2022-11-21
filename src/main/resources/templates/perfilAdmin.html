@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Perfil de Vaga</title>
+  <title>Perfil de Admin</title>
   <link rel="shortcut icon" th:href="@{images/frame.ico}" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -156,7 +156,7 @@
                 aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Equipe de
                   Desenvolvimento</span>
-                <img class="img-profile rounded-circle" th:src="@{/images/undraw_profile.svg}">
+                <img class="img-profile rounded-circle" th:src="@{images/undraw_profile.svg}">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -193,69 +193,42 @@
         </script>
         <div class="container-fluid">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Perfil de Vaga</h1>
+            <h1 class="h3 mb-0 text-gray-800">Perfil Admin</h1>
           </div>
         </div>
         <div class="container">
           <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col col-lg-8 mb-4 mb-lg-0">
-              <div class="card mb-3" style="border-radius: .5rem;">
-                <div class="row g-0">
-                  <div class="col-md-4 gradient-custom text-center text-white"
-                    style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp"
-                      alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-                    <h5>Web Company</h5>
-                    <p th:text="${vaga.areaAtuacao}"></p>
-                    <i class="far fa-edit mb-5"></i>
-                    <div class="d-flex justify-content-center mb-2">
-                      <a th:href="@{/vagas/atualizar/{cnpj}(cnpj=${vaga.cnpj})}"><button type="button"
-                          class="btn btn-light">Editar</button></a>
-                      <a data-toggle="modal" data-target="#logoutModal"><button type="button"
-                          class="btn btn-outline-light ms-1">Excluir</button></a>
-                    </div>
+            <div class="col-md-12 col-xl-4">
+
+              <div class="card" style="border-radius: 15px;">
+                <div class="card-body text-center">
+                  <div class="mt-3 mb-4">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+                      class="rounded-circle img-fluid" style="width: 100px;" />
                   </div>
-                  <div class="col-md-8">
-                    <div class="card-body p-4">
-                      <h6>Informações</h6>
-                      <hr class="mt-0 mb-4">
-                      <div class="row pt-1">
-                        <div class="col-4 mb-3">
-                          <h6>Salário</h6>
-                          <p class="text-muted" th:text="${vaga.salario}"></p>
-                        </div>
-                        <div class="col-4 mb-3">
-                          <h6>Horas</h6>
-                          <p class="text-muted" th:text="${vaga.horas}"></p>
-                        </div>
-                        <div class="col-4 mb-3">
-                          <h6>Vagas</h6>
-                          <p class="text-muted" th:text="${vaga.quantVagas}"></p>
-                        </div>
-                      </div>
-                      <h6>Requisitos</h6>
-                      <hr class="mt-0 mb-4">
-                      <div class="row pt-1">
-                        <div class="col-12 mb-3">
-                          <p class="text-muted" th:text="${vaga.requisitos}"></p>
-                        </div>
-                      </div>
-                      <h6>Descrição</h6>
-                      <hr class="mt-0 mb-4">
-                      <div class="row pt-1">
-                        <div class="col-12 mb-3">
-                          <p class="text-muted" th:text="${vaga.descricao}"></p>
-                        </div>
-                      </div>
-                      <div class="d-flex justify-content-start">
-                        <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
-                        <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
-                        <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
-                      </div>
-                    </div>
+                  <h4 class="mb-2" th:text="${admin.nome}"></h4>
+                  <p class="text-muted mb-4" th:text="${admin.instituicao}"><span class="mx-2">|</span> <a
+                      href="#!">mdbootstrap.com</a></p>
+                  <div class="mb-4 pb-2">
+                    <button type="button" class="btn btn-outline-primary btn-floating">
+                      <i class="fab fa-facebook-f fa-lg"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-primary btn-floating">
+                      <i class="fab fa-twitter fa-lg"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-primary btn-floating">
+                      <i class="fab fa-skype fa-lg"></i>
+                    </button>
+                  </div>
+                  <div class="d-flex justify-content-center mb-2">
+                    <a th:href="@{/admins/atualizar/{login}(login=${admin.login})}"><button type="button"
+                        class="btn btn-primary">Editar</button></a>
+                    <a data-toggle="modal" data-target="#logoutModal"><button type="button"
+                        class="btn btn-outline-danger ms-1">Excluir</button></a>
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -306,7 +279,7 @@
         <div class="modal-body">Esse item será apagado imediatamente. Voçê não poderá desfazer essa ação.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <form method="POST" action="#" th:action="@{/vagas/deletar/{cnpj}(cnpj=${vaga.cnpj})}">
+          <form method="POST" action="#" th:action="@{/admins/deletar/{login}(login=${admin.login})}">
             <button type="submit" class="btn btn-outline-danger ms-1">Excluir</button>
           </form>
         </div>

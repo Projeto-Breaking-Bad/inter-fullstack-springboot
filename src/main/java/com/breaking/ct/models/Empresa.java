@@ -1,6 +1,5 @@
 package com.breaking.ct.models;
 
-import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
@@ -14,7 +13,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-public class Empresa implements UserDetails, Serializable {
+public class Empresa implements UserDetails {
 	
 	/**
 	 * 
@@ -75,7 +74,7 @@ public class Empresa implements UserDetails, Serializable {
         return cnpj;
     }
     public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+        this.cnpj = cnpj.replaceAll("[^0-9]", "");
     }
     public String getAreaNegocio() {
         return areaNegocio;
@@ -175,6 +174,7 @@ public class Empresa implements UserDetails, Serializable {
 	}
 	@Override
 	public String getUsername() {
+		// Este metodo devolve o dado utilizado para identificacao do usuario, que eh o email
 		return this.email;
 	}
 	@Override

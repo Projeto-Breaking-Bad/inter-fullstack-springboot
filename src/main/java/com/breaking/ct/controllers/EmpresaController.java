@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,7 +50,8 @@ public class EmpresaController {
 	
 	@PostMapping("/cadastrar")
 	public ModelAndView novoEmpresa(Empresa empresa) {
-		empresa.setCnpj(empresa.getCnpj().replace(".", "").replace("-", "").trim());
+		empresa.setCnpj(empresa.getCnpj().replace(".", "").replace("-", "").replace("/", "").trim());
+		empresa.setSenha(pc().encode(empresa.getSenha()));
 		empresaService.addEmpresa(empresa);
 		return new ModelAndView("redirect:/empresas/" + empresa.getCnpj());
 	}
@@ -65,7 +68,8 @@ public class EmpresaController {
 	
 	@PostMapping("/atualizar")
 	public ModelAndView atualizaEmpresa(Empresa empresa) {
-		empresa.setCnpj(empresa.getCnpj().replace(".", "").replace("-", "").trim());
+		empresa.setCnpj(empresa.getCnpj().replace(".", "").replace("-", "").replace("/", "").trim());
+		empresa.setSenha(pc().encode(empresa.getSenha()));
 		empresaService.updateEmpresa(empresa);
 		return new ModelAndView("redirect:/empresas/" + empresa.getCnpj());
 	}
@@ -73,7 +77,12 @@ public class EmpresaController {
 	@PostMapping("/deletar/{cnpj}")
 	public ModelAndView deletarEmpresa(@PathVariable("cnpj") String cnpj) {
 		empresaService.deleteEmpresa(cnpj);
-		return new ModelAndView("redirect:/empresas");
+		return new ModelAndView("redirect:/logout");
+		//return new ModelAndView("redirect:/empresas");
+	}
+	
+	public PasswordEncoder pc() {
+		return new BCryptPasswordEncoder();
 	}
 	
 }

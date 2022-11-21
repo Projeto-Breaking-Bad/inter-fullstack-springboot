@@ -5,9 +5,11 @@ import javax.persistence.Id;
 
 @Entity
 public class Vaga {
-    	// ATRIBUTOS
+	
+    // ATRIBUTOS
 	private String horas;
 	@Id
+    private String cnpj;
 	private String areaAtuacao;
     private String salario;
 	private String requisitos;
@@ -18,9 +20,10 @@ public class Vaga {
 	public Vaga() {
 		
 	}
-	public Vaga(String horas, String areaAtuacao, String salario, String requisitos, String quantVagas, String descricao) {
+	public Vaga(String horas, String cnpj , String areaAtuacao, String salario, String requisitos, String quantVagas, String descricao) {
 		super();
 		this.horas = horas;
+        this.cnpj = cnpj;
 		this.areaAtuacao = areaAtuacao;
 		this.salario = salario;
 		this.requisitos = requisitos;
@@ -34,6 +37,12 @@ public class Vaga {
     }
     public void setHoras(String horas) {
         this.horas = horas;
+    }
+    public String getCnpj() {
+        return cnpj;
+    }
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
     public String getAreaAtuacao() {
         return areaAtuacao;

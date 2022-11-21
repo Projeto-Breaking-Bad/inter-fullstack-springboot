@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Atualizar Vagas</title>
-    <link rel="shortcut icon" th:href="@{images/frame.ico}" type="image/x-icon">
+    <title>Atualizar Cadastro do Admin</title>
+    <link rel="shortcut icon" th:href="@{/images/frame.ico}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" th:href="@{css/all.min.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/fontaawesome.min.css}">
     <link rel="stylesheet" type="text/css" th:href="@{css/dark-mode.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/fontaawesome.min.css}">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -147,7 +147,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Equipe de
                                     Desenvolvimento</span>
-                                <img class="img-profile rounded-circle" th:src="@{images/undraw_profile.svg}">
+                                <img class="img-profile rounded-circle" th:src="@{/images/undraw_profile.svg}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -185,45 +185,34 @@
                 </script>
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Atualizar Vagas</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Atualizar Cadastro do Admin</h1>
                     </div>
-                    <form class="row g-3" method="POST" action="#" th:action="@{/vagas/atualizar}" th:object="${vaga}">
-                        <div class="col-4">
-                            <label for="cnpj" class="form-label">CNPJ</label>
-                            <input type="text" class="form-control" id="cnpj" name="cnpj"
-                                placeholder="xx.xxx.xxx/xxxx-xx" required th:value="${vaga.cnpj}" readonly>
-                        </div>
-                        <div class="col-8">
-                            <label for="areaAtuacao" class="form-label">Área de Atuação</label>
-                            <input type="text" class="form-control" id="areaAtuacao" name="areaAtuacao"
-                                placeholder="Área de Atuação" required th:value="${vaga.areaAtuacao}">
+                    <form class="row g-3" method="POST" action="#" th:action="@{/admins/atualizar}"
+                        th:object="${admin}">
+                        <div class="col-12">
+                            <label for="nome" class="form-label">Nome de usuário</label>
+                            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do usuário"
+                                required th:value="${admin.nome}">
                         </div>
                         <div class="col-md-6">
-                            <label for="horas" class="form-label">Horas</label>
-                            <input type="text" class="form-control" id="horas" name="horas" placeholder="Horas"
-                                th:value="${vaga.horas}">
+                            <label for="instituicao" class="form-label">Instituição</label>
+                            <input type="text" class="form-control" id="instituicao" name="instituicao"
+                                placeholder="Instituição" th:value="${admin.instituicao}">
                         </div>
                         <div class="col-md-6">
-                            <label for="salario" class="form-label">Salário</label>
-                            <input type="text" class="form-control" id="salario" name="salario" placeholder="Salário"
-                                required th:value="${vaga.salario}">
+                            <label for="login" class="form-label">Login</label>
+                            <input type="text" class="form-control" id="login" name="login" placeholder="Login" required
+                                th:value="${admin.login}">
+                            <span id="resposta"></span>
                         </div>
                         <div class="col-md-6">
-                            <label for="requisitos" class="form-label">Requisitos</label>
-                            <input type="text" class="form-control" id="requisitos" name="requisitos"
-                                placeholder="Requisitos" required th:value="${vaga.requisitos}">
+                            <label for="email" class="form-label">Email de usuário</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="email@email.com" required th:value="${admin.email}">
                         </div>
                         <div class="col-md-6">
-                            <label for="quantVagas" class="form-label">Quantidade de Vagas</label>
-                            <input type="text" class="form-control" id="quantVagas" name="quantVagas"
-                                placeholder="Quantidade de Vagas" required th:value="${vaga.quantVagas}">
-                        </div>
-                        <div class="col-md-12">
-                            <label for="habilidade">Descrição</label>
-                            <div class="form-floating">
-                                <textarea class="form-control" placeholder="Descrição" id="descrição" name="descricao"
-                                    style="height: 100px" th:text="${vaga.descricao}"></textarea>
-                            </div>
+                            <label for="senha" class="form-label">Senha</label>
+                            <input type="password" class="form-control" id="senha" name="senha" required>
                         </div>
 
                         <div class="col-12">
@@ -264,13 +253,6 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        $("#cnpj").mask("00.000.0000000-00");
-        $("#horas").mask("00:00");
-        $('#salario').mask('#.##0,00', {
-            reverse: true
-        });
-    </script>
     <script th:src="@{/js/jquery.min.js}"></script>
     <script th:src="@{/js/jquery.easing.min.js}"></script>
     <!-- <script th:src="@{js/sb-admin-2.js}"></script> -->

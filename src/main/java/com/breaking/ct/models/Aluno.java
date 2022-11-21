@@ -1,6 +1,5 @@
 package com.breaking.ct.models;
 
-import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
@@ -14,7 +13,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-public class Aluno implements UserDetails, Serializable {
+public class Aluno implements UserDetails {
 	
 	/**
 	 * 
