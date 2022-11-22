@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,9 +52,13 @@ public class AlunoController {
 	@PostMapping("/cadastrar")
 	public ModelAndView novoAluno(Aluno aluno) {
 		aluno.setCpf(aluno.getCpf().replace(".", "").replace("-", "").trim());
-		aluno.setSenha(pc().encode(aluno.getSenha()));
-		alunoService.addAluno(aluno);
-		return new ModelAndView("redirect:/alunos/" + aluno.getCpf());
+		Optional<Aluno> teste = alunoService.getAlunoByCpf(aluno.getCpf());
+		if(teste.isEmpty()) {
+			alunoService.addAluno(aluno);
+			return new ModelAndView("redirect:/alunos/" + aluno.getCpf());
+		} else {
+			return new ModelAndView("login");
+		}
 	}
 	
 	@GetMapping("/atualizar/{cpf}")
@@ -66,11 +71,15 @@ public class AlunoController {
 		return mv;
 	}
 	
-	@PostMapping("/atualizar")
-	public ModelAndView atualizaAluno(Aluno aluno) {
+	@PostMapping("/atualizar/{cpf}")
+	public ModelAndView atualizaAluno(@PathVariable("cpf") String cpf, Aluno aluno) {
 		aluno.setCpf(aluno.getCpf().replace(".", "").replace("-", "").trim());
-		aluno.setSenha(pc().encode(aluno.getSenha()));
-		alunoService.updateAluno(aluno);
+		if(aluno.getCpf().equals(cpf)) {
+			alunoService.updateAluno(aluno);
+		} else {
+			alunoService.deleteAluno(cpf);
+			alunoService.addAluno(aluno);
+		}
 		return new ModelAndView("redirect:/alunos/" + aluno.getCpf());
 	}
 	
@@ -81,6 +90,7 @@ public class AlunoController {
 		//return new ModelAndView("redirect:/alunos");
 	}
 	
+	@Bean
 	public PasswordEncoder pc() {
 		return new BCryptPasswordEncoder();
 	}

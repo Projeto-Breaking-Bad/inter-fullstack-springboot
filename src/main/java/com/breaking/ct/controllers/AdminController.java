@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,8 +51,13 @@ public class AdminController {
 
     @PostMapping("/cadastrar")
 	public ModelAndView novoAdmin(Admin admin) {
-		adminService.addAdmin(admin);
-		return new ModelAndView("redirect:/admins/" + admin.getLogin());
+		Optional<Admin> teste = adminService.getAdminByLogin(admin.getLogin());
+		if(teste.isEmpty()) {
+			adminService.addAdmin(admin);
+			return new ModelAndView("redirect:/admins/" + admin.getLogin());
+		} else {
+			return new ModelAndView("login");
+		}
 	}
 
     @GetMapping("/atualizar/{login}")
@@ -64,10 +70,14 @@ public class AdminController {
 		return mv;
 	}
 
-	@PostMapping("/atualizar")
-	public ModelAndView atualizaAdmin(Admin admin) {
-		admin.setSenha(pc().encode(admin.getSenha()));
-		adminService.updateAdmin(admin);
+	@PostMapping("/atualizar/{login}")
+	public ModelAndView atualizaAdmin(@PathVariable("login") String login, Admin admin) {
+		if(admin.getLogin().equals(login)) {
+			adminService.updateAdmin(admin);
+		} else {
+			adminService.deleteAdmin(login);
+			adminService.addAdmin(admin);
+		}
 		return new ModelAndView("redirect:/admins/" + admin.getLogin());
 	}
 	
@@ -78,6 +88,7 @@ public class AdminController {
 		// return new ModelAndView("redirect:/admins");
 	}
 	
+	@Bean
 	public PasswordEncoder pc() {
 		return new BCryptPasswordEncoder();
 	}

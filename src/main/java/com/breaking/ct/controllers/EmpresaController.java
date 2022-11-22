@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,7 +38,7 @@ public class EmpresaController {
 		Optional<Empresa> empresa = empresaService.getEmpresaByCnpj(cnpj);
 		ModelAndView mv = new ModelAndView("perfilEmpresa");
 		if(empresa.isEmpty()) 
-			return new ModelAndView("empresaNaoEncontrado");
+			return new ModelAndView("empresaNaoEncontrada");
 		mv.addObject("empresa", empresa.get());
 		return mv;
 	}
@@ -51,26 +52,34 @@ public class EmpresaController {
 	@PostMapping("/cadastrar")
 	public ModelAndView novoEmpresa(Empresa empresa) {
 		empresa.setCnpj(empresa.getCnpj().replace(".", "").replace("-", "").replace("/", "").trim());
-		empresa.setSenha(pc().encode(empresa.getSenha()));
-		empresaService.addEmpresa(empresa);
-		return new ModelAndView("redirect:/empresas/" + empresa.getCnpj());
+		Optional<Empresa> teste = empresaService.getEmpresaByCnpj(empresa.getCnpj());
+		if(teste.isEmpty()) {
+			empresaService.addEmpresa(empresa);
+			return new ModelAndView("redirect:/empresas/" + empresa.getCnpj());
+		} else {
+			return new ModelAndView("login");
+		}
 	}
 	
 	@GetMapping("/atualizar/{cnpj}")
 	public ModelAndView formularioAtualizacaoEmpresa(@PathVariable("cnpj") String cnpj) {
 		Optional<Empresa> empresa = empresaService.getEmpresaByCnpj(cnpj);
 		if(empresa.isEmpty())
-			return new ModelAndView("empresaNaoEncontrado");
+			return new ModelAndView("empresaNaoEncontrada");
 		ModelAndView mv = new ModelAndView("atualizacaoEmpresa");
 		mv.addObject("empresa", empresa.get());
 		return mv;
 	}
 	
-	@PostMapping("/atualizar")
-	public ModelAndView atualizaEmpresa(Empresa empresa) {
+	@PostMapping("/atualizar/{cnpj}")
+	public ModelAndView atualizaEmpresa(@PathVariable("cnpj") String cnpj, Empresa empresa) {
 		empresa.setCnpj(empresa.getCnpj().replace(".", "").replace("-", "").replace("/", "").trim());
-		empresa.setSenha(pc().encode(empresa.getSenha()));
-		empresaService.updateEmpresa(empresa);
+		if(empresa.getCnpj().equals(cnpj)) {
+			empresaService.updateEmpresa(empresa);
+		} else {
+			empresaService.deleteEmpresa(cnpj);
+			empresaService.addEmpresa(empresa);
+		}
 		return new ModelAndView("redirect:/empresas/" + empresa.getCnpj());
 	}
 	
@@ -81,6 +90,7 @@ public class EmpresaController {
 		//return new ModelAndView("redirect:/empresas");
 	}
 	
+	@Bean
 	public PasswordEncoder pc() {
 		return new BCryptPasswordEncoder();
 	}
