@@ -19,7 +19,7 @@ import com.breaking.ct.services.EmpresaService;
 
 @RestController
 @RequestMapping("/empresas")
-public class EmpresaController {
+public class EmpresaControllerVelho {
 
 	@Autowired
 	private EmpresaService empresaService;

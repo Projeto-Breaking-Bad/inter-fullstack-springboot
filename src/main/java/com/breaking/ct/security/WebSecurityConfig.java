@@ -19,28 +19,37 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	 UserDetailsServiceImpl userDetailsService;
 
 	@Override
-	protected void configure(HttpSecurity http) throws Exception {
+	protected void configure(final HttpSecurity http) throws Exception {
 		
 		http.authorizeRequests()
 			.antMatchers("/images/**").permitAll()
 			.antMatchers("/css/**").permitAll()
 			.antMatchers("/js/**").permitAll()
+			
+			// Autorizacoes velhas
 			.antMatchers("/alunos/cadastrar").permitAll()
 			.antMatchers("/alunos/**").hasAnyAuthority("ALUNO", "ADMIN")
 			.antMatchers("/empresas/cadastrar").permitAll()
 			.antMatchers("/empresas/**").hasAnyAuthority("EMPRESA", "ADMIN")
 			.antMatchers("/admins/**").hasAnyAuthority("ADMIN")
-			.antMatchers("/vagas/cadastrar").hasAnyAuthority("EMPRESA")
+			.antMatchers("/vagas/cadastrar").hasAnyAuthority("EMPRESA", "ADMIN")
+			// Autorizacoes velhas
+			
+			// Autorizacoes novas
+			.antMatchers("/a/**").hasAnyAuthority("ADMIN")
+			.antMatchers("/s/**").hasAnyAuthority("ADMIN","ALUNO")
+			.antMatchers("/c/**").hasAnyAuthority("ADMIN","EMPRESA")
+			// .antMatchers("/redirect").hasAnyAuthority("ADMIN","ALUNO","EMPRESA")
+			// Autorizacoes novas
+			
 			.anyRequest().permitAll()
 			.and().formLogin().loginPage("/login").permitAll()
 			.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll()
 			.and().csrf().disable();
-		
 	}
 	
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
+	protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService)
 			.passwordEncoder(pc());
 	}

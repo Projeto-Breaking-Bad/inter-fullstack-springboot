@@ -19,7 +19,7 @@ import com.breaking.ct.services.AdminService;
 
 @RestController
 @RequestMapping("/admins")
-public class AdminController {
+public class AdminControllerVelho {
     
     @Autowired
 	private AdminService adminService;

@@ -17,7 +17,7 @@ import com.breaking.ct.services.VagaService;
 
 @RestController
 @RequestMapping("/vagas")
-public class VagaController {
+public class VagaControllerVelho {
 
 	@Autowired
 	private VagaService vagaService;

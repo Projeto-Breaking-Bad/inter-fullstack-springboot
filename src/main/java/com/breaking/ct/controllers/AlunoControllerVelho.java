@@ -19,7 +19,7 @@ import com.breaking.ct.services.AlunoService;
 
 @RestController
 @RequestMapping("/alunos")
-public class AlunoController {
+public class AlunoControllerVelho {
 
 	@Autowired
 	private AlunoService alunoService;
