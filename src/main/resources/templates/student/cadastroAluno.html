@@ -38,14 +38,14 @@
                             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                                 <input type="radio" class="btn-check" name="pagAluno" id="pagAluno" autocomplete="off" checked>
                                 <label class="btn btn-outline-primary" for="pagAluno">Aluno</label>
-                                <a class="text-decoration-none" th:href="@{/empresas/cadastrar}">
+                                <a class="text-decoration-none" th:href="@{/cadastro/empresa}">
                                 <input type="button" class="btn-check" name="pagEmpresa" id="pagEmpresa" autocomplete="off">
                                 <label class="btn btn-outline-primary" for="pagEmpresa">Empresa</label>
                                 </a>
                             </div>
                         </div>
 
-                        <form class="row g-3" method="POST" action="#" th:action="@{/alunos/cadastrar}"
+                        <form class="row g-3" method="POST" action="#" th:action="@{/cadastro/aluno}"
                         th:object="${aluno}">
                         <div class="col-12">
                             <label for="nome" class="form-label">Nome de usuário</label>

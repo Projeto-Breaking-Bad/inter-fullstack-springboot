@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" th:href="@{images/frame.ico}" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    <title>Cadastro de Aluno</title>
+</head>
+
+<body style="background-image: url(/images/card-6.svg);
+     background-repeat: no-repeat;
+     background-position: center;
+     background-size: cover;">
+    <!-- Background image -->
+    <div class="p-5 bg-image">
+        <a class="d-flex justify-content-center mb-5" href="#">
+            <img class="zi-2" th:src="@{/images/logo.png}" alt="Image Description" style="width: 14rem;">
+        </a>
+    </div>
+    <div class="container py-5 py-sm-7">
+        <!-- Section: Design Block -->
+        <section>
+            <div class="card py-5 px-md-5" style="border-radius: 0.75rem; margin-top: -100px;">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-10">
+                        <div class="text-center">
+                            <h3>Criar uma conta</h3>
+                            <p class="text-muted">Já tem uma conta? <a class="text-decoration-none" th:href="@{/login}">Entre aqui</a></p>
+                        </div>
+
+                        <div class="mb-4 text-center">
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="pagAluno" id="pagAluno" autocomplete="off" checked>
+                                <label class="btn btn-outline-primary" for="pagAluno">Aluno</label>
+                                <a class="text-decoration-none" th:href="@{/empresas/cadastrar}">
+                                <input type="button" class="btn-check" name="pagEmpresa" id="pagEmpresa" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="pagEmpresa">Empresa</label>
+                                </a>
+                            </div>
+                        </div>
+
+                        <form class="row g-3" method="POST" action="#" th:action="@{/alunos/cadastrar}" th:object="${aluno}">
+                            <div class="col-12">
+                                <label for="nome" class="form-label">Nome de usuário</label>
+                                <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do usuário" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="RA" class="form-label">RA</label>
+                                <input type="text" class="form-control" id="ra" name="ra" placeholder="Apenas números">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="cpf" class="form-label">CPF</label>
+                                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="dataNasc" class="form-label">Data de Nascimento</label>
+                                <input type="date" class="form-control" id="dataNasc" name="dataNasc" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="inputZip" class="form-label">Cep</label>
+                                <input type="text" class="form-control" id="cep" name="cep" placeholder="00000-000"
+                                    required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="bairro" class="form-label">Bairro</label>
+                                <input type="text" class="form-control" id="bairro" name="bairro" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="cidade" class="form-label">Cidade</label>
+                                <input type="text" class="form-control" id="cidade" name="cidade" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="logradouro" class="form-label">Logradouro</label>
+                                <input type="text" class="form-control" id="logradouro" name="logradouro"
+                                    placeholder="Rua 1234" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="numero" class="form-label">Número</label>
+                                <input type="text" class="form-control" id="numero" name="numero" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="complemento" class="form-label">Complemento</label>
+                                <input type="text" class="form-control" id="complemento" name="complemento">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="UF" class="form-label">UF</label>
+                                <select id="uf" name="uf" class="form-select" required>
+                                    <option selected disabled>Escolha...</option>
+                                    <option value="AC">AC</option>
+                                    <option value="AL">AL</option>
+                                    <option value="AP">AP</option>
+                                    <option value="AM">AM</option>
+                                    <option value="BA">BA</option>
+                                    <option value="CE">CE</option>
+                                    <option value="DF">DF</option>
+                                    <option value="ES">ES</option>
+                                    <option value="GO">GO</option>
+                                    <option value="MA">MA</option>
+                                    <option value="MT">MT</option>
+                                    <option value="MS">MS</option>
+                                    <option value="MG">MG</option>
+                                    <option value="PA">PA</option>
+                                    <option value="PB">PB</option>
+                                    <option value="PR">PR</option>
+                                    <option value="PE">PE</option>
+                                    <option value="PI">PI</option>
+                                    <option value="RJ">RJ</option>
+                                    <option value="RN">RN</option>
+                                    <option value="RS">RS</option>
+                                    <option value="RO">RO</option>
+                                    <option value="RR">RR</option>
+                                    <option value="SC">SC</option>
+                                    <option value="SP">SP</option>
+                                    <option value="SE">SE</option>
+                                    <option value="TO">TO</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="telefone" class="form-label">Telefone</label>
+                                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(xx) xxxx-xxxx">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="celular" class="form-label">Celular</label>
+                                <input type="text" class="form-control" id="whatsapp" name="whatsapp" placeholder="(xx) xxxxx-xxxx" required>
+                            </div>
+                            <div class="col-md-7">
+                                <label for="email" class="form-label">Email de usuário</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="email@email.com" required>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="senha" class="form-label">Senha</label>
+                                <input type="password" class="form-control" id="senha" name="senha" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="curso" class="form-label">Curso</label>
+                                <input type="text" class="form-control" id="curso" name="curso" placeholder="Curso" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="habilidade">Habilidade</label>
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Habilidades" id="habilidades" name="habilidades" style="height: 100px"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+        </section>
+
+    </div>
+    <script>
+    $(document).ready(function(){
+    $("input[name=cep]").blur(function(){
+        var cep = $(this).val().replace(/[^0-9]/, '');
+        if(cep){
+            var url = 'https://viacep.com.br/ws/'+cep+'/json/';
+            $.ajax({
+                    url: url,
+                    dataType: 'jsonp',
+                    crossDomain: true,
+                    contentType: "application/json",
+                    success : function(json){
+                        if(json.logradouro){
+                            $("input[name=logradouro]").val(json.logradouro);
+                            $("input[name=bairro]").val(json.bairro);
+                            $("input[name=cidade]").val(json.localidade);
+                            // $("input[name=uf]").val(json.estado);
+                        }
+                    }
+            });
+        }                   
+    }); 
+});
+    </script>
+    <script type="text/javascript">
+        $("#cpf").mask("000.000.000-00");
+        $("#cep").mask("00000-000");
+        $("#telefone").mask("(00) 0000-0000");
+        $("#whatsapp").mask("(00) 00000-0000");
+     </script>
+
+<!-- site api cep
+https://www.mxcursos.com/blog/consultar-cep-com-ajax-utilizando-jquery/ -->
+</body>
+</html>

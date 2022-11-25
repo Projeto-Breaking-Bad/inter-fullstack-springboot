@@ -22,7 +22,11 @@ public class AlunoControllerNovo {
 	
 	@GetMapping
 	public ModelAndView homeAluno() {
-		return new ModelAndView("student/homeAluno");
+		ModelAndView mv = new ModelAndView("student/homeAluno");
+		Aluno aluno = alunoService.getLogged();
+		aluno.setSenha("");
+		mv.addObject("aluno", aluno);
+		return mv;
 	}
 	
 	@GetMapping("/alunos/consultar/{cpf}")

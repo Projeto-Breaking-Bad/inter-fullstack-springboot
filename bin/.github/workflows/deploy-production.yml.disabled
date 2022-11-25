@@ -1,0 +1,56 @@
+---
+name: 'Production Deploy'
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main", "master"]
+    paths-ignore:
+      - '**/README.md'
+      - '.github/**'
+      - 'docs/**'
+
+jobs:
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # -
+      #   name: Cloning repository
+      #   uses: actions/checkout@v2
+      #   with:
+      #     fetch-depth: 0
+      # -
+      #   name: Build the Docker image
+      #   run: docker build . --file Dockerfile --tag image:$(date +%s)
+      -
+        name: Run tests
+        run: echo "Tests passed"
+
+  deploy-production:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: 'http://caca-talentos.app.gabstep.com.br'
+    needs: test
+    steps:
+      -
+        name: Cloning repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      -
+        name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.11
+      -
+        name: Build with Maven
+        run: mvn clean install
+      -
+        name: Production Deploy
+        uses: dokku/github-action@master
+        with:
+          git_remote_url: 'ssh://dokku@app.gabstep.com.br:22/caca-talentos'
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          git_push_flags: --force
