@@ -39,7 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/a/**").hasAnyAuthority("ADMIN")
 			.antMatchers("/s/**").hasAnyAuthority("ADMIN","ALUNO")
 			.antMatchers("/c/**").hasAnyAuthority("ADMIN","EMPRESA")
-			// .antMatchers("/redirect").hasAnyAuthority("ADMIN","ALUNO","EMPRESA")
+			.antMatchers("/cadastro/**").permitAll()
 			// Autorizacoes novas
 			
 			.anyRequest().permitAll()

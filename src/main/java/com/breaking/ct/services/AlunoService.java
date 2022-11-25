@@ -26,6 +26,10 @@ public class AlunoService {
 	public Optional<Aluno> getAlunoByCpf(String cpf) {
 		return alunoRepository.findByCpf(cpf);
 	}
+	
+	public Optional<Aluno> getAlunoByEmail(String email) {
+		return alunoRepository.findByEmail(email);
+	}
 
 	public void addAluno(Aluno aluno) {
 		alunoRepository.save(aluno);
@@ -43,14 +47,14 @@ public class AlunoService {
 	public Aluno getLogged(){
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-		String cpf = "";
+		String email = "";
 		if (principal instanceof UserDetails) {
-			cpf = ((UserDetails)principal).getUsername();
+			email = ((UserDetails)principal).getUsername();
 		} else {
-			cpf = principal.toString();
+			email = principal.toString();
 		}
 		
-		Optional<Aluno> alunoOp = getAlunoByCpf(cpf);
+		Optional<Aluno> alunoOp = getAlunoByEmail(email);
 		if(alunoOp.isEmpty())
 			return null;
 		return alunoOp.get();

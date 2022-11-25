@@ -26,6 +26,10 @@ public class EmpresaService {
 	public Optional<Empresa> getEmpresaByCnpj(String cnpj){
 		return empresaRepository.findByCnpj(cnpj);
 	}
+	
+	public Optional<Empresa> getEmpresaByEmail(String email) {
+		return empresaRepository.findByEmail(email);
+	}
 
 	public void addEmpresa(Empresa empresa) {
 		empresaRepository.save(empresa);
@@ -56,4 +60,5 @@ public class EmpresaService {
 			return null;
 		return empresaOp.get();
 	}
+
 }

@@ -87,7 +87,6 @@ public class EmpresaControllerVelho {
 	public ModelAndView deletarEmpresa(@PathVariable("cnpj") String cnpj) {
 		empresaService.deleteEmpresa(cnpj);
 		return new ModelAndView("redirect:/logout");
-		//return new ModelAndView("redirect:/empresas");
 	}
 	
 	@Bean

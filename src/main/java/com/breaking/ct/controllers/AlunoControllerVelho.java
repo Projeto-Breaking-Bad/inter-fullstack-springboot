@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -87,11 +84,6 @@ public class AlunoControllerVelho {
 	public ModelAndView deletarAluno(@PathVariable("cpf") String cpf) {
 		alunoService.deleteAluno(cpf);
 		return new ModelAndView("redirect:/logout");
-		//return new ModelAndView("redirect:/alunos");
 	}
 	
-	@Bean
-	public PasswordEncoder pc() {
-		return new BCryptPasswordEncoder();
-	}
 }
