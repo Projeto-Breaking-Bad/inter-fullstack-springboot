@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   <link rel="stylesheet" type="text/css" th:href="@{css/all.min.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{css/dark-mode.css}">
   <link rel="stylesheet" type="text/css" th:href="@{css/fontaawesome.min.css}">
   <link
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -48,7 +49,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" th:href="@{/}">
+        <a class="nav-link" th:href="@{/c}">
           <i class="fas fa-fw fa-home"></i>
           <span>Home</span></a>
       </li>
@@ -57,27 +58,15 @@
         Pages
       </div>
       <li class="nav-item">
-        <a class="nav-link" th:href="@{/alunos}">
-          <i class="fas fa-fw fa-user"></i>
-          <span>Ver lista de alunos</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" th:href="@{/empresas}">
+        <a class="nav-link" th:href="@{/c/empresas/consultar/{cnpj}(cnpj=${empresa.cnpj})}">
           <i class="fas fa-fw fa-building"></i>
-          <span>Ver lista de empresas</span>
+          <span>Perfil de empresas</span>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" th:href="@{/vagas}">
           <i class="fas fa-fw fa-file"></i>
           <span>Ver lista de Vaga</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" th:href="@{/admins}">
-          <i class="fas fa-fw fa-screwdriver-wrench"></i>
-          <span>Ver lista de Admin</span>
         </a>
       </li>
 
@@ -87,6 +76,13 @@
           <span>Acessibilidade</span>
         </a>
       </li>
+      <li class="nav-item">
+        <div class="form-check form-switch" style="padding: 0.5rem;padding-left: 3.65rem;">
+            <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
+            <label class="form-check-label" for="darkSwitch" style="color: rgba(255,255,255,.8);font-size: 14px;">Modo Dark</label>
+        </div>
+        <script th:src="@{/js/dark-mode-switch.min.js}"></script>
+    </li>
       <hr class="sidebar-divider">
       <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -405,32 +401,33 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Pronto para partir?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-muted modal-title" id="exampleModalLabel">Pronto para partir?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="text-muted modal-body">Selecione "Logout" abaixo se estiver pronto para encerrar sua sessão atual.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" th:href="@{/logout}">Logout</a>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">Selecione "Logout" abaixo se estiver pronto para encerrar sua sessão atual.
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" th:href="@{/logout}">Logout</a>
-        </div>
-      </div>
     </div>
-  </div>
   
   <script th:src="@{/js/jquery.min.js}"></script>
   <script th:src="@{/js/jquery.easing.min.js}"></script>
   <!-- <script th:src="@{js/sb-admin-2.js}"></script> -->
   <script th:src="@{/js/sb-admin-2.min.js}"></script>
   <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{/js/dark-mode-switch.min.js}"></script>
 </body>
 
 </html>
