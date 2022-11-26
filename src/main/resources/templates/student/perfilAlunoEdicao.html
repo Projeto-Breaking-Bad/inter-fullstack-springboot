@@ -11,8 +11,9 @@
 	<link rel="shortcut icon" th:href="@{/images/frame.ico}" type="image/x-icon">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-	<link rel="stylesheet" type="text/css" th:href="@{css/all.min.css}">
-	<link rel="stylesheet" type="text/css" th:href="@{css/fontaawesome.min.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/all.min.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/dark-mode.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/fontaawesome.min.css}">
 	<link
 		href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 		rel="stylesheet">
@@ -75,6 +76,13 @@
 					<span>Acessibilidade</span>
 				</a>
 			</li>
+			<li class="nav-item">
+                <div class="form-check form-switch" style="padding: 0.5rem;padding-left: 3.65rem;">
+                    <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
+                    <label class="form-check-label" for="darkSwitch" style="color: rgba(255,255,255,.8);font-size: 14px;">Modo Dark</label>
+                </div>
+                <script th:src="@{/js/dark-mode-switch.min.js}"></script>
+            </li>
 			<hr class="sidebar-divider">
 			<div class="text-center d-none d-md-inline">
 				<button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -182,7 +190,7 @@
 								<div class="card-body text-center">
 									<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
 										alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-									<h5 class="my-3" th:text="${aluno.nome}"></h5>
+									<h5 class="text-muted my-3" th:text="${aluno.nome}"></h5>
 									<div class="d-flex justify-content-center mb-2">
 										<a th:href="@{/s/alunos/atualizar/{cpf}(cpf=${aluno.cpf})}"><button type="button"
 												class="btn btn-primary">Editar</button></a>
@@ -193,37 +201,37 @@
 							</div>
 							<div class="card mb-4 mb-lg-4">
 								<div class="card-body">
-									<h5 class="card-title">Habilidade</h5>
+									<h5 class="text-muted card-title">Habilidade</h5>
 									<h6 class="card-subtitle mb-2 text-muted">Habilidades e conhecimentos do Aluno</h6>
-									<p class="card-text" th:text="${aluno.habilidades}"></p>
+									<p class="text-muted card-text" th:text="${aluno.habilidades}"></p>
 								</div>
 							</div>
 							<div class="card mb-4 mb-md-0">
 								<div class="card-body">
-									<p class="mb-4"><span class="text-primary font-italic me-1">Status</span> Projeto
+									<p class="text-muted mb-4"><span class="text-primary font-italic me-1">Status</span> Projeto
 										Desenvolvidos
 									</p>
-									<p class="mb-1" style="font-size: .77rem;">Web Design</p>
+									<p class="text-muted mb-1" style="font-size: .77rem;">Web Design</p>
 									<div class="progress rounded" style="height: 5px;">
 										<div class="progress-bar" role="progressbar" style="width: 80%"
 											aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
 									</div>
-									<p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
+									<p class="text-muted mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
 									<div class="progress rounded" style="height: 5px;">
 										<div class="progress-bar" role="progressbar" style="width: 72%"
 											aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
 									</div>
-									<p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
+									<p class="text-muted mt-4 mb-1" style="font-size: .77rem;">One Page</p>
 									<div class="progress rounded" style="height: 5px;">
 										<div class="progress-bar" role="progressbar" style="width: 89%"
 											aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
 									</div>
-									<p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
+									<p class="text-muted mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
 									<div class="progress rounded" style="height: 5px;">
 										<div class="progress-bar" role="progressbar" style="width: 55%"
 											aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
 									</div>
-									<p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
+									<p class="text-muted mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
 									<div class="progress rounded mb-2" style="height: 5px;">
 										<div class="progress-bar" role="progressbar" style="width: 66%"
 											aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
@@ -236,7 +244,7 @@
 								<div class="card-body">
 									<div class="row">
 										<div class="col-sm-3">
-											<p class="mb-0">Nome de usuário</p>
+											<p class="text-muted mb-0">Nome de usuário</p>
 										</div>
 										<div class="col-sm-9">
 											<p class="text-muted mb-0" th:text="${aluno.nome}"></p>
@@ -245,7 +253,7 @@
 									<hr>
 									<div class="row">
 										<div class="col-sm-3">
-											<p class="mb-0">RA</p>
+											<p class="text-muted mb-0">RA</p>
 										</div>
 										<div class="col-sm-9">
 											<p class="text-muted mb-0" th:text="${aluno.ra}"></p>
@@ -254,7 +262,7 @@
 									<hr>
 									<div class="row">
 										<div class="col-sm-3">
-											<p class="mb-0">CPF</p>
+											<p class="text-muted mb-0">CPF</p>
 										</div>
 										<div class="col-sm-9">
 											<p class="text-muted mb-0" th:text="${aluno.cpf}"></p>
@@ -263,7 +271,7 @@
 									<hr>
 									<div class="row">
 										<div class="col-sm-3">
-											<p class="mb-0">Data de Nascimento</p>
+											<p class="text-muted mb-0">Data de Nascimento</p>
 										</div>
 										<div class="col-sm-9">
 											<p class="text-muted mb-0" th:text="${aluno.dataNasc}"></p>
@@ -272,7 +280,7 @@
 									<hr>
 									<div class="row">
 										<div class="col-sm-3">
-											<p class="mb-0">Cep</p>
+											<p class="text-muted mb-0">Cep</p>
 										</div>
 										<div class="col-sm-9">
 											<p class="text-muted mb-0" th:text="${aluno.cep}"></p>
@@ -281,7 +289,7 @@
 									<hr>
 									<div class="row">
 										<div class="col-sm-3">
-											<p class="mb-0">Bairro</p>
+											<p class="text-muted mb-0">Bairro</p>
 										</div>
 										<div class="col-sm-9">
 											<p class="text-muted mb-0" th:text="${aluno.bairro}"></p>
@@ -290,7 +298,7 @@
 									<hr>
 									<div class="row">
 										<div class="col-sm-3">
-											<p class="mb-0">Cidade</p>
+											<p class="text-muted mb-0">Cidade</p>
 										</div>
 										<div class="col-sm-9">
 											<p class="text-muted mb-0" th:text="${aluno.cidade}"></p>
@@ -299,16 +307,16 @@
 									<hr>
 									<div class="row">
 										<div class="col-sm-3">
-											<p class="mb-0">Logradouro</p>
+											<p class="text-muted mb-0">Logradouro</p>
 										</div>
 										<div class="col-sm-9">
-											<p class="text-muted mb-0" th:text="${aluno.logradouro}"></p>
+											<p class="text-muted text-muted mb-0" th:text="${aluno.logradouro}"></p>
 										</div>
 									</div>
 									<hr>
 									<div class="row">
 										<div class="col-sm-3">
-											<p class="mb-0">Número</p>
+											<p class="text-muted mb-0">Número</p>
 										</div>
 										<div class="col-sm-9">
 											<p class="text-muted mb-0" th:text="${aluno.numero}"></p>
@@ -317,16 +325,16 @@
 									<hr>
 									<div class="row">
 										<div class="col-sm-3">
-											<p class="mb-0">Complemento</p>
+											<p class="text-muted mb-0">Complemento</p>
 										</div>
 										<div class="col-sm-9">
-											<p class="text-muted mb-0" th:text="${aluno.complemento}"></p>
+											<p class="text-muted text-muted mb-0" th:text="${aluno.complemento}"></p>
 										</div>
 									</div>
 									<hr>
 									<div class="row">
 										<div class="col-sm-3">
-											<p class="mb-0">UF</p>
+											<p class="text-muted mb-0">UF</p>
 										</div>
 										<div class="col-sm-9">
 											<p class="text-muted mb-0" th:text="${aluno.uf}"></p>
@@ -335,16 +343,16 @@
 									<hr>
 									<div class="row">
 										<div class="col-sm-3">
-											<p class="mb-0">Email de usuário</p>
+											<p class="text-muted mb-0">Email de usuário</p>
 										</div>
 										<div class="col-sm-9">
-											<p class="text-muted mb-0" th:text="${aluno.email}"></p>
+											<p class="text-muted text-muted mb-0" th:text="${aluno.email}"></p>
 										</div>
 									</div>
 									<hr>
 									<div class="row">
 										<div class="col-sm-3">
-											<p class="mb-0">Telefone</p>
+											<p class="text-muted mb-0">Telefone</p>
 										</div>
 										<div class="col-sm-9">
 											<p class="text-muted mb-0" th:text="${aluno.telefone}"></p>
@@ -353,7 +361,7 @@
 									<hr>
 									<div class="row">
 										<div class="col-sm-3">
-											<p class="mb-0">Celular</p>
+											<p class="text-muted mb-0">Celular</p>
 										</div>
 										<div class="col-sm-9">
 											<p class="text-muted mb-0" th:text="${aluno.whatsapp}"></p>
@@ -369,7 +377,7 @@
 													Desenvolvidos</span>
 											</p>
 											<div class="d-flex justify-content-between align-items-center mb-4">
-												<p class="lead fw-normal mb-0">Fotos recentes</p>
+												<p class="text-muted lead fw-normal mb-0">Fotos recentes</p>
 											</div>
 											<div class="row g-2">
 												<div class="col mb-2">
@@ -450,6 +458,7 @@
 	<!-- <script th:src="@{js/sb-admin-2.js}"></script> -->
 	<script th:src="@{/js/sb-admin-2.min.js}"></script>
 	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/js/dark-mode-switch.min.js}"></script>
 </body>
 
 </html>
