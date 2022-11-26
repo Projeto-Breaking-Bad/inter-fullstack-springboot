@@ -187,7 +187,7 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Atualizar Cadastro do Admin</h1>
                     </div>
-                    <form class="row g-3" method="POST" action="#" th:action="@{/admins/atualizar/{login}(login=${admin.login})}"
+                    <form class="row g-3" method="POST" action="#" th:action="@{/a/admins/atualizar/{login}(login=${admin.login})}"
                         th:object="${admin}">
                         <div class="col-12">
                             <label for="nome" class="form-label">Nome de usuário</label>

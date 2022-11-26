@@ -41,14 +41,14 @@ public class AdminService {
 	public Admin getLogged() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-		String login = "";
+		String email = "";
 		if (principal instanceof UserDetails) {
-			login = ((UserDetails)principal).getUsername();
+			email = ((UserDetails)principal).getUsername();
 		} else {
-			login = principal.toString();
+			email = principal.toString();
 		}
 		
-		Optional<Admin> adminOp = getAdminByLogin(login);
+		Optional<Admin> adminOp = getAdminByLogin(email);
 		if(adminOp.isEmpty())
 			return null;
 		return adminOp.get();

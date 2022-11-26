@@ -191,7 +191,7 @@
                   <p class="text-muted mb-1">Empresa de TI</p>
                   <p class="text-muted mb-4">Dracke Compan, Coreia do Sul, AT</p>
                   <div class="d-flex justify-content-center mb-2">
-                    <a th:href="@{/c/empresas/atualizar/{cnpj}(cnpj=${empresa.cnpj})}"><button type="button"
+                    <a th:href="@{/a/empresas/atualizar/{cnpj}(cnpj=${empresa.cnpj})}"><button type="button"
                         class="btn btn-primary">Editar</button></a>
                     <a data-toggle="modal" data-target="#logoutModal"><button type="button"
                         class="btn btn-outline-danger ms-1">Excluir</button></a>
@@ -449,7 +449,7 @@
         <div class="modal-body">Esse item será apagado imediatamente. Voçê não poderá desfazer essa ação.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <form method="POST" th:action="@{/c/empresas/deletar/{cnpj}(cnpj=${empresa.cnpj})}">
+          <form method="POST" th:action="@{/a/empresas/deletar/{cnpj}(cnpj=${empresa.cnpj})}">
             <button type="submit" class="btn btn-outline-danger ms-1">Excluir</button>
           </form>
         </div>

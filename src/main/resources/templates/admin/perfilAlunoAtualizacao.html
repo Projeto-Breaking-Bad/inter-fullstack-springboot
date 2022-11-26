@@ -175,7 +175,7 @@
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
 						<h1 class="h3 mb-0 text-gray-800">Atualizar Cadastro do Aluno</h1>
 					</div>
-					<form class="row g-3" method="POST" th:action="@{/s/alunos/atualizar/{cpf}(cpf=${aluno.cpf})}"
+					<form class="row g-3" method="POST" th:action="@{/a/alunos/atualizar/{cpf}(cpf=${aluno.cpf})}"
 						th:object="${aluno}">
 						<div class="col-12">
 							<label for="nome" class="form-label">Nome de usuário</label>
