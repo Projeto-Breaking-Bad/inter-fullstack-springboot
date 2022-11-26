@@ -28,7 +28,7 @@ public class VagaControllerVelho {
 	@GetMapping
 	public ModelAndView getVagas() {
 		ModelAndView mv = new ModelAndView("listaVagas");
-		ArrayList<Vaga> vagas = vagaService.getTodosVagas();
+		ArrayList<Vaga> vagas = vagaService.getTodasVagas();
 		if(!vagas.isEmpty())
 			mv.addObject("vagas", vagas);
 		return mv;

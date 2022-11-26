@@ -51,7 +51,7 @@ public class EmpresaController {
 		return mv;
 	}
 	
-	@GetMapping("/atualizar/{cnpj}")
+	@GetMapping("/empresas/atualizar/{cnpj}")
 	public ModelAndView formularioAtualizacaoEmpresa(@PathVariable("cnpj") String cnpj) {
 		
 		ModelAndView mv = new ModelAndView("redirect:/redirect");
@@ -72,7 +72,7 @@ public class EmpresaController {
 		return mv;
 	}
 	
-	@PostMapping("/atualizar/{cnpj}")
+	@PostMapping("/empresas/atualizar/{cnpj}")
 	public ModelAndView atualizarEmpresa(@PathVariable("cnpj") String cnpj, Empresa empresa) {
 		
 		ModelAndView mv = new ModelAndView("redirect:/redirect");
@@ -97,7 +97,7 @@ public class EmpresaController {
 		return mv;
 	}
 	
-	@PostMapping("/deletar/{cnpj}")
+	@PostMapping("/empresas/deletar/{cnpj}")
 	public ModelAndView deletarEmpresa(@PathVariable("cnpj") String cnpj) {
 		
 		ModelAndView mv = new ModelAndView("redirect:/redirect");

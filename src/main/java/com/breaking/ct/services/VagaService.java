@@ -15,13 +15,13 @@ public class VagaService {
     @Autowired
 	private VagaRepository vagaRepository;
 	
-	public ArrayList<Vaga> getTodosVagas() {
+	public ArrayList<Vaga> getTodasVagas() {
 		ArrayList<Vaga> vagas = new ArrayList<>();
 		vagaRepository.findAll().forEach(vagas::add);
 		return vagas;
 	}
 
-	public List<Vaga> getVagaByCnpj(String cnpj){
+	public List<Vaga> getVagasByCnpj(String cnpj){
 		return vagaRepository.findByCnpj(cnpj);
 	}
 

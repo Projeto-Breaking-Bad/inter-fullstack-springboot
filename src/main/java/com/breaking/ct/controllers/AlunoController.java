@@ -51,7 +51,7 @@ public class AlunoController {
 		return mv;
 	}
 	
-	@GetMapping("/atualizar/{cpf}")
+	@GetMapping("/alunos/atualizar/{cpf}")
 	public ModelAndView formularioAtualizacaoAluno(@PathVariable("cpf") String cpf) {
 		
 		ModelAndView mv = new ModelAndView("redirect:/redirect");
@@ -72,7 +72,7 @@ public class AlunoController {
 		return mv;
 	}
 	
-	@PostMapping("/atualizar/{cpf}")
+	@PostMapping("/alunos/atualizar/{cpf}")
 	public ModelAndView atualizarAluno(@PathVariable("cpf") String cpf, Aluno aluno) {
 		
 		ModelAndView mv = new ModelAndView("redirect:/redirect");
@@ -97,7 +97,7 @@ public class AlunoController {
 		return mv;
 	}
 	
-	@PostMapping("/deletar/{cpf}")
+	@PostMapping("/alunos/deletar/{cpf}")
 	public ModelAndView deletarAluno(@PathVariable("cpf") String cpf) {
 		
 		ModelAndView mv = new ModelAndView("redirect:/redirect");

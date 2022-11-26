@@ -70,7 +70,7 @@ public class AdminControllerNovo {
 		return mv;
 	}
 	
-	@PostMapping("/atualizar/{login}")
+	@PostMapping("/admins/atualizar/{login}")
 	public ModelAndView atualizarAdmin(@PathVariable("login") String login, Admin admin) {
 		
 		ModelAndView mv = new ModelAndView("redirect:/redirect");
@@ -93,7 +93,7 @@ public class AdminControllerNovo {
 		return mv;
 	}
 	
-	@PostMapping("/deletar/{login}")
+	@PostMapping("/admins/deletar/{login}")
 	public ModelAndView deletarAdmin(@PathVariable("login") String login) {
 		
 		ModelAndView mv = new ModelAndView("redirect:/redirect");
