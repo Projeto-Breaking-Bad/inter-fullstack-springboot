@@ -35,7 +35,7 @@ public class HomeControllerNovo {
 
 	@GetMapping("/acessibilidade")
 	public ModelAndView acessibilidade() {
-		return new ModelAndView("acessibilidade");
+		return new ModelAndView("user/acessibilidade");
 	}
 
 	@GetMapping("/redirect")

@@ -15,14 +15,18 @@ import com.breaking.ct.services.EmpresaService;
 
 @RestController
 @RequestMapping("/c")
-public class EmpresaControllerNovo {
+public class EmpresaController {
 
 	@Autowired
 	private EmpresaService empresaService;
 	
 	@GetMapping
 	public ModelAndView homeEmpresa() {
-		return new ModelAndView("company/homeEmpresa");
+		ModelAndView mv = new ModelAndView("company/homeEmpresa");
+		Empresa empresa = empresaService.getLogged();
+		empresa.setSenha("");
+		mv.addObject("empresa", empresa);
+		return mv;
 	}
 	
 	@GetMapping("/empresas/consultar/{cnpj}")
@@ -37,7 +41,7 @@ public class EmpresaControllerNovo {
 		
 		Empresa empresa = empresaConsultada.get();
 		empresa.setSenha("");
-		mv.addObject("empresa", empresaConsultada);
+		mv.addObject("empresa", empresa);
 		
 		if(empresaService.getLogged().getCnpj().equals(cnpj))
 			mv.setViewName("company/perfilEmpresaEdicao");
@@ -47,7 +51,7 @@ public class EmpresaControllerNovo {
 		return mv;
 	}
 	
-	@GetMapping("/empresas/atualizar/{cnpj}")
+	@GetMapping("/atualizar/{cnpj}")
 	public ModelAndView formularioAtualizacaoEmpresa(@PathVariable("cnpj") String cnpj) {
 		
 		ModelAndView mv = new ModelAndView("redirect:/redirect");
@@ -108,6 +112,12 @@ public class EmpresaControllerNovo {
 			mv.setViewName("redirect:/logout");
 		}
 		
+		return mv;
+	}
+	
+	@GetMapping("/acessibilidade")
+	public ModelAndView acessibilidade() {
+		ModelAndView mv = new ModelAndView("company/acessibilidade");
 		return mv;
 	}
 	

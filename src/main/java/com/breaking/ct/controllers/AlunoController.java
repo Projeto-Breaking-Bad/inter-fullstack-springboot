@@ -15,12 +15,12 @@ import com.breaking.ct.services.AlunoService;
 
 @RestController
 @RequestMapping("/s")
-public class AlunoControllerNovo {
+public class AlunoController {
 	
 	@Autowired
 	private AlunoService alunoService;
 	
-	@GetMapping
+	@GetMapping 
 	public ModelAndView homeAluno() {
 		ModelAndView mv = new ModelAndView("student/homeAluno");
 		Aluno aluno = alunoService.getLogged();
@@ -51,7 +51,7 @@ public class AlunoControllerNovo {
 		return mv;
 	}
 	
-	@GetMapping("/alunos/atualizar/{cpf}")
+	@GetMapping("/atualizar/{cpf}")
 	public ModelAndView formularioAtualizacaoAluno(@PathVariable("cpf") String cpf) {
 		
 		ModelAndView mv = new ModelAndView("redirect:/redirect");
@@ -112,6 +112,12 @@ public class AlunoControllerNovo {
 			mv.setViewName("redirect:/logout");
 		}
 		
+		return mv;
+	}
+	
+	@GetMapping("/acessibilidade")
+	public ModelAndView acessibilidade() {
+		ModelAndView mv = new ModelAndView("student/acessibilidade");
 		return mv;
 	}
 	

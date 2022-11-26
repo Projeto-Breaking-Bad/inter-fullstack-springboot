@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard</title>
+    <title>Acessibilidade</title>
 
     <!-- Custom fonts for this template-->
     <link rel="shortcut icon" th:href="@{images/frame.ico}" type="image/x-icon">
@@ -58,16 +58,28 @@
             <div class="sidebar-heading">
                 Pages
             </div>
-            <!--<li class="nav-item">
-                <a class="nav-link" th:href="@{/empresas/}">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/alunos}">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Ver lista de alunos</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/empresas}">
                     <i class="fas fa-fw fa-building"></i>
                     <span>Ver lista de empresas</span>
                 </a>
-            </li>-->
+            </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/vagas}">
                     <i class="fas fa-fw fa-file"></i>
                     <span>Ver lista de Vaga</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/admins}">
+                    <i class="fas fa-fw fa-screwdriver-wrench"></i>
+                    <span>Ver lista de Admin</span>
                 </a>
             </li>
 
@@ -77,13 +89,13 @@
                     <span>Acessibilidade</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <div class="form-check form-switch" style="padding: 0.5rem;padding-left: 3.65rem;">
+            <!-- <li class="nav-item">
+                <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
-                    <label class="form-check-label" for="darkSwitch" style="color: rgba(255,255,255,.8);font-size: 14px;">Modo Dark</label>
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Modo Dark</label>
                 </div>
                 <script th:src="@{/js/dark-mode-switch.min.js}"></script>
-            </li>
+            </li> -->
 
             <hr class="sidebar-divider">
             <div class="text-center d-none d-md-inline">
@@ -182,9 +194,67 @@
                 </script>
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Acessibilidade</h1>
                     </div>
 
+                    <div class="single-defination">
+                        <p>Este site foi desenvolvido para que pessoas com deficiência visual, baixa visão,
+                            daltonismo, deficiência auditiva e mobilidade reduzida possam navegar por meio
+                            de recursos como alto contraste, aumento de fonte, teclas de atalho, tradução
+                            para a Língua Brasileira de Sinais e navegação por teclado.</p>
+                        <p>Se for necessário, você também pode usar o zoom nativo do seu navegador,
+                            pressionando as teclas “Ctrl” e “+” para aumentar todo o site e “Ctrl” e “-“
+                            para diminuir. Para voltar ao padrão, pressione “Ctrl” e “0”.</p>
+                        <p>Este site tem melhor acessibilidade quando acessado nas versões mais atualizadas
+                            do seu navegador web. Utilize sempre a versão mais recente de seu software.</p>
+
+                        <h3>Teclas de atalho por navegadores</h3>
+                        <p class="mb-1">Internet Explorer e Google Chrome:</p>
+
+                        <p class="mb-1">“Alt” + “1” - ir para o conteúdo</p>
+                        <p class="mb-1">“Alt” + “2” - ir para o menu</p>
+                        <p class="mb-1">“Alt” + “3” - ir para o rodapé</p>
+                        <p class="mb-1">Firefox:</p>
+
+                        <p class="mb-1">“Alt” + “Shift” + “número”</p>
+                        <p class="mb-1">Opera:</p>
+
+                        <p class="mb-1">“Shift” + “Escape” + “número”</p>
+                        <p class="mb-1">Safari e OmniWeb:</p>
+
+                        <p>“Ctrl” + “número”</p>
+
+                        <h3>Navegação por tabulação</h3>
+                        <p class="mb-1">Use a tecla Tab para navegar por elementos que recebem ação do
+                            usuário no site, tais como links, botões, campos de formulário e outros na ordem
+                            em que eles são apresentados na página, e Shift + Tab para retornar. Use as
+                            setas direcionais para acessar as informações textuais.</p>
+
+                        <p>Sugestões de programas disponíveis para pessoas com deficiência</p>
+                        <p>- Nitrous Voice Flux: controla o computador por voz. Gratuito;</p>
+                        <p>- NVDA: software livre para ler tela – vários idiomas (Windows);</p>
+                        <p>- YeoSoft Text: leitor de tela em inglês e português;</p>
+                        <p>- Jaws for Windows: leitor de tela – vários idiomas;</p>
+                        <p>- Virtual Vision: leitor de telas em português do Brasil;</p>
+                        <p>- DOSVOX: sistema para deficientes visuais (Windows ou Linux).</p>
+                        <p>- Talckback: leitor de tela disponível em smartphones Android.</p>
+                        <p>Observação: leia no manual do leitor de telas sobre a melhor forma de navegação
+                            em páginas web.</p><br>
+
+                        <h3>LIBRAS - Língua Brasileira de Sinais</h3>
+                        <p>Este site é acessível em LIBRAS através do <a href="http://www.vlibras.gov.br/"
+                                target="_blank">VLibras</a>.</p>
+                        <p>-Do lado direito de cada página do site existe o ícone de um Widget informando
+                            que o site é acessível em LIBRAS.</p>
+                        <p>-Para traduzir, basta clicar sobre o ícone e selecionar o texto que deseja
+                            traduzir.</p><br>
+
+                        <h3>Modo Dark</h3>
+                        <p>Conhecido também por "dark mode" ou "modo escuro", o modo noturno é uma opção de configuração
+                            de tela. Geralmente disponível em plugins para navegadores, aplicativos e sistemas
+                            operacionais, o recurso permite à visão um uso confortável de aparelhos eletrônicos,
+                            principalmente, em ambientes de pouca luz.</p>
+                    </div>
 
                 </div>
             </div>

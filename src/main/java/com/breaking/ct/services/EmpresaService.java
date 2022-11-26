@@ -48,14 +48,14 @@ public class EmpresaService {
 	public Empresa getLogged() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-		String cnpj = "";
+		String email = "";
 		if (principal instanceof UserDetails) {
-			cnpj = ((UserDetails)principal).getUsername();
+			email = ((UserDetails)principal).getUsername();
 		} else {
-			cnpj = principal.toString();
+			email = principal.toString();
 		}
 		
-		Optional<Empresa> empresaOp = getEmpresaByCnpj(cnpj);
+		Optional<Empresa> empresaOp = getEmpresaByEmail(email);
 		if(empresaOp.isEmpty())
 			return null;
 		return empresaOp.get();

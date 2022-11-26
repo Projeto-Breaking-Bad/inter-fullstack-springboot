@@ -28,12 +28,12 @@
                 <div class="col-10">
                     <div class="text-center">
                         <h3>Criar uma conta</h3>
-                        <p class="text-muted">Já tem uma conta? <a class="text-decoration-none" href="#">Entre aqui</a></p>
+                        <p class="text-muted">Já tem uma conta? <a class="text-decoration-none" th:href="@{/login}">Entre aqui</a></p>
                     </div>
 
                     <div class="mb-4 text-center">
                         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                            <a class="text-decoration-none" th:href="@{/alunos/cadastrar}">
+                            <a class="text-decoration-none" th:href="@{/cadastro/aluno}">
                             <input type="button" class="btn-check" name="pagAluno" id="pagAluno" autocomplete="off">
                             <label class="btn btn-outline-primary" for="pagAluno">Aluno</label>
                             </a>
@@ -42,8 +42,7 @@
                           </div>
                     </div>
 
-                    <form class="row g-3" method="POST" action="#" th:action="@{/empresas/cadastrar}"
-                        th:object="${empresa}">
+                    <form class="row g-3" method="POST" th:action="@{/cadastro/empresa}" th:object="${empresa}">
                         <div class="col-12">
                             <label for="nome" class="form-label">Nome da Empresa</label>
                             <input type="text" class="form-control" id="nome" name="nome" data-ls-module="charCounter"
