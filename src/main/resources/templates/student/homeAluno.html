@@ -30,7 +30,23 @@
 </head>
 
 <body id="page-top">
-
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#conteudo" accesskey="1" title="Ir diretamente para o menu Principal">Ir para o menu Principal [1]</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#rodape" accesskey="2" title="Ir diretamente para o rodapé">Ir para o roda pé [2]</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/acessibilidade}">Acessibilidade</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0);" id="aumentar">A+</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0);" id="diminuir">A-</a>
+        </li>
+      </ul>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -185,7 +201,7 @@
 
                 </div>
             </div>
-            <footer class="sticky-footer bg-white">
+            <footer class="sticky-footer bg-white" id="rodape">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Caça Talentos</span>
@@ -239,6 +255,7 @@
     <script th:src="@{/js/sb-admin-2.min.js}"></script>
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/js/dark-mode-switch.min.js}"></script>
+    <script th:src="@{/js/fonte.js}"></script>
 </body>
 
 </html>

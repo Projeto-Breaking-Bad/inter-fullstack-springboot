@@ -28,3 +28,8 @@
   background-color: #111 !important;
   color: #eee;
 }
+
+[data-theme="dark"] .card-body {
+  background-color: #25282a !important;
+  color: #fff !important;
+}
