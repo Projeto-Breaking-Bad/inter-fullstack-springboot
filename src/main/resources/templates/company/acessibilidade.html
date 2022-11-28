@@ -30,7 +30,32 @@
 </head>
 
 <body id="page-top">
-
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="text-muted nav-link active" aria-current="page" href="#page-top" accesskey="1"
+                title="Ir diretamente para o menu Principal">Ir para o menu Principal [1]</a>
+        </li>
+        <li class="nav-item">
+            <a class="text-muted nav-link" href="#rodape" accesskey="2" title="Ir diretamente para o rodapé">Ir para o
+                roda pé [2]</a>
+        </li>
+        <li class="nav-item">
+            <a class="text-muted nav-link" th:href="@{/c/acessibilidade}">Acessibilidade</a>
+        </li>
+        <li class="nav-item">
+            <a class="text-muted nav-link" href="javascript:void(0);" id="aumentar">A+</a>
+        </li>
+        <li class="nav-item">
+            <a class="text-muted nav-link" href="javascript:void(0);" id="diminuir">A-</a>
+        </li>
+        <li class="nav-item">
+            <div class="form-check form-switch" style="padding: 0.5rem;padding-left: 3.65rem;">
+                <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
+                <label class="form-check-label" for="darkSwitch">🌞 Modo Dark 🌚</label>
+            </div>
+            <script th:src="@{/js/dark-mode-switch.min.js}"></script>
+        </li>
+    </ul>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -60,28 +85,29 @@
             </div>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/c/empresas/consultar/{cnpj}(cnpj=${empresa.cnpj})}">
-                  <i class="fas fa-fw fa-building"></i>
-                  <span>Ver lista de empresas</span>
+                    <i class="fas fa-fw fa-building"></i>
+                    <span>Ver lista de empresas</span>
                 </a>
-              </li>
-              <li class="nav-item">
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" th:href="@{/vagas}">
-                  <i class="fas fa-fw fa-file"></i>
-                  <span>Ver lista de Vaga</span>
+                    <i class="fas fa-fw fa-file"></i>
+                    <span>Ver lista de Vaga</span>
                 </a>
-              </li>
-        
-              <li class="nav-item">
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link" th:href="@{/acessibilidade}">
-                  <i class="fas fa-fw fa-table"></i>
-                  <span>Acessibilidade</span>
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Acessibilidade</span>
                 </a>
-              </li>
-      
-              <li class="nav-item">
+            </li>
+
+            <li class="nav-item">
                 <div class="form-check form-switch" style="padding: 0.5rem;padding-left: 3.65rem;">
                     <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
-                    <label class="form-check-label" for="darkSwitch" style="color: rgba(255,255,255,.8);font-size: 14px;">Modo Dark</label>
+                    <label class="form-check-label" for="darkSwitch"
+                        style="color: rgba(255,255,255,.8);font-size: 14px;">Modo Dark</label>
                 </div>
                 <script th:src="@{/js/dark-mode-switch.min.js}"></script>
             </li>
@@ -185,11 +211,11 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Acessibilidade</h1>
                         <nav aria-label="breadcrumb">
-							<ol class="breadcrumb">
-							  <li class="breadcrumb-item"><a class="text-gray-800" th:href="@{/c}">Home</a></li>
-							  <li class="breadcrumb-item active" aria-current="page">Acessibilidade</li>
-							</ol>
-						  </nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a class="text-gray-800" th:href="@{/c}">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Acessibilidade</li>
+                            </ol>
+                        </nav>
                     </div>
 
                     <div class="single-defination">
@@ -253,7 +279,7 @@
 
                 </div>
             </div>
-            <footer class="sticky-footer bg-white">
+            <footer class="sticky-footer bg-white" id="rodape">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Caça Talentos</span>
@@ -277,7 +303,8 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="text-muted modal-body">Selecione "Logout" abaixo se estiver pronto para encerrar sua sessão atual.
+                <div class="text-muted modal-body">Selecione "Logout" abaixo se estiver pronto para encerrar sua sessão
+                    atual.
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
@@ -293,6 +320,7 @@
     <script th:src="@{/js/sb-admin-2.min.js}"></script>
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/js/dark-mode-switch.min.js}"></script>
+    <script th:src="@{/js/fonte.js}"></script>
 </body>
 
 </html>
