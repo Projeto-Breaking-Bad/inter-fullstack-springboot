@@ -10,7 +10,7 @@ import com.breaking.ct.models.Vaga;
 @Repository
 public interface VagaRepository extends MongoRepository<Vaga, String>{
     
-    public Optional<Vaga> getVagaById(String id);
+    public Optional<Vaga> findById(String id);
     public List<Vaga> findByCnpj(String cnpj);
 
 }

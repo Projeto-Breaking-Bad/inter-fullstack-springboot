@@ -1,5 +1,6 @@
 package com.breaking.ct.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.breaking.ct.models.Empresa;
+import com.breaking.ct.models.Vaga;
 import com.breaking.ct.services.EmpresaService;
+import com.breaking.ct.services.VagaService;
 
 @RestController
 @RequestMapping("/c")
@@ -19,6 +22,9 @@ public class EmpresaController {
 
 	@Autowired
 	private EmpresaService empresaService;
+	
+	@Autowired
+	private VagaService vagaService;
 	
 	@GetMapping
 	public ModelAndView homeEmpresa() {
@@ -121,6 +127,43 @@ public class EmpresaController {
 		return mv;
 	}
 	
-	// Vagas...
+	/**
+	 * VAGAS ALUNO
+	 */
+	@GetMapping("/vagas")
+	public ModelAndView verVagas() {
+		ModelAndView mv = new ModelAndView("company/listaVagas");
+		List<Vaga> vagas = vagaService.getTodasVagas();
+		mv.addObject("vagas", vagas);
+		return mv;
+	}
+	
+	@GetMapping("/vagas/consultar/{id}")
+	public ModelAndView verVagasEspecifica(@PathVariable("id") String id) {
+		
+		ModelAndView mv = new ModelAndView("vagaNaoEncontrada");
+		
+		Optional<Vaga> vagaConsultada = vagaService.getVagaById(id);
+		
+		if(vagaConsultada.isEmpty())
+			return mv;
+		
+		mv.addObject("vaga", vagaConsultada.get());
+		mv.setViewName("company/perfilVaga");
+		return mv;
+		
+	}
+	
+	
+	
+	/**
+	 *  So criar estas rotas depois de mexer melhor nos
+	 * models e no banco de dados
+	 */
+	
+	// @GetMapping("/vagas/inscritas")
+	// @GetMapping("/vagas/inscritas/{id}")
+	// @PostMapping("/vagas/inscrever/{id}")
+	// @PostMapping("/vagas/desinscrever/{id}")
 	
 }

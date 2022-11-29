@@ -26,7 +26,7 @@ public class VagaService {
 	}
 
 	public Optional<Vaga> getVagaById(String id){
-		return vagaRepository.getVagaById(id);
+		return vagaRepository.findById(id);
 	}
 
 	public void addVaga(Vaga vaga) {
