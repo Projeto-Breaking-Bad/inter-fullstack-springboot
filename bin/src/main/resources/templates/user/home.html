@@ -54,48 +54,19 @@
                     <i class="fas fa-fw fa-home"></i>
                     <span>Home</span></a>
             </li>
-            <hr class="sidebar-divider">
-            <div class="sidebar-heading">
-                Pages
-            </div>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/alunos}">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span>Ver lista de alunos</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/empresas}">
-                    <i class="fas fa-fw fa-building"></i>
-                    <span>Ver lista de empresas</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/vagas}">
-                    <i class="fas fa-fw fa-file"></i>
-                    <span>Ver lista de Vaga</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/admins}">
-                    <i class="fas fa-fw fa-screwdriver-wrench"></i>
-                    <span>Ver lista de Admin</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" th:href="@{/acessibilidade}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Acessibilidade</span>
                 </a>
             </li>
-            <!-- <li class="nav-item">
-                <div class="form-check form-switch">
+            <li class="nav-item">
+                <div class="form-check form-switch" style="padding: 0.5rem;padding-left: 3.65rem;">
                     <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Modo Dark</label>
+                    <label class="form-check-label" for="darkSwitch" style="color: rgba(255,255,255,.8);font-size: 14px;">Modo Dark</label>
                 </div>
                 <script th:src="@{/js/dark-mode-switch.min.js}"></script>
-            </li> -->
+            </li>
 
             <hr class="sidebar-divider">
             <div class="text-center d-none d-md-inline">
@@ -154,33 +125,27 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Equipe de
-                                    Desenvolvimento</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                	Já possui uma conta?
+                                </span>
                                 <img class="img-profile rounded-circle" th:src="@{images/undraw_profile.svg}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" th:href="@{/login}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Perfil
+                                    Entrar
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" th:href="@{/cadastro/aluno}">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Definições
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Registro de atividade
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal2">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
+                                    Criar conta
                                 </a>
                             </div>
                         </li>
+                        
                     </ul>
+                    
                 </nav>
                 <div vw class="enabled">
                     <div vw-access-button class="active"></div>
@@ -189,15 +154,11 @@
                     </div>
                 </div>
                 <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-                <script>
-                    new window.VLibras.Widget('https://vlibras.gov.br/app');
-                </script>
+                <script> new window.VLibras.Widget('https://vlibras.gov.br/app'); </script>
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                     </div>
-
-
                 </div>
             </div>
             <footer class="sticky-footer bg-white">

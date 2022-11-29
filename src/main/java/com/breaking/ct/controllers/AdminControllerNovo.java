@@ -15,9 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.breaking.ct.models.Admin;
 import com.breaking.ct.models.Aluno;
 import com.breaking.ct.models.Empresa;
+import com.breaking.ct.models.Vaga;
 import com.breaking.ct.services.AdminService;
 import com.breaking.ct.services.AlunoService;
 import com.breaking.ct.services.EmpresaService;
+import com.breaking.ct.services.VagaService;
 
 @RestController
 @RequestMapping("/a")
@@ -31,6 +33,9 @@ public class AdminControllerNovo {
 	
 	@Autowired
 	private AdminService adminService;
+	
+	@Autowired
+	private VagaService vagaService;
 	
 	@GetMapping
 	public ModelAndView homeAdmin() {
@@ -212,6 +217,23 @@ public class AdminControllerNovo {
 	/**
 	 * CRUD ADMIN
 	 */
+	@GetMapping("/admins/cadastro")
+	public ModelAndView formularioCadastroAdmin() {
+		ModelAndView mv = new ModelAndView("admin/cadastroAdmin");
+		return mv;
+	}
+
+    @PostMapping("/admins/cadastro")
+	public ModelAndView novoAdmin(Admin admin) {
+		Optional<Admin> teste = adminService.getAdminByLogin(admin.getLogin());
+		if(teste.isEmpty()) {
+			adminService.addAdmin(admin);
+			return new ModelAndView("redirect:/admins/" + admin.getLogin());
+		} else {
+			return new ModelAndView("login");
+		}
+	}
+    
 	@GetMapping("/admins/consultar/{login}")
 	public ModelAndView perfilAdmin(@PathVariable("login") String login) {
 
@@ -299,6 +321,43 @@ public class AdminControllerNovo {
 		return mv;
 	}
 	
-	// Vagas...
+	/**
+	 * VAGAS ADMIN
+	 */
+	@GetMapping("/vagas")
+	public ModelAndView verVagas() {
+		ModelAndView mv = new ModelAndView("admin/listaVagas");
+		List<Vaga> vagas = vagaService.getTodasVagas();
+		mv.addObject("vagas", vagas);
+		return mv;
+	}
+	
+	@GetMapping("/vagas/consultar/{id}")
+	public ModelAndView verVagasEspecifica(@PathVariable("id") String id) {
+		
+		ModelAndView mv = new ModelAndView("vagaNaoEncontrada");
+		
+		Optional<Vaga> vagaConsultada = vagaService.getVagaById(id);
+		
+		if(vagaConsultada.isEmpty())
+			return mv;
+		
+		mv.addObject("vaga", vagaConsultada.get());
+		mv.setViewName("admin/perfilVaga");
+		return mv;
+		
+	}
+	
+	
+	
+	/**
+	 *  So criar estas rotas depois de mexer melhor nos
+	 * models e no banco de dados
+	 */
+	
+	// @GetMapping("/vagas/inscritas")
+	// @GetMapping("/vagas/inscritas/{id}")
+	// @PostMapping("/vagas/inscrever/{id}")
+	// @PostMapping("/vagas/desinscrever/{id}")
 	
 }

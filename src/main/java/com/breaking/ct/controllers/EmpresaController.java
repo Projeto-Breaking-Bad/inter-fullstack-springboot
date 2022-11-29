@@ -128,7 +128,7 @@ public class EmpresaController {
 	}
 	
 	/**
-	 * VAGAS ALUNO
+	 * VAGAS EMPRESA
 	 */
 	@GetMapping("/vagas")
 	public ModelAndView verVagas() {

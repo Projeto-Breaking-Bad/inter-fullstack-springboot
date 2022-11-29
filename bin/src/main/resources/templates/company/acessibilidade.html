@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard</title>
+    <title>Acessibilidade</title>
 
     <!-- Custom fonts for this template-->
     <link rel="shortcut icon" th:href="@{images/frame.ico}" type="image/x-icon">
@@ -40,7 +40,7 @@
                 roda pé [2]</a>
         </li>
         <li class="nav-item">
-            <a class="text-muted nav-link" th:href="@{/s/acessibilidade}">Acessibilidade</a>
+            <a class="text-muted nav-link" th:href="@{/c/acessibilidade}">Acessibilidade</a>
         </li>
         <li class="nav-item">
             <a class="text-muted nav-link" href="javascript:void(0);" id="aumentar">A+</a>
@@ -63,7 +63,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@{/}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -75,7 +75,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" th:href="@{/s}">
+                <a class="nav-link" th:href="@{/c}">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Home</span></a>
             </li>
@@ -84,9 +84,9 @@
                 Pages
             </div>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/s/alunos/consultar/{cpf}(cpf=${aluno.cpf})}">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span>Ver perfil</span>
+                <a class="nav-link" th:href="@{/c/empresas/consultar/{cnpj}(cnpj=${empresa.cnpj})}">
+                    <i class="fas fa-fw fa-building"></i>
+                    <span>Ver lista de empresas</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -159,14 +159,15 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                th:text="${aluno.nome}"></span>
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Equipe de
+                                    Desenvolvimento</span>
                                 <img class="img-profile rounded-circle" th:src="@{images/undraw_profile.svg}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" th:href="@{/s/alunos/consultar/{cpf}(cpf=${aluno.cpf})}">
+                                <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Perfil
                                 </a>
@@ -199,7 +200,72 @@
                 </script>
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Home Aluno</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Acessibilidade</h1>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a class="text-gray-800" th:href="@{/c}">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Acessibilidade</li>
+                            </ol>
+                        </nav>
+                    </div>
+
+                    <div class="single-defination">
+                        <p>Este site foi desenvolvido para que pessoas com deficiência visual, baixa visão,
+                            daltonismo, deficiência auditiva e mobilidade reduzida possam navegar por meio
+                            de recursos como alto contraste, aumento de fonte, teclas de atalho, tradução
+                            para a Língua Brasileira de Sinais e navegação por teclado.</p>
+                        <p>Se for necessário, você também pode usar o zoom nativo do seu navegador,
+                            pressionando as teclas “Ctrl” e “+” para aumentar todo o site e “Ctrl” e “-“
+                            para diminuir. Para voltar ao padrão, pressione “Ctrl” e “0”.</p>
+                        <p>Este site tem melhor acessibilidade quando acessado nas versões mais atualizadas
+                            do seu navegador web. Utilize sempre a versão mais recente de seu software.</p>
+
+                        <h3>Teclas de atalho por navegadores</h3>
+                        <p class="mb-1">Internet Explorer e Google Chrome:</p>
+
+                        <p class="mb-1">“Alt” + “1” - ir para o conteúdo</p>
+                        <p class="mb-1">“Alt” + “2” - ir para o menu</p>
+                        <p class="mb-1">“Alt” + “3” - ir para o rodapé</p>
+                        <p class="mb-1">Firefox:</p>
+
+                        <p class="mb-1">“Alt” + “Shift” + “número”</p>
+                        <p class="mb-1">Opera:</p>
+
+                        <p class="mb-1">“Shift” + “Escape” + “número”</p>
+                        <p class="mb-1">Safari e OmniWeb:</p>
+
+                        <p>“Ctrl” + “número”</p>
+
+                        <h3>Navegação por tabulação</h3>
+                        <p class="mb-1">Use a tecla Tab para navegar por elementos que recebem ação do
+                            usuário no site, tais como links, botões, campos de formulário e outros na ordem
+                            em que eles são apresentados na página, e Shift + Tab para retornar. Use as
+                            setas direcionais para acessar as informações textuais.</p>
+
+                        <p>Sugestões de programas disponíveis para pessoas com deficiência</p>
+                        <p>- Nitrous Voice Flux: controla o computador por voz. Gratuito;</p>
+                        <p>- NVDA: software livre para ler tela – vários idiomas (Windows);</p>
+                        <p>- YeoSoft Text: leitor de tela em inglês e português;</p>
+                        <p>- Jaws for Windows: leitor de tela – vários idiomas;</p>
+                        <p>- Virtual Vision: leitor de telas em português do Brasil;</p>
+                        <p>- DOSVOX: sistema para deficientes visuais (Windows ou Linux).</p>
+                        <p>- Talckback: leitor de tela disponível em smartphones Android.</p>
+                        <p>Observação: leia no manual do leitor de telas sobre a melhor forma de navegação
+                            em páginas web.</p><br>
+
+                        <h3>LIBRAS - Língua Brasileira de Sinais</h3>
+                        <p>Este site é acessível em LIBRAS através do <a href="http://www.vlibras.gov.br/"
+                                target="_blank">VLibras</a>.</p>
+                        <p>-Do lado direito de cada página do site existe o ícone de um Widget informando
+                            que o site é acessível em LIBRAS.</p>
+                        <p>-Para traduzir, basta clicar sobre o ícone e selecionar o texto que deseja
+                            traduzir.</p><br>
+
+                        <h3>Modo Dark</h3>
+                        <p>Conhecido também por "dark mode" ou "modo escuro", o modo noturno é uma opção de configuração
+                            de tela. Geralmente disponível em plugins para navegadores, aplicativos e sistemas
+                            operacionais, o recurso permite à visão um uso confortável de aparelhos eletrônicos,
+                            principalmente, em ambientes de pouca luz.</p>
                     </div>
 
                 </div>
@@ -217,20 +283,6 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Cadastro de Vaga</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">

@@ -9,20 +9,19 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard</title>
+    <title>Lista de Vagas</title>
 
     <!-- Custom fonts for this template-->
     <link rel="shortcut icon" th:href="@{images/frame.ico}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" th:href="@{css/all.min.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/dark-mode.css}">
     <link rel="stylesheet" type="text/css" th:href="@{css/fontaawesome.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/dark-mode.css}">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
     <!-- Custom styles for this template-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" th:href="@{/css/sb-admin-2.min.css}">
@@ -40,7 +39,7 @@
                 roda pé [2]</a>
         </li>
         <li class="nav-item">
-            <a class="text-muted nav-link" th:href="@{/s/acessibilidade}">Acessibilidade</a>
+            <a class="text-muted nav-link" th:href="@{/c/acessibilidade}">Acessibilidade</a>
         </li>
         <li class="nav-item">
             <a class="text-muted nav-link" href="javascript:void(0);" id="aumentar">A+</a>
@@ -63,7 +62,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@{/}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -75,7 +74,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" th:href="@{/s}">
+                <a class="nav-link" th:href="@{/}">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Home</span></a>
             </li>
@@ -84,9 +83,9 @@
                 Pages
             </div>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/s/alunos/consultar/{cpf}(cpf=${aluno.cpf})}">
+                <a class="nav-link" th:href="@{/alunos}">
                     <i class="fas fa-fw fa-user"></i>
-                    <span>Ver perfil</span>
+                    <span>Ver lista de alunos</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -159,14 +158,15 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                th:text="${aluno.nome}"></span>
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Equipe de
+                                    Desenvolvimento</span>
                                 <img class="img-profile rounded-circle" th:src="@{images/undraw_profile.svg}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" th:href="@{/s/alunos/consultar/{cpf}(cpf=${aluno.cpf})}">
+                                <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Perfil
                                 </a>
@@ -199,7 +199,50 @@
                 </script>
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Home Aluno</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Lista de Vagas</h1>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a class="text-gray-800" th:href="@{/c}">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Lista de Vagas</li>
+                            </ol>
+                        </nav>
+                    </div>
+
+                    <div class="panel-body" th:switch="${vagas}">
+                        <h5 th:case="null">Não existem vagas cadastrados!</h5>
+                        <div th:case="*">
+                            <div class="container py-2 h-100">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                    <div class="col col-xl-10">
+                                        <div class="card mb-5" style="border-radius: 15px;" th:each="vaga: ${vagas}">
+                                            <div class="card-body p-4">
+                                                <h3 class="mb-3" th:text="${vaga.areaAtuacao}"></h3>
+                                                <p class="small mb-0"><i class="fas fa-star fa-lg text-warning"></i>
+                                                    <span class="mx-2">|</span> Salário:
+                                                    <strong th:text="${vaga.salario}"></strong></p>
+                                                <p class="small mb-0"><i class="fas fa-star fa-lg text-warning"></i>
+                                                    <span class="mx-2">|</span> Horas:
+                                                    <strong th:text="${vaga.horas}"></strong></p>
+                                                <p class="small mb-0"><i class="fas fa-star fa-lg text-warning"></i>
+                                                    <span class="mx-2">|</span> Salário:
+                                                    <strong th:text="${vaga.quantVagas}"></strong></p>
+                                                <hr class="my-4">
+                                                <div class="d-flex justify-content-start align-items-center">
+                                                    <p class="mb-0 text-uppercase"><i class="fas fa-book ms-4 me-2"></i>
+                                                        <span class="text-muted small">Para mais Informações click no
+                                                            botão abaixo</span>
+                                                    </p>
+                                                </div>
+                                                <div class="d-flex justify-content-end">
+                                                    <a th:href="@{/vagas/{id}(id=${vaga.id})}"><button
+                                                            class="btn btn-primary" type="button">Detalhes</button></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -223,10 +266,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Cadastro de Vaga</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="/logout">Logout</a>
                 </div>
             </div>
         </div>
@@ -253,11 +301,11 @@
         </div>
     </div>
     <!-- Custom scripts for all pages-->
-    <script th:src="@{/js/jquery.min.js}"></script>
-    <script th:src="@{/js/jquery.easing.min.js}"></script>
+    <script th:src="@{js/jquery.min.js}"></script>
+    <script th:src="@{js/jquery.easing.min.js}"></script>
     <!-- <script th:src="@{js/sb-admin-2.js}"></script> -->
-    <script th:src="@{/js/sb-admin-2.min.js}"></script>
-    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{js/sb-admin-2.min.js}"></script>
+    <script th:src="@{js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/js/dark-mode-switch.min.js}"></script>
     <script th:src="@{/js/fonte.js}"></script>
 </body>

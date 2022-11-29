@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Perfil de Admin</title>
-  <link rel="shortcut icon" th:href="@{images/frame.ico}" type="image/x-icon">
+  <title>Perfil Empresa</title>
+  <link rel="shortcut icon" th:href="@{/images/frame.ico}" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   <link rel="stylesheet" type="text/css" th:href="@{css/all.min.css}">
@@ -26,18 +26,6 @@
   <link rel="stylesheet" type="text/css" th:href="@{/css/sb-admin-2.min.css}">
 
 </head>
-<style>
-  .gradient-custom {
-    /* fallback for old browsers */
-    background: #f6d365;
-
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
-
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
-  }
-</style>
 
 <body id="page-top">
   <ul class="nav justify-content-center">
@@ -94,37 +82,25 @@
         Pages
       </div>
       <li class="nav-item">
-        <a class="nav-link" th:href="@{/a/alunos}">
-            <i class="fas fa-fw fa-user"></i>
-            <span>Ver lista de alunos</span>
+        <a class="nav-link" th:href="@{/empresas}">
+          <i class="fas fa-fw fa-building"></i>
+          <span>Ver lista de empresas</span>
         </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" th:href="@{/a/empresas}">
-            <i class="fas fa-fw fa-building"></i>
-            <span>Ver lista de empresas</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/vagas}">
+          <i class="fas fa-fw fa-file"></i>
+          <span>Ver lista de Vaga</span>
         </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" th:href="@{/a/vagas}">
-            <i class="fas fa-fw fa-file"></i>
-            <span>Ver lista de Vaga</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" th:href="@{/a/admins}">
-            <i class="fas fa-fw fa-screwdriver-wrench"></i>
-            <span>Ver lista de Admin</span>
-        </a>
-    </li>
+      </li>
 
-    <li class="nav-item">
-        <a class="nav-link" th:href="@{/acessibilidade}">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Acessibilidade</span>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Acessibilidade</span>
         </a>
-    </li>
-
+      </li>
+      
       <hr class="sidebar-divider">
       <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -182,7 +158,7 @@
                 aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Equipe de
                   Desenvolvimento</span>
-                <img class="img-profile rounded-circle" th:src="@{images/undraw_profile.svg}">
+                <img class="img-profile rounded-circle" th:src="@{/images/undraw_profile.svg}">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -219,51 +195,236 @@
         </script>
         <div class="container-fluid">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Perfil Admin</h1>
+            <h1 class="h3 mb-0 text-gray-800">Perfil Empresa</h1>
             <nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
 							  <li class="breadcrumb-item"><a class="text-gray-800" th:href="@{/a}">Home</a></li>
-							  <li class="breadcrumb-item active" aria-current="page">Perfil Admin</li>
+							  <li class="breadcrumb-item active" aria-current="page">Perfil Empresa</li>
 							</ol>
 						  </nav>
           </div>
         </div>
         <div class="container">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-md-12 col-xl-4">
-
-              <div class="card" style="border-radius: 15px;">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card mb-4">
                 <div class="card-body text-center">
-                  <div class="mt-3 mb-4">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                      class="rounded-circle img-fluid" style="width: 100px;" />
-                  </div>
-                  <h4 class="mb-2" th:text="${admin.nome}"></h4>
-                  <p class="text-muted mb-4" th:text="${admin.instituicao}"><span class="mx-2">|</span> <a
-                      href="#!">mdbootstrap.com</a></p>
-                  <div class="mb-4 pb-2">
-                    <button type="button" class="btn btn-outline-primary btn-floating">
-                      <i class="fab fa-facebook-f fa-lg"></i>
-                    </button>
-                    <button type="button" class="btn btn-outline-primary btn-floating">
-                      <i class="fab fa-twitter fa-lg"></i>
-                    </button>
-                    <button type="button" class="btn btn-outline-primary btn-floating">
-                      <i class="fab fa-skype fa-lg"></i>
-                    </button>
-                  </div>
+                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                    class="rounded-circle img-fluid" style="width: 150px;">
+                  <h5 class="my-3" th:text="${empresa.nome}"></h5>
                   <div class="d-flex justify-content-center mb-2">
-                    <a th:href="@{/a/admins/atualizar/{login}(login=${admin.login})}"><button type="button"
+                    <a th:href="@{/a/empresas/atualizar/{cnpj}(cnpj=${empresa.cnpj})}"><button type="button"
                         class="btn btn-primary">Editar</button></a>
                     <a data-toggle="modal" data-target="#logoutModal"><button type="button"
                         class="btn btn-outline-danger ms-1">Excluir</button></a>
                   </div>
                 </div>
               </div>
-
+              <div class="card mb-4 mb-lg-4">
+                <div class="card-body">
+                  <h5 class="card-title">Descrição</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Descrição da Empresa</h6>
+                  <p class="card-text" th:text="${empresa.descricao}"></p>
+                </div>
+              </div>
+              <div class="card mb-4 mb-md-0">
+                <div class="card-body">
+                  <p class="mb-4"><span class="text-primary font-italic me-1">Status</span> Projeto Desenvolvidos
+                  </p>
+                  <p class="mb-1" style="font-size: .77rem;">Web Design</p>
+                  <div class="progress rounded" style="height: 5px;">
+                    <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0"
+                      aria-valuemax="100"></div>
+                  </div>
+                  <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
+                  <div class="progress rounded" style="height: 5px;">
+                    <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0"
+                      aria-valuemax="100"></div>
+                  </div>
+                  <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
+                  <div class="progress rounded" style="height: 5px;">
+                    <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0"
+                      aria-valuemax="100"></div>
+                  </div>
+                  <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
+                  <div class="progress rounded" style="height: 5px;">
+                    <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0"
+                      aria-valuemax="100"></div>
+                  </div>
+                  <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
+                  <div class="progress rounded mb-2" style="height: 5px;">
+                    <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0"
+                      aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Nome de usuário</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0" th:text="${empresa.nome}"></p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">CNPJ</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0" th:text="${empresa.cnpj}"></p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Data de Criação</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0" th:text="${empresa.dataCriacao}"></p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Área de Negócio</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0" th:text="${empresa.areaNegocio}"></p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Cep</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0" th:text="${empresa.cep}"></p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Bairro</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0" th:text="${empresa.bairro}"></p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Cidade</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0" th:text="${empresa.cidade}"></p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Logradouro</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0" th:text="${empresa.logradouro}"></p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Número</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0" th:text="${empresa.numero}"></p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Complemento</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0" th:text="${empresa.complemento}"></p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">UF</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0" th:text="${empresa.uf}"></p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Email da Empresa</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0" th:text="${empresa.email}"></p>
+                    </div>
+                  </div>
+                  <!-- <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Senha</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0" th:text="${empresa.senha}"></p>
+                    </div>
+                  </div> -->
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Telefone</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0" th:text="${empresa.telefone}"></p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Celular</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0" th:text="${empresa.whatsapp}"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card mb-4 mb-md-0">
+                    <div class="card-body">
+                      <p class="mb-4"><span class="text-primary font-italic me-1">Projeto Desenvolvidos</span>
+                      </p>
+                      <div class="d-flex justify-content-between align-items-center mb-4">
+                        <p class="lead fw-normal mb-0">Fotos recentes</p>
+                      </div>
+                      <div class="row g-2">
+                        <div class="col mb-2">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
+                            alt="image 1" class="w-100 rounded-3">
+                        </div>
+                        <div class="col mb-2">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
+                            alt="image 1" class="w-100 rounded-3">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
       <footer class="sticky-footer bg-white" id="rodape">
         <div class="container my-auto">
@@ -288,8 +449,7 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Selecione "Logout" abaixo se estiver pronto para encerrar sua sessão atual.
-        </div>
+        <div class="modal-body">Selecione "Logout" abaixo se estiver pronto para encerrar sua sessão atual.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
           <a class="btn btn-primary" th:href="@{/logout}">Logout</a>
@@ -297,7 +457,7 @@
       </div>
     </div>
   </div>
-  <!-- Logout Delete-->
+  <!-- Delete modal -->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -311,14 +471,13 @@
         <div class="modal-body">Esse item será apagado imediatamente. Voçê não poderá desfazer essa ação.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <form method="POST" action="#" th:action="@{/a/admins/deletar/{login}(login=${admin.login})}">
+          <form method="POST" th:action="@{/a/empresas/deletar/{cnpj}(cnpj=${empresa.cnpj})}">
             <button type="submit" class="btn btn-outline-danger ms-1">Excluir</button>
           </form>
         </div>
       </div>
     </div>
   </div>
-
   <script th:src="@{/js/jquery.min.js}"></script>
   <script th:src="@{/js/jquery.easing.min.js}"></script>
   <!-- <script th:src="@{js/sb-admin-2.js}"></script> -->

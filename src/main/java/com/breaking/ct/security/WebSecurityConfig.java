@@ -27,18 +27,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/js/**").permitAll()
 			
 			// Autorizacoes velhas
-			.antMatchers("/alunos/cadastrar").permitAll()
-			.antMatchers("/alunos/**").hasAnyAuthority("ALUNO", "ADMIN")
-			.antMatchers("/empresas/cadastrar").permitAll()
-			.antMatchers("/empresas/**").hasAnyAuthority("EMPRESA", "ADMIN")
-			.antMatchers("/admins/**").hasAnyAuthority("ADMIN")
-			.antMatchers("/vagas/cadastrar").hasAnyAuthority("EMPRESA", "ADMIN")
+//			.antMatchers("/alunos/cadastrar").permitAll()
+//			.antMatchers("/alunos/**").hasAnyAuthority("ALUNO", "ADMIN")
+//			.antMatchers("/empresas/cadastrar").permitAll()
+//			.antMatchers("/empresas/**").hasAnyAuthority("EMPRESA", "ADMIN")
+//			.antMatchers("/admins/**").hasAnyAuthority("ADMIN")
+//			.antMatchers("/vagas/cadastrar").hasAnyAuthority("EMPRESA", "ADMIN")
 			// Autorizacoes velhas
 			
 			// Autorizacoes novas
-			.antMatchers("/a/**").hasAnyAuthority("ADMIN")
-			.antMatchers("/s/**").hasAnyAuthority("ADMIN","ALUNO")
-			.antMatchers("/c/**").hasAnyAuthority("ADMIN","EMPRESA")
+//			.antMatchers("/a/**").hasAnyAuthority("ADMIN")
+//			.antMatchers("/s/**").hasAnyAuthority("ADMIN","ALUNO")
+//			.antMatchers("/c/**").hasAnyAuthority("ADMIN","EMPRESA")
 			.antMatchers("/cadastro/**").permitAll()
 			// Autorizacoes novas
 			
