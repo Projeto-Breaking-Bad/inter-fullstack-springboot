@@ -29,30 +29,32 @@
 </head>
 
 <body id="page-top">
-    <ul class="nav justify-content-center">
-        <li class="nav-item">
-          <a class="text-muted nav-link active" aria-current="page" href="#page-top" accesskey="1" title="Ir diretamente para o menu Principal">Ir para o menu Principal [1]</a>
-        </li>
-        <li class="nav-item">
-          <a class="text-muted nav-link" href="#rodape" accesskey="2" title="Ir diretamente para o rodapé">Ir para o roda pé [2]</a>
-        </li>
-        <li class="nav-item">
-            <a class="text-muted nav-link" th:href="@{/s/acessibilidade}">Acessibilidade</a>
-        </li>
-        <li class="nav-item">
-            <a class="text-muted nav-link" href="javascript:void(0);" id="aumentar">A+</a>
-        </li>
-        <li class="nav-item">
-            <a class="text-muted nav-link" href="javascript:void(0);" id="diminuir">A-</a>
-        </li>
-        <li class="nav-item">
-            <div class="form-check form-switch" style="padding: 0.5rem;padding-left: 3.65rem;">
-                <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
-                <label class="form-check-label" for="darkSwitch">🌞 Modo Dark 🌚</label>
-            </div>
-            <script th:src="@{/js/dark-mode-switch.min.js}"></script>
-        </li>
-      </ul>
+	<ul class="nav justify-content-center">
+		<li class="nav-item">
+			<a class="text-muted nav-link active" aria-current="page" href="#page-top" accesskey="1"
+				title="Ir diretamente para o menu Principal">Ir para o menu Principal [1]</a>
+		</li>
+		<li class="nav-item">
+			<a class="text-muted nav-link" href="#rodape" accesskey="2" title="Ir diretamente para o rodapé">Ir para o
+				roda pé [2]</a>
+		</li>
+		<li class="nav-item">
+			<a class="text-muted nav-link" th:href="@{/s/acessibilidade}">Acessibilidade</a>
+		</li>
+		<li class="nav-item">
+			<a class="text-muted nav-link" href="javascript:void(0);" id="aumentar">A+</a>
+		</li>
+		<li class="nav-item">
+			<a class="text-muted nav-link" href="javascript:void(0);" id="diminuir">A-</a>
+		</li>
+		<li class="nav-item">
+			<div class="form-check form-switch" style="padding: 0.5rem;padding-left: 3.65rem;">
+				<input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
+				<label class="form-check-label" for="darkSwitch">🌞 Modo Dark 🌚</label>
+			</div>
+			<script th:src="@{/js/dark-mode-switch.min.js}"></script>
+		</li>
+	</ul>
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 
@@ -72,37 +74,38 @@
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active">
-				<a class="nav-link" th:href="@{/s}">
-					<i class="fas fa-fw fa-home"></i>
-					<span>Home</span></a>
-			</li>
-			<hr class="sidebar-divider">
-			<div class="sidebar-heading">
-				Pages
-			</div>
-			<li class="nav-item">
-				<a class="nav-link" th:href="@{/s/alunos/consultar/{cpf}(cpf=${aluno.cpf})}">
-					<i class="fas fa-fw fa-user"></i>
-					<span>Ver perfil</span>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" th:href="@{/vagas}">
-					<i class="fas fa-fw fa-file"></i>
-					<span>Ver lista de Vaga</span>
-				</a>
-			</li>
+                <a class="nav-link" th:href="@{/s}">
+                    <i class="fas fa-fw fa-home"></i>
+                    <span>Home</span></a>
+            </li>
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+                Pages
+            </div>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/s/alunos/consultar/{cpf}(cpf=${alunoLogado.cpf})}">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Ver perfil</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/s/vagas}">
+                    <i class="fas fa-fw fa-file"></i>
+                    <span>Ver lista de Vaga</span>
+                </a>
+            </li>
 
-			<li class="nav-item">
-				<a class="nav-link" th:href="@{/acessibilidade}">
-					<i class="fas fa-fw fa-table"></i>
-					<span>Acessibilidade</span>
-				</a>
-			</li>
-			<hr class="sidebar-divider">
-			<div class="text-center d-none d-md-inline">
-				<button class="rounded-circle border-0" id="sidebarToggle"></button>
-			</div>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/s/acessibilidade}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Acessibilidade</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider">
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
 		</ul>
 		<div id="content-wrapper" class="d-flex flex-column">
 			<div id="content">
@@ -199,10 +202,10 @@
 						<h1 class="h3 mb-0 text-gray-800">Perfil Aluno</h1>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
-							  <li class="breadcrumb-item"><a class="text-gray-800" th:href="@{/s}">Home</a></li>
-							  <li class="breadcrumb-item active" aria-current="page">Perfil Aluno</li>
+								<li class="breadcrumb-item"><a class="text-gray-800" th:href="@{/s}">Home</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Perfil Aluno</li>
 							</ol>
-						  </nav>
+						</nav>
 					</div>
 				</div>
 				<div class="container">
@@ -214,8 +217,8 @@
 										alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
 									<h5 class="text-muted my-3" th:text="${aluno.nome}"></h5>
 									<div class="d-flex justify-content-center mb-2">
-										<a th:href="@{/s/alunos/atualizar/{cpf}(cpf=${aluno.cpf})}"><button type="button"
-												class="btn btn-primary">Editar</button></a>
+										<a th:href="@{/s/alunos/atualizar/{cpf}(cpf=${aluno.cpf})}"><button
+												type="button" class="btn btn-primary">Editar</button></a>
 										<a data-toggle="modal" data-target="#logoutModal"><button type="button"
 												class="btn btn-outline-danger ms-1">Excluir</button></a>
 									</div>
@@ -230,7 +233,8 @@
 							</div>
 							<div class="card mb-4 mb-md-0">
 								<div class="card-body">
-									<p class="text-muted mb-4"><span class="text-primary font-italic me-1">Status</span> Projeto
+									<p class="text-muted mb-4"><span class="text-primary font-italic me-1">Status</span>
+										Projeto
 										Desenvolvidos
 									</p>
 									<p class="text-muted mb-1" style="font-size: .77rem;">Web Design</p>
@@ -455,26 +459,27 @@
 			</div>
 		</div>
 	</div>
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="text-muted modal-title" id="exampleModalLabel">Pronto para partir?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="text-muted modal-body">Selecione "Logout" abaixo se estiver pronto para encerrar sua sessão atual.
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" th:href="@{/logout}">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+	<!-- Logout Modal-->
+	<div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="text-muted modal-title" id="exampleModalLabel">Pronto para partir?</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="text-muted modal-body">Selecione "Logout" abaixo se estiver pronto para encerrar sua sessão
+					atual.
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+					<a class="btn btn-primary" th:href="@{/logout}">Logout</a>
+				</div>
+			</div>
+		</div>
+	</div>
 	<script th:src="@{/js/jquery.min.js}"></script>
 	<script th:src="@{/js/jquery.easing.min.js}"></script>
 	<!-- <script th:src="@{js/sb-admin-2.js}"></script> -->

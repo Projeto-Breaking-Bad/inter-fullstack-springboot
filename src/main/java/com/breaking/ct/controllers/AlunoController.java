@@ -29,9 +29,9 @@ public class AlunoController {
 	@GetMapping 
 	public ModelAndView homeAluno() {
 		ModelAndView mv = new ModelAndView("student/homeAluno");
-		Aluno aluno = alunoService.getLogged();
-		aluno.setSenha("");
-		mv.addObject("aluno", aluno);
+		Aluno alunoLogado = alunoService.getLogged();
+		alunoLogado.setSenha("");
+		mv.addObject("alunoLogado", alunoLogado);
 		return mv;
 	}
 	
@@ -124,6 +124,9 @@ public class AlunoController {
 	@GetMapping("/acessibilidade")
 	public ModelAndView acessibilidade() {
 		ModelAndView mv = new ModelAndView("student/acessibilidade");
+		Aluno alunoLogado = alunoService.getLogged();
+		alunoLogado.setSenha("");
+		mv.addObject("alunoLogado", alunoLogado);
 		return mv;
 	}
 	

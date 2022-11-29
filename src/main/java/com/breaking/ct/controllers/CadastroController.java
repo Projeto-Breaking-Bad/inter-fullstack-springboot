@@ -40,7 +40,7 @@ public class CadastroController {
 		
 		if(teste1.isEmpty() && teste2.isEmpty()) {
 			alunoService.addAluno(aluno);
-			mv.setViewName("redirect:/s/alunos/consultar/" + aluno.getCpf());
+			mv.setViewName("redirect:/login");
 		} else {
 			// TODO Adicionar mensagem dizendo "email/cpf ja cadastrado(s)"
 			// Front e back

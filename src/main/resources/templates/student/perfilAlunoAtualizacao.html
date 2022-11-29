@@ -72,37 +72,38 @@
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active">
-				<a class="nav-link" th:href="@{/s}">
-					<i class="fas fa-fw fa-home"></i>
-					<span>Home</span></a>
-			</li>
-			<hr class="sidebar-divider">
-			<div class="sidebar-heading">
-				Pages
-			</div>
-			<li class="nav-item">
-				<a class="nav-link" th:href="@{/s/alunos/consultar/{cpf}(cpf=${aluno.cpf})}">
-					<i class="fas fa-fw fa-user"></i>
-					<span>Ver perfil</span>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" th:href="@{/vagas}">
-					<i class="fas fa-fw fa-file"></i>
-					<span>Ver lista de Vaga</span>
-				</a>
-			</li>
+                <a class="nav-link" th:href="@{/s}">
+                    <i class="fas fa-fw fa-home"></i>
+                    <span>Home</span></a>
+            </li>
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+                Pages
+            </div>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/s/alunos/consultar/{cpf}(cpf=${alunoLogado.cpf})}">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Ver perfil</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/s/vagas}">
+                    <i class="fas fa-fw fa-file"></i>
+                    <span>Ver lista de Vaga</span>
+                </a>
+            </li>
 
-			<li class="nav-item">
-				<a class="nav-link" th:href="@{/acessibilidade}">
-					<i class="fas fa-fw fa-table"></i>
-					<span>Acessibilidade</span>
-				</a>
-			</li>
-			<hr class="sidebar-divider">
-			<div class="text-center d-none d-md-inline">
-				<button class="rounded-circle border-0" id="sidebarToggle"></button>
-			</div>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/s/acessibilidade}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Acessibilidade</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider">
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
 		</ul>
 		<div id="content-wrapper" class="d-flex flex-column">
 			<div id="content">
