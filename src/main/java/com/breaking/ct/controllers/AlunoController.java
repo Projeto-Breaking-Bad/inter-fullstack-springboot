@@ -49,7 +49,11 @@ public class AlunoController {
 		aluno.setSenha("");
 		mv.addObject("aluno", aluno);
 		
-		if(alunoService.getLogged().getCpf().equals(cpf))
+		Aluno alunoLogado = alunoService.getLogged();
+		alunoLogado.setSenha("");
+		mv.addObject("alunoLogado", alunoLogado);
+		
+		if(alunoLogado.getCpf().equals(cpf))
 			mv.setViewName("student/perfilAlunoEdicao");
 		else
 			mv.setViewName("student/perfilAlunoConsulta");
@@ -69,6 +73,10 @@ public class AlunoController {
 		
 		Aluno aluno = alunoConsultado.get();
 		aluno.setSenha("");
+		
+		Aluno alunoLogado = alunoService.getLogged();
+		alunoLogado.setSenha("");
+		mv.addObject("alunoLogado", alunoLogado);
 		
 		if(alunoService.getLogged().getCpf().equals(cpf)) {
 			mv.addObject("aluno", aluno);
@@ -135,9 +143,15 @@ public class AlunoController {
 	 */
 	@GetMapping("/vagas")
 	public ModelAndView verVagas() {
+		
 		ModelAndView mv = new ModelAndView("student/listaVagas");
 		List<Vaga> vagas = vagaService.getTodasVagas();
 		mv.addObject("vagas", vagas);
+		
+		Aluno alunoLogado = alunoService.getLogged();
+		alunoLogado.setSenha("");
+		mv.addObject("alunoLogado", alunoLogado);
+		
 		return mv;
 	}
 	
@@ -150,6 +164,10 @@ public class AlunoController {
 		
 		if(vagaConsultada.isEmpty())
 			return mv;
+		
+		Aluno alunoLogado = alunoService.getLogged();
+		alunoLogado.setSenha("");
+		mv.addObject("alunoLogado", alunoLogado);
 		
 		mv.addObject("vaga", vagaConsultada.get());
 		mv.setViewName("student/perfilVaga");

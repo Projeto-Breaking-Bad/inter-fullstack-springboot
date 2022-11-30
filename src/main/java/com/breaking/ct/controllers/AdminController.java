@@ -23,7 +23,7 @@ import com.breaking.ct.services.VagaService;
 
 @RestController
 @RequestMapping("/a")
-public class AdminControllerNovo {
+public class AdminController {
 	
 	@Autowired
 	private AlunoService alunoService;
@@ -39,7 +39,20 @@ public class AdminControllerNovo {
 	
 	@GetMapping
 	public ModelAndView homeAdmin() {
-		return new ModelAndView("admin/homeAdmin");
+		ModelAndView mv = new ModelAndView("admin/homeAdmin");
+		Admin adminLogado = adminService.getLogged();
+		adminLogado.setSenha("");
+		mv.addObject("adminLogado", adminLogado);
+		return mv;
+	}
+	
+	@GetMapping("/acessibilidade")
+	public ModelAndView acessibilidade() {
+		ModelAndView mv = new ModelAndView("admin/acessibilidade");
+		Admin adminLogado = adminService.getLogged();
+		adminLogado.setSenha("");
+		mv.addObject("adminLogado", adminLogado);
+		return mv;
 	}
 	
 	/**
@@ -50,6 +63,11 @@ public class AdminControllerNovo {
 		ModelAndView mv = new ModelAndView("admin/listaAlunos");
 		List<Aluno> alunos = alunoService.getTodosAlunos();
 		mv.addObject("alunos", alunos);
+		
+		Admin adminLogado = adminService.getLogged();
+		adminLogado.setSenha("");
+		mv.addObject("adminLogado", adminLogado);
+		
 		return mv;
 	}
 	
@@ -62,10 +80,15 @@ public class AdminControllerNovo {
 		
 		if(alunoConsultado.isEmpty())
 			return mv;
+
+		Admin adminLogado = adminService.getLogged();
+		adminLogado.setSenha("");
+		mv.addObject("adminLogado", adminLogado);
 		
 		Aluno aluno = alunoConsultado.get();
 		aluno.setSenha("");
 		mv.addObject("aluno", aluno);
+		
 		mv.setViewName("admin/perfilAlunoEdicao");
 		
 		return mv;
@@ -80,11 +103,15 @@ public class AdminControllerNovo {
 		
 		if(alunoConsultado.isEmpty())
 			return mv;
+
+		Admin adminLogado = adminService.getLogged();
+		adminLogado.setSenha("");
+		mv.addObject("adminLogado", adminLogado);
 		
 		Aluno aluno = alunoConsultado.get();
 		aluno.setSenha("");
-		
 		mv.addObject("aluno", aluno);
+		
 		mv.setViewName("admin/perfilAlunoAtualizacao");
 		
 		return mv;
@@ -136,6 +163,11 @@ public class AdminControllerNovo {
 		ModelAndView mv = new ModelAndView("admin/listaEmpresas");
 		List<Empresa> empresas = empresaService.getTodosEmpresas();
 		mv.addObject("empresas", empresas);
+
+		Admin adminLogado = adminService.getLogged();
+		adminLogado.setSenha("");
+		mv.addObject("adminLogado", adminLogado);
+		
 		return mv;
 	}
 	
@@ -148,6 +180,10 @@ public class AdminControllerNovo {
 		
 		if(empresaConsultada.isEmpty())
 			return mv;
+
+		Admin adminLogado = adminService.getLogged();
+		adminLogado.setSenha("");
+		mv.addObject("adminLogado", adminLogado);
 		
 		Empresa empresa = empresaConsultada.get();
 		empresa.setSenha("");
@@ -166,6 +202,10 @@ public class AdminControllerNovo {
 		
 		if(empresaConsultada.isEmpty())
 			return mv;
+
+		Admin adminLogado = adminService.getLogged();
+		adminLogado.setSenha("");
+		mv.addObject("adminLogado", adminLogado);
 		
 		Empresa empresa = empresaConsultada.get();
 		empresa.setSenha("");
@@ -217,21 +257,39 @@ public class AdminControllerNovo {
 	/**
 	 * CRUD ADMIN
 	 */
+	@GetMapping("/admins")
+	public ModelAndView getTodosAdmin() {
+		ModelAndView mv = new ModelAndView("admin/listaAdmins");
+		List<Admin> admins = adminService.getTodosAdmins();
+		mv.addObject("admins", admins);
+
+		Admin adminLogado = adminService.getLogged();
+		adminLogado.setSenha("");
+		mv.addObject("adminLogado", adminLogado);
+		
+		return mv;
+	}
+	
 	@GetMapping("/admins/cadastro")
 	public ModelAndView formularioCadastroAdmin() {
 		ModelAndView mv = new ModelAndView("admin/cadastroAdmin");
+
+		Admin adminLogado = adminService.getLogged();
+		adminLogado.setSenha("");
+		mv.addObject("adminLogado", adminLogado);
+		
 		return mv;
 	}
 
     @PostMapping("/admins/cadastro")
 	public ModelAndView novoAdmin(Admin admin) {
-		Optional<Admin> teste = adminService.getAdminByLogin(admin.getLogin());
-		if(teste.isEmpty()) {
+		Optional<Admin> teste1 = adminService.getAdminByLogin(admin.getLogin());
+		Optional<Admin> teste2 = adminService.getAdminByEmail(admin.getEmail());
+		
+		if(teste1.isEmpty() && teste2.isEmpty()) 
 			adminService.addAdmin(admin);
-			return new ModelAndView("redirect:/admins/" + admin.getLogin());
-		} else {
-			return new ModelAndView("login");
-		}
+		
+		return new ModelAndView("redirect:/a/admins/consultar/" + admin.getLogin());
 	}
     
 	@GetMapping("/admins/consultar/{login}")
@@ -243,6 +301,10 @@ public class AdminControllerNovo {
 		
 		if(adminConsultado.isEmpty())
 			return mv;
+
+		Admin adminLogado = adminService.getLogged();
+		adminLogado.setSenha("");
+		mv.addObject("adminLogado", adminLogado);
 		
 		Admin admin = adminConsultado.get();
 		admin.setSenha("");
@@ -265,6 +327,10 @@ public class AdminControllerNovo {
 		
 		if(adminConsultado.isEmpty())
 			return mv;
+
+		Admin adminLogado = adminService.getLogged();
+		adminLogado.setSenha("");
+		mv.addObject("adminLogado", adminLogado);
 		
 		Admin admin = adminConsultado.get();
 		admin.setSenha("");
@@ -329,6 +395,11 @@ public class AdminControllerNovo {
 		ModelAndView mv = new ModelAndView("admin/listaVagas");
 		List<Vaga> vagas = vagaService.getTodasVagas();
 		mv.addObject("vagas", vagas);
+
+		Admin adminLogado = adminService.getLogged();
+		adminLogado.setSenha("");
+		mv.addObject("adminLogado", adminLogado);
+		
 		return mv;
 	}
 	
@@ -341,6 +412,10 @@ public class AdminControllerNovo {
 		
 		if(vagaConsultada.isEmpty())
 			return mv;
+
+		Admin adminLogado = adminService.getLogged();
+		adminLogado.setSenha("");
+		mv.addObject("adminLogado", adminLogado);
 		
 		mv.addObject("vaga", vagaConsultada.get());
 		mv.setViewName("admin/perfilVaga");
@@ -348,7 +423,34 @@ public class AdminControllerNovo {
 		
 	}
 	
+	@GetMapping("/vagas/atualizar/{id}")
+	public ModelAndView formularioAtualizacaoVaga(@PathVariable("id") String id) {
+		ModelAndView mv = new ModelAndView("errors/vagaNaoEncontrada");
+		Optional<Vaga> vaga = vagaService.getVagaById(id);
+		
+		if(vaga.isEmpty())
+			return mv;
+		
+		Admin adminLogado = adminService.getLogged();
+		adminLogado.setSenha("");
+		mv.addObject("adminLogado", adminLogado);
+		
+		mv.setViewName("admin/perfilVagaAtualizacao");
+		mv.addObject("vaga", vaga.get());
+		return mv;
+	}
 	
+	@PostMapping("/vagas/atualizar/{id}")
+	public ModelAndView atualizaVaga(Vaga vaga) {
+		vagaService.updateVaga(vaga);
+		return new ModelAndView("redirect:/a/vagas/consultar/" + vaga.getId());
+	}
+	
+	@PostMapping("/vagas/deletar/{id}")
+	public ModelAndView deletarVaga(@PathVariable("id") String id) {
+		vagaService.deleteVaga(id);
+		return new ModelAndView("redirect:/a/vagas");
+	}
 	
 	/**
 	 *  So criar estas rotas depois de mexer melhor nos

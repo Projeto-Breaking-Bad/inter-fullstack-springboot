@@ -29,9 +29,9 @@ public class EmpresaController {
 	@GetMapping
 	public ModelAndView homeEmpresa() {
 		ModelAndView mv = new ModelAndView("company/homeEmpresa");
-		Empresa empresa = empresaService.getLogged();
-		empresa.setSenha("");
-		mv.addObject("empresa", empresa);
+		Empresa empresaLogada = empresaService.getLogged();
+		empresaLogada.setSenha("");
+		mv.addObject("empresaLogada", empresaLogada);
 		return mv;
 	}
 	
@@ -48,6 +48,10 @@ public class EmpresaController {
 		Empresa empresa = empresaConsultada.get();
 		empresa.setSenha("");
 		mv.addObject("empresa", empresa);
+
+		Empresa empresaLogada = empresaService.getLogged();
+		empresaLogada.setSenha("");
+		mv.addObject("empresaLogada", empresaLogada);
 		
 		if(empresaService.getLogged().getCnpj().equals(cnpj))
 			mv.setViewName("company/perfilEmpresaEdicao");
@@ -69,6 +73,10 @@ public class EmpresaController {
 		
 		Empresa empresa = empresaConsultada.get();
 		empresa.setSenha("");
+
+		Empresa empresaLogada = empresaService.getLogged();
+		empresaLogada.setSenha("");
+		mv.addObject("empresaLogada", empresaLogada);
 		
 		if(empresaService.getLogged().getCnpj().equals(cnpj)) {
 			mv.addObject("empresa", empresa);
@@ -124,6 +132,9 @@ public class EmpresaController {
 	@GetMapping("/acessibilidade")
 	public ModelAndView acessibilidade() {
 		ModelAndView mv = new ModelAndView("company/acessibilidade");
+		Empresa empresaLogada = empresaService.getLogged();
+		empresaLogada.setSenha("");
+		mv.addObject("empresaLogada", empresaLogada);
 		return mv;
 	}
 	
@@ -132,10 +143,31 @@ public class EmpresaController {
 	 */
 	@GetMapping("/vagas")
 	public ModelAndView verVagas() {
+		
 		ModelAndView mv = new ModelAndView("company/listaVagas");
 		List<Vaga> vagas = vagaService.getTodasVagas();
 		mv.addObject("vagas", vagas);
+		
+		Empresa empresaLogada = empresaService.getLogged();
+		empresaLogada.setSenha("");
+		mv.addObject("empresaLogada", empresaLogada);
+		
 		return mv;
+	}
+	
+	@GetMapping("/vagas/cadastro")
+	public ModelAndView formularioCadastroVaga() {
+		ModelAndView mv = new ModelAndView("company/cadastroVaga");
+		Empresa empresaLogada = empresaService.getLogged();
+		empresaLogada.setSenha("");
+		mv.addObject("empresaLogada", empresaLogada);
+		return mv;
+	}
+	
+	@PostMapping("/vagas/cadastro")
+	public ModelAndView novoVaga(Vaga vaga) {
+		vagaService.addVaga(vaga);
+		return new ModelAndView("redirect:/c/vagas/consultar/" + vaga.getId());
 	}
 	
 	@GetMapping("/vagas/consultar/{id}")
@@ -147,6 +179,10 @@ public class EmpresaController {
 		
 		if(vagaConsultada.isEmpty())
 			return mv;
+
+		Empresa empresaLogada = empresaService.getLogged();
+		empresaLogada.setSenha("");
+		mv.addObject("empresaLogada", empresaLogada);
 		
 		mv.addObject("vaga", vagaConsultada.get());
 		mv.setViewName("company/perfilVaga");
@@ -154,7 +190,33 @@ public class EmpresaController {
 		
 	}
 	
+	@GetMapping("/vagas/atualizar/{id}")
+	public ModelAndView formularioAtualizacaoVaga(@PathVariable("id") String id) {
+		ModelAndView mv = new ModelAndView("company/perfilVagaAtualizacao");
+		
+		Optional<Vaga> vaga = vagaService.getVagaById(id);
+		if(vaga.isEmpty())
+			return new ModelAndView("vagaNaoEncontrada");
+		
+		Empresa empresaLogada = empresaService.getLogged();
+		empresaLogada.setSenha("");
+		mv.addObject("empresaLogada", empresaLogada);
+		
+		mv.addObject("vaga", vaga.get());
+		return mv;
+	}
 	
+	@PostMapping("/vagas/atualizar/{id}")
+	public ModelAndView atualizaVaga(@PathVariable("id") String id, Vaga vaga) {
+		vagaService.updateVaga(vaga);
+		return new ModelAndView("redirect:/c/vagas/consultar/" + vaga.getId());
+	}
+	
+	@PostMapping("/vagas/deletar/{id}")
+	public ModelAndView deletarVaga(@PathVariable("id") String id) {
+		vagaService.deleteVaga(id);
+		return new ModelAndView("redirect:/c/vagas");
+	}
 	
 	/**
 	 *  So criar estas rotas depois de mexer melhor nos

@@ -7,13 +7,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
+	
 	<title>Perfil de Vaga</title>
-	<link rel="shortcut icon" th:href="@{images/frame.ico}" type="image/x-icon">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-	<link rel="stylesheet" type="text/css" th:href="@{css/all.min.css}">
-	<link rel="stylesheet" type="text/css" th:href="@{css/dark-mode.css}">
-	<link rel="stylesheet" type="text/css" th:href="@{css/fontaawesome.min.css}">
+	
+    <!-- Custom fonts for this template-->
+    <link rel="shortcut icon" th:href="@{/images/frame.ico}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/all.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/dark-mode.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fontawesome.min.css}">
 	<link
 		href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 		rel="stylesheet">
@@ -49,7 +52,7 @@
 		<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 			<!-- Sidebar - Brand -->
-			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-laugh-wink"></i>
 				</div>
@@ -65,10 +68,6 @@
                     <i class="fas fa-fw fa-home"></i>
                     <span>Home</span></a>
             </li>
-            <hr class="sidebar-divider">
-            <div class="sidebar-heading">
-                Pages
-            </div>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/s/alunos/consultar/{cpf}(cpf=${alunoLogado.cpf})}">
                     <i class="fas fa-fw fa-user"></i>
@@ -81,14 +80,12 @@
                     <span>Ver lista de Vaga</span>
                 </a>
             </li>
-
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/s/acessibilidade}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Acessibilidade</span>
                 </a>
             </li>
-
             <hr class="sidebar-divider">
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -144,34 +141,33 @@
 
 						<!-- Nav Item - User Information -->
 						<li class="nav-item dropdown no-arrow">
-							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small">Equipe de
-									Desenvolvimento</span>
-								<img class="img-profile rounded-circle" th:src="@{/images/undraw_profile.svg}">
-							</a>
-							<!-- Dropdown - User Information -->
-							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-								aria-labelledby="userDropdown">
-								<a class="dropdown-item" href="#">
-									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-									Perfil
-								</a>
-								<a class="dropdown-item" href="#">
-									<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-									Definições
-								</a>
-								<a class="dropdown-item" href="#">
-									<i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-									Registro de atividade
-								</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" data-toggle="modal" data-target="#logoutModal2">
-									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-									Logout
-								</a>
-							</div>
-						</li>
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" th:text="${alunoLogado.nome}"></span>
+                                <img class="img-profile rounded-circle" th:src="@{/images/undraw_profile.svg}">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" th:href="@{/s/alunos/consultar/{cpf}(cpf=${alunoLogado.cpf})}">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Perfil
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Definições (desativado)
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Registro de atividade (desativado)
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal2">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
 					</ul>
 				</nav>
 				<div vw class="enabled">
@@ -198,15 +194,8 @@
 										style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
 										<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp"
 											alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-										<h5>Web Company</h5>
+										<h5>Empresa Web</h5>
 										<p th:text="${vaga.areaAtuacao}"></p>
-										<i class="far fa-edit mb-5"></i>
-										<div class="d-flex justify-content-center mb-2">
-											<a th:href="@{/vagas/atualizar/{id}(id=${vaga.id})}"><button type="button"
-													class="btn btn-light">Editar</button></a>
-											<a data-toggle="modal" data-target="#logoutModal"><button type="button"
-													class="btn btn-outline-light ms-1">Excluir</button></a>
-										</div>
 									</div>
 									<div class="col-md-8">
 										<div class="card-body p-4">
@@ -285,34 +274,15 @@
 			</div>
 		</div>
 	</div>
-	<!-- Logout Delete-->
-	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-		aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Tem certeza de que deseja apagar esse item
-						selecionado</h5>
-					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-				</div>
-				<div class="modal-body">Esse item será apagado imediatamente. Voçê não poderá desfazer essa ação.</div>
-				<div class="modal-footer">
-					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-					<form method="POST" action="#" th:action="@{/vagas/deletar/{id}(id=${vaga.id})}">
-						<button type="submit" class="btn btn-outline-danger ms-1">Excluir</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
 
-	<script th:src="@{/js/jquery.min.js}"></script>
-	<script th:src="@{/js/jquery.easing.min.js}"></script>
-	<!-- <script th:src="@{js/sb-admin-2.js}"></script> -->
-	<script th:src="@{/js/sb-admin-2.min.js}"></script>
-	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	<!-- Custom scripts for all pages-->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/jquery.easing.min.js}"></script>
+    <!-- <script th:src="@{js/sb-admin-2.js}"></script> -->
+    <script th:src="@{/js/sb-admin-2.min.js}"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/dark-mode-switch.min.js}"></script>
+    <script th:src="@{/js/fonte.js}"></script>
 </body>
 
 </html>

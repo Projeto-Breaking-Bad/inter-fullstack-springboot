@@ -31,7 +31,7 @@ public class CadastroController {
 	
 	@PostMapping("/aluno")
 	public ModelAndView novoAluno(Aluno aluno) {
-		ModelAndView mv = new ModelAndView();
+		ModelAndView mv = new ModelAndView("redirect:/login");
 		
 		aluno.setCpf(aluno.getCpf().replace(".", "").replace("-", "").trim());
 		
@@ -40,11 +40,9 @@ public class CadastroController {
 		
 		if(teste1.isEmpty() && teste2.isEmpty()) {
 			alunoService.addAluno(aluno);
-			mv.setViewName("redirect:/login");
 		} else {
 			// TODO Adicionar mensagem dizendo "email/cpf ja cadastrado(s)"
 			// Front e back
-			mv.setViewName("redirect:/login");
 		}
 		return mv;
 	}
@@ -56,7 +54,7 @@ public class CadastroController {
 	
 	@PostMapping("/empresa")
 	public ModelAndView novaEmpresa(Empresa empresa) {
-		ModelAndView mv = new ModelAndView();
+		ModelAndView mv = new ModelAndView("redirect:/login");
 		
 		empresa.setCnpj(empresa.getCnpj().replace(".", "").replace("-", "").replace("/", "").trim());
 		
@@ -65,11 +63,9 @@ public class CadastroController {
 		
 		if(teste1.isEmpty() && teste2.isEmpty()) {
 			empresaService.addEmpresa(empresa);
-			mv.setViewName("redirect:/c/empresas/consultar/" + empresa.getCnpj());
 		} else {
-			// TODO Adicionar mensagem dizendo "email/cpf ja cadastrado(s)"
+			// TODO Adicionar mensagem dizendo "email/cnpj ja cadastrado(s)"
 			// Front e back
-			mv.setViewName("redirect:/login");
 		}
 		return mv;
 	}

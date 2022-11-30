@@ -7,13 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Cadastro de Admin</title>
+    
+    <title>Atualizar Vagas</title>
+    
+    <!-- Custom fonts for this template-->
     <link rel="shortcut icon" th:href="@{/images/frame.ico}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" th:href="@{css/all.min.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/fontaawesome.min.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/dark-mode.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/all.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/dark-mode.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fontawesome.min.css}">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -37,7 +40,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -49,51 +52,27 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" th:href="@{/}">
+                <a class="nav-link" th:href="@{/c}">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Home</span></a>
             </li>
-            <hr class="sidebar-divider">
-            <div class="sidebar-heading">
-                Pages
-            </div>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/alunos}">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span>Ver lista de alunos</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/empresas}">
+                <a class="nav-link" th:href="@{/c/empresas/consultar/{cnpj}(cnpj=${empresaLogada.cnpj})}">
                     <i class="fas fa-fw fa-building"></i>
-                    <span>Ver lista de empresas</span>
+                    <span>Ver perfil</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/vagas}">
+                <a class="nav-link" th:href="@{/c/vagas}">
                     <i class="fas fa-fw fa-file"></i>
                     <span>Ver lista de Vaga</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/admins}">
-                    <i class="fas fa-fw fa-screwdriver-wrench"></i>
-                    <span>Ver lista de Admin</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/acessibilidade}">
+                <a class="nav-link" th:href="@{/c/acessibilidade}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Acessibilidade</span>
                 </a>
-            </li>
-            <li class="nav-item">
-                <div class="form-check form-switch" style="padding: 0.5rem;padding-left: 3.65rem;">
-                    <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
-                    <label class="form-check-label" for="darkSwitch" style="color: rgba(255,255,255,.8);font-size: 14px;">Modo Dark</label>
-                </div>
-                <script th:src="@{/js/dark-mode-switch.min.js}"></script>
             </li>
             <hr class="sidebar-divider">
             <div class="text-center d-none d-md-inline">
@@ -152,24 +131,24 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Equipe de
-                                    Desenvolvimento</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" th:text="${empresaLogada.nome}"></span>
                                 <img class="img-profile rounded-circle" th:src="@{/images/undraw_profile.svg}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item"
+                                    th:href="@{/c/empresas/consultar/{cnpj}(cnpj=${empresaLogada.cnpj})}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Perfil
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Definições
+                                    Definições (desativado)
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Registro de atividade
+                                    Registro de atividade (desativado)
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal2">
@@ -192,38 +171,50 @@
                 </script>
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Cadastro de Admin</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Atualizar Vagas</h1>
                     </div>
-                    <form class="row g-3" method="POST" action="#" th:action="@{/admins/cadastrar}"
-                        th:object="${admin}">
-                        <div class="col-12">
-                            <label for="nome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do usuário"
-                                required>
+                    <form class="row g-3" method="POST" action="#" th:action="@{/c/vagas/atualizar/{id}(id=${vaga.id})}" th:object="${vaga}">
+                        <input type="hidden" th:value="${vaga.id}" th:field="*{id}" />
+                        <div class="col-4">
+                            <label for="cnpj" class="form-label">CNPJ</label>
+                            <input type="text" class="form-control" id="cnpj" name="cnpj"
+                                placeholder="xx.xxx.xxx/xxxx-xx" required th:value="${vaga.cnpj}" readonly>
+                        </div>
+                        <div class="col-8">
+                            <label for="areaAtuacao" class="form-label">Área de Atuação</label>
+                            <input type="text" class="form-control" id="areaAtuacao" name="areaAtuacao"
+                                placeholder="Área de Atuação" required th:value="${vaga.areaAtuacao}">
                         </div>
                         <div class="col-md-6">
-                            <label for="instituicao" class="form-label">Instituição</label>
-                            <input type="text" class="form-control" id="instituicao" name="instituicao"
-                                placeholder="Instituição">
+                            <label for="horas" class="form-label">Horas</label>
+                            <input type="text" class="form-control" id="horas" name="horas" placeholder="Horas"
+                                th:value="${vaga.horas}">
                         </div>
                         <div class="col-md-6">
-                            <label for="login" class="form-label">Login</label>
-                            <input type="text" class="form-control" id="login" name="login" placeholder="Login"
-                                required>
-                            <span id="resposta"></span>
+                            <label for="salario" class="form-label">Salário</label>
+                            <input type="text" class="form-control" id="salario" name="salario" placeholder="Salário"
+                                required th:value="${vaga.salario}">
                         </div>
                         <div class="col-md-6">
-                            <label for="email" class="form-label">Email de usuário</label>
-                            <input type="email" class="form-control" id="email" name="email"
-                                placeholder="email@email.com" required>
+                            <label for="requisitos" class="form-label">Requisitos</label>
+                            <input type="text" class="form-control" id="requisitos" name="requisitos"
+                                placeholder="Requisitos" required th:value="${vaga.requisitos}">
                         </div>
                         <div class="col-md-6">
-                            <label for="senha" class="form-label">Senha</label>
-                            <input type="password" class="form-control" id="senha" name="senha" required>
+                            <label for="quantVagas" class="form-label">Quantidade de Vagas</label>
+                            <input type="text" class="form-control" id="quantVagas" name="quantVagas"
+                                placeholder="Quantidade de Vagas" required th:value="${vaga.quantVagas}">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="habilidade">Descrição</label>
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Descrição" id="descrição" name="descricao"
+                                    style="height: 100px" th:text="${vaga.descricao}"></textarea>
+                            </div>
                         </div>
 
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                            <button type="submit" class="btn btn-primary">Atualizar</button>
                         </div>
                     </form>
                 </div>
@@ -240,7 +231,6 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -261,11 +251,21 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        $("#cnpj").mask("00.000.000/0000-00");
+        $('#salario').mask('#.##0', {
+            reverse: true
+        });
+    </script>
+    
+    <!-- Custom scripts for all pages-->
     <script th:src="@{/js/jquery.min.js}"></script>
     <script th:src="@{/js/jquery.easing.min.js}"></script>
     <!-- <script th:src="@{js/sb-admin-2.js}"></script> -->
     <script th:src="@{/js/sb-admin-2.min.js}"></script>
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/dark-mode-switch.min.js}"></script>
+    <script th:src="@{/js/fonte.js}"></script>
 </body>
 
 </html>

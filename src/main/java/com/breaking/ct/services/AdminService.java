@@ -24,6 +24,10 @@ public class AdminService {
 	public Optional<Admin> getAdminByLogin(String login){
 		return adminRepository.findByLogin(login);
 	}
+	
+	public Optional<Admin> getAdminByEmail(String email) {
+		return adminRepository.findByEmail(email);
+	}
 
 	public void addAdmin(Admin admin) {
 		adminRepository.save(admin);
