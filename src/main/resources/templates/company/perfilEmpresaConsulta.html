@@ -11,12 +11,12 @@
 	<title>Perfil Empresa</title>
 
 	<!-- Custom fonts for this template-->
-    <link rel="shortcut icon" th:href="@{/images/frame.ico}" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/all.min.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/dark-mode.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/fontawesome.min.css}">
+	<link rel="shortcut icon" th:href="@{/images/frame.ico}" type="image/x-icon">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/all.min.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/dark-mode.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/fontawesome.min.css}">
 	<link
 		href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 		rel="stylesheet">
@@ -54,7 +54,7 @@
 		<li class="nav-item">
 			<div class="form-check form-switch" style="padding: 0.5rem;padding-left: 3.65rem;">
 				<input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
-				<label class="form-check-label" for="darkSwitch">🌞 Modo Dark 🌚</label>
+				<label class="form-check-label" for="darkSwitch">🌞 Contraste 🌚</label>
 			</div>
 			<script th:src="@{/js/dark-mode-switch.min.js}"></script>
 		</li>
@@ -78,32 +78,32 @@
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active">
-                <a class="nav-link" th:href="@{/c}">
-                    <i class="fas fa-fw fa-home"></i>
-                    <span>Home</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/c/empresas/consultar/{cnpj}(cnpj=${empresaLogada.cnpj})}">
-                    <i class="fas fa-fw fa-building"></i>
-                    <span>Ver perfil</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/c/vagas}">
-                    <i class="fas fa-fw fa-file"></i>
-                    <span>Ver lista de Vaga</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/c/acessibilidade}">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Acessibilidade</span>
-                </a>
-            </li>
-            <hr class="sidebar-divider">
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
+				<a class="nav-link" th:href="@{/c}">
+					<i class="fas fa-fw fa-home"></i>
+					<span>Home</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" th:href="@{/c/empresas/consultar/{cnpj}(cnpj=${empresaLogada.cnpj})}">
+					<i class="fas fa-fw fa-building"></i>
+					<span>Ver perfil</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" th:href="@{/c/vagas}">
+					<i class="fas fa-fw fa-file"></i>
+					<span>Ver lista de Vaga</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" th:href="@{/c/acessibilidade}">
+					<i class="fas fa-fw fa-table"></i>
+					<span>Acessibilidade</span>
+				</a>
+			</li>
+			<hr class="sidebar-divider">
+			<div class="text-center d-none d-md-inline">
+				<button class="rounded-circle border-0" id="sidebarToggle"></button>
+			</div>
 		</ul>
 		<div id="content-wrapper" class="d-flex flex-column">
 			<div id="content">
@@ -155,34 +155,35 @@
 
 						<!-- Nav Item - User Information -->
 						<li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" th:text="${empresaLogada.nome}"></span>
-                                <img class="img-profile rounded-circle" th:src="@{/images/undraw_profile.svg}">
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item"
-                                    th:href="@{/c/empresas/consultar/{cnpj}(cnpj=${empresaLogada.cnpj})}">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Perfil
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Definições (desativado)
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Registro de atividade (desativado)
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal2">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
+							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="mr-2 d-none d-lg-inline text-gray-600 small"
+									th:text="${empresaLogada.nome}"></span>
+								<img class="img-profile rounded-circle" th:src="@{/images/undraw_profile.svg}">
+							</a>
+							<!-- Dropdown - User Information -->
+							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+								aria-labelledby="userDropdown">
+								<a class="dropdown-item"
+									th:href="@{/c/empresas/consultar/{cnpj}(cnpj=${empresaLogada.cnpj})}">
+									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+									Perfil
+								</a>
+								<a class="dropdown-item" href="#">
+									<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+									Definições (desativado)
+								</a>
+								<a class="dropdown-item" href="#">
+									<i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+									Registro de atividade (desativado)
+								</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" data-toggle="modal" data-target="#logoutModal2">
+									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+									Logout
+								</a>
+							</div>
+						</li>
 					</ul>
 				</nav>
 				<div vw class="enabled">
@@ -448,15 +449,15 @@
 			</div>
 		</div>
 	</div>
-    
-    <!-- Custom scripts for all pages-->
-    <script th:src="@{/js/jquery.min.js}"></script>
-    <script th:src="@{/js/jquery.easing.min.js}"></script>
-    <!-- <script th:src="@{js/sb-admin-2.js}"></script> -->
-    <script th:src="@{/js/sb-admin-2.min.js}"></script>
-    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-    <script th:src="@{/js/dark-mode-switch.min.js}"></script>
-    <script th:src="@{/js/fonte.js}"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/jquery.easing.min.js}"></script>
+	<!-- <script th:src="@{js/sb-admin-2.js}"></script> -->
+	<script th:src="@{/js/sb-admin-2.min.js}"></script>
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/js/dark-mode-switch.min.js}"></script>
+	<script th:src="@{/js/fonte.js}"></script>
 </body>
 
-</html>       
+</html>

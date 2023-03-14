@@ -12,7 +12,7 @@
     <title>Dashboard</title>
 
     <!-- Custom fonts for this template-->
-    
+
     <link rel="shortcut icon" th:href="@{images/frame.ico}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -29,12 +29,37 @@
     <!-- Custom styles for this template-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" th:href="@{/css/sb-admin-2.min.css}">
-    
+
 
 </head>
 
 <body id="page-top">
-
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="text-muted nav-link active" aria-current="page" href="#page-top" accesskey="1"
+                title="Ir diretamente para o menu Principal">Ir para o menu Principal [1]</a>
+        </li>
+        <li class="nav-item">
+            <a class="text-muted nav-link" href="#rodape" accesskey="2" title="Ir diretamente para o rodapé">Ir para o
+                roda pé [2]</a>
+        </li>
+        <li class="nav-item">
+            <a class="text-muted nav-link" th:href="@{/s/acessibilidade}">Acessibilidade</a>
+        </li>
+        <li class="nav-item">
+            <a class="text-muted nav-link" href="javascript:void(0);" id="aumentar">A+</a>
+        </li>
+        <li class="nav-item">
+            <a class="text-muted nav-link" href="javascript:void(0);" id="diminuir">A-</a>
+        </li>
+        <li class="nav-item">
+            <div class="form-check form-switch" style="padding: 0.5rem;padding-left: 3.65rem;">
+                <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
+                <label class="form-check-label" for="darkSwitch">🌞 Contraste 🌚</label>
+            </div>
+            <script th:src="@{/js/dark-mode-switch.min.js}"></script>
+        </li>
+    </ul>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -67,7 +92,8 @@
             <li class="nav-item">
                 <div class="form-check form-switch" style="padding: 0.5rem;padding-left: 3.65rem;">
                     <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
-                    <label class="form-check-label" for="darkSwitch" style="color: rgba(255,255,255,.8);font-size: 14px;">Modo Dark</label>
+                    <label class="form-check-label" for="darkSwitch"
+                        style="color: rgba(255,255,255,.8);font-size: 14px;">Contraste</label>
                 </div>
                 <script th:src="@{/js/dark-mode-switch.min.js}"></script>
             </li>
@@ -130,7 +156,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                	Já possui uma conta?
+                                    Já possui uma conta?
                                 </span>
                                 <img class="img-profile rounded-circle" th:src="@{images/undraw_profile.svg}">
                             </a>
@@ -147,9 +173,9 @@
                                 </a>
                             </div>
                         </li>
-                        
+
                     </ul>
-                    
+
                 </nav>
                 <div vw class="enabled">
                     <div vw-access-button class="active"></div>
@@ -158,7 +184,9 @@
                     </div>
                 </div>
                 <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-                <script> new window.VLibras.Widget('https://vlibras.gov.br/app'); </script>
+                <script>
+                    new window.VLibras.Widget('https://vlibras.gov.br/app');
+                </script>
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>

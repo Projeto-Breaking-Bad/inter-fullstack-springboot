@@ -1,94 +1,113 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" th:href="@{images/frame.ico}" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Login</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" th:href="@{images/frame.ico}" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <title>Login</title>
 </head>
 <style>
+  .gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #fccb90;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #483de6, #3682d8, #36a8dd, #45b4ae);
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #483de6, #3682d8, #36a8dd, #45b4ae);
+  }
+
+  @media (min-width: 768px) {
+    .gradient-form {
+      height: 100vh !important;
+    }
+  }
+
+  @media (min-width: 769px) {
     .gradient-custom-2 {
-/* fallback for old browsers */
-background: #fccb90;
-
-/* Chrome 10-25, Safari 5.1-6 */
-background: -webkit-linear-gradient(to right, #483de6, #3682d8, #36a8dd, #45b4ae);
-
-/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-background: linear-gradient(to right, #483de6, #3682d8, #36a8dd, #45b4ae);
-}
-@media (min-width: 768px) {
-.gradient-form {
-height: 100vh !important;
-}
-}
-@media (min-width: 769px) {
-.gradient-custom-2 {
-border-top-right-radius: .3rem;
-border-bottom-right-radius: .3rem;
-}
-}
+      border-top-right-radius: .3rem;
+      border-bottom-right-radius: .3rem;
+    }
+  }
 </style>
+
 <body style="background-image: url(/images/card-6.svg);">
-    <section>
-        <div class="container py-5 h-100">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-xl-10">
-              <div class="card rounded-3 text-black">
-                <div class="row g-0">
-                  <div class="col-lg-6">
-                    <div class="card-body p-md-5 mx-md-4">
-      
-                      <div class="text-center">
-                        <img th:src="@{/images/logo.png}" style="width: 14rem;" alt="logo">
-                        <h4 class="mt-1 mb-5 pb-1">Caça Talentos</h4>
-                      </div>
-                      <form th:action="@{/login}" method="post">
-                        <p>Por favor, faça login na sua conta</p>
-      
-                        <div class="form-outline mb-4">
-                        <!-- <label class="form-label" for="username">Email de usuário</label> -->
-                          <input type="text" id="username" name="username" class="form-control" placeholder="Email de usuário" />
-                        </div>
-      
-                        <div class="form-outline mb-4">
-                        <!-- <label class="form-label" for="password">Senha</label> -->
-                          <input type="password" id="password" name="password" class="form-control" placeholder="Senha"/>
-                        </div>
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  <section>
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-xl-10">
+          <div class="card rounded-3 text-black">
+            <div class="row g-0">
+              <div class="col-lg-6">
+                <div class="card-body p-md-5 mx-md-4">
 
-                        <div class="text-danger">
-                          <div th:if="${param.error}">Nome de usuário e senha inválidos.</div>
-                          <div th:if="${param.logout}">Você foi desconectado.</div>
-                        </div>
+                  <div class="text-center">
+                    <img th:src="@{/images/logo.png}" style="width: 14rem;" alt="logo">
+                    <h4 class="mt-1 mb-5 pb-1">Caça Talentos</h4>
+                  </div>
+                  <form th:action="@{/login}" method="post">
+                    <p>Por favor, faça login na sua conta</p>
 
-                        <div class="text-center d-grid gap-2">
-                          <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-1" type="submit">Login</button>
-                          <a class="text-muted p-3" href="#!">Esqueceu a senha?</a>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-center pb-4">
-                          <p class="mb-0 me-2">Não tem uma conta?</p>
-                          <a class="text-decoration-none" th:href="@{/cadastro/aluno}">
-                          <button type="button" class="btn btn-outline-primary">Crie um novo</button>
-                          </a>
-                        </div>
-                      </form>
-      
+                    <div class="form-outline mb-4">
+                      <!-- <label class="form-label" for="username">Email de usuário</label> -->
+                      <input type="text" id="username" name="username" class="form-control"
+                        placeholder="Email de usuário" />
                     </div>
-                  </div>
-                  <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
-                    <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                      <h4 class="mb-4">Somos mais que uma empresa</h4>
-                      <p class="small mb-0">Nosso intuito e facilitar a busca de estágios para as Fatec, oferecendo um sistema simples e 
-                        completo com várias funcionalidades que ajudem os alunos e empresas a se conectarem.</p>
+
+                    <div class="form-outline mb-4">
+                      <!-- <label class="form-label" for="password">Senha</label> -->
+                      <input type="password" id="password" name="password" class="form-control" placeholder="Senha" />
                     </div>
-                  </div>
+
+                    <div class="text-danger">
+                      <div th:if="${param.error}">Nome de usuário e senha inválidos.</div>
+                      <div th:if="${param.logout}">Você foi desconectado.</div>
+                    </div>
+
+                    <div class="text-center d-grid gap-2">
+                      <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-1"
+                        type="submit">Login</button>
+                      <a class="text-muted p-3" href="#!">Esqueceu a senha?</a>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center pb-4">
+                      <p class="mb-0 me-2">Não tem uma conta?</p>
+                      <a class="text-decoration-none" th:href="@{/cadastro/aluno}">
+                        <button type="button" class="btn btn-outline-primary">Crie um novo</button>
+                      </a>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+              <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                  <h4 class="mb-4">Somos mais que uma empresa</h4>
+                  <p class="small mb-0">Nosso intuito e facilitar a busca de estágios para as Fatec, oferecendo um
+                    sistema simples e
+                    completo com várias funcionalidades que ajudem os alunos e empresas a se conectarem.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </section>
 </body>
+
 </html>

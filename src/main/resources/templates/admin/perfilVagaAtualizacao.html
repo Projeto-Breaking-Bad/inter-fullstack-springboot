@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    
+
     <title>Atualizar Vagas</title>
-    
+
     <!-- Custom fonts for this template-->
     <link rel="shortcut icon" th:href="@{/images/frame.ico}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
@@ -32,7 +32,32 @@
 </head>
 
 <body id="page-top">
-
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="text-muted nav-link active" aria-current="page" href="#page-top" accesskey="1"
+                title="Ir diretamente para o menu Principal">Ir para o menu Principal [1]</a>
+        </li>
+        <li class="nav-item">
+            <a class="text-muted nav-link" href="#rodape" accesskey="2" title="Ir diretamente para o rodapé">Ir para o
+                roda pé [2]</a>
+        </li>
+        <li class="nav-item">
+            <a class="text-muted nav-link" th:href="@{/s/acessibilidade}">Acessibilidade</a>
+        </li>
+        <li class="nav-item">
+            <a class="text-muted nav-link" href="javascript:void(0);" id="aumentar">A+</a>
+        </li>
+        <li class="nav-item">
+            <a class="text-muted nav-link" href="javascript:void(0);" id="diminuir">A-</a>
+        </li>
+        <li class="nav-item">
+            <div class="form-check form-switch" style="padding: 0.5rem;padding-left: 3.65rem;">
+                <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
+                <label class="form-check-label" for="darkSwitch">🌞 Contraste 🌚</label>
+            </div>
+            <script th:src="@{/js/dark-mode-switch.min.js}"></script>
+        </li>
+    </ul>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -143,7 +168,8 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" th:text="${adminLogado.nome}"></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"
+                                    th:text="${adminLogado.nome}"></span>
                                 <img class="img-profile rounded-circle" th:src="@{/images/undraw_profile.svg}">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -185,7 +211,8 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Atualizar Vagas</h1>
                     </div>
-                    <form class="row g-3" method="POST" action="#" th:action="@{/a/vagas/atualizar/{id}(id=${vaga.id})}" th:object="${vaga}">
+                    <form class="row g-3" method="POST" action="#" th:action="@{/a/vagas/atualizar/{id}(id=${vaga.id})}"
+                        th:object="${vaga}">
                         <input type="hidden" th:value="${vaga.id}" th:field="*{id}" />
                         <div class="col-4">
                             <label for="cnpj" class="form-label">CNPJ</label>
