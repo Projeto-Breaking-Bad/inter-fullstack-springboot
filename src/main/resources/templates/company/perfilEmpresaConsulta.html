@@ -32,33 +32,7 @@
 </head>
 
 <body id="page-top">
-	<ul class="nav justify-content-center">
-		<li class="nav-item">
-			<a class="text-muted nav-link active" aria-current="page" href="#page-top" accesskey="1"
-				title="Ir diretamente para o menu Principal">Ir para o menu Principal [1]</a>
-		</li>
-		<li class="nav-item">
-			<a class="text-muted nav-link" href="#rodape" accesskey="2" title="Ir diretamente para o rodapé">Ir para o
-				roda pé
-				[2]</a>
-		</li>
-		<li class="nav-item">
-			<a class="text-muted nav-link" th:href="@{/c/acessibilidade}">Acessibilidade</a>
-		</li>
-		<li class="nav-item">
-			<a class="text-muted nav-link" href="javascript:void(0);" id="aumentar">A+</a>
-		</li>
-		<li class="nav-item">
-			<a class="text-muted nav-link" href="javascript:void(0);" id="diminuir">A-</a>
-		</li>
-		<li class="nav-item">
-			<div class="form-check form-switch" style="padding: 0.5rem;padding-left: 3.65rem;">
-				<input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
-				<label class="form-check-label" for="darkSwitch">🌞 Contraste 🌚</label>
-			</div>
-			<script th:src="@{/js/dark-mode-switch.min.js}"></script>
-		</li>
-	</ul>
+    <header th:replace="fragments/accessibilityBar :: accessibilityBar"></header>
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 
@@ -416,13 +390,8 @@
 				</div>
 
 			</div>
-			<footer class="sticky-footer bg-white" id="rodape">
-				<div class="container my-auto">
-					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Caça Talentos</span>
-					</div>
-				</div>
-			</footer>
+            <footer class="sticky-footer bg-white" th:replace="fragments/footer :: footer"></footer>
+
 		</div>
 	</div>
 	<a class="scroll-to-top rounded" href="#page-top">
