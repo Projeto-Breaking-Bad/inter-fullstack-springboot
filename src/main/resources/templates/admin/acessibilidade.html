@@ -37,60 +37,8 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:fragment="SidebarAdmin" th:replace="fragments/SidebarAdmin :: SidebarAdmin"></ul>
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Caça Talentos</div>
-            </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" th:href="@{/a}">
-                    <i class="fas fa-fw fa-home"></i>
-                    <span>Home</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/a/alunos}">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span>Ver lista de alunos</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/a/empresas}">
-                    <i class="fas fa-fw fa-building"></i>
-                    <span>Ver lista de empresas</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/a/vagas}">
-                    <i class="fas fa-fw fa-file"></i>
-                    <span>Ver lista de Vaga</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/a/admins}">
-                    <i class="fas fa-fw fa-screwdriver-wrench"></i>
-                    <span>Ver lista de Admin</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/a/acessibilidade}">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Acessibilidade</span>
-                </a>
-            </li>
-            <hr class="sidebar-divider">
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-        </ul>
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
 				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" th:replace="fragments/navBarAdmin :: navBarAdmin"></nav>

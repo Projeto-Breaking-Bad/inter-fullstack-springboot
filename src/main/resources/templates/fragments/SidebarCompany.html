@@ -25,10 +25,9 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/sb-admin-2.min.css}">
 </head>
 <body id="page-top">
-    <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:fragment="SidebarStudent">
-
+    <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:fragment="SidebarCompany">
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -40,24 +39,24 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" th:href="@{/s}">
+            <a class="nav-link" th:href="@{/c}">
                 <i class="fas fa-fw fa-home"></i>
                 <span>Home</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/s/alunos/consultar/{cpf}(cpf=${alunoLogado.cpf})}">
-                <i class="fas fa-fw fa-user"></i>
+            <a class="nav-link" th:href="@{/c/empresas/consultar/{cnpj}(cnpj=${empresaLogada.cnpj})}">
+                <i class="fas fa-fw fa-building"></i>
                 <span>Ver perfil</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/s/vagas}">
+            <a class="nav-link" th:href="@{/c/vagas}">
                 <i class="fas fa-fw fa-file"></i>
                 <span>Ver lista de Vaga</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/s/acessibilidade}">
+            <a class="nav-link" th:href="@{/c/acessibilidade}">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Acessibilidade</span>
             </a>

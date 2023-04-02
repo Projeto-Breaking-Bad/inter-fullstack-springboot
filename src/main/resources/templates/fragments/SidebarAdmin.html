@@ -25,7 +25,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/sb-admin-2.min.css}">
 </head>
 <body id="page-top">
-    <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:fragment="SidebarStudent">
+    <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:fragment="SidebarAdmin">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
@@ -40,24 +40,36 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" th:href="@{/s}">
+            <a class="nav-link" th:href="@{/a}">
                 <i class="fas fa-fw fa-home"></i>
                 <span>Home</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/s/alunos/consultar/{cpf}(cpf=${alunoLogado.cpf})}">
+            <a class="nav-link" th:href="@{/a/alunos}">
                 <i class="fas fa-fw fa-user"></i>
-                <span>Ver perfil</span>
+                <span>Ver lista de alunos</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/s/vagas}">
+            <a class="nav-link" th:href="@{/a/empresas}">
+                <i class="fas fa-fw fa-building"></i>
+                <span>Ver lista de empresas</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/a/vagas}">
                 <i class="fas fa-fw fa-file"></i>
                 <span>Ver lista de Vaga</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/s/acessibilidade}">
+            <a class="nav-link" th:href="@{/a/admins}">
+                <i class="fas fa-fw fa-screwdriver-wrench"></i>
+                <span>Ver lista de Admin</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/a/acessibilidade}">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Acessibilidade</span>
             </a>
