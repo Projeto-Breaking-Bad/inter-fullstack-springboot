@@ -49,22 +49,14 @@
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:fragment="SidebarCompany" th:replace="fragments/SidebarCompany :: SidebarCompany"></ul>
+        <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:replace="fragments/SidebarCompany :: SidebarCompany"></ul>
 
 		<div id="content-wrapper" class="d-flex flex-column">
 			<div id="content">
 				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" th:replace="fragments/navBarCompany :: navBarCompany"></nav>
 
-				<div vw class="enabled">
-					<div vw-access-button class="active"></div>
-					<div vw-plugin-wrapper>
-						<div class="vw-plugin-top-wrapper"></div>
-					</div>
-				</div>
-				<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-				<script>
-					new window.VLibras.Widget('https://vlibras.gov.br/app');
-				</script>
+                <div vw class="enabled" th:replace="fragments/vlibras :: vlibras"></div>
+
 				<div class="container-fluid">
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
 						<h1 class="h3 mb-0 text-gray-800">Perfil de Vaga</h1>

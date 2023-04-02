@@ -146,16 +146,8 @@
                     </ul>
 
                 </nav>
-                <div vw class="enabled">
-                    <div vw-access-button class="active"></div>
-                    <div vw-plugin-wrapper>
-                        <div class="vw-plugin-top-wrapper"></div>
-                    </div>
-                </div>
-                <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-                <script>
-                    new window.VLibras.Widget('https://vlibras.gov.br/app');
-                </script>
+                <div vw class="enabled" th:replace="fragments/vlibras :: vlibras"></div>
+
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
