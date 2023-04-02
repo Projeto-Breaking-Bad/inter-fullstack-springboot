@@ -19,7 +19,7 @@
   background-color: #25282a !important;
 }
 
-[data-theme="dark"] .bg-gradient-primary {
+[data-theme="dark"] .bg-gradient-danger {
   background-color: #3a3e40 !important;
   background-image: linear-gradient(180deg,#3d3f40 10%,#333536 100%) !important;
 }
