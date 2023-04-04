@@ -51,7 +51,7 @@
                                 </div>
                             </div>
 
-                            <form class="row g-1 needs-validation" method="POST" th:action="@{/cadastro/aluno}"
+                            <form class="row needs-validation" method="POST" th:action="@{/cadastro/aluno}"
                                 th:object="${aluno}" novalidate>
                                 <div class="col-12">
                                     <label for="nome" class="form-label">Nome de usuário</label>
@@ -63,10 +63,10 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="RA" class="form-label">RA</label>
-                                    <input type="text" class="form-control" id="ra" name="ra"
-                                        placeholder="Apenas números">
-                                    <div class="valid-feedback">
-                                        Parece bom!
+                                    <input type="text" class="form-control" id="ra" name="ra" maxlength="13"
+                                        placeholder="Apenas números" required>
+                                    <div class="invalid-feedback">
+                                        Forneça um RA!
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -95,43 +95,43 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="bairro" class="form-label">Bairro</label>
-                                    <input type="text" class="form-control" id="bairro" name="bairro" required>
+                                    <input type="text" class="form-control" id="bairro" name="bairro" required disabled>
                                     <div class="invalid-feedback">
                                         Forneça um Bairro!
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <label for="cidade" class="form-label">Cidade</label>
-                                    <input type="text" class="form-control" id="cidade" name="cidade" required>
+                                    <input type="text" class="form-control" id="cidade" name="cidade" required disabled>
                                     <div class="invalid-feedback">
                                         Forneça um Cidade!
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="uf" class="form-label">UF</label>
-                                    <input type="text" class="form-control" id="uf" name="uf">
+                                    <input type="text" class="form-control" id="uf" name="uf" disabled>
                                     <div class="valid-feedback">
                                         Parece bom!
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-md-6">
                                     <label for="logradouro" class="form-label">Logradouro</label>
                                     <input type="text" class="form-control" id="logradouro" name="logradouro"
-                                        placeholder="Rua....." required>
+                                        placeholder="Digite o logradouro" required disabled>
                                     <div class="invalid-feedback">
                                         Forneça uma Rua!
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <label for="numero" class="form-label">Número</label>
-                                    <input type="text" class="form-control" id="numero" name="numero" required>
+                                    <input type="text" class="form-control" id="numero" name="numero" maxlength="10" required>
                                     <div class="invalid-feedback">
                                         Forneça um Número!
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <label for="complemento" class="form-label">Complemento</label>
-                                    <input type="text" class="form-control" id="complemento" name="complemento">
+                                    <input type="text" class="form-control" id="complemento" name="complemento" maxlength="50">
                                     <div class="valid-feedback">
                                         Parece bom!
                                     </div>
@@ -155,38 +155,37 @@
                                 <div class="col-md-7">
                                     <label for="email" class="form-label">Email de usuário</label>
                                     <input type="email" class="form-control" id="email" name="email"
-                                        placeholder="email@email.com" required>
+                                        placeholder="email@email.com" maxlength="100" required>
                                     <div class="invalid-feedback">
                                         Forneça um Email!
                                     </div>
                                 </div>
                                 <div class="col-md-5">
                                     <label for="senha" class="form-label">Senha</label>
-                                    <input type="password" class="form-control" id="senha" name="senha" required>
+                                    <input type="password" class="form-control" id="senha" name="senha" maxlength="100" required>
                                     <div class="invalid-feedback">
                                         Forneça uma Senha!
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <label for="curso" class="form-label">Curso</label>
-                                    <input type="text" class="form-control" id="curso" name="curso" placeholder="Curso"
+                                    <input type="text" class="form-control" id="curso" name="curso" placeholder="Curso" maxlength="255"
                                         required>
                                     <div class="invalid-feedback">
-                                        Forneça um Curso já feito!
+                                        Forneça um Curso!
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="habilidade">Habilidade</label>
                                     <div class="form-floating">
                                         <textarea class="form-control" placeholder="Habilidades" id="habilidades"
-                                            name="habilidades" style="height: 100px"></textarea>
+                                            name="habilidades" maxlength="800" style="height: 100px"></textarea>
                                         <div class="valid-feedback">
                                             Parece bom!
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="col-12">
+                                <div class="col-12 d-flex justify-content-end pt-3">
                                     <button type="submit" class="btn btn-primary">Cadastrar</button>
                                 </div>
                             </form>

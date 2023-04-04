@@ -1,7 +1,7 @@
-<svg width="1920" height="800" viewBox="0 0 1920 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="1920" height="800" fill="#EAD9D9"/>
-<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="800">
-<rect width="1920" height="800" fill="#EAD9DA"/>
+<svg width="2560" height="1440" viewBox="0 0 2560 1440" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="2560" height="1440" fill="#EAD9D9"/>
+<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="2560" height="1440">
+<rect width="2560" height="1440" fill="#EAD9DA"/>
 </mask>
 <g mask="url(#mask0)">
 <path d="M1059.48 308.024C1152.75 57.0319 927.003 -103.239 802.47 -152.001L1805.22 -495.637L2095.53 351.501L1321.23 616.846C1195.12 618.485 966.213 559.015 1059.48 308.024Z" fill="#DDC0C5"/>
