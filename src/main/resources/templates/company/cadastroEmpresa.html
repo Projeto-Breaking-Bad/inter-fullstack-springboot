@@ -190,7 +190,9 @@
             Array.prototype.slice.call(forms)
                 .forEach(function (form) {
                     form.addEventListener('submit', function (event) {
-                        if (!form.checkValidity()) {
+                        if (form.checkValidity()) {
+                            alertDialog("Cadastro realizado com sucesso!", "Sucesso!")
+                        } else {
                             event.preventDefault()
                             event.stopPropagation()
                         }

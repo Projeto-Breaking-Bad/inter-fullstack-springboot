@@ -95,19 +95,19 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="bairro" class="form-label">Bairro</label>
-                                    <input type="text" class="form-control" id="bairro" name="bairro" required disabled>
+                                    <input type="text" class="form-control" id="bairro" name="bairro" required>
                                     <div class="invalid-feedback">
                                         Forneça um Bairro!
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <label for="cidade" class="form-label">Cidade</label>
                                     <input type="text" class="form-control" id="cidade" name="cidade" required disabled>
                                     <div class="invalid-feedback">
                                         Forneça um Cidade!
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <label for="uf" class="form-label">UF</label>
                                     <input type="text" class="form-control" id="uf" name="uf" disabled>
                                     <div class="valid-feedback">
@@ -117,7 +117,7 @@
                                 <div class="col-md-6">
                                     <label for="logradouro" class="form-label">Logradouro</label>
                                     <input type="text" class="form-control" id="logradouro" name="logradouro"
-                                        placeholder="Digite o logradouro" required disabled>
+                                        placeholder="Digite o logradouro" required>
                                     <div class="invalid-feedback">
                                         Forneça uma Rua!
                                     </div>
@@ -210,7 +210,9 @@
             Array.prototype.slice.call(forms)
                 .forEach(function (form) {
                     form.addEventListener('submit', function (event) {
-                        if (!form.checkValidity()) {
+                        if (form.checkValidity()) {
+                            alertDialog("Cadastro realizado com sucesso!", "Sucesso!")
+                        } else {
                             event.preventDefault()
                             event.stopPropagation()
                         }
