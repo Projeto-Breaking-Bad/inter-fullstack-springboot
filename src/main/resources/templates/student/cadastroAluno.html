@@ -51,86 +51,138 @@
                                 </div>
                             </div>
 
-                            <form class="row" method="POST" th:action="@{/cadastro/aluno}" th:object="${aluno}">
+                            <form class="row g-1 needs-validation" method="POST" th:action="@{/cadastro/aluno}"
+                                th:object="${aluno}" novalidate>
                                 <div class="col-12">
                                     <label for="nome" class="form-label">Nome de usuário</label>
                                     <input type="text" class="form-control" id="nome" name="nome" maxlength="50"
                                         placeholder="Nome do usuário" required>
+                                    <div class="valid-feedback">
+                                        Parece bom!
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="RA" class="form-label">RA</label>
                                     <input type="text" class="form-control" id="ra" name="ra"
                                         placeholder="Apenas números">
+                                    <div class="valid-feedback">
+                                        Parece bom!
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="cpf" class="form-label">CPF</label>
                                     <input type="text" class="form-control" id="cpf" name="cpf"
                                         placeholder="000.000.000-00" required>
                                     <span id="resposta"></span>
+                                    <div class="invalid-feedback">
+                                        Forneça um CPF!
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="dataNasc" class="form-label">Data de Nascimento</label>
                                     <input type="date" class="form-control" id="dataNasc" name="dataNasc" required>
+                                    <div class="invalid-feedback">
+                                        Forneça uma Data de Nascimento!
+                                    </div>
                                 </div>
                                 <div class="col-md-3">
                                     <label for="inputZip" class="form-label">Cep</label>
                                     <input type="text" class="form-control" id="cep" name="cep" placeholder="00000-000"
                                         required>
+                                    <div class="invalid-feedback">
+                                        Forneça um CEP!
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="bairro" class="form-label">Bairro</label>
                                     <input type="text" class="form-control" id="bairro" name="bairro" required>
+                                    <div class="invalid-feedback">
+                                        Forneça um Bairro!
+                                    </div>
                                 </div>
                                 <div class="col-md-3">
                                     <label for="cidade" class="form-label">Cidade</label>
                                     <input type="text" class="form-control" id="cidade" name="cidade" required>
+                                    <div class="invalid-feedback">
+                                        Forneça um Cidade!
+                                    </div>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="uf" class="form-label">UF</label>
                                     <input type="text" class="form-control" id="uf" name="uf">
+                                    <div class="valid-feedback">
+                                        Parece bom!
+                                    </div>
                                 </div>
                                 <div class="col-6">
                                     <label for="logradouro" class="form-label">Logradouro</label>
                                     <input type="text" class="form-control" id="logradouro" name="logradouro"
-                                        placeholder="Rua 1234" required>
+                                        placeholder="Rua....." required>
+                                    <div class="invalid-feedback">
+                                        Forneça uma Rua!
+                                    </div>
                                 </div>
                                 <div class="col-md-3">
                                     <label for="numero" class="form-label">Número</label>
                                     <input type="text" class="form-control" id="numero" name="numero" required>
+                                    <div class="invalid-feedback">
+                                        Forneça um Número!
+                                    </div>
                                 </div>
                                 <div class="col-md-3">
                                     <label for="complemento" class="form-label">Complemento</label>
                                     <input type="text" class="form-control" id="complemento" name="complemento">
+                                    <div class="valid-feedback">
+                                        Parece bom!
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="telefone" class="form-label">Telefone</label>
                                     <input type="text" class="form-control" id="telefone" name="telefone"
                                         placeholder="(xx) xxxx-xxxx">
+                                    <div class="valid-feedback">
+                                        Parece bom!
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="celular" class="form-label">Celular</label>
                                     <input type="text" class="form-control" id="whatsapp" name="whatsapp"
                                         placeholder="(xx) xxxxx-xxxx" required>
+                                    <div class="invalid-feedback">
+                                        Forneça um Celular!
+                                    </div>
                                 </div>
                                 <div class="col-md-7">
                                     <label for="email" class="form-label">Email de usuário</label>
                                     <input type="email" class="form-control" id="email" name="email"
                                         placeholder="email@email.com" required>
+                                    <div class="invalid-feedback">
+                                        Forneça um Email!
+                                    </div>
                                 </div>
                                 <div class="col-md-5">
                                     <label for="senha" class="form-label">Senha</label>
                                     <input type="password" class="form-control" id="senha" name="senha" required>
+                                    <div class="invalid-feedback">
+                                        Forneça uma Senha!
+                                    </div>
                                 </div>
                                 <div class="col-12">
                                     <label for="curso" class="form-label">Curso</label>
                                     <input type="text" class="form-control" id="curso" name="curso" placeholder="Curso"
                                         required>
+                                    <div class="invalid-feedback">
+                                        Forneça um Curso já feito!
+                                    </div>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="habilidade">Habilidade</label>
                                     <div class="form-floating">
                                         <textarea class="form-control" placeholder="Habilidades" id="habilidades"
                                             name="habilidades" style="height: 100px"></textarea>
+                                        <div class="valid-feedback">
+                                            Parece bom!
+                                        </div>
                                     </div>
                                 </div>
 
@@ -147,6 +199,28 @@
     <script th:src="@{/js/custom.js}"></script>
     <script th:src="@{/js/cep.js}"></script>
     <script th:src="@{/js/cpf.js}"></script>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
     <script type="text/javascript">
         $("#cpf").mask("000.000.000-00");
         $("#cep").mask("00000-000");
