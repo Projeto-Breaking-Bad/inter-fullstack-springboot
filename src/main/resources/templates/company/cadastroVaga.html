@@ -49,45 +49,66 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Cadastro de Vagas</h1>
                     </div>
-                    <form class="row g-3" method="POST" action="#" th:action="@{/c/vagas/cadastro}" th:object="${vaga}">
+                    <form class="row g-3 needs-validation" method="POST" action="#" th:action="@{/c/vagas/cadastro}" th:object="${vaga}" novalidate>
                         <div class="col-4">
                             <label for="cnpj" class="form-label">CNPJ</label>
                             <input type="text" class="form-control" id="cnpj" name="cnpj"
                                 placeholder="xx.xxx.xxx/xxxx-xx" required th:value="${empresaLogada.cnpj}">
+                                <div class="invalid-feedback">
+                                    Forneça um CNPJ!
+                                </div>
                         </div>
                         <div class="col-8">
                             <label for="areaAtuacao" class="form-label">Área de Atuação</label>
                             <input type="text" class="form-control" id="areaAtuacao" name="areaAtuacao"
                                 placeholder="Área de Atuação" required>
+                                <div class="invalid-feedback">
+                                    Forneça uma área de atuação!
+                                </div>
                         </div>
                         <div class="col-md-6">
                             <label for="horas" class="form-label">Horas</label>
-                            <input type="text" class="form-control" id="horas" name="horas" placeholder="Horas">
+                            <input type="text" class="form-control" id="horas" name="horas" placeholder="Horas" required>
+                            <div class="invalid-feedback">
+                                Forneça um horário!
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <label for="salario" class="form-label">Salário</label>
                             <input type="text" class="form-control" id="salario" name="salario" placeholder="Salário"
                                 required>
+                                <div class="invalid-feedback">
+                                    Forneça um Salário!
+                                </div>
                         </div>
                         <div class="col-md-6">
                             <label for="requisitos" class="form-label">Requisitos</label>
                             <input type="text" class="form-control" id="requisitos" name="requisitos"
                                 placeholder="Requisitos" required>
+                                <div class="invalid-feedback">
+                                    Forneça um requisitos!
+                                </div>
                         </div>
                         <div class="col-md-6">
                             <label for="quantVagas" class="form-label">Quantidade de Vagas</label>
                             <input type="number" class="form-control" id="quantVagas" name="quantVagas"
                                 placeholder="Quantidade de Vagas" required>
+                                <div class="invalid-feedback">
+                                    Forneça a quantidade de vagas!
+                                </div>
                         </div>
                         <div class="col-md-12">
                             <label for="habilidade">Descrição</label>
                             <div class="form-floating">
                                 <textarea class="form-control" placeholder="Descrição" id="descricao" name="descricao"
-                                    style="height: 100px"></textarea>
+                                    style="height: 100px" required></textarea>
+                                    <div class="invalid-feedback">
+                                        Forneça a descrição!
+                                    </div>
                             </div>
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                            <button type="submit" class="btn btn-danger">Cadastrar</button>
                         </div>
                     </form>
                 </div>
@@ -119,6 +140,30 @@
             </div>
         </div>
     </div>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity()) {
+                            alertDialog("Cadastro realizado com sucesso!", "Sucesso!")
+                        } else {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
     <script type="text/javascript">
         $("#cnpj").mask("00.000.000/0000-00");
         $("#horas").mask("00:00");
@@ -128,6 +173,7 @@
     </script>
 
     <!-- Custom scripts for all pages-->
+    <script th:src="@{/js/custom.js}"></script>
     <script th:src="@{/js/jquery.min.js}"></script>
     <script th:src="@{/js/jquery.easing.min.js}"></script>
     <!-- <script th:src="@{js/sb-admin-2.js}"></script> -->
