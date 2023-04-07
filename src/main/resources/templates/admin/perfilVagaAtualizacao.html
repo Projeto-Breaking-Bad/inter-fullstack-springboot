@@ -37,11 +37,13 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:replace="fragments/SidebarAdmin :: SidebarAdmin"></ul>
+        <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar"
+            th:replace="fragments/SidebarAdmin :: SidebarAdmin"></ul>
 
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" th:replace="fragments/navBarAdmin :: navBarAdmin"></nav>
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+                    th:replace="fragments/navBarAdmin :: navBarAdmin"></nav>
 
                 <div vw class="enabled" th:replace="fragments/vlibras :: vlibras"></div>
 
@@ -49,46 +51,68 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Atualizar Vagas</h1>
                     </div>
-                    <form class="row g-3" method="POST" action="#" th:action="@{/a/vagas/atualizar/{id}(id=${vaga.id})}"
-                        th:object="${vaga}">
+                    <form class="row g-3 needs-validation" method="POST" action="#" th:action="@{/a/vagas/atualizar/{id}(id=${vaga.id})}"
+                        th:object="${vaga}" novalidate>
                         <input type="hidden" th:value="${vaga.id}" th:field="*{id}" />
                         <div class="col-4">
                             <label for="cnpj" class="form-label">CNPJ</label>
                             <input type="text" class="form-control" id="cnpj" name="cnpj"
                                 placeholder="xx.xxx.xxx/xxxx-xx" required th:value="${vaga.cnpj}" readonly>
+                            <div class="invalid-feedback">
+                                Forneça um CNPJ!
+                            </div>
                         </div>
                         <div class="col-8">
                             <label for="areaAtuacao" class="form-label">Área de Atuação</label>
                             <input type="text" class="form-control" id="areaAtuacao" name="areaAtuacao"
                                 placeholder="Área de Atuação" required th:value="${vaga.areaAtuacao}">
+                            <div class="invalid-feedback">
+                                Forneça uma área de atuação!
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <label for="horas" class="form-label">Horas</label>
-                            <input type="text" class="form-control" id="horas" name="horas" placeholder="Horas"
+                            <input type="text" class="form-control" id="horas" name="horas" placeholder="Horas" required
                                 th:value="${vaga.horas}">
+                            <div class="invalid-feedback">
+                                Forneça um horário!
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <label for="salario" class="form-label">Salário</label>
                             <input type="text" class="form-control" id="salario" name="salario" placeholder="Salário"
                                 required th:value="${vaga.salario}">
+                            <div class="invalid-feedback">
+                                Forneça um Salário!
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <label for="requisitos" class="form-label">Requisitos</label>
                             <input type="text" class="form-control" id="requisitos" name="requisitos"
                                 placeholder="Requisitos" required th:value="${vaga.requisitos}">
+                            <div class="invalid-feedback">
+                                Forneça um requisitos!
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <label for="quantVagas" class="form-label">Quantidade de Vagas</label>
                             <input type="text" class="form-control" id="quantVagas" name="quantVagas"
                                 placeholder="Quantidade de Vagas" required th:value="${vaga.quantVagas}">
+                            <div class="invalid-feedback">
+                                Forneça a quantidade de vagas!
+                            </div>
                         </div>
                         <div class="col-md-12">
                             <label for="habilidade">Descrição</label>
                             <div class="form-floating">
                                 <textarea class="form-control" placeholder="Descrição" id="descrição" name="descricao"
-                                    style="height: 100px" th:text="${vaga.descricao}"></textarea>
+                                    style="height: 100px" required th:text="${vaga.descricao}"></textarea>
+                                <div class="invalid-feedback">
+                                    Forneça a descrição!
+                                </div>
                             </div>
                         </div>
+
 
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary">Atualizar</button>
@@ -114,7 +138,8 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="text-muted modal-body">Selecione "Logout" abaixo se estiver pronto para encerrar sua sessão atual.
+                <div class="text-muted modal-body">Selecione "Logout" abaixo se estiver pronto para encerrar sua sessão
+                    atual.
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
@@ -123,17 +148,46 @@
             </div>
         </div>
     </div>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity()) {
+                            alertDialog("Atualização realizada com sucesso!", "Sucesso!")
+                        } else {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
     <script type="text/javascript">
         $("#cnpj").mask("00.000.000/0000-00");
         $('#salario').mask('#.##0', {
             reverse: true
         });
     </script>
+
+    <!-- Custom scripts for all pages-->
+    <script th:src="@{/js/custom.js}"></script>
     <script th:src="@{/js/jquery.min.js}"></script>
     <script th:src="@{/js/jquery.easing.min.js}"></script>
     <!-- <script th:src="@{js/sb-admin-2.js}"></script> -->
     <script th:src="@{/js/sb-admin-2.min.js}"></script>
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/dark-mode-switch.min.js}"></script>
+    <script th:src="@{/js/fonte.js}"></script>
 </body>
 
 </html>

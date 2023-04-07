@@ -47,9 +47,8 @@
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Lista de Admins</h1>
-                        <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-                            th:href="@{/a/admins/cadastro}"><button class="btn btn-primary btn-sm"
-                                type="button">Cadastrar Admin</button></a>
+                        <a class="d-none d-sm-inline-block btn btn-danger shadow-sm"
+                            th:href="@{/a/admins/cadastro}">Cadastrar Admin</a>
                     </div>
                     <div class="panel-body" th:switch="${admins}">
                         <h5 th:case="null">Não existem admins cadastrados!</h5>
@@ -69,7 +68,7 @@
                                         <td><span th:text="${admin.instituicao}"></span></td>
                                         <td><span th:text="${admin.login}"></td>
                                         <td><a th:href="@{/a/admins/consultar/{login}(login=${admin.login})}"><button
-                                                    class="btn btn-primary" type="button">Detalhes</button></a></td>
+                                                    class="btn btn-danger" type="button">Detalhes</button></a></td>
                                     </tr>
                                 </tbody>
                             </table>

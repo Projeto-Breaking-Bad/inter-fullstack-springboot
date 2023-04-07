@@ -11,12 +11,12 @@
 	<title>Atualizar Cadastro do Aluno</title>
 
 	<!-- Custom fonts for this template-->
-    <link rel="shortcut icon" th:href="@{/images/logoicon.ico}" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/all.min.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/dark-mode.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/fontawesome.min.css}">
+	<link rel="shortcut icon" th:href="@{/images/logoicon.ico}" type="image/x-icon">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/all.min.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/dark-mode.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/fontawesome.min.css}">
 	<link
 		href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 		rel="stylesheet">
@@ -32,17 +32,19 @@
 </head>
 
 <body id="page-top">
-    <header th:replace="fragments/accessibilityBar :: accessibilityBar"></header>
+	<header th:replace="fragments/accessibilityBar :: accessibilityBar"></header>
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:replace="fragments/SidebarAdmin :: SidebarAdmin"></ul>
+		<ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar"
+			th:replace="fragments/SidebarAdmin :: SidebarAdmin"></ul>
 
 		<div id="content-wrapper" class="d-flex flex-column">
 			<div id="content">
-				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" th:replace="fragments/navBarAdmin :: navBarAdmin"></nav>
-                <div vw class="enabled" th:replace="fragments/vlibras :: vlibras"></div>
+				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+					th:replace="fragments/navBarAdmin :: navBarAdmin"></nav>
+				<div vw class="enabled" th:replace="fragments/vlibras :: vlibras"></div>
 
 				<div class="container-fluid">
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -54,95 +56,144 @@
 							</ol>
 						</nav>
 					</div>
-					<form class="row g-3" method="POST" th:action="@{/a/alunos/atualizar/{cpf}(cpf=${aluno.cpf})}"
-						th:object="${aluno}">
+					<form class="row g-3 needs-validation" method="POST"
+						th:action="@{/a/alunos/atualizar/{cpf}(cpf=${aluno.cpf})}" th:object="${aluno}" novalidate>
 						<div class="col-12">
 							<label for="nome" class="form-label">Nome de usuário</label>
 							<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do usuário"
 								required th:value="${aluno.nome}">
+							<div class="valid-feedback">
+								Parece bom!
+							</div>
 						</div>
 						<div class="col-md-4">
 							<label for="RA" class="form-label">RA</label>
 							<input type="text" class="form-control" id="ra" name="ra" placeholder="Apenas números"
-								th:value="${aluno.ra}">
+								th:value="${aluno.ra}" required>
+							<div class="invalid-feedback">
+								Forneça um RA!
+							</div>
 						</div>
 						<div class="col-md-4">
 							<label for="cpf" class="form-label">CPF</label>
 							<input type="text" class="form-control" id="cpf" name="cpf" placeholder="000.000.000-00"
 								required th:value="${aluno.cpf}">
 							<span id="resposta"></span>
+							<div class="invalid-feedback">
+								Forneça um CPF!
+							</div>
 						</div>
 						<div class="col-md-4">
 							<label for="dataNasc" class="form-label">Data de Nascimento</label>
 							<input type="date" class="form-control" id="dataNasc" name="dataNasc" required
 								th:value="${aluno.dataNasc}">
+							<div class="invalid-feedback">
+								Forneça uma Data de Nascimento!
+							</div>
 						</div>
 						<div class="col-md-3">
 							<label for="inputZip" class="form-label">Cep</label>
 							<input type="text" class="form-control" id="cep" name="cep" placeholder="00000-000" required
 								th:value="${aluno.cep}">
+							<div class="invalid-feedback">
+								Forneça um CEP!
+							</div>
 						</div>
 						<div class="col-md-4">
 							<label for="bairro" class="form-label">Bairro</label>
 							<input type="text" class="form-control" id="bairro" name="bairro" required
 								th:value="${aluno.bairro}">
+							<div class="invalid-feedback">
+								Forneça um Bairro!
+							</div>
 						</div>
 						<div class="col-md-3">
 							<label for="cidade" class="form-label">Cidade</label>
 							<input type="text" class="form-control" id="cidade" name="cidade" required
 								th:value="${aluno.cidade}">
+							<div class="invalid-feedback">
+								Forneça um Cidade!
+							</div>
 						</div>
 						<div class="col-md-2">
 							<label for="uf" class="form-label">UF</label>
 							<input type="text" class="form-control" id="uf" name="uf" required th:value="${aluno.uf}">
+							<div class="valid-feedback">
+								Parece bom!
+							</div>
 						</div>
 						<div class="col-6">
 							<label for="logradouro" class="form-label">Logradouro</label>
 							<input type="text" class="form-control" id="logradouro" name="logradouro"
 								placeholder="Rua 1234" required th:value="${aluno.logradouro}">
+							<div class="invalid-feedback">
+								Forneça uma Logradouro!
+							</div>
 						</div>
 						<div class="col-md-3">
 							<label for="numero" class="form-label">Número</label>
 							<input type="text" class="form-control" id="numero" name="numero" required
 								th:value="${aluno.numero}">
+							<div class="invalid-feedback">
+								Forneça um Número!
+							</div>
 						</div>
 						<div class="col-md-3">
 							<label for="complemento" class="form-label">Complemento</label>
 							<input type="text" class="form-control" id="complemento" name="complemento"
 								th:value="${aluno.complemento}">
+							<div class="valid-feedback">
+								Parece bom!
+							</div>
 						</div>
 						<div class="col-md-6">
 							<label for="telefone" class="form-label">Telefone</label>
 							<input type="text" class="form-control" id="telefone" name="telefone"
 								placeholder="(xx) xxxx-xxxx" th:value="${aluno.telefone}">
-							<script type="text/javascript">
-								$("#telefone").mask("(00) 0000-00009");
-							</script>
+							<div class="valid-feedback">
+								Parece bom!
+							</div>
 						</div>
 						<div class="col-md-6">
 							<label for="celular" class="form-label">Celular</label>
 							<input type="text" class="form-control" id="whatsapp" name="whatsapp"
 								placeholder="(xx) xxxxx-xxxx" required th:value="${aluno.whatsapp}">
+							<div class="invalid-feedback">
+								Forneça um Celular!
+							</div>
 						</div>
 						<div class="col-md-7">
 							<label for="email" class="form-label">Email de usuário</label>
 							<input type="email" class="form-control" id="email" name="email"
 								placeholder="email@email.com" required th:value="${aluno.email}">
+							<div class="invalid-feedback">
+								Forneça um Email!
+							</div>
 						</div>
 						<div class="col-md-5">
 							<label for="senha" class="form-label">Senha</label>
 							<input type="password" class="form-control" id="senha" name="senha" required>
+							<div class="invalid-feedback">
+								Forneça uma Senha!
+							</div>
 						</div>
 						<div class="col-12">
 							<label for="curso" class="form-label">Curso</label>
 							<input type="text" class="form-control" id="curso" name="curso" placeholder="Curso" required
 								th:value="${aluno.curso}">
+							<div class="invalid-feedback">
+								Forneça um Curso!
+							</div>
 						</div>
 						<div class="col-md-12">
 							<label for="habilidade">Habilidade</label>
 							<div class="form-floating">
 								<textarea class="form-control" placeholder="Habilidade" id="habilidades"
-									name="habilidades" style="height: 100px" th:text="${aluno.habilidades}"></textarea>
+									name="habilidades" style="height: 100px" th:text="${aluno.habilidades}"
+									required></textarea>
+								<div class="invalid-feedback">
+									Forneça um Habilidade!
+								</div>
 							</div>
 						</div>
 
@@ -152,7 +203,7 @@
 					</form>
 				</div>
 			</div>
-            <footer class="sticky-footer bg-white" th:replace="fragments/footer :: footer"></footer>
+			<footer class="sticky-footer bg-white" th:replace="fragments/footer :: footer"></footer>
 
 		</div>
 	</div>
@@ -160,139 +211,67 @@
 		<i class="fas fa-angle-up"></i>
 	</a>
 	<!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="text-muted modal-title" id="exampleModalLabel">Pronto para partir?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="text-muted modal-body">Selecione "Logout" abaixo se estiver pronto para encerrar sua sessão atual.
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-danger" th:href="@{/logout}">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="text-muted modal-title" id="exampleModalLabel">Pronto para partir?</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="text-muted modal-body">Selecione "Logout" abaixo se estiver pronto para encerrar sua sessão
+					atual.
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+					<a class="btn btn-danger" th:href="@{/logout}">Logout</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/js/cep.js}"></script>
+	<script th:src="@{/js/cpf.js}"></script>
 	<script>
-		function CPF() {
-			"user_strict";
+		// Example starter JavaScript for disabling form submissions if there are invalid fields
+		(function () {
+			'use strict'
 
-			function r(r) {
-				for (var t = null, n = 0; 9 > n; ++n) t += r.toString().charAt(n) * (10 - n);
-				var i = t % 11;
-				return i = 2 > i ? 0 : 11 - i
-			}
+			// Fetch all the forms we want to apply custom Bootstrap validation styles to
+			var forms = document.querySelectorAll('.needs-validation')
 
-			function t(r) {
-				for (var t = null, n = 0; 10 > n; ++n) t += r.toString().charAt(n) * (11 - n);
-				var i = t % 11;
-				return i = 2 > i ? 0 : 11 - i
-			}
-			var n = "CPF Inválido",
-				i = "CPF Válido";
-			this.gera = function () {
-				for (var n = "", i = 0; 9 > i; ++i) n += Math.floor(9 * Math.random()) + "";
-				var o = r(n),
-					a = n + "-" + o + t(n + "" + o);
-				return a
-			}, this.valida = function (o) {
-				for (var a = o.replace(/\D/g, ""), u = a.substring(0, 9), f = a.substring(9, 11), v = 0; 10 >
-					v; v++)
-					if ("" + u + f == "" + v + v + v + v + v + v + v + v + v + v + v) return n;
-				var c = r(u),
-					e = t(u + "" + c);
-				return f.toString() === c.toString() + e.toString() ? i : n
-			}
-		}
+			// Loop over them and prevent submission
+			Array.prototype.slice.call(forms)
+				.forEach(function (form) {
+					form.addEventListener('submit', function (event) {
+						if (form.checkValidity()) {
+							alertDialog("Atualização realizada com sucesso!", "Sucesso!")
+						} else {
+							event.preventDefault()
+							event.stopPropagation()
+						}
 
-		var CPF = new CPF();
-		$("#cpf").keypress(function () {
-			$("#resposta").html(CPF.valida($(this).val()));
-		});
-
-		$("#cpf").blur(function () {
-			$("#resposta").html(CPF.valida($(this).val()));
-		});
+						form.classList.add('was-validated')
+					}, false)
+				})
+		})()
 	</script>
-	<script>
-		$(document).ready(function () {
-
-			function limpa_formulário_cep() {
-				// Limpa valores do formulário de cep.
-				$("#logradouro").val("");
-				$("#bairro").val("");
-				$("#cidade").val("");
-				// $("#uf").val("");
-				// $("#ibge").val("");
-			}
-
-			//Quando o campo cep perde o foco.
-			$("#cep").blur(function () {
-				//Nova variável "cep" somente com dígitos.
-				var cep = $(this).val().replace(/\D/g, '');
-
-				//Verifica se campo cep possui valor informado.
-				if (cep != "") {
-					//Expressão regular para validar o CEP.
-					var validacep = /^[0-9]{8}$/;
-
-					//Valida o formato do CEP.
-					if (validacep.test(cep)) {
-						//Preenche os campos com "..." enquanto consulta webservice.
-						$("#logradouro").val("...");
-						$("#bairro").val("...");
-						$("#cidade").val("...");
-						// $("#uf").val("...");
-						// $("#ibge").val("...");
-
-						//Consulta o webservice viacep.com.br/
-						$.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (
-							dados) {
-
-							if (!("erro" in dados)) {
-								//Atualiza os campos com os valores da consulta.
-								$("#logradouro").val(dados.logradouro);
-								$("#bairro").val(dados.bairro);
-								$("#cidade").val(dados.localidade);
-								// $("#uf").val(dados.uf);
-								// $("#ibge").val(dados.ibge);
-							} else {
-								//CEP pesquisado não foi encontrado.
-								limpa_formulário_cep();
-								alert("CEP não encontrado.");
-							}
-						});
-					} else {
-						//cep é inválido.
-						limpa_formulário_cep();
-						alert("Formato de CEP inválido.");
-					}
-				} else {
-					//cep sem valor, limpa formulário.
-					limpa_formulário_cep();
-				}
-			});
-		});
-	</script>
+	<!-- Custom scripts for all pages-->
+	<script th:src="@{/js/custom.js}"></script>
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/jquery.easing.min.js}"></script>
+	<!-- <script th:src="@{js/sb-admin-2.js}"></script> -->
+	<script th:src="@{/js/sb-admin-2.min.js}"></script>
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/js/dark-mode-switch.min.js}"></script>
+	<script th:src="@{/js/fonte.js}"></script>
 	<script type="text/javascript">
 		$("#cpf").mask("000.000.000-00");
 		$("#cep").mask("00000-000");
 		$("#telefone").mask("(00) 0000-0000");
 		$("#whatsapp").mask("(00) 00000-0000");
 	</script>
-	<!-- Custom scripts for all pages-->
-	<script th:src="@{/js/jquery.min.js}"></script>
-	<script th:src="@{/js/jquery.easing.min.js}"></script>
-	<!-- <script th:src="@{js/sb-admin-2.js}"></script> -->
-	<script th:src="@{/js/sb-admin-2.min.js}"></script>
-	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-	<script th:src="@{/js/fonte.js}"></script>
 </body>
 
 </html>

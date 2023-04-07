@@ -47,9 +47,8 @@
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Lista de Empresas</h1>
-                        <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-                            th:href="@{/a/cadastro/empresa}"><button class="btn btn-primary btn-sm"
-                                type="button">Cadastrar Empresa</button></a>
+                        <a class="d-none d-sm-inline-block btn btn-danger shadow-sm"
+                            th:href="@{/a/cadastro/empresa}">Cadastrar Empresa</a>
                     </div>
 
                     <div class="panel-body" th:switch="${empresas}">
@@ -70,7 +69,7 @@
                                         <td><span th:text="${empresa.cnpj}"></span></td>
                                         <td><span th:text="${empresa.areaNegocio}"></td>
                                         <td><a th:href="@{/a/empresas/consultar/{cnpj}(cnpj=${empresa.cnpj})}"><button
-                                                    class="btn btn-primary" type="button">Detalhes</button></a></td>
+                                                    class="btn btn-danger" type="button">Detalhes</button></a></td>
                                     </tr>
                                 </tbody>
                             </table>
