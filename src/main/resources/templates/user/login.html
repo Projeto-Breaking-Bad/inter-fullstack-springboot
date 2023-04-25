@@ -23,10 +23,10 @@
     background: #fccb90;
 
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient( 45deg, #ee7724, #d8363a, #dd3675, #b44593);
+background: linear-gradient(45deg, rgba(233,209,38,1) 0%, rgba(223,131,34,1) 20%, rgba(191,23,23,1) 80%);
 
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient( 45deg, #ee7724, #d8363a, #dd3675, #b44593);
+background: linear-gradient(45deg, rgba(233,209,38,1) 0%, rgba(223,131,34,1) 20%, rgba(191,23,23,1) 80%);
     }
 
   @media (min-width: 768px) {
@@ -54,12 +54,11 @@
               <div class="col-lg-6">
                 <div class="card-body p-md-5 mx-md-4">
 
-                  <div class="text-center">
-                    <img th:src="@{/images/logogray.png}" style="width: 14rem;" alt="logo">
-                    <h4 class="mt-1 mb-5 pb-1">Caça Talentos</h4>
+                  <div class="text-center mb-3">
+                    <img th:src="@{/images/logogray.png}" style="width: 14rem;" alt="Logotipo do Caça-Talentos">
                   </div>
                   <form th:action="@{/login}" method="post">
-                    <p>Por favor, faça login na sua conta</p>
+                    <p>Por favor, faça login na sua conta:</p>
 
                     <div class="form-outline mb-4">
                       <!-- <label class="form-label" for="username">Email de usuário</label> -->
@@ -78,14 +77,14 @@
                     </div>
 
                     <div class="text-center d-grid gap-2">
-                      <button class="btn btn-danger btn-block fa-lg gradient-custom-2 mb-1"
+                      <button class="btn btn-danger btn-block gradient-custom-2 mb-1 py-2 border-0 fw-bold"
                         type="submit">Login</button>
                       <a class="text-muted p-3" href="#!">Esqueceu a senha?</a>
                     </div>
                     <div class="d-flex align-items-center justify-content-center pb-4">
                       <p class="mb-0 me-2">Não tem uma conta?</p>
                       <a class="text-decoration-none" th:href="@{/cadastro/aluno}">
-                        <button type="button" class="btn btn-outline-danger">Crie conta</button>
+                        <button type="button" class="btn btn-outline-dark">Crie sua conta</button>
                       </a>
                     </div>
                   </form>
@@ -95,9 +94,9 @@
               <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
                 <div class="text-white px-3 py-4 p-md-5 mx-md-4">
                   <h4 class="mb-4">Somos mais que uma empresa</h4>
-                  <p class="small mb-0">Nosso intuito e facilitar a busca de estágios para as Fatecs, oferecendo um
-                    sistema simples e
-                    completo com várias funcionalidades que ajudem os alunos e empresas a se conectarem.</p>
+                  <p class="small mb-0">Nosso intuito é facilitar a busca de estágios para as Fatecs, 
+                    oferecendo um sistema simples e completo, com várias funcionalidades que 
+                    ajudem os alunos e empresas a se conectarem.</p>
                 </div>
               </div>
             </div>

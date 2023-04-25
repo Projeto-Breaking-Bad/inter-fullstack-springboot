@@ -36,7 +36,7 @@
         <div class="container py-5 py-sm-7">
             <!-- Section: Design Block -->
             <section>
-                <div class="card py-5 px-md-5" style="border-radius: 0.75rem; margin-top: -100px;">
+                <div class="card py-5 px-md-4" style="border-radius: 0.75rem; margin-top: -100px;">
                     <div class="row d-flex justify-content-center">
                         <div class="col-10">
                             <div class="text-center">
@@ -47,153 +47,167 @@
 
                             <div class="mb-4 text-center">
                                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                    <input type="radio" class="btn-check" name="pagAluno" id="pagAluno"
+                                    <input type="radio" class="btn-check d-none" name="pagAluno" id="pagAluno"
                                         autocomplete="off" checked>
                                     <label class="btn btn-outline-danger" for="pagAluno">Aluno</label>
                                     <a class="text-decoration-none" th:href="@{/cadastro/empresa}">
-                                        <input type="button" class="btn-check" name="pagEmpresa" id="pagEmpresa"
+                                        <input type="button" class="btn-check d-none" name="pagEmpresa" id="pagEmpresa"
                                             autocomplete="off">
                                         <label class="btn btn-outline-danger" for="pagEmpresa">Empresa</label>
                                     </a>
                                 </div>
                             </div>
 
-                            <form class="row needs-validation" method="POST" th:action="@{/cadastro/aluno}"
+                            <form class="needs-validation" method="POST" th:action="@{/cadastro/aluno}"
                                 th:object="${aluno}" novalidate>
-                                <div class="col-12">
-                                    <label for="nome" class="form-label">Nome de usuário</label>
-                                    <input type="text" class="form-control" id="nome" name="nome" maxlength="50"
-                                        placeholder="Nome do usuário" required>
-                                    <div class="valid-feedback">
-                                        Parece bom!
+                                <div class="row mt-2">
+                                    <h4>Dados Pessoais</h4>
+                                    <div class="d-block border-dark border-bottom mb-4"></div>
+                                    <div class="col-8">
+                                        <label for="nome" class="form-label">Nome Completo <span class="text-danger fw-bold">*</span></label>
+                                        <input type="text" class="form-control" id="nome" name="nome" maxlength="50"
+                                            placeholder="Nome do usuário" required>
+                                        <div class="valid-feedback">
+                                            Parece bom!
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="RA" class="form-label">RA</label>
-                                    <input type="text" class="form-control" id="ra" name="ra" maxlength="13"
-                                        placeholder="Apenas números" required>
-                                    <div class="invalid-feedback">
-                                        Forneça um RA!
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="cpf" class="form-label">CPF</label>
-                                    <input type="text" class="form-control" id="cpf" name="cpf"
-                                        placeholder="000.000.000-00" required>
-                                    <span id="resposta"></span>
-                                    <div class="invalid-feedback">
-                                        Forneça um CPF!
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="dataNasc" class="form-label">Data de Nascimento</label>
-                                    <input type="date" class="form-control" id="dataNasc" name="dataNasc" required>
-                                    <div class="invalid-feedback">
-                                        Forneça uma Data de Nascimento!
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="inputZip" class="form-label">Cep</label>
-                                    <input type="text" class="form-control" id="cep" name="cep" placeholder="00000-000"
-                                        required>
-                                    <div class="invalid-feedback">
-                                        Forneça um CEP!
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="bairro" class="form-label">Bairro</label>
-                                    <input type="text" class="form-control" id="bairro" name="bairro" required>
-                                    <div class="invalid-feedback">
-                                        Forneça um Bairro!
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="cidade" class="form-label">Cidade</label>
-                                    <input type="text" class="form-control" id="cidade" name="cidade" required disabled>
-                                    <div class="invalid-feedback">
-                                        Forneça um Cidade!
-                                    </div>
-                                </div>
-                                <div class="col-md-1">
-                                    <label for="uf" class="form-label">UF</label>
-                                    <input type="text" class="form-control" id="uf" name="uf" disabled>
-                                    <div class="valid-feedback">
-                                        Parece bom!
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="logradouro" class="form-label">Logradouro</label>
-                                    <input type="text" class="form-control" id="logradouro" name="logradouro"
-                                        placeholder="Digite o logradouro" required>
-                                    <div class="invalid-feedback">
-                                        Forneça uma Rua!
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="numero" class="form-label">Número</label>
-                                    <input type="text" class="form-control" id="numero" name="numero" maxlength="10" required>
-                                    <div class="invalid-feedback">
-                                        Forneça um Número!
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="complemento" class="form-label">Complemento</label>
-                                    <input type="text" class="form-control" id="complemento" name="complemento" maxlength="50">
-                                    <div class="valid-feedback">
-                                        Parece bom!
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="telefone" class="form-label">Telefone</label>
-                                    <input type="text" class="form-control" id="telefone" name="telefone"
-                                        placeholder="(xx) xxxx-xxxx">
-                                    <div class="valid-feedback">
-                                        Parece bom!
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="celular" class="form-label">Celular</label>
-                                    <input type="text" class="form-control" id="whatsapp" name="whatsapp"
-                                        placeholder="(xx) xxxxx-xxxx" required>
-                                    <div class="invalid-feedback">
-                                        Forneça um Celular!
-                                    </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <label for="email" class="form-label">Email de usuário</label>
-                                    <input type="email" class="form-control" id="email" name="email"
-                                        placeholder="email@email.com" maxlength="100" required>
-                                    <div class="invalid-feedback">
-                                        Forneça um Email!
-                                    </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <label for="senha" class="form-label">Senha</label>
-                                    <input type="password" class="form-control" id="senha" name="senha" maxlength="100" required>
-                                    <div class="invalid-feedback">
-                                        Forneça uma Senha!
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <label for="curso" class="form-label">Curso</label>
-                                    <input type="text" class="form-control" id="curso" name="curso" placeholder="Curso" maxlength="255"
-                                        required>
-                                    <div class="invalid-feedback">
-                                        Forneça um Curso!
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <label for="habilidade">Habilidade</label>
-                                    <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Habilidades" id="habilidades"
-                                            name="habilidades" maxlength="800" style="height: 100px" required></textarea>
+                                    <div class="col-md-4">
+                                        <label for="RA" class="form-label">RA <span class="text-danger fw-bold">*</span></label>
+                                        <input type="text" class="form-control" id="ra" name="ra" maxlength="13"
+                                            placeholder="Apenas números" required>
                                         <div class="invalid-feedback">
-                                            Forneça um Habilidade!
+                                            Forneça um RA!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="cpf" class="form-label">CPF <span class="text-danger fw-bold">*</span> </label>
+                                        <input type="text" class="form-control" id="cpf" name="cpf"
+                                            placeholder="000.000.000-00" required>
+                                        <span id="resposta"></span>
+                                        <div class="invalid-feedback">
+                                            Forneça um CPF!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="dataNasc" class="form-label">Data de Nascimento <span class="text-danger fw-bold">*</span></label>
+                                        <input type="date" class="form-control" id="dataNasc" name="dataNasc" required>
+                                        <div class="invalid-feedback">
+                                            Forneça uma Data de Nascimento!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="telefone" class="form-label">Telefone</label>
+                                        <input type="text" class="form-control" id="telefone" name="telefone"
+                                            placeholder="(xx) xxxx-xxxx">
+                                        <div class="valid-feedback">
+                                            Parece bom!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="whatsapp" class="form-label">Celular <span class="text-danger fw-bold">*</span></label>
+                                        <input type="text" class="form-control" id="whatsapp" name="whatsapp"
+                                            placeholder="(xx) xxxxx-xxxx" required>
+                                        <div class="invalid-feedback">
+                                            Forneça um Celular!
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 d-flex justify-content-end pt-3">
-                                    <button type="submit" class="btn btn-danger">Cadastrar</button>
+                                <div class="row mt-2">
+                                    <h4>Endereço</h4>
+                                    <div class="d-block border-dark border-bottom mb-4"></div>
+                                    <div class="col-md-2">
+                                        <label for="cep" class="form-label">CEP <span class="text-danger fw-bold">*</span></label>
+                                        <input type="text" class="form-control" id="cep" name="cep" placeholder="00000-000"
+                                            required>
+                                        <div class="invalid-feedback">
+                                            Forneça um CEP!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label for="logradouro" class="form-label">Logradouro <span class="text-danger fw-bold">*</span></label>
+                                        <input type="text" class="form-control" id="logradouro" name="logradouro" required>
+                                        <div class="invalid-feedback">
+                                            Forneça uma Rua!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="numero" class="form-label">Número <span class="text-danger fw-bold">*</span></label>
+                                        <input type="text" class="form-control" id="numero" name="numero" maxlength="10" required>
+                                        <div class="invalid-feedback">
+                                            Forneça um Número!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="complemento" class="form-label">Complemento</label>
+                                        <input type="text" class="form-control" id="complemento" name="complemento" maxlength="50">
+                                        <div class="valid-feedback">
+                                            Parece bom!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="bairro" class="form-label">Bairro <span class="text-danger fw-bold">*</span></label>
+                                        <input type="text" class="form-control" id="bairro" name="bairro" required>
+                                        <div class="invalid-feedback">
+                                            Forneça um Bairro!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label for="cidade" class="form-label">Cidade <span class="text-danger fw-bold">*</span></label>
+                                        <input type="text" class="form-control" id="cidade" name="cidade" required disabled>
+                                        <div class="invalid-feedback">
+                                            Forneça uma Cidade!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <label for="uf" class="form-label">UF <span class="text-danger fw-bold">*</span></label>
+                                        <input type="text" class="form-control" id="uf" name="uf" required disabled>
+                                        <div class="invalid-feedback">
+                                            Forneça um Estado!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <h4>Dados Cadastrais</h4>
+                                    <div class="d-block border-dark border-bottom mb-4"></div>
+
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Email de Usuário <span class="text-danger fw-bold">*</span></label>
+                                        <input type="email" class="form-control" id="email" name="email"
+                                            placeholder="email@email.com" maxlength="100" required>
+                                        <div class="invalid-feedback">
+                                            Forneça um Email!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="senha" class="form-label">Senha <span class="text-danger fw-bold">*</span></label>
+                                        <input type="password" class="form-control" id="senha" name="senha" maxlength="100" required>
+                                        <div class="invalid-feedback">
+                                            Forneça uma Senha!
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="curso" class="form-label">Curso <span class="text-danger fw-bold">*</span></label>
+                                        <input type="text" class="form-control" id="curso" name="curso" placeholder="Curso" maxlength="255"
+                                            required>
+                                        <div class="invalid-feedback">
+                                            Forneça um Curso!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="habilidades">Habilidades <span class="text-danger fw-bold">*</span></label>
+                                        <div class="form-floating">
+                                            <textarea class="form-control" placeholder="Habilidades" id="habilidades"
+                                                name="habilidades" maxlength="800" style="height: 100px" required></textarea>
+                                            <div class="invalid-feedback">
+                                                Escreva sobre suas habilidades!
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-end pt-3">
+                                        <button type="submit" class="btn btn-dark">Cadastrar</button>
+                                    </div>
                                 </div>
                             </form>
                         </div>
