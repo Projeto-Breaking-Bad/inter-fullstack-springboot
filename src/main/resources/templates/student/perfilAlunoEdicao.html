@@ -69,7 +69,7 @@
 						<div class="col-lg-4">
 							<div class="card mb-4">
 								<div class="card-body text-center">
-									<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+									<img th:src="@{/images/usericon.svg}"
 										alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
 									<h5 class="text-muted my-3" th:text="${aluno.nome}"></h5>
 									<div class="d-flex justify-content-center mb-2">
@@ -251,30 +251,6 @@
 									</div>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<div class="card mb-4 mb-md-0">
-										<div class="card-body">
-											<p class="mb-4"><span class="text-primary font-italic me-1">Projeto
-													Desenvolvidos</span>
-											</p>
-											<div class="d-flex justify-content-between align-items-center mb-4">
-												<p class="text-muted lead fw-normal mb-0">Fotos recentes</p>
-											</div>
-											<div class="row g-2">
-												<div class="col mb-2">
-													<img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
-														alt="image 1" class="w-100 rounded-3">
-												</div>
-												<div class="col mb-2">
-													<img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
-														alt="image 1" class="w-100 rounded-3">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -321,7 +297,7 @@
     <script th:src="@{/js/sb-admin-2.min.js}"></script>
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/js/color-mode-switch.js}"></script>
-    <script th:src="@{/js/fonte.js}"></script>
+	<script th:src="@{/js/custom.js}"></script>
 </body>
 
 </html>

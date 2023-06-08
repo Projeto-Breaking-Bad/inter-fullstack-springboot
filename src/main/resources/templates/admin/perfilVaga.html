@@ -30,6 +30,7 @@
 	<!-- Custom styles for this template-->
 	
 	<link rel="stylesheet" type="text/css" th:href="@{/css/sb-admin-2.min.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/ct-style.css}">
 	<script type="text/javascript">
 		(function(c,l,a,r,i,t,y){
 			c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -38,19 +39,6 @@
 		})(window, document, "clarity", "script", "glxgi3gmgy");
 	</script>
 </head>
-<style>
-	.gradient-custom {
-		/* fallback for old browsers */
-		background: #f6d365;
-
-		/* Chrome 10-25, Safari 5.1-6 */
-		background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
-
-		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-		background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
-	}
-</style>
-
 <body id="page-top">
     <header th:replace="fragments/accessibilityBarAdmin :: accessibilityBarAdmin"></header>
 	<!-- Page Wrapper -->
@@ -72,21 +60,13 @@
 				<div class="container">
 					<div class="row d-flex justify-content-center align-items-center h-100">
 						<div class="col col-lg-8 mb-4 mb-lg-0">
-							<div class="card mb-3" style="border-radius: .5rem;">
+							<div class="card mb-3 card-border">
 								<div class="row g-0">
-									<div class="col-md-4 gradient-custom text-center text-white" data-theme="contrast"
-										style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-										<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp"
-											alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-										<h5>Web Company</h5>
+									<div class="col-md-4 gradient-custom text-center text-white card-vacancies">
+										<img th:src="@{/images/vacancies.svg}"
+											alt="Avatar" class="img-fluid my-5 img-card"/>
+										<h5>Área da Vaga</h5>
 										<p th:text="${vaga.areaAtuacao}"></p>
-										<i class="far fa-edit mb-5"></i>
-										<div class="d-flex justify-content-center mb-2">
-											<a th:href="@{/a/vagas/atualizar/{id}(id=${vaga.id})}"><button type="button"
-													class="btn btn-light">Editar</button></a>
-											<a data-toggle="modal" data-target="#logoutModal"><button type="button"
-													class="btn btn-outline-light ms-1">Excluir</button></a>
-										</div>
 									</div>
 									<div class="col-md-8">
 										<div class="card-body p-4">
@@ -173,7 +153,7 @@
 	<script th:src="@{/js/sb-admin-2.min.js}"></script>
 	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/js/color-mode-switch.js}"></script>
-	<script th:src="@{/js/fonte.js}"></script>
+	<script th:src="@{/js/custom.js}"></script>
 </body>
 
 </html>

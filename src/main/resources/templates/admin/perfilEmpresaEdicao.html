@@ -68,7 +68,7 @@
 						<div class="col-lg-4">
 							<div class="card mb-4">
 								<div class="card-body text-center">
-									<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+									<img th:src="@{/images/company.svg}"
 										alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
 									<h5 class="my-3" th:text="${empresa.nome}"></h5>
 									<div class="d-flex justify-content-center mb-2">
@@ -325,7 +325,7 @@
 	<script th:src="@{/js/sb-admin-2.min.js}"></script>
 	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/js/color-mode-switch.js}"></script>
-	<script th:src="@{/js/fonte.js}"></script>
+	<script th:src="@{/js/custom.js}"></script>
 </body>
 
 </html>

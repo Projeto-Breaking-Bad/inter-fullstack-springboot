@@ -82,7 +82,7 @@
 							<div class="card" style="border-radius: 15px;">
 								<div class="card-body text-center">
 									<div class="mt-3 mb-4">
-										<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+										<img th:src="@{/images/usericon.svg}"
 											class="rounded-circle img-fluid" style="width: 100px;" />
 									</div>
 									<h4 class="mb-2" th:text="${admin.nome}"></h4>
@@ -151,7 +151,7 @@
 	<script th:src="@{/js/sb-admin-2.min.js}"></script>
 	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/js/color-mode-switch.js}"></script>
-	<script th:src="@{/js/fonte.js}"></script>
+	<script th:src="@{/js/custom.js}"></script>
 </body>
 
 </html>
