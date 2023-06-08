@@ -12,11 +12,11 @@ O Projeto Caça Talentos é uma plataforma online desenvolvida para conectar tal
 
 ## Tecnologias Utilizadas
 
-- Frontend: HTML, CSS, JavaScript, React
-- Backend: Node.js, Express.js
+- Frontend: HTML, CSS, JavaScript
+- Backend: Java Web
 - Banco de Dados: MongoDB
 - Autenticação e Autorização: JSON Web Tokens (JWT)
-- Implantação: Heroku, Netlify
+- Implantação: AWS
 
 ## Como Contribuir
 
