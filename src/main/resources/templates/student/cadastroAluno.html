@@ -37,8 +37,7 @@
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-xl-8">
                     <a href="/" class="d-block text-center pr-3">
-                        <img th:src="@{/images/logo.png}" 
-                        style="width: 16rem;" alt="Logotipo do Caça-Talentos">
+                        <img th:src="@{/images/logo.png}" style="width: 16rem;" alt="Logotipo do Caça-Talentos">
                     </a>
                     <div class="card rounded-3 text-black">
                         <div class="row g-0">
@@ -51,19 +50,21 @@
                                         <p class="text-muted small">Já tem uma conta? <a class="text-decoration-none"
                                                 th:href="@{/login}">Entre aqui</a></p>
                                     </div>
-                                    <div class="mb-3 mt-4 text-center">
-                                        <label class="m-1 d-block">Quero me cadastrar como...</label>
+                                    <div class="mb-3 mt-2 text-center">
+                                        <label class="m-1 d-block text-muted small">Quero me cadastrar como...</label>
                                         <div class="btn-group" role="group" style="z-index: 0;">
-                                            <a class="btn btn-outline-danger active" aria-current="page" for="pagAluno" th:href="@{/cadastro/aluno}">
+                                            <a class="btn btn-outline-danger active" aria-current="page" for="pagAluno"
+                                                th:href="@{/cadastro/aluno}">
                                                 Aluno
                                             </a>
-                                            <a class="btn btn-outline-danger" for="pagEmpresa" th:href="@{/cadastro/empresa}">
+                                            <a class="btn btn-outline-danger" for="pagEmpresa"
+                                                th:href="@{/cadastro/empresa}">
                                                 Empresa
                                             </a>
                                         </div>
                                     </div>
-                                    <form class="row justify-content-center needs-validation" method="POST" th:action="@{/cadastro/aluno}"
-                                        th:object="${aluno}" novalidate>
+                                    <form class="row justify-content-center needs-validation" method="POST"
+                                        th:action="@{/cadastro/aluno}" th:object="${aluno}" novalidate>
                                         <div class="form-outline mb-3 col-8">
                                             <label for="nome" class="form-label">Nome de Usuário</label>
                                             <input type="text" class="form-control" id="nome" name="nome"
@@ -97,10 +98,12 @@
                                                 Forneça uma Senha!
                                             </div>
                                         </div>
-                                        <div class="text-center col-4 mt-4">
-                                            <button class="btn btn-danger btn-block gradient-custom-2"
-                                                type="submit">Cadastrar</button>
-                                        </div>
+                                        <div class="text-center col-6 mt-4">
+                                            <button class="btn btn-danger gradient-custom-2 w-100 mb-3" type="submit">Cadastrar</button>
+                                            <a class="text-decoration-none" th:href="@{/login}">
+                                                <button class="btn btn-outline-dark w-100" type="button" >Cancelar</button>
+                                            </a>
+                                        </div>                               
                                     </form>
                                 </div>
 
