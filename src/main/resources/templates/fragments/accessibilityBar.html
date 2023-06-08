@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" th:href="@{/css/all.min.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/dark-mode.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/contras-mode.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/fontaawesome.min.css}">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -28,12 +29,8 @@
 <body id="page-top">
     <ul class="nav justify-content-center" th:fragment="accessibilityBar">
         <li class="nav-item">
-            <a class="text-muted nav-link active" aria-current="page" href="#page-top" accesskey="1"
-                title="Ir diretamente para o menu Principal">Ir para o menu Principal [1]</a>
-        </li>
-        <li class="nav-item">
-            <a class="text-muted nav-link" href="#rodape" accesskey="2" title="Ir diretamente para o rodapé">Ir para o
-                rodapé [2]</a>
+            <a class="text-muted nav-link" href="#rodape" accesskey="1" title="Ir diretamente para o rodapé">Ir para o
+                rodapé [1]</a>
         </li>
         <li class="nav-item">
             <a class="text-muted nav-link" th:href="@{/acessibilidade}">Acessibilidade</a>
@@ -47,9 +44,14 @@
         <li class="nav-item">
             <div class="form-check form-switch" style="padding: 0.5rem;padding-left: 3.65rem;">
                 <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
-                <label class="form-check-label" for="darkSwitch"> Contraste </label>
+                <label class="form-check-label" for="darkSwitch"> Dark Mode </label>
             </div>
-            <script th:src="@{/js/dark-mode-switch.min.js}"></script>
+        </li>
+        <li class="nav-item">
+            <div class="form-check form-switch" style="padding: 0.5rem;padding-left: 3.65rem;">
+                <input class="form-check-input" type="checkbox" role="switch" id="contrastSwitch">
+                <label class="form-check-label" for="contrastSwitch"> Contraste </label>
+            </div>
         </li>
     </ul>
 </body>

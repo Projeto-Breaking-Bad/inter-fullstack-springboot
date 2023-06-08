@@ -1,0 +1,64 @@
+[data-theme="contrast"] {
+    background-color: #111 !important;
+    color: #FFFF00;
+}
+
+[data-theme="contrast"] .bg-black {
+    background-color: #fff !important;
+}
+
+[data-theme="contrast"] .bg-dark {
+    background-color: #eee !important;
+}
+
+[data-theme="contrast"] .bg-light {
+    background-color: #222 !important;
+}
+
+[data-theme="contrast"] .bg-white {
+    background-color: #25282a !important;
+}
+
+[data-theme="contrast"] .bg-gradient-danger {
+    background-color: #3a3e40 !important;
+    background-image: linear-gradient(180deg, #3d3f40 10%, #333536 100%) !important;
+}
+
+[data-theme="contrast"] #content-wrapper {
+    background-color: #111 !important;
+    color: #FFFF00;
+}
+
+[data-theme="contrast"] .card-body {
+    background-color: #25282a !important;
+    color: #FFFF00 !important;
+}
+
+[data-theme="contrast"] a,
+[data-theme="contrast"] h1,
+[data-theme="contrast"] h2,
+[data-theme="contrast"] h3,
+[data-theme="contrast"] h4,
+[data-theme="contrast"] h5,
+[data-theme="contrast"] h6 {
+    color: #FFFF00 !important;
+}
+
+[data-theme="contrast"] .dropdown-menu.show {
+    background-color: #25282a !important;
+}
+
+[data-theme="contrast"] .gradient-custom {
+    background: #25282a !important;
+    background: linear-gradient(to right bottom, rgba(37, 40, 42, 1), rgba(37, 40, 42, 1)) !important;
+}
+
+[data-theme="contrast"] .gradient-custom h5,
+[data-theme="contrast"] .gradient-custom p {
+    color: #FFFF00 !important;
+}
+
+[data-theme="contrast"] .gradient-custom i {
+    color: #FFFF00 !important;
+}
+
