@@ -5,27 +5,24 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-@Entity
+@Document
 public class Admin implements UserDetails {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	// ATRIBUTOS
 	private String nome;
 	private String instituicao;
 	@Id
-    private String login;
+	private String login;
 	private String email;
 	private String senha;
 	private boolean deleted = false;
@@ -33,14 +30,6 @@ public class Admin implements UserDetails {
 	// CONSTRUCTORES
 	public Admin() {
 		
-	}
-	public Admin(String nome, String instituicao, String login, String email, String senha) {
-		super();
-		this.nome = nome;
-        this.instituicao = instituicao;
-        this.login = login;
-		this.email = email;
-		this.senha = senha;
 	}
 	
 	// GETTERS E SETTERS
@@ -50,30 +39,35 @@ public class Admin implements UserDetails {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-    public String getInstituicao() {
+	
+	public String getInstituicao() {
 		return instituicao;
 	}
 	public void setInstituicao(String instituicao) {
 		this.instituicao = instituicao;
 	}
-    public String getLogin() {
+	
+	public String getLogin() {
 		return login;
 	}
 	public void setLogin(String login) {
 		this.login = login;
 	}
+	
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 	public String getSenha() {
 		return senha;
 	}
 	public void setSenha(String senha) {
 		this.senha = new BCryptPasswordEncoder().encode(senha);
 	}
+	
 	public boolean getDeleted() {
 		return deleted;
 	}
@@ -81,6 +75,7 @@ public class Admin implements UserDetails {
 		this.deleted = deleted;
 	}
 
+	// SEGURANCA
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Set<GrantedAuthority> authorities = new HashSet<>();
@@ -113,4 +108,5 @@ public class Admin implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
+	
 }
