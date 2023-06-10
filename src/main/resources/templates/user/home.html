@@ -45,16 +45,374 @@
     <header th:replace="fragments/accessibilityBar :: accessibilityBar"></header>
     <!-- Page Wrapper -->
     <div id="wrapper">
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar"
-            th:replace="fragments/Sidebar :: Sidebar"></ul>
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
                     th:replace="fragments/navBar :: navBar"></nav>
+                <section class="jumbotron text-center">
+                    <h1 class="display-4">Encontre o emprego dos seus sonhos</h1>
+                    <p class="lead">Milhares de vagas esperando por você</p>
+                    <a href="#" class="btn btn-primary">Buscar Vagas</a>
+                </section>
+
+                <div class="d-flex justify-content-around mt-5">
+                    <h3>Áreas Profissionais mais populares</h3>
+                </div>
+
+                <div id="carouselExample" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/20943943.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 1">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Comercial, Vendas</h6>
+                                                        <p class="card-text"><small class="text-muted">135.193 vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/ilustracao-de-suporte-ao-cliente_23-2148890147.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 2">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Telemarketing</h6>
+                                                        <p class="card-text"><small class="text-muted">71.772 vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/comercio-internacional-com-entregador.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 3">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Logística</h6>
+                                                        <p class="card-text"><small class="text-muted">29.839 vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/ilustracao-plana-do-dia-internacional-do-chef_23-2149636326.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 4">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Gastronomia</h6>
+                                                        <p class="card-text"><small class="text-muted">16.716 vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/conceito-multitarefa_23-2148403799.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 1">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Administração</h6>
+                                                        <p class="card-text"><small class="text-muted">15.659 vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/empilhadeira-com-plataforma-de-caixas-empilhadas_3446-399.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 2">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Industrial, Produção</h6>
+                                                        <p class="card-text"><small class="text-muted">15.456 vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/produtos-de-limpeza-com-produtos-de-limpeza-servico-de-limpeza_18591-52068.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 3">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Serviços Gerais</h6>
+                                                        <p class="card-text"><small class="text-muted">12.951 vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/equipe-de-engenheiros-discutindo-questoes-no-canteiro-de-obras_74855-4786.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 4">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Construção</h6>
+                                                        <p class="card-text"><small class="text-muted">10.940 vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/ilustracao-criativa-abstrata-de-hospedagem-de-sites_23-2149225959.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 1">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">TI, Telecomunicações</h6>
+                                                        <p class="card-text"><small class="text-muted">8.731 vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/ilustracao-do-conceito-de-policial-e-policial_114360-12111.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 2">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Segurança</h6>
+                                                        <p class="card-text"><small class="text-muted">7.383 vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/conceito-de-avaliacao-de-credito-de-design-plano-desenhado-a-mao_23-2149179725.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 3">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Finanças, Economia</h6>
+                                                        <p class="card-text"><small class="text-muted">6.560 vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/ilustracao-do-conceito-de-medicos_114360-1515.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 4">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Saúde</h6>
+                                                        <p class="card-text"><small class="text-muted">5.529 vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Anterior</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Próximo</span>
+                    </a>
+                </div>
+
+
+                <!-- <div id="carouselExample" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Comercial, Vendas</h6>
+                                                <p class="card-text text-wrap">135.193 vagas</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Telemarketing</h6>
+                                                <p class="card-text text-wrap">71.772 vagas</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Logística</h6>
+                                                <p class="card-text text-wrap">29.839 vagas</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Alimentação/Gastronomia</h6>
+                                                <p class="card-text text-wrap">16.716 vagas</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Administração</h6>
+                                                <p class="card-text text-wrap">15.659 vagas</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Industrial, Produção, Fábrica</h6>
+                                                <p class="card-text text-wrap">15.456 vagas</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Serviços Gerais</h6>
+                                                <p class="card-text text-wrap">12.951 vagas</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Construção, Manutenção</h6>
+                                                <p class="card-text text-wrap">10.940 vagas</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="card-body">
+                                                <h6 class="card-title">TI, Telecomunicações</h6>
+                                                <p class="card-text text-wrap">8.731 vagas</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Segurança</h6>
+                                                <p class="card-text text-wrap">7.383 vagas</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Contábil, Finanças, Economia</h6>
+                                                <p class="card-text text-wrap">6.560 vagas</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Saúde</h6>
+                                                <p class="card-text text-wrap">5.529 vagas</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Anterior</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Próximo</span>
+                    </a>
+                </div> -->
+
                 <div vw class="enabled" th:replace="fragments/vlibras :: vlibras"></div>
                 <div class="container-fluid">
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <div class="d-sm-flex align-items-center justify-content-between mt-4 mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Sugestões de Vagas</h1>
                     </div>
                 </div>
@@ -102,6 +460,52 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="d-flex justify-content-around mt-5 mb-3">
+                    <h3>O Caça Talentos te ajuda a encontrar um estágios</h3>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img th:src="@{/images/20944332.png}" alt="Imagem" class="img-fluid">
+                        </div>
+                        <div class="col-md-6 d-flex align-items-center">
+                            <div>
+                                <h2>Descubra Talentos</h2>
+                                <p>No projeto Caça Talentos, acreditamos que todos têm habilidades únicas e valiosas a
+                                    oferecer. Nossa missão é conectar talentos com oportunidades incríveis.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 d-flex align-items-center">
+                            <div>
+                                <h2>Explore Talentos</h2>
+                                <p>Com nossa plataforma, você pode explorar uma variedade de talentos em diferentes
+                                    áreas, desde música e arte até ciência e tecnologia. Descubra talentos promissores e
+                                    inspire-se.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <img th:src="@{/images/19197148.png}" alt="Imagem" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img th:src="@{/images/19197091.png}" alt="Imagem" class="img-fluid">
+                        </div>
+                        <div class="col-md-6 d-flex align-items-center">
+                            <div>
+                                <h2>Conecte-se com Talentos</h2>
+                                <p>Em nosso projeto, oferecemos uma plataforma interativa para conectar talentos com
+                                    empresas, instituições de ensino e profissionais em busca de colaboração. Amplie sua
+                                    rede e encontre oportunidades únicas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <footer class="sticky-footer bg-white" th:replace="fragments/footer :: footer"></footer>
         </div>
@@ -111,8 +515,8 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-    th:replace="fragments/logoutModal :: logoutModal"></div>
+    <div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" th:replace="fragments/logoutModal :: logoutModal"></div>
 
     <!-- Custom scripts for all pages-->
     <script th:src="@{/js/jquery.min.js}"></script>
@@ -121,7 +525,7 @@
     <script th:src="@{/js/sb-admin-2.min.js}"></script>
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/js/color-mode-switch.js}"></script>
-	<script th:src="@{/js/custom.js}"></script>
+    <script th:src="@{/js/custom.js}"></script>
 </body>
 
 </html>
