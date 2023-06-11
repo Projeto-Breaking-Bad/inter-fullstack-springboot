@@ -55,17 +55,17 @@
 
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Lista de Vagas</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Minhas Inscrições</h1>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a class="text-gray-800" th:href="@{/s}">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Lista de Vagas</li>
+                                <li class="breadcrumb-item active" aria-current="page">Minhas Inscrições</li>
                             </ol>
                         </nav>
                     </div>
 
                     <div class="panel-body" th:switch="${vagas}">
-                        <h5 th:case="null">Não existem vagas cadastrados!</h5>
+                        <h5 th:case="null">Você ainda não se cadastrou em nenhuma vaga!</h5>
                         <div th:case="*">
                             <div class="container py-2 h-100">
                                 <div class="row d-flex justify-content-center align-items-center h-100">
@@ -90,7 +90,7 @@
                                                     </p>
                                                 </div>
                                                 <div class="d-flex justify-content-end">
-                                                    <a th:href="@{/s/vagas/consultar/{id}(id=${vaga.id})}"><button
+                                                    <a th:href="@{/s/vagas/inscritas/{id}(id=${vaga.id})}"><button
                                                             class="btn btn-danger" type="button">Detalhes</button></a>
                                                 </div>
                                             </div>

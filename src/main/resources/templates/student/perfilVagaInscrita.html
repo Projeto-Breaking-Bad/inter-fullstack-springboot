@@ -64,15 +64,17 @@
 											alt="Avatar" class="img-fluid my-5 img-card"/>
 										<h5>Área da Vaga</h5>
 										<p th:text="${vaga.areaAtuacao}"></p>
-										<div th:if="${estaInscrito}">
-											<form th:action="@{/s/vagas/consulta/desinscrever/{id}(id=${vaga.id})}" method="post">
-												<button type="submit" class="btn btn-secondary">Desinscrever</button>
-											</form>
-										</div>
-										<div th:unless="${estaInscrito}">
-											<form th:action="@{/s/vagas/consulta/inscrever/{id}(id=${vaga.id})}" method="post">
-												<button type="submit" class="btn btn-danger">Inscrever</button>
-											</form>
+										<div class="panel-body">
+											<div th:if="${estaInscrito}">
+												<form th:action="@{/s/vagas/inscritas/desinscrever/{id}(id=${vaga.id})}" method="post">
+													<button type="submit" class="btn btn-secondary">Desinscrever</button>
+												</form>
+											</div>
+											<div th:unless="${estaInscrito}">
+												<form th:action="@{/s/vagas/inscritas/inscrever/{id}(id=${vaga.id})}" method="post">
+													<button type="submit" class="btn btn-danger">Inscrever</button>
+												</form>
+											</div>
 										</div>
 									</div>
 									<div class="col-md-8">
