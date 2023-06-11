@@ -35,6 +35,7 @@
 }
 
 [data-theme="contrast"] a,
+[data-theme="contrast"] span,
 [data-theme="contrast"] h1,
 [data-theme="contrast"] h2,
 [data-theme="contrast"] h3,
@@ -62,7 +63,15 @@
     color: #FFFF00 !important;
 }
 
-.bg-custom {
+[data-theme="contrast"] .modal-content,
+[data-theme="contrast"] .modal-header,
+[data-theme="contrast"] .modal-body,
+[data-theme="contrast"] .modal-footer {
     background-color: #25282a !important;
-  }
-  
+    color: #FFFF00 !important;
+}
+
+[data-theme="contrast"] .bg-custom {
+    background-color: #25282a !important;
+    color: #FFFF00 !important;
+}

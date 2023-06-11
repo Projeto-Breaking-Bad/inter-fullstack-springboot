@@ -21,7 +21,7 @@
 
 [data-theme="dark"] .bg-gradient-danger {
   background-color: #3a3e40 !important;
-  background-image: linear-gradient(180deg,#3d3f40 10%,#333536 100%) !important;
+  background-image: linear-gradient(180deg, #3d3f40 10%, #333536 100%) !important;
 }
 
 [data-theme="dark"] #content-wrapper {
@@ -34,3 +34,15 @@
   color: #fff !important;
 }
 
+[data-theme="dark"] .modal-content,
+[data-theme="dark"] .modal-header,
+[data-theme="dark"] .modal-body,
+[data-theme="dark"] .modal-footer {
+  background-color: #25282a !important;
+  color: #eee !important;
+}
+
+[data-theme="dark"] .bg-custom {
+  background-color: #25282a !important;
+  color: #FFFF00 !important;
+}

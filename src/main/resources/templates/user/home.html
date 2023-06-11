@@ -45,29 +45,293 @@
     <header th:replace="fragments/accessibilityBar :: accessibilityBar"></header>
     <!-- Page Wrapper -->
     <div id="wrapper">
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar"
-            th:replace="fragments/Sidebar :: Sidebar"></ul>
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
                     th:replace="fragments/navBar :: navBar"></nav>
-                <div vw class="enabled" th:replace="fragments/vlibras :: vlibras"></div>
+                <section class="jumbotron text-center" style="background-image: url('/images/encontreestagio.jpg');">
+                    <h1 class="display-4 text-white">Encontre o estágio dos seus sonhos</h1>
+                    <p class="lead text-white">Milhares de vagas esperando por você</p>
+                    <a href="#" class="btn btn-danger">Buscar Vagas</a>
+                </section>
+
                 <div class="container-fluid">
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Sugestões de Vagas</h1>
+                    <div class="d-sm-flex align-items-center justify-content-between mt-4 mb-1">
+                        <h3>Áreas Profissionais mais populares</h3>
                     </div>
                 </div>
+
+                <div id="carouselExample" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0 align-items-center">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/5959.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 1">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Comercial, Vendas</h6>
+                                                        <p class="card-text"><small class="text-muted">135.193
+                                                                vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0 align-items-center">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/8686.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 2">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Telemarketing</h6>
+                                                        <p class="card-text"><small class="text-muted">71.772
+                                                                vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0 align-items-center">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/5454.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 3">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Logística</h6>
+                                                        <p class="card-text"><small class="text-muted">29.839
+                                                                vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0 align-items-center">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/9292.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 4">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Gastronomia</h6>
+                                                        <p class="card-text"><small class="text-muted">16.716
+                                                                vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0 align-items-center">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/8282.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 1">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Administração</h6>
+                                                        <p class="card-text"><small class="text-muted">15.659
+                                                                vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0 align-items-center">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/7373.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 2">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Industrial, Produção</h6>
+                                                        <p class="card-text"><small class="text-muted">15.456
+                                                                vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0 align-items-center">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/7676.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 3">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Serviços Gerais</h6>
+                                                        <p class="card-text"><small class="text-muted">12.951
+                                                                vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0 align-items-center">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/6464.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 4">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Construção</h6>
+                                                        <p class="card-text"><small class="text-muted">10.940
+                                                                vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0 align-items-center">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/7474.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 1">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">TI, Telecomunicações</h6>
+                                                        <p class="card-text"><small class="text-muted">8.731
+                                                                vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0 align-items-center">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/8383.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 2">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Segurança</h6>
+                                                        <p class="card-text"><small class="text-muted">7.383
+                                                                vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0 align-items-center">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/6666.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 3">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Finanças, Economia</h6>
+                                                        <p class="card-text"><small class="text-muted">6.560
+                                                                vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card mb-3 rounded-lg">
+                                            <div class="row g-0 align-items-center">
+                                                <div class="col-md-4 d-flex justify-content-center">
+                                                    <img th:src="@{/images/8282.png}"
+                                                        class="img-fluid rounded-start" alt="Imagem 4">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">Saúde</h6>
+                                                        <p class="card-text"><small class="text-muted">5.529
+                                                                vagas</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Anterior</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Próximo</span>
+                    </a>
+                </div>
+
+                <div class="container-fluid bg-image mt-4 mb-4"
+                    style="background-image: url('/images/card-6.svg');">
+                    <div class="row">
+                        <div class="col-md-6 d-flex align-items-center">
+                            <div>
+                                <h1>Descubra o seu potencial!</h1>
+                                <p>Você está pronto para o próximo nível? Não perca a oportunidade de participar do
+                                    nosso incrível programa de Caça Talentos, onde você poderá desenvolver suas
+                                    habilidades e brilhar. Saiba mais assistindo ao vídeo!</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-center">
+                            <div class="embed-responsive embed-responsive-16by9 mx-auto my-4" style="max-width: 80%;">
+                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/v-isl8TK-U4"
+                                    allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div vw class="enabled" th:replace="fragments/vlibras :: vlibras"></div>
                 <div class="container-fluid">
-                    <div class="d-sm-flex flex-column align-items-left justify-content-between mb-4">
+                    <div class="d-sm-flex align-items-center justify-content-between mt-5 mb-2">
+                        <h3>Sugestões de Vagas</h3>
+                    </div>
+                </div>
+
+                <div class="container-fluid">
+                    <div class="d-sm-flex flex-column align-items-left justify-content-between mb-3">
                         <div class="panel-body" th:switch="${vagas}">
-                            <h5 th:case="null">Não existem vagas cadastrados!</h5>
+                            <h5 th:case="null">Não existem vagas cadastradas!</h5>
                             <div th:case="*">
                                 <div class="container py-2 h-100">
-                                    <div class="row d-flex justify-content-center align-items-center h-100">
-                                        <div class="col col-xl-10">
-                                            <div class="card mb-5" style="border-radius: 15px;"
-                                                th:each="vaga: ${vagas}">
+                                    <div class="row">
+                                        <div class="col-md-6" th:each="vaga: ${vagas}">
+                                            <div class="card mb-5" style="border-radius: 15px;">
                                                 <div class="card-body p-4">
                                                     <h3 class="mb-3" th:text="${vaga.areaAtuacao}"></h3>
                                                     <p class="small mb-0"><i class="fas fa-star fa-lg text-warning"></i>
@@ -77,21 +341,21 @@
                                                         <span class="mx-2">|</span> Horas:
                                                         <strong th:text="${vaga.horas}"></strong></p>
                                                     <p class="small mb-0"><i class="fas fa-star fa-lg text-warning"></i>
-                                                        <span class="mx-2">|</span> Salário:
+                                                        <span class="mx-2">|</span> Quantidade de Vagas:
                                                         <strong th:text="${vaga.quantVagas}"></strong></p>
                                                     <hr class="my-4">
                                                     <div class="d-flex justify-content-start align-items-center">
                                                         <p class="mb-0 text-uppercase"><i
                                                                 class="fas fa-book ms-4 me-2"></i>
-                                                            <span class="text-muted small">Para mais Informações click
-                                                                no
-                                                                botão abaixo</span>
+                                                            <span class="text-muted small">Para mais Informações clique
+                                                                no botão abaixo</span>
                                                         </p>
                                                     </div>
                                                     <div class="d-flex justify-content-end">
-                                                        <a th:href="@{/vagas/consultar/{id}(id=${vaga.id})}"><button
-                                                                class="btn btn-danger"
-                                                                type="button">Detalhes</button></a>
+                                                        <a th:href="@{/vagas/consultar/{id}(id=${vaga.id})}">
+                                                            <button class="btn btn-danger"
+                                                                type="button">Detalhes</button>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -102,6 +366,52 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="d-flex justify-content-around mt-2 mb-2">
+                    <h3>O Caça Talentos te ajuda a encontrar estágios</h3>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img th:src="@{/images/20944332.png}" alt="Imagem" class="img-fluid">
+                        </div>
+                        <div class="col-md-6 d-flex align-items-center">
+                            <div>
+                                <h2>Descubra Talentos</h2>
+                                <p>No projeto Caça Talentos, acreditamos que todos têm habilidades únicas e valiosas a
+                                    oferecer. Nossa missão é conectar talentos com oportunidades incríveis.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 d-flex align-items-center">
+                            <div>
+                                <h2>Explore Talentos</h2>
+                                <p>Com nossa plataforma, você pode explorar uma variedade de talentos em diferentes
+                                    áreas, desde música e arte até ciência e tecnologia. Descubra talentos promissores e
+                                    inspire-se.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <img th:src="@{/images/19197148.png}" alt="Imagem" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img th:src="@{/images/19197091.png}" alt="Imagem" class="img-fluid">
+                        </div>
+                        <div class="col-md-6 d-flex align-items-center">
+                            <div>
+                                <h2>Conecte-se com Talentos</h2>
+                                <p>Em nosso projeto, oferecemos uma plataforma interativa para conectar talentos com
+                                    empresas, instituições de ensino e profissionais em busca de colaboração. Amplie sua
+                                    rede e encontre oportunidades únicas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <footer class="sticky-footer bg-white" th:replace="fragments/footer :: footer"></footer>
         </div>
@@ -111,8 +421,8 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-    th:replace="fragments/logoutModal :: logoutModal"></div>
+    <div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" th:replace="fragments/logoutModal :: logoutModal"></div>
 
     <!-- Custom scripts for all pages-->
     <script th:src="@{/js/jquery.min.js}"></script>
@@ -121,7 +431,7 @@
     <script th:src="@{/js/sb-admin-2.min.js}"></script>
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/js/color-mode-switch.js}"></script>
-    <script th:src="@{/js/fonte.js}"></script>
+    <script th:src="@{/js/custom.js}"></script>
 </body>
 
 </html>

@@ -1,39 +1,27 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-</head>
-<body id="page-top">
-    <ul class="nav justify-content-center" th:fragment="accessibilityBarStudent">
-        <li class="nav-item">
-            <a class="text-muted nav-link" href="#rodape" accesskey="1" title="Ir diretamente para o rodapé">Ir para o
-                rodapé [1]</a>
-        </li>
-        <li class="nav-item">
-            <a class="text-muted nav-link" th:href="@{/s/acessibilidade}">Acessibilidade</a>
-        </li>
-        <li class="nav-item">
-            <a class="text-muted nav-link" href="javascript:void(0);" id="aumentar">A+</a>
-        </li>
-        <li class="nav-item">
-            <a class="text-muted nav-link" href="javascript:void(0);" id="diminuir">A-</a>
-        </li>
-        <li class="nav-item">
-            <div class="form-check form-switch" style="padding: 0.5rem;padding-left: 3.65rem;">
-                <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
-                <label class="form-check-label" for="darkSwitch"> Dark Mode </label>
-            </div>
-        </li>
-        <li class="nav-item">
-            <div class="form-check form-switch" style="padding: 0.5rem;padding-left: 3.65rem;">
-                <input class="form-check-input" type="checkbox" role="switch" id="contrastSwitch">
-                <label class="form-check-label" for="contrastSwitch"> Contraste </label>
-            </div>
-        </li>
-    </ul>
-</body>
-</html>
+<ul class="nav justify-content-center" th:fragment="accessibilityBarStudent">
+    <li class="nav-item">
+        <a class="text-muted nav-link" href="#rodape" accesskey="1" title="Ir diretamente para o rodapé">Ir para o
+            rodapé [1]</a>
+    </li>
+    <li class="nav-item">
+        <a class="text-muted nav-link" th:href="@{/s/acessibilidade}">Acessibilidade</a>
+    </li>
+    <li class="nav-item">
+        <a class="text-muted nav-link" href="javascript:void(0);" id="aumentar">A+</a>
+    </li>
+    <li class="nav-item">
+        <a class="text-muted nav-link" href="javascript:void(0);" id="diminuir">A-</a>
+    </li>
+    <li class="nav-item">
+        <div class="form-check form-switch" style="padding: 0.5rem;padding-left: 3.65rem;">
+            <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
+            <label class="form-check-label" for="darkSwitch"> Dark Mode </label>
+        </div>
+    </li>
+    <li class="nav-item">
+        <div class="form-check form-switch" style="padding: 0.5rem;padding-left: 3.65rem;">
+            <input class="form-check-input" type="checkbox" role="switch" id="contrastSwitch">
+            <label class="form-check-label" for="contrastSwitch"> Contraste </label>
+        </div>
+    </li>
+</ul>
