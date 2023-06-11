@@ -45,12 +45,13 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-		<ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:replace="fragments/SidebarStudent :: SidebarStudent"></ul>
+		<!-- <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:replace="fragments/SidebarStudent :: SidebarStudent"></ul> -->
 
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
 				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" th:replace="fragments/navBarStudent :: navBarStudent"></nav>
-
+                <ul class="nav justify-content-center navbar-light bg-white shadow" th:replace="fragments/navTabsStudent :: navTabsStudent">
+                </ul>
                 <div vw class="enabled" th:replace="fragments/vlibras :: vlibras"></div>
 
                 <div class="container-fluid">
@@ -58,7 +59,7 @@
                         <h1 class="h3 mb-0 text-gray-800">Lista de Vagas</h1>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a class="text-gray-800" th:href="@{/c}">Home</a></li>
+                                <li class="breadcrumb-item"><a class="text-gray-800" th:href="@{/s}">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Lista de Vagas</li>
                             </ol>
                         </nav>
@@ -142,6 +143,7 @@
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/js/color-mode-switch.js}"></script>
 	<script th:src="@{/js/custom.js}"></script>
+    <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
 </body>
 
 </html>

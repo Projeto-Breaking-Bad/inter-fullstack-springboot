@@ -1,0 +1,27 @@
+<ul class="nav justify-content-center navbar-light bg-white shadow mb-4" th:fragment="navTabsStudent">
+    <li class="nav-item">
+        <a class="nav-link active text-gray-800 d-flex align-items-center" th:href="@{/s}">
+            <lord-icon src="https://cdn.lordicon.com/etqbfrgp.json" trigger="hover"
+                colors="outline:#131432,primary:#92140c,secondary:#f24c00,tertiary:#b26836,quaternary:#ebe6ef"
+                style="width:25px;height:25px" class="align-middle"></lord-icon>
+            <span class="ms-2">Home</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-gray-800" th:href="@{/s/alunos/consultar/{cpf}(cpf=${alunoLogado.cpf})}">
+            <lord-icon src="https://cdn.lordicon.com/dqxvvqzi.json" trigger="hover"
+                colors="outline:#121331,primary:#ffc738,secondary:#4bb3fd" style="width:25px;height:25px"
+                class="align-middle">
+            </lord-icon>
+            <span class="ms-2">Ver perfil</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-gray-800" th:href="@{/s/vagas}">
+            <lord-icon src="https://cdn.lordicon.com/rfnfarqt.json" trigger="hover"
+                colors="outline:#121331,primary:#b26836,secondary:#ffc738" style="width:25px;height:25px" class="align-middle">
+            </lord-icon>
+            <span class="ms-2">Ver lista de Vaga</span>
+        </a>
+    </li>
+</ul>
