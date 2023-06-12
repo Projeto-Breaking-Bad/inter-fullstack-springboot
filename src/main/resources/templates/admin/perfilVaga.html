@@ -76,6 +76,12 @@
 											alt="Avatar" class="img-fluid my-5 img-card"/>
 										<h5>Área da Vaga</h5>
 										<p th:text="${vaga.areaAtuacao}"></p>
+										<div class="d-flex justify-content-center mb-2">
+											<a th:href="@{/a/vagas/atualizar/{id}(id=${vaga.id})}"><button
+													type="button" class="btn btn-danger">Editar</button></a>
+											<a data-toggle="modal" data-target="#logoutModal"><button type="button"
+													class="btn btn-outline-danger ms-1">Excluir</button></a>
+										</div>
 									</div>
 									<div class="col-md-8">
 										<div class="card-body p-4">
@@ -146,7 +152,7 @@
 				</div>
 				<div class="modal-body">Esse item será apagado imediatamente. Voçê não poderá desfazer essa ação.</div>
 				<div class="modal-footer">
-					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
 					<form method="POST" action="#" th:action="@{/a/vagas/deletar/{id}(id=${vaga.id})}">
 						<button type="submit" class="btn btn-outline-danger ms-1">Excluir</button>
 					</form>

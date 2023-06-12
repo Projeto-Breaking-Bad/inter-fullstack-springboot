@@ -72,7 +72,7 @@
 
                     <div class="panel-body" th:switch="${empresas}">
                         <h5 th:case="null">Não existem empresas cadastrados!</h5>
-                        <div th:case="*">
+                        <div class="table-responsive" th:case="*">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
