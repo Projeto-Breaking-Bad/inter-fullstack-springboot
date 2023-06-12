@@ -2,7 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,7 +25,7 @@
     <!-- Custom styles for this template-->
 
     <link rel="stylesheet" type="text/css" th:href="@{/css/sb-admin-2.min.css}">
-    <title>Dashboard</title>
+    <title>Caça Talentos</title>
     <script type="text/javascript">
         (function (c, l, a, r, i, t, y) {
             c[a] = c[a] || function () {
@@ -49,10 +48,12 @@
             <div id="content">
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
                     th:replace="fragments/navBar :: navBar"></nav>
-                <section class="jumbotron text-center" style="background-image: url('/images/encontreestagio.jpg');">
+
+                <section class="jumbotron text-center"
+                    style="background-image: url('/images/inter-jumbotron-img.jpg');">
                     <h1 class="display-4 text-white">Encontre o estágio dos seus sonhos</h1>
                     <p class="lead text-white">Milhares de vagas esperando por você</p>
-                    <a href="#" class="btn btn-danger">Buscar Vagas</a>
+                    <a href="#vagas" class="btn btn-danger">Buscar Vagas</a>
                 </section>
 
                 <div class="container-fluid">
@@ -70,8 +71,8 @@
                                         <div class="card mb-3 rounded-lg">
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-md-4 d-flex justify-content-center">
-                                                    <img th:src="@{/images/5959.png}"
-                                                        class="img-fluid rounded-start" alt="Imagem 1">
+                                                    <img th:src="@{/images/5959.png}" class="img-fluid rounded-start"
+                                                        alt="Imagem 1">
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
@@ -87,8 +88,8 @@
                                         <div class="card mb-3 rounded-lg">
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-md-4 d-flex justify-content-center">
-                                                    <img th:src="@{/images/8686.png}"
-                                                        class="img-fluid rounded-start" alt="Imagem 2">
+                                                    <img th:src="@{/images/8686.png}" class="img-fluid rounded-start"
+                                                        alt="Imagem 2">
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
@@ -104,8 +105,8 @@
                                         <div class="card mb-3 rounded-lg">
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-md-4 d-flex justify-content-center">
-                                                    <img th:src="@{/images/5454.png}"
-                                                        class="img-fluid rounded-start" alt="Imagem 3">
+                                                    <img th:src="@{/images/5454.png}" class="img-fluid rounded-start"
+                                                        alt="Imagem 3">
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
@@ -121,8 +122,8 @@
                                         <div class="card mb-3 rounded-lg">
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-md-4 d-flex justify-content-center">
-                                                    <img th:src="@{/images/9292.png}"
-                                                        class="img-fluid rounded-start" alt="Imagem 4">
+                                                    <img th:src="@{/images/9292.png}" class="img-fluid rounded-start"
+                                                        alt="Imagem 4">
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
@@ -144,8 +145,8 @@
                                         <div class="card mb-3 rounded-lg">
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-md-4 d-flex justify-content-center">
-                                                    <img th:src="@{/images/8282.png}"
-                                                        class="img-fluid rounded-start" alt="Imagem 1">
+                                                    <img th:src="@{/images/8282.png}" class="img-fluid rounded-start"
+                                                        alt="Imagem 1">
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
@@ -161,8 +162,8 @@
                                         <div class="card mb-3 rounded-lg">
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-md-4 d-flex justify-content-center">
-                                                    <img th:src="@{/images/7373.png}"
-                                                        class="img-fluid rounded-start" alt="Imagem 2">
+                                                    <img th:src="@{/images/7373.png}" class="img-fluid rounded-start"
+                                                        alt="Imagem 2">
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
@@ -178,8 +179,8 @@
                                         <div class="card mb-3 rounded-lg">
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-md-4 d-flex justify-content-center">
-                                                    <img th:src="@{/images/7676.png}"
-                                                        class="img-fluid rounded-start" alt="Imagem 3">
+                                                    <img th:src="@{/images/7676.png}" class="img-fluid rounded-start"
+                                                        alt="Imagem 3">
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
@@ -195,8 +196,8 @@
                                         <div class="card mb-3 rounded-lg">
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-md-4 d-flex justify-content-center">
-                                                    <img th:src="@{/images/6464.png}"
-                                                        class="img-fluid rounded-start" alt="Imagem 4">
+                                                    <img th:src="@{/images/6464.png}" class="img-fluid rounded-start"
+                                                        alt="Imagem 4">
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
@@ -218,8 +219,8 @@
                                         <div class="card mb-3 rounded-lg">
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-md-4 d-flex justify-content-center">
-                                                    <img th:src="@{/images/7474.png}"
-                                                        class="img-fluid rounded-start" alt="Imagem 1">
+                                                    <img th:src="@{/images/7474.png}" class="img-fluid rounded-start"
+                                                        alt="Imagem 1">
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
@@ -235,8 +236,8 @@
                                         <div class="card mb-3 rounded-lg">
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-md-4 d-flex justify-content-center">
-                                                    <img th:src="@{/images/8383.png}"
-                                                        class="img-fluid rounded-start" alt="Imagem 2">
+                                                    <img th:src="@{/images/8383.png}" class="img-fluid rounded-start"
+                                                        alt="Imagem 2">
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
@@ -252,8 +253,8 @@
                                         <div class="card mb-3 rounded-lg">
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-md-4 d-flex justify-content-center">
-                                                    <img th:src="@{/images/6666.png}"
-                                                        class="img-fluid rounded-start" alt="Imagem 3">
+                                                    <img th:src="@{/images/6666.png}" class="img-fluid rounded-start"
+                                                        alt="Imagem 3">
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
@@ -269,8 +270,8 @@
                                         <div class="card mb-3 rounded-lg">
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-md-4 d-flex justify-content-center">
-                                                    <img th:src="@{/images/8282.png}"
-                                                        class="img-fluid rounded-start" alt="Imagem 4">
+                                                    <img th:src="@{/images/8282.png}" class="img-fluid rounded-start"
+                                                        alt="Imagem 4">
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
@@ -286,18 +287,17 @@
                             </div>
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+                    <!-- <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Anterior</span>
                     </a>
                     <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Próximo</span>
-                    </a>
+                    </a> -->
                 </div>
 
-                <div class="container-fluid bg-image mt-4 mb-4"
-                    style="background-image: url('/images/card-6.svg');">
+                <div class="container-fluid bg-image mt-4 mb-4" style="background-image: url('/images/card-6.svg');">
                     <div class="row">
                         <div class="col-md-6 d-flex align-items-center">
                             <div>
@@ -323,7 +323,7 @@
                     </div>
                 </div>
 
-                <div class="container-fluid">
+                <div class="container-fluid" id="vagas">
                     <div class="d-sm-flex flex-column align-items-left justify-content-between mb-3">
                         <div class="panel-body" th:switch="${vagas}">
                             <h5 th:case="null">Não existem vagas cadastradas!</h5>

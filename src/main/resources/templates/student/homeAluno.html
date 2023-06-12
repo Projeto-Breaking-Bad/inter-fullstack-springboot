@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard</title>
+    <title>Home News</title>
 
     <!-- Custom fonts for this template-->
     <link rel="shortcut icon" th:href="@{/images/logo-icon.ico}" type="image/x-icon">
@@ -42,6 +42,14 @@
             y.parentNode.insertBefore(t, y);
         })(window, document, "clarity", "script", "glxgi3gmgy");
     </script>
+        <style>
+            .card-img-top {
+                max-height: 400px;
+                object-fit: cover;
+            }
+        </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script th:src="@{/js/api-newsStudent.js}"></script>
 </head>
 
 <body id="page-top">
@@ -50,19 +58,21 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar"
-            th:replace="fragments/SidebarStudent :: SidebarStudent"></ul>
+        <!-- <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar"
+            th:replace="fragments/SidebarStudent :: SidebarStudent"></ul> -->
 
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+                <nav class="navbar navbar-expand navbar-light bg-white topbar static-top"
                     th:replace="fragments/navBarStudent :: navBarStudent"></nav>
+                    <ul class="nav justify-content-center navbar-light bg-white shadow" th:replace="fragments/navTabsStudent :: navTabsStudent">
+                    </ul>
                 <div vw class="enabled" th:replace="fragments/vlibras :: vlibras"></div>
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Home Aluno</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Home News</h1>
                     </div>
-
+                    <div id="news"></div>
                 </div>
             </div>
             <footer class="sticky-footer bg-white" th:replace="fragments/footer :: footer"></footer>
@@ -88,8 +98,8 @@
         </div>
     </div>
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-    th:replace="fragments/logoutModal :: logoutModal"></div>
+    <div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" th:replace="fragments/logoutModal :: logoutModal"></div>
 
     <!-- Custom scripts for all pages-->
     <script th:src="@{/js/jquery.min.js}"></script>
@@ -98,7 +108,8 @@
     <script th:src="@{/js/sb-admin-2.min.js}"></script>
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/js/color-mode-switch.js}"></script>
-	<script th:src="@{/js/custom.js}"></script>
+    <script th:src="@{/js/custom.js}"></script>
+    <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
 </body>
 
 </html>

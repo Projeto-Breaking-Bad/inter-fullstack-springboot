@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard</title>
+    <title>Home News</title>
 
     <!-- Custom fonts for this template-->
     <link rel="shortcut icon" th:href="@{/images/logo-icon.ico}" type="image/x-icon">
@@ -26,17 +26,30 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-        
+
     <!-- Custom styles for this template-->
-    
+
     <link rel="stylesheet" type="text/css" th:href="@{/css/sb-admin-2.min.css}">
     <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () {
+                (c[a].q = c[a].q || []).push(arguments)
+            };
+            t = l.createElement(r);
+            t.async = 1;
+            t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0];
+            y.parentNode.insertBefore(t, y);
         })(window, document, "clarity", "script", "glxgi3gmgy");
     </script>
+    <style>
+        .card-img-top {
+            max-height: 400px;
+            object-fit: cover;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script th:src="@{/js/api-newsCompany.js}"></script>
 </head>
 
 <body id="page-top">
@@ -45,19 +58,22 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:replace="fragments/SidebarCompany :: SidebarCompany"></ul>
+        <!-- <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:replace="fragments/SidebarCompany :: SidebarCompany"></ul> -->
 
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" th:replace="fragments/navBarCompany :: navBarCompany"></nav>
-
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+                    th:replace="fragments/navBarCompany :: navBarCompany"></nav>
+                <ul class="nav justify-content-center navbar-light bg-white shadow"
+                    th:replace="fragments/navTabsCompany :: navTabsCompany">
+                </ul>
                 <div vw class="enabled" th:replace="fragments/vlibras :: vlibras"></div>
 
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Home de Empresa</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Home News</h1>
                     </div>
-
+                    <div id="news"></div>
 
                 </div>
             </div>
@@ -70,9 +86,9 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-    th:replace="fragments/logoutModal :: logoutModal"></div>
-    
+    <div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" th:replace="fragments/logoutModal :: logoutModal"></div>
+
     <!-- Custom scripts for all pages-->
     <script th:src="@{/js/jquery.min.js}"></script>
     <script th:src="@{/js/jquery.easing.min.js}"></script>
@@ -80,7 +96,8 @@
     <script th:src="@{/js/sb-admin-2.min.js}"></script>
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/js/color-mode-switch.js}"></script>
-	<script th:src="@{/js/custom.js}"></script>
+    <script th:src="@{/js/custom.js}"></script>
+    <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
 </body>
 
 </html>

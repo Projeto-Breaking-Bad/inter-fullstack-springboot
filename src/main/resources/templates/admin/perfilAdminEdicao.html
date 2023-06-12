@@ -38,18 +38,6 @@
 		})(window, document, "clarity", "script", "glxgi3gmgy");
 	</script>
 </head>
-<style>
-	.gradient-custom {
-		/* fallback for old browsers */
-		background: #f6d365;
-
-		/* Chrome 10-25, Safari 5.1-6 */
-		background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
-
-		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-		background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
-	}
-</style>
 
 <body id="page-top">
     <header th:replace="fragments/accessibilityBarAdmin :: accessibilityBarAdmin"></header>
@@ -57,11 +45,14 @@
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:replace="fragments/SidebarAdmin :: SidebarAdmin"></ul>
+        <!-- <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:replace="fragments/SidebarAdmin :: SidebarAdmin"></ul> -->
 
 		<div id="content-wrapper" class="d-flex flex-column">
 			<div id="content">
 				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" th:replace="fragments/navBarAdmin :: navBarAdmin"></nav>
+			<ul class="nav justify-content-center navbar-light bg-white shadow"
+				th:replace="fragments/navTabsAdmin :: navTabsAdmin">
+			</ul>
                 <div vw class="enabled" th:replace="fragments/vlibras :: vlibras"></div>
 
 				<div class="container-fluid">
@@ -69,7 +60,7 @@
 						<h1 class="h3 mb-0 text-gray-800">Perfil Admin</h1>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a class="text-gray-800" th:href="@{/a}">Home</a></li>
+								<li class="breadcrumb-item"><a class="text-gray-800" th:href="@{/a/admins}">Lista de Admins</a></li>
 								<li class="breadcrumb-item active" aria-current="page">Perfil Admin</li>
 							</ol>
 						</nav>
@@ -87,18 +78,7 @@
 									</div>
 									<h4 class="mb-2" th:text="${admin.nome}"></h4>
 									<p class="text-muted mb-4" th:text="${admin.instituicao}"><span
-											class="mx-2">|</span> <a href="#!">mdbootstrap.com</a></p>
-									<div class="mb-4 pb-2">
-										<button type="button" class="btn btn-outline-primary btn-floating">
-											<i class="fab fa-facebook-f fa-lg"></i>
-										</button>
-										<button type="button" class="btn btn-outline-primary btn-floating">
-											<i class="fab fa-twitter fa-lg"></i>
-										</button>
-										<button type="button" class="btn btn-outline-primary btn-floating">
-											<i class="fab fa-skype fa-lg"></i>
-										</button>
-									</div>
+											class="mx-2"></span></p>
 									<div class="d-flex justify-content-center mb-2">
 										<a th:href="@{/a/admins/atualizar/{login}(login=${admin.login})}"><button
 												type="button" class="btn btn-danger">Editar</button></a>
@@ -152,6 +132,7 @@
 	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/js/color-mode-switch.js}"></script>
 	<script th:src="@{/js/custom.js}"></script>
+	<script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
 </body>
 
 </html>

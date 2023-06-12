@@ -45,28 +45,40 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:replace="fragments/SidebarAdmin :: SidebarAdmin"></ul>
+        <!-- <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:replace="fragments/SidebarAdmin :: SidebarAdmin"></ul> -->
 
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
 				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" th:replace="fragments/navBarAdmin :: navBarAdmin"></nav>
+            <ul class="nav justify-content-center navbar-light bg-white shadow"
+				th:replace="fragments/navTabsAdmin :: navTabsAdmin">
+			</ul>
                 <div vw class="enabled" th:replace="fragments/vlibras :: vlibras"></div>
 
                 <div class="container-fluid">
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <div class="d-sm-flex align-items-center justify-content-between mb-1">
                         <h1 class="h3 mb-0 text-gray-800">Lista de Admins</h1>
+                        <nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a class="text-gray-800" th:href="@{/a}">Home</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Lista de Admins</li>
+							</ol>
+						</nav>
+                    </div>
+                    <div class="d-sm-flex justify-content-end mb-3">
                         <a class="d-none d-sm-inline-block btn btn-danger shadow-sm"
                             th:href="@{/a/admins/cadastro}">Cadastrar Admin</a>
                     </div>
                     <div class="panel-body" th:switch="${admins}">
                         <h5 th:case="null">Não existem admins cadastrados!</h5>
-                        <div th:case="*">
+                        <div class="table-responsive" th:case="*">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th scope="col">Nome</th>
                                         <th scope="col">Instituição</th>
                                         <th scope="col">Login</th>
+                                        <th scope="col">Email</th>
                                         <th scope="col">Ações</th>
                                     </tr>
                                 </thead>
@@ -75,6 +87,7 @@
                                         <td><span th:text="${admin.nome}"></span></td>
                                         <td><span th:text="${admin.instituicao}"></span></td>
                                         <td><span th:text="${admin.login}"></td>
+                                        <td><span th:text="${admin.email}"></span></td>
                                         <td><a th:href="@{/a/admins/consultar/{login}(login=${admin.login})}"><button
                                                     class="btn btn-danger" type="button">Detalhes</button></a></td>
                                     </tr>
@@ -105,6 +118,7 @@
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/js/color-mode-switch.js}"></script>
 	<script th:src="@{/js/custom.js}"></script>
+    <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
 </body>
 
 </html>

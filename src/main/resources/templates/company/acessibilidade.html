@@ -45,12 +45,14 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:replace="fragments/SidebarCompany :: SidebarCompany"></ul>
+        <!-- <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:replace="fragments/SidebarCompany :: SidebarCompany"></ul> -->
 
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
 				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" th:replace="fragments/navBarCompany :: navBarCompany"></nav>
-
+                <ul class="nav justify-content-center navbar-light bg-white shadow"
+                    th:replace="fragments/navTabsCompany :: navTabsCompany">
+                </ul>
                 <div vw class="enabled" th:replace="fragments/vlibras :: vlibras"></div>
 
                 <div class="container-fluid">
@@ -145,6 +147,7 @@
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/js/color-mode-switch.js}"></script>
 	<script th:src="@{/js/custom.js}"></script>
+    <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
 </body>
 
 </html>

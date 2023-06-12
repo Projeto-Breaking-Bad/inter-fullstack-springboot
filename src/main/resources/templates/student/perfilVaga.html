@@ -25,33 +25,49 @@
 		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 	<!-- Custom styles for this template-->
 	<link rel="stylesheet" type="text/css" th:href="@{/css/sb-admin-2.min.css}">
 	<link rel="stylesheet" type="text/css" th:href="@{/css/ct-style.css}">
 	<script type="text/javascript">
-		(function(c,l,a,r,i,t,y){
-			c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-			t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-			y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+		(function (c, l, a, r, i, t, y) {
+			c[a] = c[a] || function () {
+				(c[a].q = c[a].q || []).push(arguments)
+			};
+			t = l.createElement(r);
+			t.async = 1;
+			t.src = "https://www.clarity.ms/tag/" + i;
+			y = l.getElementsByTagName(r)[0];
+			y.parentNode.insertBefore(t, y);
 		})(window, document, "clarity", "script", "glxgi3gmgy");
 	</script>
 </head>
+
 <body id="page-top">
-    <header th:replace="fragments/accessibilityBarStudent :: accessibilityBarStudent"></header>
+	<header th:replace="fragments/accessibilityBarStudent :: accessibilityBarStudent"></header>
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:replace="fragments/SidebarStudent :: SidebarStudent"></ul>
+		<!-- <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:replace="fragments/SidebarStudent :: SidebarStudent"></ul> -->
 		<div id="content-wrapper" class="d-flex flex-column">
 			<div id="content">
-				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" th:replace="fragments/navBarStudent :: navBarStudent"></nav>
-                <div vw class="enabled" th:replace="fragments/vlibras :: vlibras"></div>
+				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+					th:replace="fragments/navBarStudent :: navBarStudent"></nav>
+				<ul class="nav justify-content-center navbar-light bg-white shadow"
+					th:replace="fragments/navTabsStudent :: navTabsStudent">
+				</ul>
+				<div vw class="enabled" th:replace="fragments/vlibras :: vlibras"></div>
 
 				<div class="container-fluid">
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
 						<h1 class="h3 mb-0 text-gray-800">Perfil de Vaga</h1>
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a class="text-gray-800" th:href="@{/s/vagas}">Lista de Vagas</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Perfil de Vaga</li>
+							</ol>
+						</nav>
 					</div>
 				</div>
 				<div class="container">
@@ -60,8 +76,8 @@
 							<div class="card mb-3 card-border">
 								<div class="row g-0">
 									<div class="col-md-4 gradient-custom text-center text-white card-vacancies">
-										<img th:src="@{/images/vacancies.svg}"
-											alt="Avatar" class="img-fluid my-5 img-card"/>
+										<img th:src="@{/images/vacancies.svg}" alt="Avatar"
+											class="img-fluid my-5 img-card" />
 										<h5>Área da Vaga</h5>
 										<p th:text="${vaga.areaAtuacao}"></p>
 										<div th:if="${estaInscrito}">
@@ -104,13 +120,15 @@
 											<hr class="mt-0 mb-4">
 											<div class="row pt-1">
 												<div class="col-12 mb-3">
-													<div class="text-muted" th:text="${vaga.descricao}"></p>
+													<div class="text-muted" th:text="${vaga.descricao}">
+														</p>
+													</div>
 												</div>
-											</div>
-											<div class="d-flex justify-content-start">
-												<a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
-												<a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
-												<a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
+												<div class="d-flex justify-content-start">
+													<a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
+													<a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
+													<a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -119,24 +137,25 @@
 						</div>
 					</div>
 				</div>
+				<footer class="sticky-footer bg-white" th:replace="fragments/footer :: footer"></footer>
 			</div>
-            <footer class="sticky-footer bg-white" th:replace="fragments/footer :: footer"></footer>
 		</div>
-	</div>
-	<a class="scroll-to-top rounded" href="#page-top">
-		<i class="fas fa-angle-up"></i>
-	</a>
-	<!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-    th:replace="fragments/logoutModal :: logoutModal"></div>
+		<a class="scroll-to-top rounded" href="#page-top">
+			<i class="fas fa-angle-up"></i>
+		</a>
+		<!-- Logout Modal-->
+		<div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+			aria-hidden="true" th:replace="fragments/logoutModal :: logoutModal"></div>
 
-	<!-- Custom scripts for all pages-->
-	<script th:src="@{/js/jquery.min.js}"></script>
-	<script th:src="@{/js/jquery.easing.min.js}"></script>
-	<!-- <script th:src="@{js/sb-admin-2.js}"></script> -->
-	<script th:src="@{/js/sb-admin-2.min.js}"></script>
-	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-    <script th:src="@{/js/color-mode-switch.js}"></script>
-	<script th:src="@{/js/custom.js}"></script>
+		<!-- Custom scripts for all pages-->
+		<script th:src="@{/js/jquery.min.js}"></script>
+		<script th:src="@{/js/jquery.easing.min.js}"></script>
+		<!-- <script th:src="@{js/sb-admin-2.js}"></script> -->
+		<script th:src="@{/js/sb-admin-2.min.js}"></script>
+		<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+		<script th:src="@{/js/color-mode-switch.js}"></script>
+		<script th:src="@{/js/custom.js}"></script>
+		<script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
 </body>
+
 </html>
