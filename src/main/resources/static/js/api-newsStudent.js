@@ -19,9 +19,9 @@ $(document).ready(function () {
                         article.description);
                     var publishedAtElement = $('<p>').addClass('card-text').append(
                         $('<small>').addClass('text-muted').text(
-                            'Published At: ' + article.publishedAt));
+                            'Publicado em: ' + article.publishedAt));
                     var urlElement = $('<a>').attr('href', article.url).text(
-                        'Read More');
+                        'Consulte Mais informação');
 
                     // Adicionando os elementos ao card
                     cardBodyElement.append(titleElement);

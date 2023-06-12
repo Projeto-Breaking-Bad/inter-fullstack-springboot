@@ -45,13 +45,16 @@
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar"
-			th:replace="fragments/SidebarAdmin :: SidebarAdmin"></ul>
+		<!-- <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar"
+			th:replace="fragments/SidebarAdmin :: SidebarAdmin"></ul> -->
 
 		<div id="content-wrapper" class="d-flex flex-column">
 			<div id="content">
 				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
 					th:replace="fragments/navBarAdmin :: navBarAdmin"></nav>
+				<ul class="nav justify-content-center navbar-light bg-white shadow"
+                    th:replace="fragments/navTabsAdmin :: navTabsAdmin">
+                </ul>
 				<div vw class="enabled" th:replace="fragments/vlibras :: vlibras"></div>
 
 				<div class="container-fluid">
@@ -59,7 +62,7 @@
 						<h1 class="h3 mb-0 text-gray-800">Atualizar Cadastro da Empresa</h1>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a class="text-gray-800" th:href="@{/a}">Home</a></li>
+								<li class="breadcrumb-item"><a class="text-gray-800" th:href="@{/a/empresas/consultar/{cnpj}(cnpj=${empresa.cnpj})}">Perfil Empresa</a></li>
 								<li class="breadcrumb-item active" aria-current="page">Atualizar cadastro Empresa</li>
 							</ol>
 						</nav>
@@ -210,6 +213,7 @@
     <script th:src="@{/js/sb-admin-2.min.js}"></script>
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/js/color-mode-switch.js}"></script>
+	<script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
         (function () {
