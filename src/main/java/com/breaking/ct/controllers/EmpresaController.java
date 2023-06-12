@@ -223,9 +223,22 @@ public class EmpresaController {
 	 * models e no banco de dados
 	 */
 	
-	// @GetMapping("/vagas/inscritas")
-	// @GetMapping("/vagas/inscritas/{id}")
-	// @PostMapping("/vagas/inscrever/{id}")
-	// @PostMapping("/vagas/desinscrever/{id}")
+	// @GetMapping("/vagas/cadastradasd")
+	// @GetMapping("/vagas/cadastradasd/{id}")
+	@GetMapping("/vagas/cadastradas")
+	public ModelAndView verVagasCadastradas() {
+		
+		ModelAndView mv = new ModelAndView("company/listaVagasCadastradas");
+		
+		Empresa empresaLogada = empresaService.getLogged();
+		empresaLogada.setSenha("");
+		mv.addObject("empresaLogada", empresaLogada);
+		
+		List<Vaga> vagas = vagaService.getVagasByListaIds(empresaLogada.getListaIdVagasCriadas());
+		if(vagas.size()>0)
+			mv.addObject("vagas", vagas);
+		
+		return mv;
+	}
 	
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.breaking.ct.models.Aluno;
+import com.breaking.ct.models.Empresa;
 import com.breaking.ct.models.Vaga;
 import com.breaking.ct.repositories.VagaRepository;
 
@@ -16,6 +17,9 @@ public class VagaService {
 
 	@Autowired
 	private AlunoService alunoService;
+	
+	@Autowired
+	private EmpresaService empresaService;
 	
 	@Autowired
 	private VagaRepository vagaRepository;
@@ -41,7 +45,14 @@ public class VagaService {
 	}
 
 	public void addVaga(Vaga vaga) {
-		vagaRepository.save(vaga);
+		Vaga vagaCriada = vagaRepository.save(vaga);
+		
+		Empresa empresaLogada = empresaService.getLogged();
+		
+		List<String> listaIdsVagasNova = empresaLogada.getListaIdVagasCriadas();
+		listaIdsVagasNova.add(vagaCriada.getId());
+		empresaLogada.setListaIdVagasCriadas(listaIdsVagasNova);
+		empresaService.updateEmpresa(empresaLogada);
 	}
 
 	public void updateVaga(Vaga vaga) {

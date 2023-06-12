@@ -226,7 +226,6 @@ public class AlunoController {
 		ModelAndView mv = new ModelAndView("redirect:/s/vagas/consultar/" + id);
 		vagaService.inscreverVaga(id);
 		return mv;
-		
 	}
 
 	@PostMapping("/vagas/consulta/desinscrever/{id}")
@@ -235,7 +234,6 @@ public class AlunoController {
 		ModelAndView mv = new ModelAndView("redirect:/s/vagas/consultar/" + id);
 		vagaService.desinscreverVaga(id);
 		return mv;
-		
 	}
 	
 	@PostMapping("/vagas/inscritas/inscrever/{id}")
@@ -243,8 +241,7 @@ public class AlunoController {
 		
 		ModelAndView mv = new ModelAndView("redirect:/s/vagas/inscritas/" + id);
 		vagaService.inscreverVaga(id);
-		return mv;
-		
+		return mv;	
 	}
 
 	@PostMapping("/vagas/inscritas/desinscrever/{id}")
@@ -253,7 +250,6 @@ public class AlunoController {
 		ModelAndView mv = new ModelAndView("redirect:/s/vagas/inscritas/" + id);
 		vagaService.desinscreverVaga(id);
 		return mv;
-		
 	}
 	
 }
