@@ -43,15 +43,24 @@
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:replace="fragments/SidebarStudent :: SidebarStudent"></ul>
+		<!-- <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:replace="fragments/SidebarStudent :: SidebarStudent"></ul> -->
 		<div id="content-wrapper" class="d-flex flex-column">
 			<div id="content">
 				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" th:replace="fragments/navBarStudent :: navBarStudent"></nav>
+				<ul class="nav justify-content-center navbar-light bg-white shadow"
+					th:replace="fragments/navTabsStudent :: navTabsStudent">
+				</ul>
                 <div vw class="enabled" th:replace="fragments/vlibras :: vlibras"></div>
 
-				<div class="container-fluid">
+				<div class="container-fluid mt-4">
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
 						<h1 class="h3 mb-0 text-gray-800">Perfil de Vaga</h1>
+						<nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a class="text-gray-800" th:href="@{/s/vagas/inscritas}">Minhas Inscrições</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Perfil de Vaga</li>
+                            </ol>
+                        </nav>
 					</div>
 				</div>
 				<div class="container">
@@ -65,7 +74,7 @@
 										<h5>Área da Vaga</h5>
 										<p th:text="${vaga.areaAtuacao}"></p>
 										<div class="panel-body">
-											<div th:if="${estaInscrito}">
+											<div class="mb-3" th:if="${estaInscrito}">
 												<form th:action="@{/s/vagas/inscritas/desinscrever/{id}(id=${vaga.id})}" method="post">
 													<button type="submit" class="btn btn-secondary">Desinscrever</button>
 												</form>
@@ -133,12 +142,13 @@
     th:replace="fragments/logoutModal :: logoutModal"></div>
 
 	<!-- Custom scripts for all pages-->
-	<script th:src="@{/js/jquery.min.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script th:src="@{/js/jquery.easing.min.js}"></script>
 	<!-- <script th:src="@{js/sb-admin-2.js}"></script> -->
 	<script th:src="@{/js/sb-admin-2.min.js}"></script>
 	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/js/color-mode-switch.js}"></script>
 	<script th:src="@{/js/custom.js}"></script>
+	<script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
 </body>
 </html>

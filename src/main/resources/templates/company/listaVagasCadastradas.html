@@ -45,15 +45,17 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:replace="fragments/SidebarCompany :: SidebarCompany"></ul>
+        <!-- <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar" th:replace="fragments/SidebarCompany :: SidebarCompany"></ul> -->
 
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
 				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" th:replace="fragments/navBarCompany :: navBarCompany"></nav>
-
+                <ul class="nav justify-content-center navbar-light bg-white shadow"
+                    th:replace="fragments/navTabsCompany :: navTabsCompany">
+                </ul>
                 <div vw class="enabled" th:replace="fragments/vlibras :: vlibras"></div>
 
-                <div class="container-fluid">
+                <div class="container-fluid mt-4">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Vagas Cadastradas</h1>
                         <nav aria-label="breadcrumb">
@@ -64,7 +66,7 @@
                         </nav>
                     </div>
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <a class="d-none d-sm-inline-block btn btn-danger shadow-sm"
+                        <a class="d-sm-inline-block btn btn-danger shadow-sm"
                             th:href="@{/c/vagas/cadastro}">Cadastrar
                                 Vaga</a>
                     </div>
@@ -140,13 +142,14 @@
     th:replace="fragments/logoutModal :: logoutModal"></div>
     
     <!-- Custom scripts for all pages-->
-    <script th:src="@{/js/jquery.min.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script th:src="@{/js/jquery.easing.min.js}"></script>
     <!-- <script th:src="@{js/sb-admin-2.js}"></script> -->
     <script th:src="@{/js/sb-admin-2.min.js}"></script>
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/js/color-mode-switch.js}"></script>
 	<script th:src="@{/js/custom.js}"></script>
+    <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
 </body>
 
 </html>
