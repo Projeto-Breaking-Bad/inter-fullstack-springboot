@@ -10,12 +10,16 @@ import org.springframework.stereotype.Service;
 
 import com.breaking.ct.models.Empresa;
 import com.breaking.ct.repositories.EmpresaRepository;
+import com.breaking.ct.repositories.VagaRepository;
 
 @Service
 public class EmpresaService {
 
 	@Autowired
 	private EmpresaRepository empresaRepository;
+	
+	@Autowired
+	private VagaRepository vagaRepository;
 	
 	public ArrayList<Empresa> getTodosEmpresas() {
 		ArrayList<Empresa> empresas = new ArrayList<>();
@@ -41,6 +45,7 @@ public class EmpresaService {
 	}
 
 	public void deleteEmpresa(String cnpj) {
+		vagaRepository.deleteAllById(getEmpresaByCnpj(cnpj).get().getListaIdVagasCriadas());
 		empresaRepository.deleteByCnpj(cnpj);
 	}
 	
