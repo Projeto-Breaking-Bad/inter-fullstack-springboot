@@ -1,4 +1,38 @@
 (function () {
+    // Verifica o tamanho da janela e adiciona/remove classes conforme necessário
+    function toggleMobileMenu() {
+        if ($(window).width() <= 768) {
+            $('.nav').addClass('navbar-nav');
+            $('.nav').removeClass('justify-content-center');
+            $('.nav').addClass('navbar-collapse collapse');
+            $('.nav-item').addClass('text-center');
+            $('.nav-link').addClass('w-100');
+            $('.nav').removeAttr('style'); // Remove o estilo "display: block;" da navTabs
+        } else {
+            $('.nav').removeClass('navbar-nav');
+            $('.nav').addClass('justify-content-center');
+            $('.nav').removeClass('navbar-collapse collapse');
+            $('.nav-item').removeClass('text-center');
+            $('.nav-link').removeClass('w-100');
+            $('.nav').show(); // Exibe a navTabs ao expandir a tela
+        }
+    }
+
+    // Exibe/oculta a navTabs ao clicar no botão de exibição
+    $('#sidebarToggleMobile').click(function () {
+        $('.nav').toggle();
+    });
+
+    // Executa a função ao carregar a página e redimensionar a janela
+    $(document).ready(function () {
+        toggleMobileMenu();
+        $(window).resize(function () {
+            toggleMobileMenu();
+        });
+    });
+})();
+
+(function () {
     var linkColor = document.createElement('link');
     linkColor.rel = 'stylesheet';
     linkColor.id = 'dialog-lights';
