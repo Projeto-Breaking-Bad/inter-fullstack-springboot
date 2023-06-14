@@ -36,7 +36,6 @@ public class AlunoService {
 	}
 
 	public void updateAluno(Aluno novoAluno) {
-		deleteAluno(novoAluno.getCpf());
 		alunoRepository.save(novoAluno);
 	}
 

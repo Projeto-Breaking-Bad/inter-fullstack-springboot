@@ -29,9 +29,11 @@ public class EmpresaController {
 	@GetMapping
 	public ModelAndView homeEmpresa() {
 		ModelAndView mv = new ModelAndView("company/homeEmpresa");
+		
 		Empresa empresaLogada = empresaService.getLogged();
 		empresaLogada.setSenha("");
 		mv.addObject("empresaLogada", empresaLogada);
+		
 		return mv;
 	}
 	

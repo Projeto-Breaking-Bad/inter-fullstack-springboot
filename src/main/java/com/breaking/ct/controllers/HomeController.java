@@ -25,6 +25,7 @@ public class HomeController {
 	@GetMapping("/")
 	public ModelAndView home() {
 		ModelAndView mv = new ModelAndView("user/home");
+		
 		ArrayList<Vaga> vagas = vagaService.getTodasVagas(); 
 		mv.addObject("vagas", vagas); 
 

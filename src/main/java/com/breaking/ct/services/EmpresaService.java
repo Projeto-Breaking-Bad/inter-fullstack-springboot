@@ -40,7 +40,6 @@ public class EmpresaService {
 	}
 
 	public void updateEmpresa(Empresa novaEmpresa) {
-		deleteEmpresa(novaEmpresa.getCnpj());
 		empresaRepository.save(novaEmpresa);
 	}
 
