@@ -72,7 +72,7 @@
 							<div class="card mb-4">
 								<div class="card-body text-center">
 									<img alt="ícone de empresa" th:src="@{/images/company.svg}"
-										alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+										class="rounded-circle img-fluid" style="width: 150px;">
 									<h5 class="text-muted my-3" th:text="${empresa.nome}"></h5>
 									<div class="d-flex justify-content-center mb-2">
 										<a th:href="@{/c/empresas/atualizar/{cnpj}(cnpj=${empresa.cnpj})}"><button

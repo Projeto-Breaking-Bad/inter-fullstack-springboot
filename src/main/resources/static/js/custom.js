@@ -225,13 +225,13 @@ $("#cpf").blur(function () {
             var soma = 0;
             var resto;
             for (var i = 1; i <= 9; i++)
-                soma = soma + parseInt(cpf.substring(i - 1, i)) * (11 - i);
+                soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
             resto = (soma * 10) % 11;
             if (resto == 10 || resto == 11) resto = 0;
             if (resto != parseInt(cpf.substring(9, 10))) return false;
             soma = 0;
             for (var i = 1; i <= 10; i++)
-                soma = soma + parseInt(cpf.substring(i - 1, i)) * (12 - i);
+                soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
             resto = (soma * 10) % 11;
             if (resto == 10 || resto == 11) resto = 0;
             if (resto != parseInt(cpf.substring(10, 11))) return false;
@@ -285,7 +285,7 @@ $("#cpf").blur(function () {
     }
 
     function cpfCnpj(elemento) {
-        async function onCpfCnpjChange(event) {
+        function onCpfCnpjChange(event) {
             var documento = this.value;
             if (validar(documento)) {
                 document.querySelector('#cnpj-resposta').innerHTML = "";
@@ -296,5 +296,16 @@ $("#cpf").blur(function () {
         }
         elemento.addEventListener("change", onCpfCnpjChange);
     }
-    cpfCnpj(document.getElementById("cnpj"));
+
+    var inputElement = document.getElementById("cnpj");
+    if (inputElement) {
+        cpfCnpj(inputElement);
+    }
 })();
+$(document).ready(function() {
+    $("#cnpj").mask("00.000.000-0000-00");
+    $("#cpf").mask("000.000.000-00");
+    $("#cep").mask("00000-000");
+    $("#telefone").mask("(00) 0000-0000");
+    $("#whatsapp").mask("(00) 00000-0000");
+});

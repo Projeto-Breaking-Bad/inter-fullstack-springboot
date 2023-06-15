@@ -72,7 +72,7 @@
 							<div class="card mb-4">
 								<div class="card-body text-center">
 									<img alt="ícone de usuário" th:src="@{/images/usericon.svg}"
-										alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+										class="rounded-circle img-fluid" style="width: 150px;">
 									<h5 class="my-3" th:text="${aluno.nome}"></h5>
 									<div class="d-flex justify-content-center mb-2">
 										<a th:href="@{/a/alunos/atualizar/{cpf}(cpf=${aluno.cpf})}"><button

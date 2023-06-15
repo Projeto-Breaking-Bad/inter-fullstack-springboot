@@ -1,6 +1,6 @@
 [data-theme="contrast"] {
     background-color: #111 !important;
-    color: #FFFF00;
+    color: #eee;
 }
 
 [data-theme="contrast"] .bg-black {
@@ -26,22 +26,20 @@
 
 [data-theme="contrast"] #content-wrapper {
     background-color: #111 !important;
-    color: #FFFF00;
+    color: #fff;
+}
+
+[data-theme="contrast"] .card {
+    background-color: #25282a !important;
+    color: #fff !important;
 }
 
 [data-theme="contrast"] .card-body {
     background-color: #25282a !important;
-    color: #FFFF00 !important;
+    color: #fff !important;
 }
 
-[data-theme="contrast"] a,
-[data-theme="contrast"] span,
-[data-theme="contrast"] h1,
-[data-theme="contrast"] h2,
-[data-theme="contrast"] h3,
-[data-theme="contrast"] h4,
-[data-theme="contrast"] h5,
-[data-theme="contrast"] h6 {
+[data-theme="contrast"] a{
     color: #FFFF00 !important;
 }
 
@@ -52,23 +50,6 @@
 [data-theme="contrast"] .gradient-custom {
     background: #25282a !important;
     background: linear-gradient(to right bottom, rgba(37, 40, 42, 1), rgba(37, 40, 42, 1)) !important;
-}
-
-[data-theme="contrast"] .gradient-custom h5,
-[data-theme="contrast"] .gradient-custom p {
-    color: #FFFF00 !important;
-}
-
-[data-theme="contrast"] .gradient-custom i {
-    color: #FFFF00 !important;
-}
-
-[data-theme="contrast"] .modal-content,
-[data-theme="contrast"] .modal-header,
-[data-theme="contrast"] .modal-body,
-[data-theme="contrast"] .modal-footer {
-    background-color: #25282a !important;
-    color: #FFFF00 !important;
 }
 
 [data-theme="contrast"] .bg-custom {
