@@ -308,4 +308,8 @@ $(document).ready(function() {
     $("#cep").mask("00000-000");
     $("#telefone").mask("(00) 0000-0000");
     $("#whatsapp").mask("(00) 00000-0000");
+    $("#cnpj").mask("00.000.000/0000-00");
+    $('#salario').mask('#.##0', {
+        reverse: true
+    });
 });
