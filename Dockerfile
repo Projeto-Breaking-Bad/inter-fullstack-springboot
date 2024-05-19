@@ -6,9 +6,8 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Etapa de execução
-FROM openjdk:11-jdk-slim
+FROM adoptopenjdk/openjdk11:x86_64-ubuntu-jdk-11.0.13_8-slim AS runtime
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]docker build -t caca-talentos-spring-boot-app .
-
+ENTRYPOINT ["java", "-jar", "app.jar"]
