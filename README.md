@@ -28,6 +28,12 @@ Se você deseja contribuir para o Projeto Caça Talentos, siga as etapas abaixo:
 4. Certifique-se de que todos os testes estejam passando executando o comando `npm test`.
 5. Envie um pull request, descrevendo suas alterações e as razões por trás delas.
 
+## Como executar o projeto localmente usando Docker
+
+- Construir a imagem Docker: docker build -t caca-talentos-spring-boot-app .
+- Executar o contêiner: docker run -d -p 8080:8080 caca-talentos-spring-boot-app
+- Acessar a aplicação: http://localhost:8080
+
 ## Equipe de Desenvolvimento
 
 - [Nome do Desenvolvedor 1](https://github.com/dev1)
