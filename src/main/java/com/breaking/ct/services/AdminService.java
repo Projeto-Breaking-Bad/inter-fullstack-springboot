@@ -1,30 +1,30 @@
 package com.breaking.ct.services;
-import java.util.ArrayList;
-import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.breaking.ct.models.Admin;
+import com.breaking.ct.repositories.AdminRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import com.breaking.ct.models.Admin;
-import com.breaking.ct.repositories.AdminRepository;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class AdminService {
-    @Autowired
+
 	private AdminRepository adminRepository;
 
-    public ArrayList<Admin> getTodosAdmins() {
-		ArrayList<Admin> admins = new ArrayList<>();
-		adminRepository.findAll().forEach(admins::add);
-		return admins;
+	public List<Admin> getTodosAdmins() {
+		return new ArrayList<>(adminRepository.findAll());
 	}
 
-	public Optional<Admin> getAdminByLogin(String login){
+	public Optional<Admin> getAdminByLogin(String login) {
 		return adminRepository.findByLogin(login);
 	}
-	
+
 	public Optional<Admin> getAdminByEmail(String email) {
 		return adminRepository.findByEmail(email);
 	}
@@ -44,17 +44,14 @@ public class AdminService {
 
 	public Admin getLogged() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String email;
 
-		String email = "";
-		if (principal instanceof UserDetails) {
-			email = ((UserDetails)principal).getUsername();
-		} else {
+		if (principal instanceof UserDetails)
+			email = ((UserDetails) principal).getUsername();
+		else
 			email = principal.toString();
-		}
-		
+
 		Optional<Admin> adminOp = getAdminByLogin(email);
-		if(adminOp.isEmpty())
-			return null;
-		return adminOp.get();
+		return adminOp.orElse(null);
 	}
 }

@@ -9,11 +9,9 @@ import com.breaking.ct.models.Admin;
 
 @Repository
 public interface AdminRepository extends MongoRepository<Admin, String> {
+	Optional<Admin> findByEmail(String email);
 
-	public Optional<Admin> findByEmail(String email);
-	
-    public Optional<Admin> findByLogin(String login);
-    
-    public void deleteByLogin(String login);
-    
+	Optional<Admin> findByLogin(String login);
+
+	void deleteByLogin(String login);
 }

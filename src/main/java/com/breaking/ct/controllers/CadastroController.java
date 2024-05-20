@@ -1,27 +1,24 @@
 package com.breaking.ct.controllers;
 
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import com.breaking.ct.models.Aluno;
+import com.breaking.ct.models.Empresa;
+import com.breaking.ct.services.AlunoService;
+import com.breaking.ct.services.EmpresaService;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.breaking.ct.models.Aluno;
-import com.breaking.ct.models.Empresa;
-import com.breaking.ct.services.AlunoService;
-import com.breaking.ct.services.EmpresaService;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/cadastro")
+@AllArgsConstructor
 public class CadastroController {
-	
-	@Autowired
+
 	private AlunoService alunoService;
-	
-	@Autowired
 	private EmpresaService empresaService;
 	
 	@GetMapping("/aluno")
@@ -38,12 +35,8 @@ public class CadastroController {
 		Optional<Aluno> teste1 = alunoService.getAlunoByCpf(aluno.getCpf());
 		Optional<Aluno> teste2 = alunoService.getAlunoByEmail(aluno.getEmail());
 		
-		if(teste1.isEmpty() && teste2.isEmpty()) {
+		if(teste1.isEmpty() && teste2.isEmpty())
 			alunoService.addAluno(aluno);
-		} else {
-			// TODO Adicionar mensagem dizendo "email/cpf ja cadastrado(s)"
-			// Front e back
-		}
 		return mv;
 	}
 	
@@ -55,18 +48,13 @@ public class CadastroController {
 	@PostMapping("/empresa")
 	public ModelAndView novaEmpresa(Empresa empresa) {
 		ModelAndView mv = new ModelAndView("redirect:/login");
-		
 		empresa.setCnpj(empresa.getCnpj().replace(".", "").replace("-", "").replace("/", "").trim());
 		
 		Optional<Empresa> teste1 = empresaService.getEmpresaByCnpj(empresa.getCnpj());
 		Optional<Empresa> teste2 = empresaService.getEmpresaByEmail(empresa.getEmail());
 		
-		if(teste1.isEmpty() && teste2.isEmpty()) {
+		if(teste1.isEmpty() && teste2.isEmpty())
 			empresaService.addEmpresa(empresa);
-		} else {
-			// TODO Adicionar mensagem dizendo "email/cnpj ja cadastrado(s)"
-			// Front e back
-		}
 		return mv;
 	}
 	

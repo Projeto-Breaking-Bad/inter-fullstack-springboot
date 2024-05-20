@@ -1,36 +1,32 @@
 package com.breaking.ct.services;
 
-import java.util.ArrayList;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import com.breaking.ct.models.Empresa;
+import com.breaking.ct.repositories.EmpresaRepository;
+import com.breaking.ct.repositories.VagaRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import com.breaking.ct.models.Empresa;
-import com.breaking.ct.repositories.EmpresaRepository;
-import com.breaking.ct.repositories.VagaRepository;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class EmpresaService {
 
-	@Autowired
 	private EmpresaRepository empresaRepository;
-	
-	@Autowired
 	private VagaRepository vagaRepository;
-	
-	public ArrayList<Empresa> getTodosEmpresas() {
-		ArrayList<Empresa> empresas = new ArrayList<>();
-		empresaRepository.findAll().forEach(empresas::add);
-		return empresas;
+
+	public List<Empresa> getTodosEmpresas() {
+		return new ArrayList<>(empresaRepository.findAll());
 	}
 
-	public Optional<Empresa> getEmpresaByCnpj(String cnpj){
+	public Optional<Empresa> getEmpresaByCnpj(String cnpj) {
 		return empresaRepository.findByCnpj(cnpj);
 	}
-	
+
 	public Optional<Empresa> getEmpresaByEmail(String email) {
 		return empresaRepository.findByEmail(email);
 	}
@@ -44,25 +40,23 @@ public class EmpresaService {
 	}
 
 	public void deleteEmpresa(String cnpj) {
-		vagaRepository.deleteAllById(getEmpresaByCnpj(cnpj).get().getListaIdVagasCriadas());
+		var empresaDeletada = empresaRepository.findByCnpj(cnpj);
+		empresaDeletada.ifPresent(empresa -> vagaRepository.deleteAllById(empresa.getListaIdVagasCriadas()));
 		empresaRepository.deleteByCnpj(cnpj);
 	}
-	
-	
+
+
 	public Empresa getLogged() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String email;
 
-		String email = "";
-		if (principal instanceof UserDetails) {
-			email = ((UserDetails)principal).getUsername();
-		} else {
+		if (principal instanceof UserDetails)
+			email = ((UserDetails) principal).getUsername();
+		else
 			email = principal.toString();
-		}
-		
+
 		Optional<Empresa> empresaOp = getEmpresaByEmail(email);
-		if(empresaOp.isEmpty())
-			return null;
-		return empresaOp.get();
+		return empresaOp.orElse(null);
 	}
 
 }

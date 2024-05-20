@@ -9,10 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class ErrorHandler implements ErrorController {
-	
 	@GetMapping("/error")
 	public ModelAndView error(HttpServletRequest request) {
 			return new ModelAndView("errors/erroHttp");
 	}
-	
 }

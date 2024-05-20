@@ -1,33 +1,26 @@
 package com.breaking.ct.services;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.breaking.ct.models.Aluno;
 import com.breaking.ct.models.Empresa;
 import com.breaking.ct.models.Vaga;
 import com.breaking.ct.repositories.VagaRepository;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class VagaService {
 
-	@Autowired
 	private AlunoService alunoService;
-	
-	@Autowired
 	private EmpresaService empresaService;
-	
-	@Autowired
 	private VagaRepository vagaRepository;
 
-	public ArrayList<Vaga> getTodasVagas() {
-		ArrayList<Vaga> vagas = new ArrayList<>();
-		vagaRepository.findAll().forEach(vagas::add);
-		return vagas;
+	public List<Vaga> getTodasVagas() {
+		return new ArrayList<>(vagaRepository.findAll());
 	}
 
 	public List<Vaga> getVagasByListaIds(List<String> listaIds) {
@@ -64,9 +57,7 @@ public class VagaService {
 	}
 
 	public void inscreverVaga(String id) {
-		
 		Aluno alunoLogado = alunoService.getLogged();
-
 		Optional<Vaga> consultaVaga = vagaRepository.findById(id);
 		if (consultaVaga.isEmpty())
 			return;
@@ -88,9 +79,7 @@ public class VagaService {
 	}
 
 	public void desinscreverVaga(String id) {
-
 		Aluno alunoLogado = alunoService.getLogged();
-
 		Optional<Vaga> consultaVaga = vagaRepository.findById(id);
 		if (consultaVaga.isEmpty())
 			return;

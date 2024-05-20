@@ -1,8 +1,11 @@
 package com.breaking.ct.controllers;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
+import com.breaking.ct.services.AlunoService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,16 +20,22 @@ import com.breaking.ct.models.Vaga;
 import com.breaking.ct.services.VagaService;
 
 @RestController
+@AllArgsConstructor
 public class HomeController {
 
-	@Autowired
 	private VagaService vagaService;
+	private AlunoService alunoService;
+
+	@GetMapping("/testefodase")
+	public Object teste() {
+		return alunoService.getLogged();
+	}
 
 	@GetMapping("/")
 	public ModelAndView home() {
 		ModelAndView mv = new ModelAndView("user/home");
 		
-		ArrayList<Vaga> vagas = vagaService.getTodasVagas(); 
+		List<Vaga> vagas = vagaService.getTodasVagas();
 		mv.addObject("vagas", vagas); 
 
 		try { mv.setViewName(tryRedirection()); }
