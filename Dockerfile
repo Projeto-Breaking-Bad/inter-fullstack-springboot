@@ -13,5 +13,8 @@ COPY --from=build /app/target/*.jar app.jar
 # Configurar parâmetros da JVM
 ENV JAVA_OPTS="-Xmx500m -Xms500m -XX:+UseG1GC"
 
+# Expor a porta
 EXPOSE 8080
-ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]
+
+# Iniciar a aplicação
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar --server.port=${PORT:-8080}"]
