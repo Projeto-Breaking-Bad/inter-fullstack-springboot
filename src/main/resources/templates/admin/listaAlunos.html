@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="pt">
 
 <head>
     <meta charset="utf-8">
@@ -85,7 +85,7 @@
                                     <tr th:each="aluno: ${alunos}">
                                         <td><span th:text="${aluno.nome}"></span></td>
                                         <td><span th:text="${aluno.cpf}"></span></td>
-                                        <td><span th:text="${aluno.ra}"></td>
+                                        <td><span th:text="${aluno.ra}"></span></td>
                                         <td><a th:href="@{/a/alunos/consultar/{cpf}(cpf=${aluno.cpf})}"><button
                                                     class="btn btn-danger" type="button">Detalhes</button></a></td>
                                     </tr>

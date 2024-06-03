@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="pt">
 
 <head>
     <meta charset="utf-8">
@@ -87,7 +87,7 @@
                                     <tr th:each="vaga: ${vagas}">
                                         <td><span th:text="${vaga.areaAtuacao}"></span></td>
                                         <td><span th:text="${vaga.horas}"></span></td>
-                                        <td><span th:text="${vaga.salario}"></td>
+                                        <td><span th:text="${vaga.salario}"></span></td>
                                         <td><span th:text="${vaga.quantVagas}"></span></td>
                                         <td><a th:href="@{/a/vagas/consultar/{id}(id=${vaga.id})}"><button
                                                     class="btn btn-danger" type="button">Detalhes</button></a></td>

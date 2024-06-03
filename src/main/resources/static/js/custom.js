@@ -104,7 +104,7 @@ $(document).ready(function () {
 });
 
 (function () {
-    function limpa_formulário_cep() {
+    function limpa_formulario_cep() {
         // Limpa valores do formulário de cep.
         $("#logradouro").val("");
         $("#bairro").val("");
@@ -145,18 +145,18 @@ $(document).ready(function () {
                         // $("#ibge").val(dados.ibge);
                     } else {
                         //CEP pesquisado não foi encontrado.
-                        limpa_formulário_cep();
+                        limpa_formulario_cep();
                         alertDialog("CEP não encontrado.");
                     }
                 });
             } else {
                 //cep é inválido.
-                limpa_formulário_cep();
+                limpa_formulario_cep();
                 alertDialog("Formato de CEP inválido.");
             }
         } else {
             //cep sem valor, limpa formulário.
-            limpa_formulário_cep();
+            limpa_formulario_cep();
         }
     });
 })();
@@ -308,7 +308,6 @@ $(document).ready(function() {
     $("#cep").mask("00000-000");
     $("#telefone").mask("(00) 0000-0000");
     $("#whatsapp").mask("(00) 00000-0000");
-    $("#cnpj").mask("00.000.000/0000-00");
     $('#salario').mask('#.##0', {
         reverse: true
     });

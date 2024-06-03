@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="pt">
 
 <head>
 	<meta charset="utf-8">
@@ -77,7 +77,7 @@
 							</div>
 						</div>
 						<div class="col-md-4">
-							<label for="RA" class="form-label">RA</label>
+							<label for="ra" class="form-label">RA</label>
 							<input type="text" class="form-control" id="ra" name="ra" placeholder="Apenas números"
 								th:value="${aluno.ra}" required>
 							<div class="invalid-feedback">
@@ -102,7 +102,7 @@
 							</div>
 						</div>
 						<div class="col-md-3">
-							<label for="inputZip" class="form-label">Cep</label>
+							<label for="cep" class="form-label">Cep</label>
 							<input type="text" class="form-control" id="cep" name="cep" placeholder="00000-000" required
 								th:value="${aluno.cep}">
 							<div class="invalid-feedback">
@@ -165,7 +165,7 @@
 							</div>
 						</div>
 						<div class="col-md-6">
-							<label for="celular" class="form-label">Celular</label>
+							<label for="whatsapp" class="form-label">Celular</label>
 							<input type="text" class="form-control" id="whatsapp" name="whatsapp"
 								placeholder="(xx) xxxxx-xxxx" required th:value="${aluno.whatsapp}">
 							<div class="invalid-feedback">
@@ -196,7 +196,7 @@
 							</div>
 						</div>
 						<div class="col-md-12">
-							<label for="habilidade">Habilidade</label>
+							<label for="habilidades">Habilidade</label>
 							<div class="form-floating">
 								<textarea class="form-control" placeholder="Habilidade" id="habilidades"
 									name="habilidades" style="height: 100px" th:text="${aluno.habilidades}"

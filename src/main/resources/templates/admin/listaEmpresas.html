@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="pt">
 
 <head>
     <meta charset="utf-8">
@@ -86,7 +86,7 @@
                                     <tr th:each="empresa: ${empresas}">
                                         <td><span th:text="${empresa.nome}"></span></td>
                                         <td><span th:text="${empresa.cnpj}"></span></td>
-                                        <td><span th:text="${empresa.areaNegocio}"></td>
+                                        <td><span th:text="${empresa.areaNegocio}"></span></td>
                                         <td><a th:href="@{/a/empresas/consultar/{cnpj}(cnpj=${empresa.cnpj})}"><button
                                                     class="btn btn-danger" type="button">Detalhes</button></a></td>
                                     </tr>

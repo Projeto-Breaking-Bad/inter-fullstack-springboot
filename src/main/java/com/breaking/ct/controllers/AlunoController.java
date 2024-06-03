@@ -1,5 +1,6 @@
-package com.breaking.ct.controllers;
+package com.breaking.ct.controllers.aluno;
 
+import com.breaking.ct.dto.AlunoDTO;
 import com.breaking.ct.models.Aluno;
 import com.breaking.ct.models.Vaga;
 import com.breaking.ct.services.AlunoService;
@@ -15,7 +16,6 @@ import java.util.Optional;
 @RequestMapping("/s")
 @AllArgsConstructor
 public class AlunoController {
-
 	private AlunoService alunoService;
 	private VagaService vagaService;
 	private static final String ALUNO = "aluno";
@@ -37,7 +37,6 @@ public class AlunoController {
 			return mv;
 
 		mv.addObject(ALUNO, alunoConsultado.get());
-
 		Aluno alunoLogado = alunoService.getLogged();
 		mv.addObject(ALUNO_LOGADO, alunoLogado);
 
@@ -45,7 +44,6 @@ public class AlunoController {
 			mv.setViewName("student/perfilAlunoEdicao");
 		else
 			mv.setViewName("student/perfilAlunoConsulta");
-
 		return mv;
 	}
 
@@ -59,7 +57,7 @@ public class AlunoController {
 		Aluno alunoLogado = alunoService.getLogged();
 		mv.addObject(ALUNO_LOGADO, alunoLogado);
 
-		if (alunoService.getLogged().getCpf().equals(cpf)) {
+		if (alunoLogado.getCpf().equals(cpf)) {
 			mv.addObject(ALUNO, alunoConsultado.get());
 			mv.setViewName("student/perfilAlunoAtualizacao");
 		}
@@ -67,22 +65,20 @@ public class AlunoController {
 	}
 
 	@PostMapping("/alunos/atualizar/{cpf}")
-	public ModelAndView atualizarAluno(@PathVariable("cpf") String cpf, Aluno aluno) {
+	public ModelAndView atualizarAluno(@PathVariable("cpf") String cpf, AlunoDTO dto) {
 		ModelAndView mv = new ModelAndView(REDIRECT_LINK);
-		aluno.setCpf(aluno.getCpf().replace(".", "").replace("-", "").trim());
+		String cleanCpf = dto.getCpf().replace(".", "").replace("-", "").trim();
+		dto.setCpf(cleanCpf);
 
 		Optional<Aluno> alunoConsultado = alunoService.getAlunoByCpf(cpf);
 		if (alunoConsultado.isEmpty())
 			return mv;
 
 		if (alunoService.getLogged().getCpf().equals(cpf)) {
-			if (aluno.getCpf().equals(cpf)) {
-				alunoService.updateAluno(aluno);
-			} else {
+			if (dto.getCpf().equals(cpf))
 				alunoService.deleteAluno(cpf);
-				alunoService.addAluno(aluno);
-			}
-			mv.setViewName("redirect:/s/alunos/consultar/" + aluno.getCpf());
+			alunoService.updateAluno(dto);
+			mv.setViewName("redirect:/s/alunos/consultar/" + dto.getCpf());
 		}
 		return mv;
 	}
