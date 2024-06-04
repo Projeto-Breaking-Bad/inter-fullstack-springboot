@@ -1,6 +1,7 @@
 package com.breaking.ct.controllers;
 
 import com.breaking.ct.models.Vaga;
+import com.breaking.ct.services.AdminService;
 import com.breaking.ct.services.VagaService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -20,6 +21,12 @@ import java.util.Optional;
 @AllArgsConstructor
 public class HomeController {
 	private VagaService vagaService;
+	private AdminService adminService;
+
+	@GetMapping("/testefodase")
+	public Object teste() {
+		return adminService.getTodosAdmins();
+	}
 
 	@GetMapping("/")
 	public ModelAndView home() {

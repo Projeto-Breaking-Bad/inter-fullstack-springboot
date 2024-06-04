@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface VagaRepository extends MongoRepository<Vaga, String> {
-	Optional<Vaga> findById(String id);
+	Optional<Vaga> findFirstById(String id);
 }

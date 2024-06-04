@@ -24,19 +24,19 @@ public class AlunoService {
 
 	public Optional<Aluno> getAlunoByCpf(String cpf) {
 		String cleanCpf = cleanCpf(cpf);
-		return alunoRepository.findByCpf(cleanCpf);
+		return alunoRepository.findFirstByCpf(cleanCpf);
 	}
 
 	public Optional<Aluno> getAlunoByEmail(String email) {
-		return alunoRepository.findByEmail(email);
+		return alunoRepository.findFirstByEmail(email);
 	}
 
 	public void addAluno(AlunoDTO dto) {
 		String cleanCpf = cleanCpf(dto.getCpf());
 		dto.setCpf(cleanCpf);
-		Optional<Aluno> teste1 = alunoRepository.findByCpf(dto.getCpf());
+		Optional<Aluno> teste1 = alunoRepository.findFirstByCpf(dto.getCpf());
 		if (teste1.isPresent()) return;
-		Optional<Aluno> teste2 = alunoRepository.findByEmail(dto.getEmail());
+		Optional<Aluno> teste2 = alunoRepository.findFirstByEmail(dto.getEmail());
 		if (teste2.isPresent()) return;
 		Aluno newAluno = alunoMapper.map(dto);
 		alunoRepository.save(newAluno);
@@ -45,7 +45,7 @@ public class AlunoService {
 	public void updateAluno(Aluno aluno) {
 		Aluno alunoLogado = getLogged();
 		if (alunoLogado.getCpf().equals(aluno.getCpf())) {
-			alunoRepository.deleteByCpf(aluno.getCpf());
+			alunoRepository.deleteAllByCpf(aluno.getCpf());
 			alunoRepository.save(aluno);
 		}
 	}
@@ -53,16 +53,16 @@ public class AlunoService {
 	public void updateAluno(AlunoDTO dto) {
 		String cleanCpf = cleanCpf(dto.getCpf());
 		dto.setCpf(cleanCpf);
-		Optional<Aluno> teste1 = alunoRepository.findByCpf(dto.getCpf());
+		Optional<Aluno> teste1 = alunoRepository.findFirstByCpf(dto.getCpf());
 		if (teste1.isPresent()) {
-			alunoRepository.deleteByCpf(dto.getCpf());
+			alunoRepository.deleteAllByCpf(dto.getCpf());
 			Aluno alunoAtualizado = alunoMapper.map(dto, teste1.get());
 			alunoRepository.save(alunoAtualizado);
 			return;
 		}
-		Optional<Aluno> teste2 = alunoRepository.findByEmail(dto.getEmail());
+		Optional<Aluno> teste2 = alunoRepository.findFirstByEmail(dto.getEmail());
 		if (teste2.isPresent()) {
-			alunoRepository.deleteByEmail(dto.getEmail());
+			alunoRepository.deleteAllByEmail(dto.getEmail());
 			Aluno alunoAtualizado = alunoMapper.map(dto, teste2.get());
 			alunoRepository.save(alunoAtualizado);
 		}
@@ -70,7 +70,7 @@ public class AlunoService {
 
 	public void deleteAluno(String cpf) {
 		String cleanCpf = cleanCpf(cpf);
-		alunoRepository.deleteByCpf(cleanCpf);
+		alunoRepository.deleteAllByCpf(cleanCpf);
 	}
 
 	public Aluno getLogged() {

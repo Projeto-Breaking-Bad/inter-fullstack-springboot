@@ -23,26 +23,26 @@ public class AdminService {
 	}
 
 	public Optional<Admin> getAdminByLogin(String login) {
-		return adminRepository.findByLogin(login);
+		return adminRepository.findFirstByLogin(login);
 	}
 
 	public void addAdmin(AdminDTO dto) {
-		Optional<Admin> teste1 = adminRepository.findByLogin(dto.getLogin());
+		Optional<Admin> teste1 = adminRepository.findFirstByLogin(dto.getLogin());
 		if (teste1.isPresent()) return;
-		Optional<Admin> teste2 = adminRepository.findByEmail(dto.getEmail());
+		Optional<Admin> teste2 = adminRepository.findFirstByEmail(dto.getEmail());
 		if (teste2.isPresent()) return;
 		Admin newAdmin = adminMapper.map(dto);
 		adminRepository.save(newAdmin);
 	}
 
 	public void updateAdmin(AdminDTO dto) {
-		adminRepository.deleteByLogin(dto.getLogin());
+		adminRepository.deleteAllByLogin(dto.getLogin());
 		Admin admin = adminMapper.map(dto);
 		adminRepository.save(admin);
 	}
 
 	public void deleteAdmin(String login) {
-		adminRepository.deleteByLogin(login);
+		adminRepository.deleteAllByLogin(login);
 	}
 
 	public Admin getLogged() {

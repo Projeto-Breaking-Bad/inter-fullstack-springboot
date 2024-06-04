@@ -9,11 +9,11 @@ import com.breaking.ct.models.Empresa;
 
 @Repository
 public interface EmpresaRepository extends MongoRepository<Empresa, String> {
-	Optional<Empresa> findByEmail(String email);
+	Optional<Empresa> findFirstByEmail(String email);
 
-	Optional<Empresa> findByCnpj(String cnpj);
+	Optional<Empresa> findFirstByCnpj(String cnpj);
 
-	void deleteByCnpj(String cnpj);
+	void deleteAllByCnpj(String cnpj);
 
-	void deleteByEmail(String email);
+	void deleteAllByEmail(String email);
 }

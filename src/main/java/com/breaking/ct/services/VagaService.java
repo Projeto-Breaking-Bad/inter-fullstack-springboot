@@ -31,8 +31,8 @@ public class VagaService {
 		return vagas;
 	}
 
-	public Optional<Vaga> getVagaById(String id) {
-		return vagaRepository.findById(id);
+	public Optional<Vaga> getVagaById(String idVaga) {
+		return vagaRepository.findFirstById(idVaga);
 	}
 
 	public Vaga addVaga(VagaDTO dto) {
@@ -52,13 +52,13 @@ public class VagaService {
 		vagaRepository.save(vaga);
 	}
 
-	public void deleteVaga(String id) {
-		vagaRepository.deleteById(id);
+	public void deleteVaga(String idVaga) {
+		vagaRepository.deleteAllById(List.of(idVaga));
 	}
 
-	public void inscreverVaga(String id) {
+	public void inscreverVaga(String idVaga) {
 		Aluno alunoLogado = alunoService.getLogged();
-		Optional<Vaga> consultaVaga = vagaRepository.findById(id);
+		Optional<Vaga> consultaVaga = vagaRepository.findFirstById(idVaga);
 		if (consultaVaga.isEmpty())
 			return;
 
@@ -78,9 +78,9 @@ public class VagaService {
 		vagaRepository.save(vagaParaAplicar);
 	}
 
-	public void desinscreverVaga(String id) {
+	public void desinscreverVaga(String idVaga) {
 		Aluno alunoLogado = alunoService.getLogged();
-		Optional<Vaga> consultaVaga = vagaRepository.findById(id);
+		Optional<Vaga> consultaVaga = vagaRepository.findFirstById(idVaga);
 		if (consultaVaga.isEmpty())
 			return;
 

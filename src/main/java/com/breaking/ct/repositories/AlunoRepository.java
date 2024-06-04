@@ -8,11 +8,11 @@ import java.util.Optional;
 
 @Repository
 public interface AlunoRepository extends MongoRepository<Aluno, String> {
-	Optional<Aluno> findByEmail(String email);
+	Optional<Aluno> findFirstByEmail(String email);
 
-	Optional<Aluno> findByCpf(String cpf);
+	Optional<Aluno> findFirstByCpf(String cpf);
 
-	void deleteByCpf(String cpf);
+	void deleteAllByCpf(String cpf);
 
-	void deleteByEmail(String email);
+	void deleteAllByEmail(String email);
 }

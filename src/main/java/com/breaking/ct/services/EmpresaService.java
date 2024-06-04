@@ -26,19 +26,19 @@ public class EmpresaService {
 
 	public Optional<Empresa> getEmpresaByCnpj(String cnpj) {
 		String cleanCnpj = cleanCnpj(cnpj);
-		return empresaRepository.findByCnpj(cleanCnpj);
+		return empresaRepository.findFirstByCnpj(cleanCnpj);
 	}
 
 	public Optional<Empresa> getEmpresaByEmail(String email) {
-		return empresaRepository.findByEmail(email);
+		return empresaRepository.findFirstByEmail(email);
 	}
 
 	public void addEmpresa(EmpresaDTO dto) {
 		String cleanCnpj = cleanCnpj(dto.getCnpj());
 		dto.setCnpj(cleanCnpj);
-		Optional<Empresa> teste1 = empresaRepository.findByCnpj(dto.getCnpj());
+		Optional<Empresa> teste1 = empresaRepository.findFirstByCnpj(dto.getCnpj());
 		if (teste1.isPresent()) return;
-		Optional<Empresa> teste2 = empresaRepository.findByEmail(dto.getEmail());
+		Optional<Empresa> teste2 = empresaRepository.findFirstByEmail(dto.getEmail());
 		if (teste2.isPresent()) return;
 		Empresa newEmpresa = empresaMapper.map(dto);
 		empresaRepository.save(newEmpresa);
@@ -47,7 +47,7 @@ public class EmpresaService {
 	public void updateEmpresa(Empresa empresa) {
 		Empresa empresaLogada = getLogged();
 		if (empresaLogada.getCnpj().equals(empresa.getCnpj())) {
-			empresaRepository.deleteByCnpj(empresa.getCnpj());
+			empresaRepository.deleteAllByCnpj(empresa.getCnpj());
 			empresaRepository.save(empresa);
 		}
 	}
@@ -55,16 +55,16 @@ public class EmpresaService {
 	public void updateEmpresa(EmpresaDTO dto) {
 		String cleanCnpj = cleanCnpj(dto.getCnpj());
 		dto.setCnpj(cleanCnpj);
-		Optional<Empresa> teste1 = empresaRepository.findByCnpj(dto.getCnpj());
+		Optional<Empresa> teste1 = empresaRepository.findFirstByCnpj(dto.getCnpj());
 		if (teste1.isPresent()) {
-			empresaRepository.deleteByCnpj(dto.getCnpj());
+			empresaRepository.deleteAllByCnpj(dto.getCnpj());
 			Empresa empresaAtualizada = empresaMapper.map(dto, teste1.get());
 			empresaRepository.save(empresaAtualizada);
 			return;
 		}
-		Optional<Empresa> teste2 = empresaRepository.findByEmail(dto.getEmail());
+		Optional<Empresa> teste2 = empresaRepository.findFirstByEmail(dto.getEmail());
 		if (teste2.isPresent()) {
-			empresaRepository.deleteByEmail(dto.getEmail());
+			empresaRepository.deleteAllByEmail(dto.getEmail());
 			Empresa empresaAtualizada = empresaMapper.map(dto, teste2.get());
 			empresaRepository.save(empresaAtualizada);
 		}
@@ -72,9 +72,9 @@ public class EmpresaService {
 
 	public void deleteEmpresa(String cnpj) {
 		String cleanCnpj = cleanCnpj(cnpj);
-		Optional<Empresa> empresaDeletada = empresaRepository.findByCnpj(cleanCnpj);
+		Optional<Empresa> empresaDeletada = empresaRepository.findFirstByCnpj(cleanCnpj);
 		empresaDeletada.ifPresent(empresa -> vagaRepository.deleteAllById(empresa.getListaIdVagasCriadas()));
-		empresaRepository.deleteByCnpj(cnpj);
+		empresaRepository.deleteAllByCnpj(cnpj);
 	}
 
 	public Empresa getLogged() {

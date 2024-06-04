@@ -269,10 +269,10 @@ public class AdminController {
 		return mv;
 	}
 
-	@GetMapping("/vagas/consultar/{id}")
-	public ModelAndView verVagasEspecifica(@PathVariable String id) {
+	@GetMapping("/vagas/consultar/{idVaga}")
+	public ModelAndView verVagasEspecifica(@PathVariable String idVaga) {
 		ModelAndView mv = new ModelAndView("errors/vagaNaoEncontrada");
-		Optional<Vaga> vagaConsultada = vagaService.getVagaById(id);
+		Optional<Vaga> vagaConsultada = vagaService.getVagaById(idVaga);
 		if (vagaConsultada.isEmpty())
 			return mv;
 
@@ -283,10 +283,10 @@ public class AdminController {
 
 	}
 
-	@GetMapping("/vagas/atualizar/{id}")
-	public ModelAndView formularioAtualizacaoVaga(@PathVariable String id) {
+	@GetMapping("/vagas/atualizar/{idVaga}")
+	public ModelAndView formularioAtualizacaoVaga(@PathVariable String idVaga) {
 		ModelAndView mv = new ModelAndView("errors/vagaNaoEncontrada");
-		Optional<Vaga> vaga = vagaService.getVagaById(id);
+		Optional<Vaga> vaga = vagaService.getVagaById(idVaga);
 		if (vaga.isEmpty())
 			return mv;
 
@@ -296,15 +296,15 @@ public class AdminController {
 		return mv;
 	}
 
-	@PostMapping("/vagas/atualizar/{id}")
-	public ModelAndView atualizaVaga(@PathVariable String id, VagaDTO dto) {
-		vagaService.updateVaga(id, dto);
+	@PostMapping("/vagas/atualizar/{idVaga}")
+	public ModelAndView atualizaVaga(@PathVariable String idVaga, VagaDTO dto) {
+		vagaService.updateVaga(idVaga, dto);
 		return new ModelAndView("redirect:/a/vagas/consultar/" + dto.getId());
 	}
 
-	@PostMapping("/vagas/deletar/{id}")
-	public ModelAndView deletarVaga(@PathVariable String id) {
-		vagaService.deleteVaga(id);
+	@PostMapping("/vagas/deletar/{idVaga}")
+	public ModelAndView deletarVaga(@PathVariable String idVaga) {
+		vagaService.deleteVaga(idVaga);
 		return new ModelAndView("redirect:/a/vagas");
 	}
 }
