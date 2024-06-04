@@ -1,5 +1,7 @@
 package com.breaking.ct.services;
 
+import com.breaking.ct.dto.VagaDTO;
+import com.breaking.ct.mappers.VagaMapper;
 import com.breaking.ct.models.Aluno;
 import com.breaking.ct.models.Empresa;
 import com.breaking.ct.models.Vaga;
@@ -14,13 +16,13 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class VagaService {
-
 	private AlunoService alunoService;
 	private EmpresaService empresaService;
 	private VagaRepository vagaRepository;
+	private VagaMapper vagaMapper;
 
 	public List<Vaga> getTodasVagas() {
-		return new ArrayList<>(vagaRepository.findAll());
+		return vagaRepository.findAll();
 	}
 
 	public List<Vaga> getVagasByListaIds(List<String> listaIds) {
@@ -29,26 +31,24 @@ public class VagaService {
 		return vagas;
 	}
 
-	public List<Vaga> getVagasByCnpj(String cnpj) {
-		return vagaRepository.findByCnpj(cnpj);
-	}
-
 	public Optional<Vaga> getVagaById(String id) {
 		return vagaRepository.findById(id);
 	}
 
-	public void addVaga(Vaga vaga) {
+	public Vaga addVaga(VagaDTO dto) {
+		Vaga vaga = vagaMapper.map(dto);
 		Vaga vagaCriada = vagaRepository.save(vaga);
-		
 		Empresa empresaLogada = empresaService.getLogged();
-		
 		List<String> listaIdsVagasNova = empresaLogada.getListaIdVagasCriadas();
 		listaIdsVagasNova.add(vagaCriada.getId());
 		empresaLogada.setListaIdVagasCriadas(listaIdsVagasNova);
 		empresaService.updateEmpresa(empresaLogada);
+		return vagaCriada;
 	}
 
-	public void updateVaga(Vaga vaga) {
+	public void updateVaga(String idVaga, VagaDTO dto) {
+		Vaga vaga = vagaMapper.map(dto);
+		vaga.setId(idVaga);
 		vagaRepository.save(vaga);
 	}
 
@@ -99,5 +99,4 @@ public class VagaService {
 
 		vagaRepository.save(vagaParaAplicar);
 	}
-
 }

@@ -20,7 +20,6 @@ import java.util.Optional;
 @Transactional
 @AllArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
-
 	private AlunoRepository alunoRepository;
 	private EmpresaRepository empresaRepository;
 	private AdminRepository adminRepository;

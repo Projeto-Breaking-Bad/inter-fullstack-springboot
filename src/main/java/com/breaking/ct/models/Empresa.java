@@ -1,7 +1,6 @@
 package com.breaking.ct.models;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -14,8 +13,9 @@ import java.util.*;
 @Document
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
 public class Empresa implements UserDetails {
-
 	@Id
 	private String cnpj;
 	private String nome;
@@ -36,15 +36,11 @@ public class Empresa implements UserDetails {
 	private List<String> listaIdVagasCriadas;
 
 	public Empresa() {
-		this.setListaIdVagasCriadas(new LinkedList<>());
+		this.listaIdVagasCriadas = new ArrayList<>();
 	}
 
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj.replace(".", "").replace("-", "").replace("/", "").trim();
-	}
-
-	public String dataCriacao() {
-		return dataCriacao;
 	}
 
 	public void setSenha(String senha) {

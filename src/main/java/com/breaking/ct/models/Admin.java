@@ -1,8 +1,6 @@
 package com.breaking.ct.models;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,11 +14,12 @@ import java.util.List;
 import java.util.Set;
 
 @Document
-@NoArgsConstructor
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Admin implements UserDetails {
-
 	@Id
 	private String login;
 	private String email;
@@ -36,7 +35,7 @@ public class Admin implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Set<GrantedAuthority> authorities = new HashSet<>();
-		for (String role : List.of("ALUNO", "EMPRESA", "ADMIN")) {
+		for (String role : List.of("ADMIN")) {
 			authorities.add(new SimpleGrantedAuthority(role));
 		}
 		return authorities;
@@ -71,5 +70,4 @@ public class Admin implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
-
 }

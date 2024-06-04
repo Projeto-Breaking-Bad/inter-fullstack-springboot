@@ -1,5 +1,9 @@
 package com.breaking.ct.controllers;
 
+import com.breaking.ct.dto.AdminDTO;
+import com.breaking.ct.dto.AlunoDTO;
+import com.breaking.ct.dto.EmpresaDTO;
+import com.breaking.ct.dto.VagaDTO;
 import com.breaking.ct.models.Admin;
 import com.breaking.ct.models.Aluno;
 import com.breaking.ct.models.Empresa;
@@ -19,21 +23,24 @@ import java.util.Optional;
 @RequestMapping("/a")
 @AllArgsConstructor
 public class AdminController {
-
 	private AlunoService alunoService;
 	private EmpresaService empresaService;
 	private AdminService adminService;
 	private VagaService vagaService;
+	private static final String VAGA = "vaga";
+	private static final String VAGAS = "vagas";
+	private static final String ADMIN = "admin";
+	private static final String ADMINS = "admins";
 	private static final String ADMIN_LOGADO = "adminLogado";
 	private static final String REDIRECT_LINK = "redirect:/redirect";
-	
+
 	@GetMapping
 	public ModelAndView homeAdmin() {
 		ModelAndView mv = new ModelAndView("admin/homeAdmin");
 		mv.addObject(ADMIN_LOGADO, adminService.getLogged());
 		return mv;
 	}
-	
+
 	@GetMapping("/acessibilidade")
 	public ModelAndView acessibilidade() {
 		ModelAndView mv = new ModelAndView("admin/acessibilidade");
@@ -48,12 +55,12 @@ public class AdminController {
 		mv.addObject(ADMIN_LOGADO, adminService.getLogged());
 		return mv;
 	}
-	
+
 	@GetMapping("/alunos/consultar/{cpf}")
-	public ModelAndView perfilAluno(@PathVariable("cpf") String cpf) {
+	public ModelAndView perfilAluno(@PathVariable String cpf) {
 		ModelAndView mv = new ModelAndView("errors/alunoNaoEncontrado");
 		Optional<Aluno> alunoConsultado = alunoService.getAlunoByCpf(cpf);
-		if(alunoConsultado.isEmpty())
+		if (alunoConsultado.isEmpty())
 			return mv;
 
 		mv.addObject(ADMIN_LOGADO, adminService.getLogged());
@@ -61,12 +68,12 @@ public class AdminController {
 		mv.setViewName("admin/perfilAlunoEdicao");
 		return mv;
 	}
-	
+
 	@GetMapping("/alunos/atualizar/{cpf}")
-	public ModelAndView formularioAtualizacaoAluno(@PathVariable("cpf") String cpf) {
+	public ModelAndView formularioAtualizacaoAluno(@PathVariable String cpf) {
 		ModelAndView mv = new ModelAndView(REDIRECT_LINK);
 		Optional<Aluno> alunoConsultado = alunoService.getAlunoByCpf(cpf);
-		if(alunoConsultado.isEmpty())
+		if (alunoConsultado.isEmpty())
 			return mv;
 
 		mv.addObject(ADMIN_LOGADO, adminService.getLogged());
@@ -74,33 +81,30 @@ public class AdminController {
 		mv.setViewName("admin/perfilAlunoAtualizacao");
 		return mv;
 	}
-	
+
 	@PostMapping("/alunos/atualizar/{cpf}")
-	public ModelAndView atualizarAluno(@PathVariable("cpf") String cpf, Aluno aluno) {
+	public ModelAndView atualizarAluno(@PathVariable String cpf, AlunoDTO dto) {
 		ModelAndView mv = new ModelAndView(REDIRECT_LINK);
-		aluno.setCpf(aluno.getCpf().replace(".", "").replace("-", "").trim());
 		Optional<Aluno> alunoConsultado = alunoService.getAlunoByCpf(cpf);
-		if(alunoConsultado.isEmpty())
+		if (alunoConsultado.isEmpty())
 			return mv;
-		
-		if(aluno.getCpf().equals(cpf)) {
-			alunoService.updateAluno(aluno);
+
+		if (dto.getCpf().equals(cpf)) {
+			alunoService.updateAluno(dto);
 		} else {
 			alunoService.deleteAluno(cpf);
-			alunoService.addAluno(aluno);
+			alunoService.addAluno(dto);
 		}
-		mv.setViewName("redirect:/a/alunos/consultar/"+aluno.getCpf());
+		mv.setViewName("redirect:/a/alunos/consultar/" + dto.getCpf());
 		return mv;
 	}
-	
+
 	@PostMapping("/alunos/deletar/{cpf}")
-	public ModelAndView deletarAluno(@PathVariable("cpf") String cpf) {
+	public ModelAndView deletarAluno(@PathVariable String cpf) {
 		ModelAndView mv = new ModelAndView("redirect:/a/alunos");
 		Optional<Aluno> alunoConsultado = alunoService.getAlunoByCpf(cpf);
-		if(alunoConsultado.isEmpty())
-			return mv;
-		
-		alunoService.deleteAluno(cpf);
+		if (alunoConsultado.isPresent())
+			alunoService.deleteAluno(cpf);
 		return mv;
 	}
 
@@ -111,12 +115,12 @@ public class AdminController {
 		mv.addObject(ADMIN_LOGADO, adminService.getLogged());
 		return mv;
 	}
-	
+
 	@GetMapping("/empresas/consultar/{cnpj}")
-	public ModelAndView perfilEmpresa(@PathVariable("cnpj") String cnpj) {
+	public ModelAndView perfilEmpresa(@PathVariable String cnpj) {
 		ModelAndView mv = new ModelAndView("errors/empresaNaoEncontrada");
 		Optional<Empresa> empresaConsultada = empresaService.getEmpresaByCnpj(cnpj);
-		if(empresaConsultada.isEmpty())
+		if (empresaConsultada.isEmpty())
 			return mv;
 
 		mv.addObject(ADMIN_LOGADO, adminService.getLogged());
@@ -124,12 +128,12 @@ public class AdminController {
 		mv.setViewName("admin/perfilEmpresaEdicao");
 		return mv;
 	}
-	
+
 	@GetMapping("/empresas/atualizar/{cnpj}")
-	public ModelAndView formularioAtualizacaoEmpresa(@PathVariable("cnpj") String cnpj) {
+	public ModelAndView formularioAtualizacaoEmpresa(@PathVariable String cnpj) {
 		ModelAndView mv = new ModelAndView(REDIRECT_LINK);
 		Optional<Empresa> empresaConsultada = empresaService.getEmpresaByCnpj(cnpj);
-		if(empresaConsultada.isEmpty())
+		if (empresaConsultada.isEmpty())
 			return mv;
 
 		mv.addObject(ADMIN_LOGADO, adminService.getLogged());
@@ -137,44 +141,41 @@ public class AdminController {
 		mv.setViewName("admin/perfilEmpresaAtualizacao");
 		return mv;
 	}
-	
+
 	@PostMapping("/empresas/atualizar/{cnpj}")
-	public ModelAndView atualizarEmpresa(@PathVariable("cnpj") String cnpj, Empresa empresa) {
+	public ModelAndView atualizarEmpresa(@PathVariable String cnpj, EmpresaDTO dto) {
 		ModelAndView mv = new ModelAndView(REDIRECT_LINK);
-		empresa.setCnpj(empresa.getCnpj().replace(".", "").replace("-", "").replace("/", "").trim());
 		Optional<Empresa> empresaConsultada = empresaService.getEmpresaByCnpj(cnpj);
-		if(empresaConsultada.isEmpty())
+		if (empresaConsultada.isEmpty())
 			return mv;
-		
-		if(empresa.getCnpj().equals(cnpj)) {
-			empresaService.updateEmpresa(empresa);
+
+		if (dto.getCnpj().equals(cnpj)) {
+			empresaService.updateEmpresa(dto);
 		} else {
 			empresaService.deleteEmpresa(cnpj);
-			empresaService.addEmpresa(empresa);
+			empresaService.addEmpresa(dto);
 		}
-		mv.setViewName("redirect:/a/empresas/consultar/"+empresa.getCnpj());
+		mv.setViewName("redirect:/a/empresas/consultar/" + dto.getCnpj());
 		return mv;
 	}
-	
+
 	@PostMapping("/empresas/deletar/{cnpj}")
-	public ModelAndView deletarEmpresa(@PathVariable("cnpj") String cnpj) {
+	public ModelAndView deletarEmpresa(@PathVariable String cnpj) {
 		ModelAndView mv = new ModelAndView("redirect:/a/empresas");
 		Optional<Empresa> empresaConsultada = empresaService.getEmpresaByCnpj(cnpj);
-		if(empresaConsultada.isEmpty())
-			return mv;
-		
-		empresaService.deleteEmpresa(cnpj);
+		if (empresaConsultada.isPresent())
+			empresaService.deleteEmpresa(cnpj);
 		return mv;
 	}
 
 	@GetMapping("/admins")
 	public ModelAndView getTodosAdmin() {
 		ModelAndView mv = new ModelAndView("admin/listaAdmins");
-		mv.addObject("admins", adminService.getTodosAdmins());
+		mv.addObject(ADMINS, adminService.getTodosAdmins());
 		mv.addObject(ADMIN_LOGADO, adminService.getLogged());
 		return mv;
 	}
-	
+
 	@GetMapping("/admins/cadastro")
 	public ModelAndView formularioCadastroAdmin() {
 		ModelAndView mv = new ModelAndView("admin/cadastroAdmin");
@@ -182,83 +183,78 @@ public class AdminController {
 		return mv;
 	}
 
-    @PostMapping("/admins/cadastro")
-	public ModelAndView novoAdmin(Admin admin) {
-		Optional<Admin> teste1 = adminService.getAdminByLogin(admin.getLogin());
-		Optional<Admin> teste2 = adminService.getAdminByEmail(admin.getEmail());
-		if(teste1.isEmpty() && teste2.isEmpty()) 
-			adminService.addAdmin(admin);
-		
-		return new ModelAndView("redirect:/a/admins/consultar/" + admin.getLogin());
+	@PostMapping("/admins/cadastro")
+	public ModelAndView novoAdmin(AdminDTO dto) {
+		adminService.addAdmin(dto);
+		return new ModelAndView("redirect:/a/admins/consultar/" + dto.getLogin());
 	}
-    
+
 	@GetMapping("/admins/consultar/{login}")
-	public ModelAndView perfilAdmin(@PathVariable("login") String login) {
+	public ModelAndView perfilAdmin(@PathVariable String login) {
 		ModelAndView mv = new ModelAndView("errors/adminNaoEncontrado");
 		Optional<Admin> adminConsultado = adminService.getAdminByLogin(login);
-		if(adminConsultado.isEmpty())
+		if (adminConsultado.isEmpty())
 			return mv;
 
 		Admin adminLogado = adminService.getLogged();
+		mv.addObject(ADMIN, adminConsultado.get());
 		mv.addObject(ADMIN_LOGADO, adminLogado);
-		mv.addObject("admin", adminConsultado.get());
-		
-		if(adminLogado.getLogin().equals(login))
+
+		if (adminLogado.getLogin().equals(login))
 			mv.setViewName("admin/perfilAdminEdicao");
 		else
 			mv.setViewName("admin/perfilAdminConsulta");
-
 		return mv;
 	}
-	
+
 	@GetMapping("/admins/atualizar/{login}")
-	public ModelAndView formularioAtualizacaoAdmin(@PathVariable("login") String login) {
+	public ModelAndView formularioAtualizacaoAdmin(@PathVariable String login) {
 		ModelAndView mv = new ModelAndView(REDIRECT_LINK);
 		Optional<Admin> adminConsultado = adminService.getAdminByLogin(login);
-		if(adminConsultado.isEmpty())
+		if (adminConsultado.isEmpty())
 			return mv;
 
 		Admin adminLogado = adminService.getLogged();
 		mv.addObject(ADMIN_LOGADO, adminLogado);
-		
-		if(adminLogado.getLogin().equals(login)) {
-			mv.addObject("admin", adminConsultado.get());
+
+		if (adminLogado.getLogin().equals(login)) {
+			mv.addObject(ADMIN, adminConsultado.get());
 			mv.setViewName("admin/perfilAdminAtualizacao");
 		}
 		return mv;
 	}
-	
+
 	@PostMapping("/admins/atualizar/{login}")
-	public ModelAndView atualizarAdmin(@PathVariable("login") String login, Admin admin) {
+	public ModelAndView atualizarAdmin(@PathVariable String login, AdminDTO dto) {
 		ModelAndView mv = new ModelAndView(REDIRECT_LINK);
 		Optional<Admin> adminConsultado = adminService.getAdminByLogin(login);
-		if(adminConsultado.isEmpty())
+		if (adminConsultado.isEmpty())
 			return mv;
-		
-		if(adminService.getLogged().getLogin().equals(login)) {
-			if(admin.getLogin().equals(login)) {
-				adminService.updateAdmin(admin);
+
+		if (adminService.getLogged().getLogin().equals(login)) {
+			if (dto.getLogin().equals(login)) {
+				adminService.updateAdmin(dto);
 			} else {
 				adminService.deleteAdmin(login);
-				adminService.addAdmin(admin);
+				adminService.addAdmin(dto);
 			}
-			mv.setViewName("redirect:/a/admins/consultar/"+admin.getLogin());
+			mv.setViewName("redirect:/a/admins/consultar/" + dto.getLogin());
 		}
 		return mv;
 	}
-	
+
 	@PostMapping("/admins/deletar/{login}")
-	public ModelAndView deletarAdmin(@PathVariable("login") String login) {
+	public ModelAndView deletarAdmin(@PathVariable String login) {
 		ModelAndView mv = new ModelAndView(REDIRECT_LINK);
 		List<Admin> teste = adminService.getTodosAdmins();
-		if(teste.size()<=1)
+		if (teste.size() <= 1)
 			return mv;
-		
+
 		Optional<Admin> adminConsultado = adminService.getAdminByLogin(login);
-		if(adminConsultado.isEmpty())
+		if (adminConsultado.isEmpty())
 			return mv;
-		
-		if(adminConsultado.get().getLogin().equals(login)) {
+
+		if (adminConsultado.get().getLogin().equals(login)) {
 			adminService.deleteAdmin(login);
 			mv.setViewName("redirect:/logout");
 		}
@@ -268,46 +264,46 @@ public class AdminController {
 	@GetMapping("/vagas")
 	public ModelAndView verVagas() {
 		ModelAndView mv = new ModelAndView("admin/listaVagas");
-		mv.addObject("vagas", vagaService.getTodasVagas());
+		mv.addObject(VAGAS, vagaService.getTodasVagas());
 		mv.addObject(ADMIN_LOGADO, adminService.getLogged());
 		return mv;
 	}
-	
+
 	@GetMapping("/vagas/consultar/{id}")
-	public ModelAndView verVagasEspecifica(@PathVariable("id") String id) {
+	public ModelAndView verVagasEspecifica(@PathVariable String id) {
 		ModelAndView mv = new ModelAndView("errors/vagaNaoEncontrada");
 		Optional<Vaga> vagaConsultada = vagaService.getVagaById(id);
-		if(vagaConsultada.isEmpty())
+		if (vagaConsultada.isEmpty())
 			return mv;
 
+		mv.addObject(VAGA, vagaConsultada.get());
 		mv.addObject(ADMIN_LOGADO, adminService.getLogged());
-		mv.addObject("vaga", vagaConsultada.get());
 		mv.setViewName("admin/perfilVaga");
 		return mv;
-		
+
 	}
-	
+
 	@GetMapping("/vagas/atualizar/{id}")
-	public ModelAndView formularioAtualizacaoVaga(@PathVariable("id") String id) {
+	public ModelAndView formularioAtualizacaoVaga(@PathVariable String id) {
 		ModelAndView mv = new ModelAndView("errors/vagaNaoEncontrada");
 		Optional<Vaga> vaga = vagaService.getVagaById(id);
-		if(vaga.isEmpty())
+		if (vaga.isEmpty())
 			return mv;
 
+		mv.addObject(VAGA, vaga.get());
 		mv.addObject(ADMIN_LOGADO, adminService.getLogged());
 		mv.setViewName("admin/perfilVagaAtualizacao");
-		mv.addObject("vaga", vaga.get());
 		return mv;
 	}
-	
+
 	@PostMapping("/vagas/atualizar/{id}")
-	public ModelAndView atualizaVaga(@PathVariable("id") String id, Vaga vaga) {
-		vagaService.updateVaga(vaga);
-		return new ModelAndView("redirect:/a/vagas/consultar/" + vaga.getId());
+	public ModelAndView atualizaVaga(@PathVariable String id, VagaDTO dto) {
+		vagaService.updateVaga(id, dto);
+		return new ModelAndView("redirect:/a/vagas/consultar/" + dto.getId());
 	}
-	
+
 	@PostMapping("/vagas/deletar/{id}")
-	public ModelAndView deletarVaga(@PathVariable("id") String id) {
+	public ModelAndView deletarVaga(@PathVariable String id) {
 		vagaService.deleteVaga(id);
 		return new ModelAndView("redirect:/a/vagas");
 	}

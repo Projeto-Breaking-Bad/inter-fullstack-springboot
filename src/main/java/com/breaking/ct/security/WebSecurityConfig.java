@@ -16,12 +16,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 @AllArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
 	UserDetailsServiceImpl userDetailsService;
 
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception {
-
 		http.authorizeRequests()
 			.antMatchers("/images/**").permitAll()
 			.antMatchers("/css/**").permitAll()
@@ -57,5 +55,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public PasswordEncoder pc() {
 		return new BCryptPasswordEncoder();
 	}
-
 }

@@ -1,5 +1,7 @@
 package com.breaking.ct.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,8 +16,9 @@ import java.util.*;
 @Document
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
 public class Aluno implements UserDetails {
-
 	@Id
 	private String cpf;
 	private String nome;
@@ -37,7 +40,7 @@ public class Aluno implements UserDetails {
 	private List<String> listaIdVagasAplicadas;
 
 	public Aluno() {
-		this.listaIdVagasAplicadas = new LinkedList<>();
+		this.listaIdVagasAplicadas = new ArrayList<>();
 	}
 
 	public void setCpf(String cpf) {
@@ -86,5 +89,4 @@ public class Aluno implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
-
 }
